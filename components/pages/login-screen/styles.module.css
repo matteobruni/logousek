@@ -1,0 +1,11 @@
+.sectionWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.sectionWrapper > * {
+  margin: 1rem;
+}

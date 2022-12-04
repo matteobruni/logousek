@@ -1,0 +1,55 @@
+
+.timeLineItemWrapper{
+  display: flex;
+  margin: 1rem;
+}
+.leftNew{
+  justify-content: flex-start;
+}
+.rightNew{
+  justify-content: flex-end;
+}
+.container{
+  position: relative;
+  background-color: rgb(132, 224, 101);
+  border-radius: 1rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+.date{
+  color: #8A8C89;
+  font-size: 0.9rem;
+}
+
+.desc {
+  color: white;
+  margin: 0.3rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+@media only screen and (min-width: 1280px) {
+  .rightNew .beak{
+    left: -0.75rem;
+  }
+  .leftNew .beak{
+    right: -0.75rem;
+  }
+  .beak{
+    position: absolute;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-color: rgb(132, 224, 101);
+    top: 2rem;
+    transform: rotate(45deg);
+  }
+
+  .container{
+    width: calc(50% - 40px);
+  }
+
+  .timeLineItemWrapper{
+    margin: 0rem;
+  }
+}

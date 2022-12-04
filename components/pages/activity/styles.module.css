@@ -1,0 +1,16 @@
+.contentWrapper {
+    margin: 90px 0px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.activityWrapper{
+    display: flex;
+    flex: 1;
+}
+
+.sendButton{
+    font-size: 1.1rem;
+}

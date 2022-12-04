@@ -1,0 +1,49 @@
+.welcomePageAuthorWrapper{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0px;
+    width: 100%;
+    max-width: 30rem;
+    align-self:center;
+    
+  justify-self: center;
+}
+
+.pictureWrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.picture {
+    width: 15rem;
+    min-width: 15rem;
+    height: 15rem;
+    border-radius: 7.5rem;
+    background-color: grey;
+}
+
+.labelsWrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.authorinfo{
+    padding: 2rem;
+}
+
+.authorinfo > p {
+    padding: 0px;
+    margin: 0px;
+    padding-top: 0.3rem;
+}
+
+.authorinfo > h4{
+    margin: 0px;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (min-width: 1280px) {
+    .welcomePageAboutus{grid-template-columns: repeat(3, minmax(0, 1fr));}
+}

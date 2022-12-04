@@ -1,0 +1,25 @@
+.welcomePageNavListItem{
+    width: 100%;
+    margin-right: 2rem;
+    transition-duration: 0.5s;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.welcomePageNavListItem:hover {
+    box-shadow: 0 3rem 5rem rgb(0 0 0 / 8%);
+    background-color: white;
+  }
+
+.picture {
+    height: 5rem;
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: grey;
+}
+
+.welcomePageNavListItem>p{
+    margin: 0px;
+    text-align: center;
+    padding: 0.5rem;
+}
