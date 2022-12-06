@@ -5,21 +5,31 @@ export const games = {
       title: "Rozdíly",
       image: "#",
       difficulty: [
-        { id: 1, title: "Lehke", points: 10 },
+        { id: 1, title: "Lehké", points: 10 },
         { id: 2, title: "Střední", points: 20 },
         { id: 3, title: "Těžké", points: 30 },
-        { id: 4, title: "Detaily", points: 30 },
+        { id: 4, title: "Detaily", points: 50 },
       ],
     },
     {
       name: "a_s",
       title: "Skládání tvarů",
       image: "#",
+      difficulty: [
+        { id: 1, title: "Lehké", points: 10 },
+        { id: 2, title: "Střední", points: 20 },
+        { id: 3, title: "Těžké", points: 30 }
+      ],
     },
     {
       name: "visual_memory",
       title: "Zraková paměť",
       image: "#",
+      difficulty: [
+        { id: 1, title: "Lehké", points: 10 },
+        { id: 2, title: "Střední", points: 20 },
+        { id: 3, title: "Těžké", points: 30 }
+      ],
     },
   ],
   auditory_perception: [

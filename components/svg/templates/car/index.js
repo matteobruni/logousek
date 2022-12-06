@@ -8,7 +8,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
       <defs>
         <style>
           {
-            ".cls-2{fill:none;stroke:#262626;stroke-width:2px}.cls-2,.cls-9{stroke-miterlimit:10}.cls-3{fill:#262626}.cls-4{fill:#111110;opacity:.5}.cls-9{fill:#2559a5;stroke:#1c4372;stroke-width:.5px}.cls-10{fill:#1c4372}.cls-11{fill:#3c78bc}.cls-12{fill:#3fa0d9}.cls-13{fill:#6dbbe3}.cls-14{fill:#18447a}"
+            ".cls-2-car{fill:none;stroke:#262626;stroke-width:2px}.cls-2-car,.cls-9-car{stroke-miterlimit:10}.cls-3-car{fill:#262626}.cls-4-car{fill:#111110;opacity:.5}.cls-9-car{fill:#2559a5;stroke:#1c4372;stroke-width:.5px}.cls-10-car{fill:#1c4372}.cls-11-car{fill:#3c78bc}.cls-12-car{fill:#3fa0d9}.cls-13-car{fill:#6dbbe3}.cls-14-car{fill:#18447a}"
           }
         </style>
       </defs>
@@ -19,10 +19,10 @@ export default function Car({ changeConfig = {}, customViewBox}) {
               fill="#1e1e1e"
               d="M301.06 641.51c0 .85 0 1.7-.05 2.55 0 1.26-.09 2.52-.19 3.76a83.11 83.11 0 0 1-165.87-2 87.01 87.01 0 0 1-.11-4.28 83.1 83.1 0 0 1 83-83.1h.16a83.1 83.1 0 0 1 83.06 83.07Z"
             />
-            <circle className="cls-2" cx={217.95} cy={641.51} r={73.8} />
+            <circle className="cls-2-car" cx={217.95} cy={641.51} r={73.8} />
             <g id="Leve_kolo_disk" data-name="Leve kolo disk">
               <path
-                className="cls-3"
+                className="cls-3-car"
                 d="M149.9 661.77c-2.9-11.85-3.13-28.5 0-40.74a10.93 10.93 0 0 1 16.1-6.72l18.09 10.44 12.64 7.3a10.94 10.94 0 0 1 0 18.94l-12.64 7.3L166 668.72a11 11 0 0 1-16.1-6.95ZM197.7 573.46c11.84-2.89 28.5-3.12 40.73 0a10.93 10.93 0 0 1 6.72 16.06l-10.44 18.09-7.29 12.64a10.94 10.94 0 0 1-18.95 0l-7.3-12.64-10.43-18.08a11 11 0 0 1 6.96-16.07ZM286 621.26c2.9 11.85 3.12 28.5 0 40.73a10.93 10.93 0 0 1-16 6.73l-18.09-10.44-12.74-7.28a10.94 10.94 0 0 1 0-18.94l12.65-7.3 18.07-10.43a11 11 0 0 1 16.11 6.93ZM238.2 709.57c-11.85 2.89-28.5 3.12-40.73 0a10.94 10.94 0 0 1-6.73-16.06l10.45-18.09 7.29-12.64a10.94 10.94 0 0 1 18.94 0l7.3 12.64 10.44 18.07a11 11 0 0 1-6.96 16.08Z"
               />
             </g>
@@ -32,10 +32,10 @@ export default function Car({ changeConfig = {}, customViewBox}) {
               fill="#1e1e1e"
               d="M831.9 641.51v.07c0 1.08 0 2.16-.07 3.23s-.08 1.85-.15 2.76a83.11 83.11 0 0 1-165.85-1.08c-.1-1.63-.15-3.27-.15-4.93a83.11 83.11 0 0 1 166.22 0Z"
             />
-            <circle className="cls-2" cx={748.79} cy={641.51} r={73.8} />
+            <circle className="cls-2-car" cx={748.79} cy={641.51} r={73.8} />
             <g id="Prave_kolo_disk" data-name="Prave kolo disk">
               <path
-                className="cls-3"
+                className="cls-3-car"
                 d="M680.74 661.77c-2.9-11.85-3.13-28.5 0-40.74a10.93 10.93 0 0 1 16.05-6.72l18.09 10.44 12.64 7.3a10.94 10.94 0 0 1 0 18.94l-12.64 7.3-18.07 10.43a11 11 0 0 1-16.07-6.95ZM728.54 573.46c11.84-2.89 28.5-3.12 40.73 0a10.93 10.93 0 0 1 6.73 16.1l-10.44 18.09-7.3 12.64a10.94 10.94 0 0 1-18.94 0L732 607.65l-10.43-18.08a11 11 0 0 1 6.97-16.11ZM816.84 621.26c2.89 11.85 3.12 28.5 0 40.73a10.93 10.93 0 0 1-16 6.73l-18.09-10.44L770 651a10.94 10.94 0 0 1 0-19l12.65-7.3 18.07-10.43a11 11 0 0 1 16.12 6.99ZM769 709.57c-11.85 2.89-28.5 3.12-40.73 0a10.94 10.94 0 0 1-6.73-16.06L732 675.38l7.29-12.64a10.94 10.94 0 0 1 18.94 0l7.3 12.64L776 693.45a11 11 0 0 1-7 16.12Z"
               />
             </g>
@@ -43,13 +43,13 @@ export default function Car({ changeConfig = {}, customViewBox}) {
           <path
             id="Leve_kolo_stin"
             data-name="Leve kolo stin"
-            className="cls-4"
+            className="cls-4-car"
             d="M300.82 647.82c0-.26-.07-.55-.12-.85-6.65-44-163.84-34.23-165.75-1.18a87.01 87.01 0 0 1-.11-4.28 83.1 83.1 0 0 1 83-83.1h.16c45.85 1.24 83.05 37.22 83.05 83.1v2.55c.05 7.49.49 8.68-.23 3.76Z"
           />
           <path
             id="Prave_kolo_stin"
             data-name="Prave kolo stin"
-            className="cls-4"
+            className="cls-4-car"
             d="M831.89 649.15c0-.44-.12-1-.21-1.58 0-.18 0-.36-.08-.56-6.69-44.26-165.77-34.11-165.77-.57-.1-1.63-.15-3.27-.15-4.93a83.11 83.11 0 0 1 166.22 0v.07c0 1.19-.07 2.27-.07 3.23-.02 1.9.01 3.34.06 4.34Z"
           />
         </g>
@@ -96,20 +96,20 @@ export default function Car({ changeConfig = {}, customViewBox}) {
         <path
           id="Zadni_dvere"
           data-name="Zadni dvere"
-          className="cls-9"
+          className="cls-9-car"
           d="M301.06 307.29c-49.21-2.09-74.88 52.77-128.68 137.6 0 0 0 39.11 32.48 106.39a92.61 92.61 0 0 1 13.09-.95 91.18 91.18 0 0 1 90.27 78.41h174V307.29Z"
         />
         <path
           id="Predni_dvere"
           data-name="Predni dvere"
-          className="cls-9"
+          className="cls-9-car"
           d="M748.79 550.33a90.68 90.68 0 0 1 42.54 10.54c-4.51-91.15-29.9-121.4-29.9-121.4L638.27 307.29H480.93v321.45h177.59a91.18 91.18 0 0 1 90.27-78.41Z"
         />
         {changeConfig["hideFirstHandle"] || (
           <rect
             id="Zadni_madlo"
             data-name="Zadni madlo"
-            className="cls-10"
+            className="cls-10-car"
             x={217.95}
             y={479.82}
             width={36.25}
@@ -121,7 +121,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
           <rect
             id="Predni_madlo"
             data-name="Predni madlo"
-            className="cls-10"
+            className="cls-10-car"
             x={504.79}
             y={479.82}
             width={36.25}
@@ -131,7 +131,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
         )}
         <g id="Lights">
           <path
-            className="cls-11"
+            className="cls-11-car"
             d="M839.75 647.49h.11c0-.35 0-.7-.05-1-.02.3-.03.65-.06 1ZM126.87 647.49h.13v-1ZM308.91 647.49h.09v-1c0 .3-.06.65-.09 1ZM816.84 459.55h-26l-51.24-80.09-29.24-45.7a74.56 74.56 0 0 0-62.81-34.38H287.44c-25.43 0-25.43 10.18 0 10.18h360.13c25.43 0 44 13 57.72 34.39l29.24 45.7 51.24 80.09h31.07c161.67 8.46 168.29 40.41 172.43 133v-10.23C985.13 500 978.51 468 816.84 459.55ZM657.71 647.49h.11c0-.35 0-.7-.05-1Z"
           />
         </g>
@@ -139,49 +139,49 @@ export default function Car({ changeConfig = {}, customViewBox}) {
           {changeConfig["hideDoor"] || (
             <g id="Zadni_dvere_okynko" data-name="Zadni dvere okynko">
               <path
-                className={changeConfig["changeDoorColor"] ? "cls-1" : "cls-12"}
+                className={changeConfig["changeDoorColor"] ? "cls-1" : "cls-12-car"}
                 d="M271.8 313.68a69.69 69.69 0 0 0-32.54 26.44l-27.52 41.95-37.64 57.4a10.4 10.4 0 0 0 8.7 16.11h70.32Z"
               />
               <path
-                className={changeConfig["changeDoorColor"] ? "cls-1" : "cls-12"}
+                className={changeConfig["changeDoorColor"] ? "cls-1" : "cls-12-car"}
                 d="M255.35 458.13H182.8a13 13 0 0 1-10.8-20.06l65.16-99.35a71.89 71.89 0 0 1 33.72-27.41l4-1.61Zm13.33-140.32a66.63 66.63 0 0 0-27.29 23.71l-65.16 99.35A7.85 7.85 0 0 0 182.8 453h68.09Z"
               />
             </g>
           )}
           <g id="Zadni_dvere_okno" data-name="Zadni dvere okno">
             <path
-              className="cls-12"
+              className="cls-12-car"
               d="M471.1 308.56H298.36a71.89 71.89 0 0 0-14.49 1.5l-19.15 145.52h205.79Z"
             />
             <path
-              className="cls-13"
+              className="cls-13-car"
               d="M473.05 458.13H261.82l19.77-150.2 1.77-.36a74.64 74.64 0 0 1 15-1.56h175.3ZM267.63 453H468l.56-141.92h-170.2a69.44 69.44 0 0 0-12.2 1.1Z"
             />
           </g>
           <g id="Predni_dvere_okno" data-name="Predni dvere okno">
             <path
-              className="cls-12"
+              className="cls-12-car"
               d="M752.73 455.58H493.59l-3.52-147h147.1a71.92 71.92 0 0 1 16.63 2 71 71 0 0 1 25.36 11.66 66.16 66.16 0 0 1 6.43 5.29 68.76 68.76 0 0 1 10.68 12.64l.17.26 27.35 41.7 37.65 57.39a10.42 10.42 0 0 1-8.71 16.06Z"
             />
             <path
-              className="cls-13"
+              className="cls-13-car"
               d="m763.56 438.06-65-99.08-.18-.27a72.4 72.4 0 0 0-17.74-18.6A74 74 0 0 0 654.38 308a75.1 75.1 0 0 0-17.21-2H487.46l3.65 152.11h261.62a13 13 0 0 0 10.83-20.07Zm-3.92 10.85a7.73 7.73 0 0 1-6.91 4.13H496.07l-3.39-141.93h144.49a68.79 68.79 0 0 1 15.51 1.78c.18 0 .35.08.53.12a63.13 63.13 0 0 1 6.22 1.78l.26.09a67.36 67.36 0 0 1 18 9.36l.38.28a63.41 63.41 0 0 1 5.81 4.82c.2.18.39.37.58.56a64.94 64.94 0 0 1 9.69 11.6l1 1.57 64.15 97.79a7.77 7.77 0 0 1 .34 8.05Z"
             />
           </g>
           <g id="Odraz_ve_skle" data-name="Odraz ve skle">
             <path
-              className="cls-13"
+              className="cls-13-car"
               d="M652.68 312.89 586.53 453h-28.95l67-141.93h12.61a68.79 68.79 0 0 1 15.49 1.82ZM678.05 324.52 617.41 453h-23.24l65.26-138.25.26.09a67.36 67.36 0 0 1 18 9.36ZM695.16 343.07 643.27 453h-16.94l58.11-123.1a64.94 64.94 0 0 1 9.69 11.6Z"
             />
           </g>
         </g>
         <g id="Shadows">
           <path
-            className="cls-14"
+            className="cls-14-car"
             d="M127.05 634.66c-22.45 4.41-59.72-8.94-59-56l-8.31-26.69v37.85a57.87 57.87 0 0 0 57.7 57.71H127c-.12-2-.21-4-.21-6-.02-2.32.09-4.6.26-6.87ZM657.6 641.51c0 2 .09 4 .22 6h-348.9c.13-2 .22-4 .22-6q0-3.37-.25-6.7l349-.06c-.17 2.25-.29 4.48-.29 6.76ZM989.06 634.56A15.3 15.3 0 0 1 974 647.48H839.75c.13-2 .22-4 .22-6q0-3.42-.26-6.76h147a16.3 16.3 0 0 0 2.35-.16Z"
           />
           <path
-            className="cls-14"
+            className="cls-14-car"
             d="M126.77 641.51c0 2 .08 4 .21 6l-15.32-.51 4.53-12.21s12.59-87.1 90.46-83.72c-44.12 6.34-79.88 44.55-79.88 90.44ZM658 641.52c0 2 .08 4 .2 6l-15.31-.52 4.53-12.22S660 547.65 737.87 551c-44.11 6.41-79.87 44.63-79.87 90.52Z"
           />
         </g>

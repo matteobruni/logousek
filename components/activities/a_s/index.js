@@ -1,32 +1,41 @@
-import React, {useState} from "react";
-import ActivityCard from "../activity-card";
-import DropCard from "./drop-card";
-
-import { useMultiDrag } from 'react-dnd-multi-backend'
+import React, {
+  useState,
+  forwardRef,
+  useRef,
+  useImperativeHandle,
+} from "react";
+import AsContext from "../../../contexts/as-context";
 import AvaibleCards from "./avaible-cards";
 import DropCards from "./drop-cards";
 import { CustomDragLayer } from "./custom-drag-layer";
 import AsContextProvider from "./as-context-provider";
 
-const AS = (props) => {
-  const [cardCount, setCardCount] = useState(4);
+export default forwardRef(function AS(
+  { complexity, tasksElapsed, onResetChanged, onHandleChanged },
+  ref
+) {
+  const [cardCount] = useState(
+    complexity === "1" ? 2 : complexity === "2" ? 4 : 6
+  );
+  const contextProviderRef = useRef(null);
 
+  useImperativeHandle(ref, () => ({
+    getResult: contextProviderRef.current.checkResult,
+    generateNext: () => {
+    },
+  }));
 
   return (
     <div>
-      <AsContextProvider count={cardCount}>
-      <CustomDragLayer />
-      {/* <DragCard />
-      <DragCard />
-      <DragCard /> */}
-      {/* <DropCard />
-      <DropCard />
-      <DropCard /> */}
-      <DropCards />
-      <AvaibleCards />
+      <AsContextProvider
+        ref={contextProviderRef}
+        count={cardCount}
+        onHandleChanged={onHandleChanged}
+      >
+        <CustomDragLayer />
+        <DropCards />
+        <AvaibleCards />
       </AsContextProvider>
     </div>
-  )
-}
-
-export default AS
+  );
+});

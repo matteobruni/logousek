@@ -19,6 +19,7 @@ export const ShowedPart = styled.div`
 export const QuestionPart = styled.div`
   width: 100vw;
   justify-content: center;
+  align-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
   display: flex;

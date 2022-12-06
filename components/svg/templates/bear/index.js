@@ -6,7 +6,7 @@ const Bear = ({changeConfig = {}, customViewBox}) => (
     <defs>
       <style>
         {
-          ".cls-5{fill:none;stroke:#282828;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px}"
+          ".cls-5-bear{fill:none;stroke:#282828;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px}"
         }
       </style>
     </defs>
@@ -196,7 +196,7 @@ const Bear = ({changeConfig = {}, customViewBox}) => (
         />
         <g id="Usta_medved" data-name="Usta medved">
           <path
-            className="cls-5"
+            className="cls-5-bear"
             d="M478.74 403.68s16.22 20.57 35.61 0M514.35 387.59v16.09s16.22 20.57 35.6 0"
           />
         </g>

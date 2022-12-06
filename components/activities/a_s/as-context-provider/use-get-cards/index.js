@@ -4,16 +4,30 @@ import { SvgWrapper } from "./styled";
 import { shuffle } from "lodash-es";
 
 const VIEWBOX_CONF = {
+  2: {
+    leftTop: "0 0 512 1024",
+    rightTop: "512 0 512 1024",
+  },
   4: {
     leftTop: "0 0 512 1024",
     rightTop: "512 0 512 1024",
     leftBottom: "0 512 512 1024",
     rightBottom: "512 512 512 1024",
   },
+  6: {
+    leftTop: "0 0 512 1024",
+    rightTop: "512 0 512 1024",
+    leftMiddle: "0 341 512 1024",
+    rightMiddle: "512 341 512 1024",
+    leftBottom: "0 682 512 1024",
+    rightBottom: "512 682 512 1024",
+  },
 };
 
 export const SVGS_HASH = {
+  2: ["leftTop", "rightTop"],
   4: ["leftTop", "rightTop", "leftBottom", "rightBottom"],
+  6: ["leftTop", "rightTop", "leftMiddle", "rightMiddle", "leftBottom", "rightBottom"],
 };
 
 const useGetCards = (count) => {

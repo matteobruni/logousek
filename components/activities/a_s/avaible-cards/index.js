@@ -7,9 +7,9 @@ function AvaibleCards() {
   const asContext = useContext(AsContext);
   return (
     <CardWrapper>
-      {asContext?.avaibleCards.map((card, index) => {
-        
-        return <DragCard item={card} key={`drag-card-${index}`}>{card.img}</DragCard>;
+      {asContext?.avaibleCards.map((card) => {
+        console.log("card", card)
+        return <DragCard item={card} key={`drag-card-${card.keyImage}`}>{card.img}</DragCard>;
       })}
     </CardWrapper>
   );

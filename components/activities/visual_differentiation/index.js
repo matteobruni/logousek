@@ -5,12 +5,6 @@ import {
   getRandomSvgsWithChangeConfig,
   getHideConfig
 } from "../../../helpers/svg-helpers";
-import Car from "../../svg/templates/car";
-import Flower from "../../svg/templates/flower";
-import Cloud from "../../svg/templates/cloud";
-import LadyBug from "../../svg/templates/ladybug";
-import Sun from "../../svg/templates/sun";
-import Bear from "../../svg/templates/bear";
 import { shuffle } from "../../../helpers/array-helper";
 const START_COUNT_CARDS = 2;
 
@@ -22,11 +16,11 @@ export default forwardRef(function VisualDifActivity(
   const [selectedIndex, setSelectedIndex] = useState();
 
   useImperativeHandle(ref, () => ({
-    getResult: lasetSelectedWasCorrect,
+    getResult: () => lasetSelectedWasCorrect,
     generateNext: () => {
-      setSelectedIndex();
-      setLasetSelectedWasCorrect(false);
-      setCards(getCardsArray());
+      // setSelectedIndex();
+      // setLasetSelectedWasCorrect(false);
+      // setCards(getCardsArray());
     },
   }));
 

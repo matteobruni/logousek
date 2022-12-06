@@ -11,27 +11,27 @@ const LadyBug = ({changeConfig = {}, customViewBox}) => {
       <defs>
         <style>
           {
-            ".cls-1{fill:none;stroke:#222323;stroke-linecap:round;stroke-linejoin:round;stroke-width:15px}.cls-2{fill:#222323}.cls-5{fill:#7a1523}.cls-8{fill:#fff}"
+            ".cls-1-ladybug{fill:none;stroke:#222323;stroke-linecap:round;stroke-linejoin:round;stroke-width:15px}"
           }
         </style>
       </defs>
       <g id="Nohy">
         <g id="Prava_rada_noh" data-name="Prava rada noh">
           <path
-            className="cls-1"
+            className="cls-1-ladybug"
             d="m765.23 509.91 56.58 6.59s27 35.19 24.47 56.69M709.83 666.36 761.67 690s14.89 41.75 5.92 61.45M584.82 806.26l49.34 28.47s10.82 43 0 61.73"
           />
         </g>
         <g id="Leva_rada_noh" data-name="Leva rada noh">
           <path
-            className="cls-1"
+            className="cls-1-ladybug"
             d="m363 324.21-47-32.1s-43.42 8.9-55.62 26.78M260.36 495.08l-54.43-16.81s-38.87 21.32-45.26 42M254.47 706.4 199 693.31s-37.34 23.88-42.32 45"
           />
         </g>
       </g>
       <g id="Telo">
         <path
-          className="cls-2"
+          fill="#222323"
           d="M716.78 659.89C668.59 750 593.8 813.2 516.5 838.4c-45.25 14.75-91.35 16.47-133.48 2.94a185.44 185.44 0 0 1-56.29-29.47A192.94 192.94 0 0 1 288.79 773c-61.4-83.23-64.51-219 1-341.51 83.46-156.03 246.71-231.41 364.62-168.35s145.83 240.69 62.37 396.75Z"
         />
         <path
@@ -48,15 +48,15 @@ const LadyBug = ({changeConfig = {}, customViewBox}) => {
         />
         <g id="Shadows">
           <path
-            className="cls-5"
+            fill="#7a1523"
             d="m303.25 818.52-12.29 18c-99-88.2-115.11-265.65-31.26-424.2-72.93 154.44-53.32 322.32 43.55 406.2ZM761.73 650q-5.26 11.15-11.15 22.19c-85.07 159.07-242.4 245.07-371.3 211.52l8.24-20.47c129.22 34.8 287.6-51.26 373.06-211 .42-.75.76-1.48 1.15-2.24Z"
           />
           <path
-            className="cls-5"
+            fill="#7a1523"
             d="m288.87 804.87 263.06-350.13-260.97 381.75-2.09-31.62z"
           />
           <path
-            className="cls-5"
+            fill="#7a1523"
             d="M551.93 454.74 404.86 867.18l-25.58 16.56 172.65-429z"
           />
         </g>
@@ -67,7 +67,7 @@ const LadyBug = ({changeConfig = {}, customViewBox}) => {
           }}
         />
         <path
-          className="cls-2"
+          fill="#222323"
           d="M803.4 419.15c-44.19 63.7-150.61 75.36-245.57 24.57C467.71 395.53 418.64 307.53 438.19 237a109.94 109.94 0 0 1 3.74-11.21c79.42-40.82 165.54-47 237.11-8.74s114.22 113.38 124.36 202.1Z"
         />
         <path
@@ -79,54 +79,54 @@ const LadyBug = ({changeConfig = {}, customViewBox}) => {
       </g>
       <g id="Tecky">
         {changeConfig["hideFirstDot"] || (
-          <circle className="cls-2" cx={366.76} cy={440.44} r={18.99} />
+          <circle fill="#222323" cx={366.76} cy={440.44} r={18.99} />
         )}
         {changeConfig["hideSecondDot"] || (
-          <circle className="cls-2" cx={269.88} cy={529.5} r={18.99} />
+          <circle fill="#222323" cx={269.88} cy={529.5} r={18.99} />
         )}
         {changeConfig["hideThirdDot"] || (
-          <circle className="cls-2" cx={385.75} cy={561.84} r={18.99} />
+          <circle fill="#222323" cx={385.75} cy={561.84} r={18.99} />
         )}
         {changeConfig["hideFourthDot"] || (
-          <circle className="cls-2" cx={307.86} cy={669.24} r={18.99} />
+          <circle fill="#222323" cx={307.86} cy={669.24} r={18.99} />
         )}
         {changeConfig["hideFifthDot"] || (
-          <circle className="cls-2" cx={498.93} cy={782.58} r={18.99} />
+          <circle fill="#222323" cx={498.93} cy={782.58} r={18.99} />
         )}
         {changeConfig["hideSixthDot"] || (
-          <circle className="cls-2" cx={551.93} cy={650.03} r={18.99} />
+          <circle fill="#222323" cx={551.93} cy={650.03} r={18.99} />
         )}
         {changeConfig["hideSeventhDot"] || (
-          <circle className="cls-2" cx={668.86} cy={580.82} r={18.99} />
+          <circle fill="#222323" cx={668.86} cy={580.82} r={18.99} />
         )}
         {changeConfig["hideEighthDot"] || (
-          <circle className="cls-2" cx={630.88} cy={744.6} r={18.99} />
+          <circle fill="#222323" cx={630.88} cy={744.6} r={18.99} />
         )}
       </g>
       <g id="Tykadla">
       {changeConfig["hideLeftFeeler"] || <path
           id="Prave_tykadlo"
           data-name="Prave tykadlo"
-          className="cls-2"
+          fill="#222323"
           d="M692.71 238.19a5 5 0 0 1-.26-5c16.51-32.25 47.67-42.73 67.07-33.94 15.83 7.16 28.82 28.81 22.53 47.05-3.39 9.83-12.82 20.49-25.52 20.65-13.11.16-24.86-10.31-27.94-24.91a5 5 0 1 1 9.78-2.06c2.06 9.77 9.81 17.07 18 17 8.4-.11 14.29-8.38 16.2-13.91 4.44-12.89-5.78-29.51-17.2-34.68-15.29-6.93-40.65 3.23-54 29.39a5 5 0 0 1-8.64.44Z"
         />}
         {changeConfig["hideRightFeeler"] || <path
           id="Leve_tykadlo"
           data-name="Leve tykadlo"
-          className="cls-2"
+          fill="#222323"
           d="M660.73 220.19a5 5 0 0 0 4.41-2.37c19-30.85 11.78-62.92-5.8-74.95-14.33-9.81-39.58-9.68-51.91 5.16-6.64 8-10.85 21.6-4.4 32.54 6.66 11.29 21.71 15.89 35.79 11a5 5 0 1 0-3.31-9.43c-9.43 3.31-19.69.47-23.87-6.6-4.27-7.24-.25-16.57 3.49-21.07 8.71-10.48 28.22-10.38 38.57-3.3 13.85 9.48 18.33 36.43 2.92 61.45a5 5 0 0 0 1.64 6.88 4.87 4.87 0 0 0 2.47.69Z"
         />}
       </g>
       <g id="Oci">
         <g id="Prave_oko" data-name="Prave oko">
-          <circle className="cls-8" cx={520.5} cy={231.62} r={11.87} />
-          <circle className="cls-8" cx={541.16} cy={231.61} r={16.91} />
-          <circle className="cls-2" cx={550.68} cy={222.2} r={9.39} />
+          <circle fill="#fff" cx={520.5} cy={231.62} r={11.87} />
+          <circle fill="#fff" cx={541.16} cy={231.61} r={16.91} />
+          <circle fill="#222323" cx={550.68} cy={222.2} r={9.39} />
         </g>
         <g id="Leve_oko" data-name="Leve oko">
-          <circle className="cls-8" cx={749.19} cy={345.29} r={11.87} />
-          <circle className="cls-8" cx={740.15} cy={326.72} r={16.91} />
-          <circle className="cls-2" cx={745.19} cy={316.33} r={9.39} />
+          <circle fill="#fff" cx={749.19} cy={345.29} r={11.87} />
+          <circle fill="#fff" cx={740.15} cy={326.72} r={16.91} />
+          <circle fill="#222323" cx={745.19} cy={316.33} r={9.39} />
         </g>
       </g>
     </svg>

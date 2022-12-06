@@ -3,8 +3,6 @@ import { DEFAULT_VIEWBOX } from "../../../../constants/svg-conf";
 
 const Lolipop = ({changeConfig = {}, customViewBox}) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX}>
-    <defs>
-    </defs>
     <g id="L\xEDz\xE1tko">
       <g id="Lizatko_tycka" data-name="Lizatko tycka">
         <path

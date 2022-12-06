@@ -6,21 +6,20 @@ function DropCards() {
   const asContext = useContext(AsContext);
 
   const _onItemDropHandle = (item, index) => {
-
-    asContext?.setPlacedCards((v) => {
-      let updatedPlacedCards = [...v]
+    console.log("item", item, asContext)
+    asContext?.setPlacedCards((previousValue) => {
+      let updatedPlacedCards = [...previousValue]
       updatedPlacedCards[index] = item;
       return updatedPlacedCards;
       });
 
-      // asContext?.setAvaibleCards((v) => {
-        
-      // });
+      asContext?.setAvaibleCards((previousValue) => previousValue.filter(avaibleCard => avaibleCard?.keyImage !== item?.keyImage))
   }
 
   return (
     <CardWrapper>
       <CardContainer>
+        
         {asContext?.placedCards.map((card, index) => {
           return <DropCard key={`drag-card-${index}`} onDrop={(item) => _onItemDropHandle(item, index)}>{card?.img}</DropCard>;
         })}

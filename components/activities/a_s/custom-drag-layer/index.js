@@ -1,6 +1,7 @@
+import { useContext } from "react";
 import { useDragLayer } from "react-dnd";
-import Bear from "../../../svg/templates/bear";
-import ActivityCard from "../../activity-card";
+import AsContext from "../../../../contexts/as-context";
+import DragCard from "../drag-card";
 
 const layerStyles = {
   position: "fixed",
@@ -32,6 +33,7 @@ function getItemStyles(initialOffset, currentOffset, isSnapToGrid) {
   };
 }
 export const CustomDragLayer = (props) => {
+  const asContext = useContext(AsContext);
   const { itemType, isDragging, item, initialOffset, currentOffset } =
     useDragLayer((monitor) => ({
       item: monitor.getItem(),
@@ -40,14 +42,13 @@ export const CustomDragLayer = (props) => {
       currentOffset: monitor.getSourceClientOffset(),
       isDragging: monitor.isDragging(),
     }));
-  ;
   function renderItem() {
     switch (itemType) {
       case "image":
         return (
-          <ActivityCard>
+          <DragCard customAspectRatio={asContext?.aspectRatio}>
             {item.img}
-          </ActivityCard>
+          </DragCard>
         );
       default:
         return null;

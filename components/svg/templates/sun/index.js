@@ -120,7 +120,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
           </>
         )}
         <circle fill="#e5c648" cx="509.81" cy="524.94" r="220.06" />
-        <ClipPathElement className="cls-3">
+        <ClipPathElement>
           <circle fill="#f4e397" cx="522.82" cy="537.96" r="18.41" />
           {changeConfig["hideFirstFlash"] || (
             <rect

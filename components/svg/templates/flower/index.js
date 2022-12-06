@@ -580,7 +580,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
         />
         <style>
           {
-            ".cls-3{fill:#1d1d1b}.cls-11{mix-blend-mode:overlay;opacity:.75}.cls-13{fill:url(#radial-gradient-2)}.cls-14{fill:url(#radial-gradient-3)}.cls-18{fill:url(#radial-gradient-7)}.cls-19{fill:url(#radial-gradient-8)}"
+            ".cls-11-flower{mix-blend-mode:overlay;opacity:.75}.cls-13-flower{fill:url(#radial-gradient-2)}.cls-14-flower{fill:url(#radial-gradient-3)}.cls-18-flower{fill:url(#radial-gradient-7)}.cls-19-flower{fill:url(#radial-gradient-8)}"
           }
         </style>
       </defs>
@@ -598,7 +598,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                   fill: "url(#linear-gradient)",
                 }}
               />
-              <circle className="cls-3" cx={524.68} cy={499.32} r={17.94} />
+              <circle fill="#1d1d1b" cx={524.68} cy={499.32} r={17.94} />
             </>
           )}
           {changeConfig["hideSecondLeaf"] || (
@@ -609,7 +609,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                   fill: "url(#linear-gradient-2)",
                 }}
               />
-              <circle className="cls-3" cx={529.94} cy={512} r={17.94} />
+              <circle fill="#1d1d1b" cx={529.94} cy={512} r={17.94} />
             </>
           )}
           {changeConfig["hideThirdLeaf"] || (
@@ -620,7 +620,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                   fill: "url(#linear-gradient-3)",
                 }}
               />
-              <circle className="cls-3" cx={524.68} cy={524.68} r={17.94} />
+              <circle fill="#1d1d1b" cx={524.68} cy={524.68} r={17.94} />
             </>
           )}
           {changeConfig["hideFourthLeaf"] || (
@@ -631,7 +631,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                   fill: "url(#linear-gradient-4)",
                 }}
               />
-              <circle className="cls-3" cx={512} cy={529.94} r={17.94} />
+              <circle fill="#1d1d1b" cx={512} cy={529.94} r={17.94} />
             </>
           )}
           {changeConfig["hideFithLeaf"] || (
@@ -642,7 +642,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                   fill: "url(#linear-gradient-5)",
                 }}
               />
-              <circle className="cls-3" cx={499.32} cy={524.68} r={17.94} />
+              <circle fill="#1d1d1b" cx={499.32} cy={524.68} r={17.94} />
             </>
           )}
           {changeConfig["hideSixthLeaf"] || (
@@ -653,7 +653,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                   fill: "url(#linear-gradient-6)",
                 }}
               />
-              <circle className="cls-3" cx={494.06} cy={512} r={17.94} />
+              <circle fill="#1d1d1b" cx={494.06} cy={512} r={17.94} />
             </>
           )}
           {changeConfig["hideSeventhLeaf"] || (
@@ -664,7 +664,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                   fill: "url(#linear-gradient-7)",
                 }}
               />
-              <circle className="cls-3" cx={499.32} cy={499.32} r={17.94} />
+              <circle fill="#1d1d1b" cx={499.32} cy={499.32} r={17.94} />
             </>
           )}
           {changeConfig["hideEightLeaf"] || (
@@ -675,12 +675,12 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                   fill: "url(#linear-gradient-8)",
                 }}
               />
-              <circle className="cls-3" cx={512} cy={494.06} r={17.94} />
+              <circle fill="#1d1d1b" cx={512} cy={494.06} r={17.94} />
             </>
           )}
           <g id="Stred_kytky" data-name="Stred kytky">
             <image
-              className="cls-11"
+              className="cls-11-flower"
               width={1020}
               height={1020}
               transform="matrix(.24 0 0 .24 389.64 389.64)"
@@ -696,19 +696,19 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
             />
             <g id="Pylove_tecky" data-name="Pylove tecky">
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-40 921.588 -407.536) scale(.24)"
                 xlinkHref="#image"
               />
-              <circle className="cls-13" cx={501.41} cy={499} r={7.81} />
+              <circle className="cls-13-flower" cx={501.41} cy={499} r={7.81} />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-40 898.384 -403.583) scale(.24)"
                 xlinkHref="#image-2"
               />
-              <circle className="cls-14" cx={493.59} cy={485.16} r={7.81} />
+              <circle className="cls-14-flower" cx={493.59} cy={485.16} r={7.81} />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-40 880.197 -386.867) scale(.24)"
                 xlinkHref="#image-3"
               />
@@ -721,7 +721,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-40 854.65 -395.496) scale(.24)"
                 xlinkHref="#image-4"
               />
@@ -734,7 +734,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-40 837.937 -369.624) scale(.24)"
                 xlinkHref="#image-5"
               />
@@ -747,19 +747,19 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 495 477.24)"
                 xlinkHref="#image-6"
               />
-              <circle className="cls-18" cx={512} cy={494.06} r={7.81} />
+              <circle className="cls-18-flower" cx={512} cy={494.06} r={7.81} />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 497.88 461.4)"
                 xlinkHref="#image-7"
               />
-              <circle className="cls-19" cx={514.9} cy={478.44} r={7.81} />
+              <circle className="cls-19-flower" cx={514.9} cy={478.44} r={7.81} />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 491.4 445.8)"
                 xlinkHref="#image-8"
               />
@@ -772,7 +772,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 502.92 431.4)"
                 xlinkHref="#image-9"
               />
@@ -785,7 +785,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 490.2 414.6)"
                 xlinkHref="#image-10"
               />
@@ -798,7 +798,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 .15 -.15 .18 521.08 473.28)"
                 xlinkHref="#image"
               />
@@ -811,7 +811,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 .15 -.15 .18 533.46 463)"
                 xlinkHref="#image-2"
               />
@@ -824,7 +824,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 .15 -.15 .18 538.53 446.88)"
                 xlinkHref="#image-3"
               />
@@ -837,7 +837,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 .15 -.15 .18 556.61 443.25)"
                 xlinkHref="#image-4"
               />
@@ -850,7 +850,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 .15 -.15 .18 557.66 422.21)"
                 xlinkHref="#image-5"
               />
@@ -863,7 +863,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(80 -18.392 567.419) scale(.24)"
                 xlinkHref="#image"
               />
@@ -876,7 +876,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(80 -10.396 577.057) scale(.24)"
                 xlinkHref="#image-2"
               />
@@ -889,7 +889,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(80 2.136 580.992) scale(.24)"
                 xlinkHref="#image-3"
               />
@@ -902,7 +902,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(80 4.963 595.059) scale(.24)"
                 xlinkHref="#image-4"
               />
@@ -915,7 +915,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(80 21.329 595.878) scale(.24)"
                 xlinkHref="#image-5"
               />
@@ -928,7 +928,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(120 128.213 415.357) scale(.24)"
                 xlinkHref="#image"
               />
@@ -941,7 +941,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(120 131.343 424.104) scale(.24)"
                 xlinkHref="#image-2"
               />
@@ -954,7 +954,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(120 139.086 430.035) scale(.24)"
                 xlinkHref="#image-3"
               />
@@ -967,7 +967,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(120 137.484 440.557) scale(.24)"
                 xlinkHref="#image-4"
               />
@@ -980,7 +980,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(120 148.693 445.288) scale(.24)"
                 xlinkHref="#image-5"
               />
@@ -993,7 +993,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 .08 -.08 -.23 542.42 536.56)"
                 xlinkHref="#image"
               />
@@ -1006,7 +1006,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 .08 -.08 -.23 545.13 552.43)"
                 xlinkHref="#image-2"
               />
@@ -1019,7 +1019,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 .08 -.08 -.23 556.56 564.87)"
                 xlinkHref="#image-3"
               />
@@ -1032,7 +1032,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 .08 -.08 -.23 550.66 582.34)"
                 xlinkHref="#image-4"
               />
@@ -1045,7 +1045,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 .08 -.08 -.23 568.35 593.78)"
                 xlinkHref="#image-5"
               />
@@ -1058,7 +1058,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 -.08 .08 -.23 519.27 549.2)"
                 xlinkHref="#image"
               />
@@ -1071,7 +1071,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 -.08 .08 -.23 511.15 563.1)"
                 xlinkHref="#image-2"
               />
@@ -1084,7 +1084,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 -.08 .08 -.23 511.9 579.97)"
                 xlinkHref="#image-3"
               />
@@ -1097,7 +1097,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 -.08 .08 -.23 496.15 589.57)"
                 xlinkHref="#image-4"
               />
@@ -1110,7 +1110,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(-.23 -.08 .08 -.23 502.36 609.7)"
                 xlinkHref="#image-5"
               />
@@ -1123,7 +1123,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-120 403.744 129.565) scale(.24)"
                 xlinkHref="#image"
               />
@@ -1136,7 +1136,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-120 397.737 136.653) scale(.24)"
                 xlinkHref="#image-2"
               />
@@ -1149,7 +1149,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-120 396.473 146.323) scale(.24)"
                 xlinkHref="#image-3"
               />
@@ -1162,7 +1162,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-120 386.558 150.2) scale(.24)"
                 xlinkHref="#image-4"
               />
@@ -1175,7 +1175,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-120 388.066 162.27) scale(.24)"
                 xlinkHref="#image-5"
               />
@@ -1188,7 +1188,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-80 550.357 -22.503) scale(.24)"
                 xlinkHref="#image"
               />
@@ -1201,7 +1201,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-80 539.482 -16.296) scale(.24)"
                 xlinkHref="#image-2"
               />
@@ -1214,7 +1214,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-80 533.424 -4.635) scale(.24)"
                 xlinkHref="#image-3"
               />
@@ -1227,7 +1227,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-80 519.08 -4.302) scale(.24)"
                 xlinkHref="#image-4"
               />
@@ -1240,7 +1240,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="rotate(-80 515.427 11.682) scale(.24)"
                 xlinkHref="#image-5"
               />
@@ -1253,19 +1253,19 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 -.15 .15 .18 477.57 497.04)"
                 xlinkHref="#image"
               />
-              <circle className="cls-13" cx={501.41} cy={499} r={7.81} />
+              <circle className="cls-13-flower" cx={501.41} cy={499} r={7.81} />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 -.15 .15 .18 469.6 483.05)"
                 xlinkHref="#image-2"
               />
-              <circle className="cls-14" cx={493.59} cy={485.16} r={7.81} />
+              <circle className="cls-14-flower" cx={493.59} cy={485.16} r={7.81} />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 -.15 .15 .18 454.6 475.27)"
                 xlinkHref="#image-3"
               />
@@ -1278,7 +1278,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 -.15 .15 .18 454.17 456.83)"
                 xlinkHref="#image-4"
               />
@@ -1291,7 +1291,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.18 -.15 .15 .18 433.63 452.14)"
                 xlinkHref="#image-5"
               />
@@ -1304,19 +1304,19 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 495 477.24)"
                 xlinkHref="#image-6"
               />
-              <circle className="cls-18" cx={512} cy={494.06} r={7.81} />
+              <circle className="cls-18-flower" cx={512} cy={494.06} r={7.81} />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 497.88 461.4)"
                 xlinkHref="#image-7"
               />
-              <circle className="cls-19" cx={514.9} cy={478.44} r={7.81} />
+              <circle className="cls-19-flower" cx={514.9} cy={478.44} r={7.81} />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 491.4 445.8)"
                 xlinkHref="#image-8"
               />
@@ -1329,7 +1329,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 502.92 431.4)"
                 xlinkHref="#image-9"
               />
@@ -1342,7 +1342,7 @@ const Flower = ({ changeConfig = {}, customViewBox}) => (
                 }}
               />
               <use
-                className="cls-11"
+                className="cls-11-flower"
                 transform="matrix(.24 0 0 .24 490.2 414.6)"
                 xlinkHref="#image-10"
               />

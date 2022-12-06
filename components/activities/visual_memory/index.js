@@ -1,4 +1,4 @@
-import React, { useState, forwardRef, useEffect } from "react";
+import React, { useState, forwardRef, useEffect, useImperativeHandle } from "react";
 import {
   TemplateWrapper,
   QuestionPart,
@@ -11,7 +11,7 @@ import Timer from "../../timer";
 
 import { shuffle } from "../../../helpers/array-helper";
 
-const TIMER_COUNT_DOWN_TIME = 2000;
+const TIMER_COUNT_DOWN_TIME = 7000;
 
 
 /*
@@ -22,15 +22,21 @@ export default forwardRef(function VisualMemoryActivity(
   { complexity, tasksElapsed, onResetChanged, onHandleChanged },
   ref
 ) {
-  // const [generatedCorrectSvgs] = useState(
-  //   getRandomSvgs(complexity === "1" ? 1 : complexity === "2" ? 2 : 4)
-  // );
-  // const [generatedWrongSvgs] = useState(
-  //   getRandomSvgs(complexity === "1" ? 3 : complexity === "2" ? 8 : 6)
-  // );
-
   const [generatedSvgs, setGeneratedSvgs] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState([]);
+  const [selectedElements, setSelectedElements] = useState([]);
+  useImperativeHandle(ref, () => ({
+    getResult: () => {
+      console.log("selectedElements", correctAnswers,selectedElements)
+      return selectedElements.length === correctAnswers.length && selectedElements.reduce((res, currElement) => correctAnswers.includes(currElement) ? res : false, true)
+    }
+  }));
+
+  useEffect(() => {
+    if(correctAnswers.length === selectedElements.length){
+        onHandleChanged();
+      }
+  }, [correctAnswers, onHandleChanged, selectedElements])
 
   useEffect(() => {
     const svgs = getRandomSvgs(
@@ -48,14 +54,13 @@ export default forwardRef(function VisualMemoryActivity(
     setCorrectAnswers(correctSvgsName);
   }, [complexity]);
 
-  const [selectedElements, setSelectedElements] = useState([]);
-
   const [isQuesionpart, setIsQuesionpart] = useState(false);
   const onTimerIsDoneHandler = () => {
     setIsQuesionpart(true);
   };
 
   const select = (elementName) => {
+
     setSelectedElements((v) => {
       if (v.includes(elementName)) {
         v.filter((selectedItem) => selectedItem !== elementName);
@@ -63,11 +68,15 @@ export default forwardRef(function VisualMemoryActivity(
         return [...v, elementName];
       }
     });
+
+    // if(correctAnswers.length === ){
+    //   onHandleChanged
+    // }
   };
   
     const questionPartQuestions = generatedSvgs.map((Element) => {
       
-      const elementName = Element?.name;
+    const elementName = Element?.name;
     return (
       <ActivityCard
         key={`element-card-${elementName}`}

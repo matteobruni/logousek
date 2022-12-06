@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const ActivityCardWrapper =  styled.div`
   width: 10rem;
   border-radius: ${({customRadius}) => customRadius || "1rem"};
-  height: auto;
+  height: fit-content;
   background-color: ${ ({color, theme}) => {
     
     return color || theme.colors.white 
     }};
-  aspect-ratio: 1 / 1;
+  aspect-ratio: ${({customAspectRatio}) => customAspectRatio || "1 / 1"};
   cursor: pointer;
   border: ${({selected}) => selected ? "0.4rem" : "0rem"} solid blue;
   transition-duration: 0.3s;
