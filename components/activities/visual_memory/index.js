@@ -8,15 +8,10 @@ import {
 import ActivityCard from "../activity-card";
 import { getRandomSvgs } from "../../../helpers/svg-helpers";
 import Timer from "../../timer";
-
+import TrafficLights from "../../traffic-lights";
 import { shuffle } from "../../../helpers/array-helper";
 
-const TIMER_COUNT_DOWN_TIME = 11700000;
-
-
-/*
-TODO - add remove countDown - add semafor instead
-*/
+const TIMER_COUNT_DOWN_TIME = 6000;
 
 export default forwardRef(function VisualMemoryActivity(
   { complexity, tasksElapsed, onResetChanged, onHandleChanged },
@@ -92,6 +87,8 @@ export default forwardRef(function VisualMemoryActivity(
             timerIsDone={onTimerIsDoneHandler}
           />
         </h1>
+          <TrafficLights 
+            countdownTime={TIMER_COUNT_DOWN_TIME}/>
         <h2>Zapamatuj si obrázek</h2>
         <ActivityCardWrapper>
           {generatedSvgs.filter(Svg => correctAnswers.includes(Svg.name)).map((Element) => (

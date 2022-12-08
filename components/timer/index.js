@@ -7,22 +7,6 @@ function Timer({ countdownTime, timerIsDone = () => {} }) {
     startTime - new Date().getTime()
   );
 
-  // useEffect(() => {
-  //   const newTime = elapsedMilis + (new Date().getTime() - startTime);
-  //   const interval = setInterval(() => {
-  //     setElapsedMilis(newTime);
-  //   }, 1000);
-
-  //   if (endingTime && newTime >= endingTime) {
-  //     clearInterval(interval);
-  //     timerIsDone();
-  //   }
-
-  //   return () => {
-  //     return clearInterval(interval);
-  //   };
-  // }, [countdownTime, elapsedMilis, endingTime, startTime, timerIsDone]);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setElapsedMilis(elapsedMilis + (new Date().getTime() - startTime));
