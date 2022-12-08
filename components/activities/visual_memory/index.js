@@ -11,7 +11,7 @@ import Timer from "../../timer";
 
 import { shuffle } from "../../../helpers/array-helper";
 
-const TIMER_COUNT_DOWN_TIME = 7000;
+const TIMER_COUNT_DOWN_TIME = 11700000;
 
 
 /*
@@ -27,13 +27,12 @@ export default forwardRef(function VisualMemoryActivity(
   const [selectedElements, setSelectedElements] = useState([]);
   useImperativeHandle(ref, () => ({
     getResult: () => {
-      console.log("selectedElements", correctAnswers,selectedElements)
-      return selectedElements.length === correctAnswers.length && selectedElements.reduce((res, currElement) => correctAnswers.includes(currElement) ? res : false, true)
+      return selectedElements?.length === correctAnswers.length && selectedElements?.reduce((res, currElement) => correctAnswers.includes(currElement) ? res : false, true)
     }
   }));
 
   useEffect(() => {
-    if(correctAnswers.length === selectedElements.length){
+    if(correctAnswers.length === selectedElements?.length){
         onHandleChanged();
       }
   }, [correctAnswers, onHandleChanged, selectedElements])
@@ -60,18 +59,13 @@ export default forwardRef(function VisualMemoryActivity(
   };
 
   const select = (elementName) => {
-
     setSelectedElements((v) => {
       if (v.includes(elementName)) {
-        v.filter((selectedItem) => selectedItem !== elementName);
+        return v.filter((selectedItem) => selectedItem !== elementName);
       } else {
         return [...v, elementName];
       }
     });
-
-    // if(correctAnswers.length === ){
-    //   onHandleChanged
-    // }
   };
   
     const questionPartQuestions = generatedSvgs.map((Element) => {
@@ -81,7 +75,7 @@ export default forwardRef(function VisualMemoryActivity(
       <ActivityCard
         key={`element-card-${elementName}`}
         onClick={() => select(elementName)}
-        selected={selectedElements.includes(elementName)}
+        selected={selectedElements?.includes(elementName)}
       >
         <Element />
       </ActivityCard>
