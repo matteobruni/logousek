@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import RouteWrapper from "../../../helpers/route-wrapper"
+import RouteWrapper from "../../../helpers/route-wrapper";
 import Button from "../../button";
 import WelcomePageHeader from "../../welcome-page-header/welcome-page-header";
 import WelcomePageFooter from "../../welcome-page-footer/welcome-page-footer";
@@ -131,11 +131,9 @@ export default function Home() {
                 <div className="picture">
                   <Image
                     className={`rounded-md`}
-                    width="100%"
-                    height="100%"
-                    layout="responsive"
-                    objectFit="contain"
                     src="/images/phone.png"
+                    width={500}
+                    height={500}
                     alt="img"
                   />
                 </div>

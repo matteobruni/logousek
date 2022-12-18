@@ -7,6 +7,7 @@ import Sun from "../components/svg/templates/sun";
 import Ladybug from "../components/svg/templates/ladybug";
 import Car from "../components/svg/templates/car";
 import Lego from "../components/svg/templates/lego";
+import { getRandomElementFromList } from "./array-helper";
 
 const svgList = [
   {
@@ -115,26 +116,13 @@ const getUsedPicturesConf = (usedPictures) => {
   return svgList.filter((svg) => usedPictures.includes(svg.name));
 };
 
-const getRandomElementFromList = (list, count) => {
-  let result = [];
-  console.log("list", list)
-  for (let i = 0; i < count; i++) {
-    const choosedIndex = Math.floor(Math.random() * list.length);
-    const selectedElement = list.splice(choosedIndex, 1)[0];
-    selectedElement && result.push(selectedElement);
-  }
-
-  console.log("list", result)
-  return result;
-};
-
 export const getHideConfig = (elementsToHideList = []) => {
   let elementsToHideObject = elementsToHideList.reduce((result, element) => {
     result[element] = false;
     return result;
   }, {});
-  console.log("test122", elementsToHideObject)
+  console.log("test122", elementsToHideObject);
   elementsToHideObject[getRandomElementFromList(elementsToHideList, 1)] = true;
-  console.log("test122", elementsToHideObject, elementsToHideList)
+  console.log("test122", elementsToHideObject, elementsToHideList);
   return elementsToHideObject;
 };

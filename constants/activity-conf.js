@@ -28,7 +28,8 @@ export const games = {
       difficulty: [
         { id: 1, title: "Lehké", points: 10 },
         { id: 2, title: "Střední", points: 20 },
-        { id: 3, title: "Těžké", points: 30 }
+        { id: 3, title: "Těžké", points: 30 },
+        { id: 4, title: "Řazení", points: 70 }
       ],
     },
   ],
