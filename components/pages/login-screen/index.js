@@ -1,34 +1,38 @@
-import React, { useContext } from "react";
-import Button from "../../button";
-import RouteWrapper from "../../../helpers/route-wrapper";
-import styles from "./styles.module.css";
-import { useRouter } from "next/router";
-import { setNewUser } from "../../../helpers/local-storage-helper";
-import ModalContext from "../../../contexts/modal-context";
-import LoginModal from "../../login-modal";
-import { ThemeContext } from "styled-components";
-import Link from "next/link";
+import React, { useContext } from 'react'
+import Button from '../../button'
+import RouteWrapper from '../../../helpers/route-wrapper'
+import styles from './styles.module.css'
+import { useRouter } from 'next/router'
+import { setNewUser } from '../../../helpers/local-storage-helper'
+import ModalContext from '../../../contexts/modal-context'
+import LoginModal from '../../login-modal'
+import { ThemeContext } from 'styled-components'
+import Head from 'next/head'
+import Link from 'next/link'
 
 const LoginScreen = () => {
-  const router = useRouter();
-  const modalContext = useContext(ModalContext);
-  const themeContext = useContext(ThemeContext);
+  const router = useRouter()
+  const modalContext = useContext(ModalContext)
+  const themeContext = useContext(ThemeContext)
 
   const redirectToMenu = (userName) => {
-    setNewUser(userName);
-    modalContext.closeModal();
-    router.push("/game-menu");
-  };
+    setNewUser(userName)
+    modalContext.closeModal()
+    router.push('/game-menu')
+  }
 
   const _loginAsGuess = () => {
     modalContext.showModal({
       content: <LoginModal onFormFilledHandler={redirectToMenu} />,
-      header: "Vytváření nového uživatele",
-    });
-  };
+      header: 'Vytváření nového uživatele'
+    })
+  }
 
   return (
     <RouteWrapper colorScheme={themeContext?.colors.primary}>
+      <Head>
+        <title>Logoušek - login</title>
+      </Head>
       <div className={styles.loginWrapper}>
         <main className={styles.loginButtonsWrapper}>
           <Button disabled>Přihlásit Facebookem</Button>
@@ -43,7 +47,7 @@ const LoginScreen = () => {
         </footer>
       </div>
     </RouteWrapper>
-  );
-};
+  )
+}
 
-export default LoginScreen;
+export default LoginScreen

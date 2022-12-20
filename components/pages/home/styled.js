@@ -1,11 +1,18 @@
-import styled from "styled-components";
-import { device, devices } from "../../../constants/screens-conf";
+import styled from 'styled-components'
+import { devices } from '../../../constants/screens-conf'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.eighty};
   z-index: 2;
   flex: 1;
-`;
+`
+
+export const HomeWrapper = styled.div`
+  height: 100vh;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  overflow-x: hidden;
+`
 
 export const Section = styled.section`
   width: 100%;
@@ -14,28 +21,30 @@ export const Section = styled.section`
   /* @media ${devices.laptop} {
     width: 100%;
   } */
-`;
+`
 
 export const IntroSection = styled(Section)`
-  background-color: ${({ theme }) => theme.colors.eighty};
+  background: ${({ theme }) =>
+    `linear-gradient(to left bottom, ${theme.colors.darkGreen}, ${theme.colors.primary})`};
   color: ${({ theme }) => theme.colors.white};
   position: relative;
   @media ${devices.laptop} {
     display: flex;
-    background-color: ${({ theme }) => theme.colors.primary};
+    background: ${({ theme }) =>
+      `linear-gradient(to left bottom, ${theme.colors.darkGreen}, ${theme.colors.primary})`};
     border-bottom-right-radius: 15rem;
     & > * {
       height: 100vh;
     }
   }
-`;
+`
 
 export const WelcomeBlock = styled.div`
   display: flex;
   flex-direction: column;
   height: 50vh;
-  background-color: ${({ theme }) => theme.colors.primary};
   border-bottom-right-radius: 7rem;
+  position: absolute;
   & > nav {
     display: flex;
     justify-content: flex-end;
@@ -52,7 +61,7 @@ export const WelcomeBlock = styled.div`
       display: none;
     }
   }
-`;
+`
 
 export const RowBlock = styled.div`
   display: flex;
@@ -61,7 +70,7 @@ export const RowBlock = styled.div`
   justify-content: center;
   padding: 2rem 4rem;
   padding-top: 0px;
-`;
+`
 
 export const IntroSectionTextStyle = styled.div`
   & > .introSectionButtonRow {
@@ -85,56 +94,7 @@ export const IntroSectionTextStyle = styled.div`
       margin-bottom: 1rem;
     }
   }
-`;
-
-export const IntroSectionPictureWrapper = styled.div`
-  width: 100%;
-  height: 50vh;
-  background-color: ${({ theme }) => theme.colors.primary};
-
-  & > .introSectionPictureStyle {
-    width: 100%;
-    height: 100%;
-    background-color: ${({ theme }) => theme.colors.white};
-    border-top-left-radius: 7rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  & > .introSectionPictureStyle > .picture {
-    width: 40vw;
-    max-width: auto;
-    height: auto;
-    min-height: 30vw;
-    max-height: 45vw;
-    scale: 0;
-    animation: pump 1s forwards;
-    animation-delay: 1s;
-    transition: 0.5s;
-    cursor: pointer;
-  }
-
-  & > .introSectionPictureStyle > .picture:hover {
-    transform: scale(1.1);
-  }
-  @media ${devices.laptop} {
-    width: auto;
-    background-color: transparent;
-
-    & > .introSectionPictureStyle > .picture {
-      width: 40vw;
-      max-height: auto;
-    }
-
-    & > .introSectionPictureStyle {
-      background-color: transparent;
-      width: calc(50vw - 2rem);
-      height: 100vh;
-      flex: 1;
-    }
-  }
-`;
+`
 
 export const IntroSectionPlayButton = styled.div`
   position: absolute;
@@ -145,7 +105,7 @@ export const IntroSectionPlayButton = styled.div`
   width: 3rem;
   height: 3rem;
   color: ${({ theme }) => {
-    return theme.colors.seventy;
+    return theme.colors.seventy
   }};
 
   &:hover {
@@ -159,7 +119,7 @@ export const IntroSectionPlayButton = styled.div`
     bottom: 1rem;
     right: 1rem;
   }
-`;
+`
 
 export const GameInfoSection = styled(Section)`
   display: flex;
@@ -172,7 +132,15 @@ export const GameInfoSection = styled(Section)`
     border-radius: 0px;
     padding: 0px;
   }
-`;
+`
+
+export const GameSamplesSection = styled.section``
+
+export const GameSamplesSectionImageWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
 
 export const GameInfoWrapper = styled.div`
   @media ${devices.laptop} {
@@ -188,7 +156,7 @@ export const GameInfoWrapper = styled.div`
       text-align: center;
     }
   }
-`;
+`
 
 export const GameInfoSectionArticles = styled.div`
   overflow: auto;
@@ -196,21 +164,21 @@ export const GameInfoSectionArticles = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   overflow: visible;
-`;
+`
 
 export const ActivityListSection = styled(Section)`
   height: auto;
-`;
+`
 
 export const AboutAsSection = styled(Section)`
   height: auto;
-`;
+`
 
 export const RoundFooterWrapper = styled.div`
   @media ${devices.laptop} {
     display: none;
   }
-`;
+`
 
 export const WelcomeRowWrapper = styled.div`
   position: relative;
@@ -218,21 +186,17 @@ export const WelcomeRowWrapper = styled.div`
   @media ${devices.laptop} {
     display: flex;
   }
-`;
+`
 
 export const Sidebar = styled.nav`
   position: relative;
   transition-duration: 1s;
   width: auto;
   @media ${devices.laptop} {
-    min-width: 4rem;
+    min-width: ${({ isMenuShow }) => isMenuShow ? '50vw' : '4rem'};
     height: auto;
-
-    &:hover {
-      min-width: 50vw;
-    }
   }
-`;
+`
 
 export const SidebarItemsWrapper = styled.div`
   top: 0px;
@@ -245,7 +209,7 @@ export const SidebarItemsWrapper = styled.div`
   overflow: hidden;
   z-index: 998;
   overflow: auto;
-  width: ${({ isMenuShow }) => (isMenuShow ? "100vw" : "0px")};
+  width: ${({ isMenuShow }) => (isMenuShow ? '100vw' : '0px')};
 
   & > * {
     width: 100vw;
@@ -268,12 +232,12 @@ export const SidebarItemsWrapper = styled.div`
       padding: 0px;
     }
   }
-`;
+`
 
 export const WelcomePageNavigation = styled.div`
   flex: 1;
   text-align: center;
-`;
+`
 
 export const ApplicationNavigation = styled.div`
   @media ${devices.laptop} {
@@ -284,4 +248,4 @@ export const ApplicationNavigation = styled.div`
       text-align: center;
     }
   }
-`;
+`

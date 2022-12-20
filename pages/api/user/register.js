@@ -1,14 +1,13 @@
 // import prisma from "@/lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from 'next'
 // import { hash } from "bcrypt";
 
-export default async function handler(
+export default async function handler (
   req,
   res
-  ) {
-  const { email, password } = req.body;
+) {
+  const { email, password } = req.body
 
-  console.log("email, password",email, req.body)
 //   const exists = await prisma.user.findUnique({
 //     where: {
 //       email,

@@ -1,7 +1,7 @@
-import React from "react";
-import { ActivityCardWrapper } from "./styled";
+import React from 'react'
+import { ActivityCardWrapper } from './styled'
 
-function ActivityCard({
+function ActivityCard ({
   children,
   onClick,
   selected,
@@ -21,7 +21,7 @@ function ActivityCard({
     >
       {children}
     </ActivityCardWrapper>
-  );
+  )
 }
 
-export default ActivityCard;
+export default ActivityCard

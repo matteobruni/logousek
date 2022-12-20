@@ -1,7 +1,8 @@
-import { Html, Head, Main, NextScript } from "next/document";
-import LoaderScreenPage from "../components/loader-screen-page";
+import React from 'react'
+import { Html, Head, Main, NextScript } from 'next/document'
+import LoaderScreenPage from '../components/loader-screen-page'
 
-export default function Document() {
+export default function Document () {
   return (
     <Html>
       <Head>
@@ -24,5 +25,5 @@ export default function Document() {
         <NextScript />
       </body>
     </Html>
-  );
+  )
 }
