@@ -1,19 +1,19 @@
-import React, { useState, useRef } from 'react'
-import Script from 'next/script'
-import { useRouter } from 'next/router'
-import Image from 'next/image'
-import Head from 'next/head'
-import RouteWrapper from '../../../helpers/route-wrapper'
-import Button from '../../button'
-import WelcomePageHeader from '../../welcome-page-header/welcome-page-header'
-import WelcomePageFooter from '../../welcome-page-footer/welcome-page-footer'
-import ClickableIcon from '../../clickable-icon/clickable-icon'
-import WelcomePageNavItemList from '../../welcome-page-sidebar-item-list/welcome-page-sidebar-item-list'
-import WelcomePageNavItemRectList from '../../welcome-page-sidebar-item-rect-list/welcome-page-sidebar-item-rect-list'
-import WelcomePageAboutUsList from '../../welcome-page-about-us-list/welcome-page-about-us-list'
-import TimeLine from '../../time-line/time-line'
-import RoundFooter from '../../round-footer'
-import DarkModeSwitch from '../../dark-mode-switch'
+import React, { useState, useRef } from "react";
+import Script from "next/script";
+import { useRouter } from "next/router";
+import Image from "next/image";
+import Head from "next/head";
+import RouteWrapper from "../../../helpers/route-wrapper";
+import Button from "../../button";
+import WelcomePageHeader from "../../welcome-page-header/welcome-page-header";
+import WelcomePageFooter from "../../welcome-page-footer/welcome-page-footer";
+import ClickableIcon from "../../clickable-icon/clickable-icon";
+import WelcomePageNavItemList from "../../welcome-page-sidebar-item-list/welcome-page-sidebar-item-list";
+import WelcomePageNavItemRectList from "../../welcome-page-sidebar-item-rect-list/welcome-page-sidebar-item-rect-list";
+import WelcomePageAboutUsList from "../../welcome-page-about-us-list/welcome-page-about-us-list";
+import TimeLine from "../../time-line/time-line";
+import RoundFooter from "../../round-footer";
+import DarkModeSwitch from "../../dark-mode-switch";
 import {
   Container,
   IntroSection,
@@ -34,48 +34,83 @@ import {
   ApplicationNavigation,
   GameSamplesSectionImageWrapper,
   GameSamplesSection,
-  HomeWrapper
-} from './styled'
-import GameMenuCard from '../../game-menu-card'
-import FadeIn from '../../animations/fade-in'
-import Pump from '../../animations/pump'
+  HomeWrapper,
+  LogousekWrapper,
+  FirstForegroundTreeWrapper,
+  SecondForegroundTreeWrapper,
+  Hill,
+} from "./styled";
+import GameMenuCard from "../../game-menu-card";
+import FadeIn from "../../animations/fade-in";
+import Pump from "../../animations/pump";
+import Logousek from "../../svg/templates/logousek";
+import useWindowDimensions from "../../../hooks/useWindowDimensions";
+import { size } from "../../../constants/screens-conf";
+import { redirect } from "next/dist/server/api-utils";
 
-export default function Home () {
-  const [isMenuShow, setIsMenuShow] = useState(false)
-  const introSectionElement = useRef(null)
-  const router = useRouter()
+export default function Home() {
+  const [isMenuShow, setIsMenuShow] = useState(false);
+  const windowDimensions = useWindowDimensions();
+  const introSectionElement = useRef(null);
+  const logousekElement = useRef(null);
+  const firstForegroundTreeElement = useRef(null);
+  const secondForegroundTreeElement = useRef(null);
+  const hillElement = useRef(null);
+  const router = useRouter();
   const redirectToLogin = () => {
-    router.push('/login-screen')
-  }
+    router.push("/login-screen");
+  };
 
   const toggleMenu = () => {
-    setIsMenuShow((v) => !v)
-  }
+    setIsMenuShow((v) => !v);
+  };
+
+  const parseNumberFromPixelMeasure = (string) => {
+    return Number(string.slice(0, -2)) ?? 0;
+  };
 
   const onScrollHandler = (event, event2) => {
-    console.log('event', event, event2, event.currentTarget.scrollTop)
+    const isMobile =
+      parseNumberFromPixelMeasure(size.laptop) > windowDimensions.width;
+    console.log("isMobile", isMobile);
+
     introSectionElement.current.style.left =
-      event.currentTarget.scrollTop + 'px'
-  }
-  console.log('isMenuShow', isMenuShow)
+      event.currentTarget.scrollTop + "px";
+
+    introSectionElement.current.style.top =
+      event.currentTarget.scrollTop * 0.7 + "px";
+
+    logousekElement.current.style.bottom =
+      -event.currentTarget.scrollTop * 0.22 + 40 + "px";
+    logousekElement.current.style.scale = Math.abs(
+      (windowDimensions.height - event.currentTarget.scrollTop * 0.7) /
+        windowDimensions.height
+    );
+
+    firstForegroundTreeElement.current.style.scale =
+      (windowDimensions.height + event.currentTarget.scrollTop) /
+      windowDimensions.height;
+    firstForegroundTreeElement.current.style.left =
+      event.currentTarget.scrollTop * 0.3 + (isMobile ? -250 : 20) + "px";
+    secondForegroundTreeElement.current.style.scale =
+      (windowDimensions.height + event.currentTarget.scrollTop) /
+      windowDimensions.height;
+    secondForegroundTreeElement.current.style.right =
+      event.currentTarget.scrollTop * 0.3 + (isMobile ? -250 : 20) + "px";
+    hillElement.current.style.height =
+      40 -
+      (100 / windowDimensions.height) * (event.currentTarget.scrollTop * 0.4) +
+      "vh";
+  };
+
+  const redirect = (link) => {
+    setIsMenuShow(false);
+    router.push(link);
+  };
+
   return (
     <RouteWrapper colorScheme="white">
       <HomeWrapper onScroll={onScrollHandler}>
-        <Script strategy="lazyOnload">{`const welcomeBlockElement = document.getElementById('welcomeBlockId')
-      addEventListener('scroll', function () {
-        const scrollY = window.scrollY
-        welcomeBlockElement.style.marginLeft = scrollY + 'px'
-      })
-    `}</Script>
-        {/* <Script>
-        {`
-          const welcomeBlockElement = document.getElementById('welcomeBlockId')
-          addEventListener('scroll', function () {
-          const scrollY = window.scrollY
-          welcomeBlockElement.style.marginLeft = - scrollY + 'px'
-      })
-        `}
-      </Script> */}
         <Head>
           <title>Logoušek</title>
         </Head>
@@ -91,21 +126,37 @@ export default function Home () {
                 <WelcomePageNavItemList
                   itemList={[
                     {
-                      name: 'introduction',
-                      icon: 'cake',
-                      title: 'Představení'
-                    },
-                    { name: 'gameInfo', icon: 'call', title: 'Obsah aplikace' },
-                    {
-                      name: 'activityList',
-                      icon: 'camera_alt',
-                      title: 'Představení'
+                      name: "introduction",
+                      icon: "cake",
+                      title: "Představení",
+                      onClick: () => {
+                        redirect("#introduction");
+                      },
                     },
                     {
-                      name: 'aboutAs',
-                      icon: 'card_giftcard',
-                      title: 'Autoři'
-                    }
+                      name: "gameInfo",
+                      icon: "call",
+                      title: "Obsah aplikace",
+                      onClick: () => {
+                        redirect("#gameInfo");
+                      },
+                    },
+                    {
+                      name: "activityList",
+                      icon: "camera_alt",
+                      title: "Představení",
+                      onClick: () => {
+                        redirect("#activityList");
+                      },
+                    },
+                    {
+                      name: "aboutAs",
+                      icon: "card_giftcard",
+                      title: "Autoři",
+                      onClick: () => {
+                        redirect("#aboutAs");
+                      },
+                    },
                   ]}
                 />
               </WelcomePageNavigation>
@@ -113,30 +164,30 @@ export default function Home () {
                 <h4>Navigace aplikace</h4>
                 <WelcomePageNavItemRectList
                   itemList={[
-                    { name: 'introduction', icon: 'cake', title: 'Visual' },
-                    { name: 'gameInfo', icon: 'call', title: 'Sluch' },
+                    { name: "introduction", icon: "cake", title: "Visual" },
+                    { name: "gameInfo", icon: "call", title: "Sluch" },
                     {
-                      name: 'activityList',
-                      icon: 'camera_alt',
-                      title: 'Serialita'
+                      name: "activityList",
+                      icon: "camera_alt",
+                      title: "Serialita",
                     },
                     {
-                      name: 'aboutAs',
-                      icon: 'card_giftcard',
-                      title: 'Login'
+                      name: "aboutAs",
+                      icon: "card_giftcard",
+                      title: "Login",
                     },
-                    { name: 'introduction', icon: 'cake', title: 'Visual' },
-                    { name: 'gameInfo', icon: 'call', title: 'Sluch' },
+                    { name: "introduction", icon: "cake", title: "Visual" },
+                    { name: "gameInfo", icon: "call", title: "Sluch" },
                     {
-                      name: 'activityList',
-                      icon: 'camera_alt',
-                      title: 'Serialita'
+                      name: "activityList",
+                      icon: "camera_alt",
+                      title: "Serialita",
                     },
                     {
-                      name: 'aboutAs',
-                      icon: 'card_giftcard',
-                      title: 'Login'
-                    }
+                      name: "aboutAs",
+                      icon: "card_giftcard",
+                      title: "Login",
+                    },
                   ]}
                 />
                 <DarkModeSwitch />
@@ -155,8 +206,8 @@ export default function Home () {
                   <IntroSectionTextStyle>
                     <h1>Logoušek</h1>
                     <h3>
-                      Aplikace vytvořena k logopedické prevenci pro předškolní
-                      děti.
+                      Aplikace pro předškolní děti podporující logopedickou
+                      prevenci hravou formou.
                     </h3>
                     <div className="introSectionButtonRow">
                       <Button size="s" onClick={redirectToLogin}>
@@ -166,6 +217,26 @@ export default function Home () {
                   </IntroSectionTextStyle>
                 </RowBlock>
               </WelcomeBlock>
+              <Hill ref={hillElement} />
+              <LogousekWrapper ref={logousekElement}>
+                <Logousek />
+              </LogousekWrapper>
+              <FirstForegroundTreeWrapper ref={firstForegroundTreeElement}>
+                <Image
+                  width="350"
+                  height="400"
+                  src="/images/trees/tree01.svg"
+                  alt="img"
+                />
+              </FirstForegroundTreeWrapper>
+              <SecondForegroundTreeWrapper ref={secondForegroundTreeElement}>
+                <Image
+                  width="350"
+                  height="400"
+                  src="/images/trees/tree02.svg"
+                  alt="img"
+                />
+              </SecondForegroundTreeWrapper>
               <IntroSectionPlayButton>
                 <ClickableIcon
                   icon="play_circle_filled"
@@ -180,16 +251,16 @@ export default function Home () {
                   <FadeIn>
                     <GameMenuCard
                       gameInfo={{
-                        name: 'GameMenuCard1',
-                        title: 'Zraková cvičení'
+                        name: "GameMenuCard1",
+                        title: "Zraková cvičení",
                       }}
                     />
                   </FadeIn>
                   <FadeIn>
                     <GameMenuCard
                       gameInfo={{
-                        name: 'GameMenuCard2',
-                        title: 'Sluchová cvičení'
+                        name: "GameMenuCard2",
+                        title: "Sluchová cvičení",
                       }}
                     />
                   </FadeIn>
@@ -197,23 +268,22 @@ export default function Home () {
                   <FadeIn>
                     <GameMenuCard
                       gameInfo={{
-                        name: 'GameMenuCard3',
-                        title: 'Cvičení na serialitu'
+                        name: "GameMenuCard3",
+                        title: "Cvičení na serialitu",
                       }}
                     />
                   </FadeIn>
                   <FadeIn>
                     <GameMenuCard
                       gameInfo={{
-                        name: 'GameMenuCard4',
-                        title: 'Procvičování jazyka'
+                        name: "GameMenuCard4",
+                        title: "Procvičování jazyka",
                       }}
                     />
                   </FadeIn>
                 </GameInfoSectionArticles>
               </GameInfoWrapper>
             </GameInfoSection>
-
             <GameSamplesSection>
               <WelcomePageHeader>Ukázka aplikace</WelcomePageHeader>
               <Pump>
@@ -241,17 +311,17 @@ export default function Home () {
         <RoundFooterWrapper>
           <RoundFooter
             activityTypes={[
-              { icon: 'arrow_drop_down' },
-              { icon: 'arrow_drop_up' },
+              { icon: "arrow_drop_down" },
+              { icon: "arrow_drop_up" },
               {
-                icon: isMenuShow ? 'close' : 'menu',
+                icon: isMenuShow ? "close" : "menu",
                 onClick: toggleMenu,
-                color: 'grey'
-              }
+                color: "grey",
+              },
             ]}
           />
         </RoundFooterWrapper>
       </HomeWrapper>
     </RouteWrapper>
-  )
+  );
 }

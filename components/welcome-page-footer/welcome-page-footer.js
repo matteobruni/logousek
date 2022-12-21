@@ -14,6 +14,12 @@ function WelcomePageFooter() {
           <ClickableIcon icon="tiktok" />
         </ClickableIconWrapper>
       </ClickableIconContainer>
+      <p>
+        Image by
+        <a href="https://www.freepik.com/free-vector/flat-design-green-type-trees_18895291.htm#query=tree&position=48&from_view=search&track=sph">
+          Freepik
+        </a>
+      </p>
       <p>2022 | Created By Petr Holčák</p>
     </WelcomePageFooterWrapper>
   );

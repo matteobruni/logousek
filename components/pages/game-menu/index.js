@@ -81,10 +81,14 @@ const GameMenu = () => {
         <main className={styles.contentWrapper}>
           <section className={styles.gameTypeDetail}>
             <h1 className={styles.gamesTypeHeader}>{activeActivity.title}</h1>
+            
+            <div className={styles.labelWrapper}>{labels}</div>
             <p className={styles.gamesTypeContent}>
               {activeActivity.description}
             </p>
-            <div className={styles.labelWrapper}>{labels}</div>
+            <p className={styles.citationParagraph}>
+            <cite>Bednářová, 2015</cite>
+            </p>
           </section>
           <section className={styles.gameList}>{[...gameMenuCards]}</section>
         </main>

@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-function WelcomePageSidebarItem({ name, icon, title }) {
+function WelcomePageSidebarItem({ name, icon, title, onClick }) {
   return (
     <li className={styles.welcomePageNavListItem}>
-      <a href={`#${name}`} className={styles.welcomePageNavListItemLink}>
+      <a onClick={onClick} className={styles.welcomePageNavListItemLink}>
         <i className={["material-icons", styles.welcomePageNavListItemIcon].join(" ")}>{icon}</i>
         <span>{title}</span>
       </a>

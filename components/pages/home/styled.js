@@ -1,43 +1,85 @@
-import styled from 'styled-components'
-import { devices } from '../../../constants/screens-conf'
+import styled from "styled-components";
+import { devices } from "../../../constants/screens-conf";
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.eighty};
   z-index: 2;
   flex: 1;
-`
+`;
 
 export const HomeWrapper = styled.div`
   height: 100vh;
   scroll-behavior: smooth;
-  overflow-y: scroll;
+  overflow-y: overlay;
   overflow-x: hidden;
-`
+  scrollbar-gutter: stable;
+`;
 
 export const Section = styled.section`
   width: 100%;
   height: 100vh;
+`;
 
-  /* @media ${devices.laptop} {
-    width: 100%;
-  } */
-`
+export const LogousekWrapper = styled.div`
+  & > svg {
+    width: 400px;
+  }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  position: absolute;
+  bottom: 40px;
+`;
+
+export const FirstForegroundTreeWrapper = styled.div`
+  position: absolute;
+  bottom: 0px;
+  left: -250px;
+  z-index: 2;
+  @media ${devices.laptop} {
+    left: 20px;
+  }
+`;
+
+export const SecondForegroundTreeWrapper = styled.div`
+  position: absolute;
+  bottom: 0px;
+  right: -250px;
+  z-index: 4;
+  @media ${devices.laptop} {
+    right: 20px;
+  }
+`;
+
+export const Hill = styled.div`
+  position: absolute;
+  bottom: 0px;
+  width: 150vw;
+    left: 0vw;
+  height: 40vh;
+  background: green;
+  border-top-right-radius: 100%;
+  @media ${devices.laptop} {
+    width: 100vw;
+  }
+`;
 
 export const IntroSection = styled(Section)`
+  /* background-image: url(https://img.freepik.com/free-vector/gradient-mountain-landscape_23-2149161561.jpg?w=1380&t=st=1671647950~exp=1671648550~hmac=8950676…);
+    background-repeat: no-repeat;
+    background-position: bottom; */
   background: ${({ theme }) =>
-    `linear-gradient(to left bottom, ${theme.colors.darkGreen}, ${theme.colors.primary})`};
+    `linear-gradient(to left bottom,${theme.colors.lightGrey}, ${theme.colors.fourty})`};
+
+  border-bottom-right-radius: 5rem;
   color: ${({ theme }) => theme.colors.white};
   position: relative;
+  overflow: hidden;
   @media ${devices.laptop} {
-    display: flex;
-    background: ${({ theme }) =>
-      `linear-gradient(to left bottom, ${theme.colors.darkGreen}, ${theme.colors.primary})`};
     border-bottom-right-radius: 15rem;
-    & > * {
-      height: 100vh;
-    }
   }
-`
+`;
 
 export const WelcomeBlock = styled.div`
   display: flex;
@@ -45,6 +87,7 @@ export const WelcomeBlock = styled.div`
   height: 50vh;
   border-bottom-right-radius: 7rem;
   position: absolute;
+  z-index: 3;
   & > nav {
     display: flex;
     justify-content: flex-end;
@@ -61,7 +104,7 @@ export const WelcomeBlock = styled.div`
       display: none;
     }
   }
-`
+`;
 
 export const RowBlock = styled.div`
   display: flex;
@@ -70,7 +113,7 @@ export const RowBlock = styled.div`
   justify-content: center;
   padding: 2rem 4rem;
   padding-top: 0px;
-`
+`;
 
 export const IntroSectionTextStyle = styled.div`
   & > .introSectionButtonRow {
@@ -94,18 +137,18 @@ export const IntroSectionTextStyle = styled.div`
       margin-bottom: 1rem;
     }
   }
-`
+`;
 
 export const IntroSectionPlayButton = styled.div`
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
-  bottom: 5.5rem;
+  top: calc(100vh - 4.5rem);
   right: 1.5rem;
   width: 3rem;
   height: 3rem;
   color: ${({ theme }) => {
-    return theme.colors.seventy
+    return theme.colors.seventy;
   }};
 
   &:hover {
@@ -119,36 +162,33 @@ export const IntroSectionPlayButton = styled.div`
     bottom: 1rem;
     right: 1rem;
   }
-`
+`;
 
 export const GameInfoSection = styled(Section)`
   display: flex;
   flex-direction: column;
   height: auto;
   padding: 2rem;
-
-  @media ${devices.laptop} {
-    background-color: ${({ theme }) => theme.colors.primary};
-    border-radius: 0px;
-    padding: 0px;
-  }
-`
-
-export const GameSamplesSection = styled.section``
+  background-color: green;
+  border-radius: 0px;
+  padding: 0px;
+`;
+export const GameSamplesSection = styled.section``;
 
 export const GameSamplesSectionImageWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-`
+`;
 
 export const GameInfoWrapper = styled.div`
+  border-top-left-radius: 5rem;
+  background-color: ${({ theme }) => theme.colors.eighty};
+  width: 100%;
+  padding-right: 10%;
+  padding-left: 10%;
   @media ${devices.laptop} {
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.eighty};
     border-top-left-radius: 15rem;
-    padding-right: 10%;
-    padding-left: 10%;
     display: flex;
     flex-direction: column;
 
@@ -156,7 +196,7 @@ export const GameInfoWrapper = styled.div`
       text-align: center;
     }
   }
-`
+`;
 
 export const GameInfoSectionArticles = styled.div`
   overflow: auto;
@@ -164,21 +204,21 @@ export const GameInfoSectionArticles = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   overflow: visible;
-`
+`;
 
 export const ActivityListSection = styled(Section)`
   height: auto;
-`
+`;
 
 export const AboutAsSection = styled(Section)`
   height: auto;
-`
+`;
 
 export const RoundFooterWrapper = styled.div`
   @media ${devices.laptop} {
     display: none;
   }
-`
+`;
 
 export const WelcomeRowWrapper = styled.div`
   position: relative;
@@ -186,17 +226,17 @@ export const WelcomeRowWrapper = styled.div`
   @media ${devices.laptop} {
     display: flex;
   }
-`
+`;
 
 export const Sidebar = styled.nav`
   position: relative;
   transition-duration: 1s;
   width: auto;
   @media ${devices.laptop} {
-    min-width: ${({ isMenuShow }) => isMenuShow ? '50vw' : '4rem'};
+    min-width: ${({ isMenuShow }) => (isMenuShow ? "50vw" : "4rem")};
     height: auto;
   }
-`
+`;
 
 export const SidebarItemsWrapper = styled.div`
   top: 0px;
@@ -209,7 +249,7 @@ export const SidebarItemsWrapper = styled.div`
   overflow: hidden;
   z-index: 998;
   overflow: auto;
-  width: ${({ isMenuShow }) => (isMenuShow ? '100vw' : '0px')};
+  width: ${({ isMenuShow }) => (isMenuShow ? "100vw" : "0px")};
 
   & > * {
     width: 100vw;
@@ -232,12 +272,12 @@ export const SidebarItemsWrapper = styled.div`
       padding: 0px;
     }
   }
-`
+`;
 
 export const WelcomePageNavigation = styled.div`
   flex: 1;
   text-align: center;
-`
+`;
 
 export const ApplicationNavigation = styled.div`
   @media ${devices.laptop} {
@@ -248,4 +288,4 @@ export const ApplicationNavigation = styled.div`
       text-align: center;
     }
   }
-`
+`;
