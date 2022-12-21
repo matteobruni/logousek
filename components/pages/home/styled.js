@@ -25,6 +25,7 @@ export const LogousekWrapper = styled.div`
     width: 400px;
   }
   width: 100%;
+  transition-duration: 0.2s;
   display: flex;
   justify-content: center;
   height: 400px;
@@ -35,6 +36,7 @@ export const LogousekWrapper = styled.div`
 export const FirstForegroundTreeWrapper = styled.div`
   position: absolute;
   bottom: 0px;
+  transition-duration: 0.2s;
   left: -250px;
   z-index: 2;
   @media ${devices.laptop} {
@@ -45,6 +47,7 @@ export const FirstForegroundTreeWrapper = styled.div`
 export const SecondForegroundTreeWrapper = styled.div`
   position: absolute;
   bottom: 0px;
+  transition-duration: 0.2s;
   right: -250px;
   z-index: 4;
   @media ${devices.laptop} {
@@ -54,6 +57,7 @@ export const SecondForegroundTreeWrapper = styled.div`
 
 export const Hill = styled.div`
   position: absolute;
+  transition-duration: 0.2s;
   bottom: 0px;
   width: 150vw;
     left: 0vw;
