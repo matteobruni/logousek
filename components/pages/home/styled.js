@@ -111,8 +111,17 @@ export const RowBlock = styled.div`
   flex: 1;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem 4rem;
+  padding: 2rem 1rem;
   padding-top: 0px;
+
+  @media ${devices.mobileS} {
+    padding: 2rem 2rem;
+  }
+  @media ${devices.mobileL} {
+    padding: 2rem 4rem;
+  }
+
+
 `;
 
 export const IntroSectionTextStyle = styled.div`
@@ -141,10 +150,11 @@ export const IntroSectionTextStyle = styled.div`
 
 export const IntroSectionPlayButton = styled.div`
   position: fixed;
+  z-index: 999;
   display: flex;
   align-items: center;
-  top: calc(100vh - 4.5rem);
-  right: 1.5rem;
+  top: 1rem;
+  left: 1.5rem;
   width: 3rem;
   height: 3rem;
   color: ${({ theme }) => {
@@ -159,6 +169,8 @@ export const IntroSectionPlayButton = styled.div`
     font-size: 3rem;
   }
   @media ${devices.laptop} {
+    left: 0rem;
+    top: 0rem;
     bottom: 1rem;
     right: 1rem;
   }
