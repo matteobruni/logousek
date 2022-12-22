@@ -17,20 +17,20 @@ function DragCard({ content, children, customRadius, item }) {
     },
   }));
   return collected.isDragging ? (
-        <ActivityCard
-          customAspectRatio={asContext?.aspectRatio}
-          color={themeContext?.colors?.lightGrey}
-        />
-      ) : (
-        <div ref={drag}>
-          <ActivityCard
-            customAspectRatio={asContext?.aspectRatio}
-            customRadius={customRadius}
-          >
-            {content || children}
-          </ActivityCard>
-        </div>
-      )
+    <ActivityCard
+      customAspectRatio={asContext?.aspectRatio}
+      color={themeContext?.colors?.lightGrey}
+    />
+  ) : (
+    <div ref={drag}>
+      <ActivityCard
+        customAspectRatio={asContext?.aspectRatio}
+        customRadius={customRadius}
+      >
+        {content || children}
+      </ActivityCard>
+    </div>
+  );
 }
 
 export default DragCard;
