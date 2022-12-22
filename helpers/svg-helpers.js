@@ -60,7 +60,8 @@ const svgList = [
       'hideFithFlash',
       'hideSixthFlash',
       'hideSeventhFlash',
-      'hideEightFlash'
+      'hideEightFlash',
+      "rotate"
     ],
     hideDetailsSettings: []
   },

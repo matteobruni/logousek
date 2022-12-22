@@ -36,9 +36,9 @@ export default forwardRef(function VisualDifActivity (
         CorrectCardComponent = UsedCorectCard
         WrongCardComponent = UsedWrongCard
       } else if (complexity === '2') {
-        const [UsedCard] = getRandomSvgs(1)
-        CorrectCardComponent = UsedCard
-        WrongCardComponent = UsedCard
+        const [UsedCard] = getRandomSvgsWithChangeConfig(1, ['car', 'cloud', 'ladyBug', "lego", "logousek", "lolipop", 'bear'])
+        CorrectCardComponent = UsedCard.component
+        WrongCardComponent = UsedCard.component
         const rotateDegreesCorrect = 0
         const rotateDegreesWrong = 180
         wrongAnswersAdditionalObj.rotateDegrees = rotateDegreesWrong

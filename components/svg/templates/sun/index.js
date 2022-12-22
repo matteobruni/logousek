@@ -1,10 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import { Svg, ClipPathElement } from "./styled";
 import { DEFAULT_VIEWBOX } from "../../../../constants/svg-conf";
 
 export default function Sun({ changeConfig = {}, customViewBox}) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX}>
+    <Svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX} rotate={changeConfig["rotate"]}>
       <defs>
         <clipPath id="clip-path">
           <circle fill="none" cx="384.38" cy="454.56" r="298.61" />
@@ -216,10 +216,6 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
           <circle fill="#f4e397" cx="509.81" cy="524.94" r="220.06" />
         </ClipPathElement>
       </g>
-    </svg>
+    </Svg>
   );
 }
-
-const ClipPathElement = styled.g`
-  clip-path: url(#clip-path);
-`;
