@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import CoreContext from "../../contexts/core-context";
 import Switch from "../switch";
 
-export default function DarkModeSwitch() {
+function DarkModeSwitch() {
   const coreContext = useContext(CoreContext);
 
   const _onChangeTheme = (value) => {
@@ -17,3 +17,5 @@ export default function DarkModeSwitch() {
     />
   );
 }
+
+export default DarkModeSwitch;

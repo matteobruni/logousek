@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import Script from "next/script";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Head from "next/head";
@@ -8,12 +7,10 @@ import Button from "../../button";
 import WelcomePageHeader from "../../welcome-page-header/welcome-page-header";
 import WelcomePageFooter from "../../welcome-page-footer/welcome-page-footer";
 import ClickableIcon from "../../clickable-icon/clickable-icon";
-import WelcomePageNavItemList from "../../welcome-page-sidebar-item-list/welcome-page-sidebar-item-list";
-import WelcomePageNavItemRectList from "../../welcome-page-sidebar-item-rect-list/welcome-page-sidebar-item-rect-list";
 import WelcomePageAboutUsList from "../../welcome-page-about-us-list/welcome-page-about-us-list";
 import TimeLine from "../../time-line/time-line";
 import RoundFooter from "../../round-footer";
-import DarkModeSwitch from "../../dark-mode-switch";
+import Sidebar from "../../side-bar";
 import {
   Container,
   IntroSection,
@@ -28,10 +25,6 @@ import {
   AboutAsSection,
   RoundFooterWrapper,
   WelcomeRowWrapper,
-  Sidebar,
-  SidebarItemsWrapper,
-  WelcomePageNavigation,
-  ApplicationNavigation,
   GameSamplesSectionImageWrapper,
   GameSamplesSection,
   HomeWrapper,
@@ -48,7 +41,6 @@ import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import { size } from "../../../constants/screens-conf";
 
 export default function Home() {
-  const [isMenuShow, setIsMenuShow] = useState(false);
   const windowDimensions = useWindowDimensions();
   const introSectionElement = useRef(null);
   const logousekElement = useRef(null);
@@ -58,10 +50,6 @@ export default function Home() {
   const router = useRouter();
   const redirectToLogin = () => {
     router.push("/login-screen");
-  };
-
-  const toggleMenu = () => {
-    setIsMenuShow((v) => !v);
   };
 
   const parseNumberFromPixelMeasure = (string) => {
@@ -102,11 +90,6 @@ export default function Home() {
       "vh";
   };
 
-  const redirect = (link) => {
-    setIsMenuShow(false);
-    router.push(link);
-  };
-
   return (
     <RouteWrapper colorScheme="white">
       <HomeWrapper onScroll={onScrollHandler}>
@@ -114,85 +97,57 @@ export default function Home() {
           <title>Logoušek</title>
         </Head>
         <WelcomeRowWrapper>
-          <Sidebar
-            onMouseEnter={() => setIsMenuShow(true)}
-            onMouseLeave={() => setIsMenuShow(false)}
-            isMenuShow={isMenuShow}
-          >
-            <SidebarItemsWrapper isMenuShow={isMenuShow}>
-              <WelcomePageNavigation>
-                <h4>Navigace stránky</h4>
-                <WelcomePageNavItemList
-                  itemList={[
-                    {
-                      name: "introduction",
-                      icon: "cake",
-                      title: "Představení",
-                      onClick: () => {
-                        redirect("#introduction");
-                      },
-                    },
-                    {
-                      name: "gameInfo",
-                      icon: "call",
-                      title: "Obsah aplikace",
-                      onClick: () => {
-                        redirect("#gameInfo");
-                      },
-                    },
-                    {
-                      name: "activityList",
-                      icon: "camera_alt",
-                      title: "Představení",
-                      onClick: () => {
-                        redirect("#activityList");
-                      },
-                    },
-                    {
-                      name: "aboutAs",
-                      icon: "card_giftcard",
-                      title: "Autoři",
-                      onClick: () => {
-                        redirect("#aboutAs");
-                      },
-                    },
-                  ]}
-                />
-              </WelcomePageNavigation>
-              <ApplicationNavigation>
-                <h4>Navigace aplikace</h4>
-                <WelcomePageNavItemRectList
-                  itemList={[
-                    { name: "introduction", icon: "cake", title: "Visual" },
-                    { name: "gameInfo", icon: "call", title: "Sluch" },
-                    {
-                      name: "activityList",
-                      icon: "camera_alt",
-                      title: "Serialita",
-                    },
-                    {
-                      name: "aboutAs",
-                      icon: "card_giftcard",
-                      title: "Login",
-                    },
-                    { name: "introduction", icon: "cake", title: "Visual" },
-                    { name: "gameInfo", icon: "call", title: "Sluch" },
-                    {
-                      name: "activityList",
-                      icon: "camera_alt",
-                      title: "Serialita",
-                    },
-                    {
-                      name: "aboutAs",
-                      icon: "card_giftcard",
-                      title: "Login",
-                    },
-                  ]}
-                />
-                <DarkModeSwitch />
-              </ApplicationNavigation>
-            </SidebarItemsWrapper>
-          </Sidebar>
+        <Sidebar pageNav={[
+            {
+              name: "introduction",
+              icon: "cake",
+              title: "Představení",
+              link: "#introduction"
+            },
+            {
+              name: "gameInfo",
+              icon: "call",
+              title: "Obsah aplikace",
+              link: "#gameInfo"
+            },
+            {
+              name: "activityList",
+              icon: "camera_alt",
+              title: "Představení",
+              link: "#activityList"
+            },
+            {
+              name: "aboutAs",
+              icon: "card_giftcard",
+              link: "#aboutAs",
+              title: "Autoři"
+            },
+          ]} applicationNav={[
+            { name: "introduction", icon: "cake", title: "Visual" },
+            { name: "gameInfo", icon: "call", title: "Sluch" },
+            {
+              name: "activityList",
+              icon: "camera_alt",
+              title: "Serialita",
+            },
+            {
+              name: "aboutAs",
+              icon: "card_giftcard",
+              title: "Login",
+            },
+            { name: "introduction", icon: "cake", title: "Visual" },
+            { name: "gameInfo", icon: "call", title: "Sluch" },
+            {
+              name: "activityList",
+              icon: "camera_alt",
+              title: "Serialita",
+            },
+            {
+              name: "aboutAs",
+              icon: "card_giftcard",
+              title: "Login",
+            },
+          ]}/>
           <Container>
             <IntroSection id="introduction">
               <WelcomeBlock ref={introSectionElement} id="welcomeBlockId">
@@ -307,7 +262,7 @@ export default function Home() {
             <WelcomePageFooter />
           </Container>
         </WelcomeRowWrapper>
-        <RoundFooterWrapper>
+        {/* <RoundFooterWrapper>
           <RoundFooter
             activityTypes={[
               { icon: "arrow_drop_down" },
@@ -319,7 +274,7 @@ export default function Home() {
               },
             ]}
           />
-        </RoundFooterWrapper>
+        </RoundFooterWrapper> */}
       </HomeWrapper>
     </RouteWrapper>
   );

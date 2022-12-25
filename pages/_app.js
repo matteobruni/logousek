@@ -19,6 +19,7 @@ import { TouchBackend } from 'react-dnd-touch-backend'
 import { useDarkMode } from '../hooks/useDarkmode'
 import AnimatedCursor from '../utils/AnimatedCursor'
 
+
 // const CUSTOM_HTML5_TO_TOUCH = {
 //   backends: [
 //     {
@@ -87,6 +88,7 @@ function MyApp ({ Component, pageProps }) {
 
   const themeMode = theme === 'light' ? lightTheme : darkTheme
   return (
+    
     <AnimatePresence mode="wait">
       <AnimatedCursor
         innerSize={28}

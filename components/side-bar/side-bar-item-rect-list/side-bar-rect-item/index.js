@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.css";
 
-function WelcomePageSidebarItem({ name, icon, title }) {
+function SidebarRectItem({ name, icon, title }) {
   return (
     <li className={styles.welcomePageNavListItem}>
       <div className={styles.picture}></div>
@@ -10,4 +10,4 @@ function WelcomePageSidebarItem({ name, icon, title }) {
   );
 }
 
-export default WelcomePageSidebarItem;
+export default SidebarRectItem;
