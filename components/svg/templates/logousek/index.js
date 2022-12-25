@@ -1,11 +1,12 @@
 import * as React from "react";
 import { DEFAULT_VIEWBOX } from "../../../../constants/svg-conf";
 
-const Logousek = ({customViewBox}) => {
+const Logousek = ({customViewBox, alt}) => {
   return <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     viewBox={customViewBox || DEFAULT_VIEWBOX}
+    alt={alt}
   >
     <defs>
       <filter

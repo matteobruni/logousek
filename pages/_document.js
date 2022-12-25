@@ -17,8 +17,17 @@ export default function Document () {
       </Head>
 
       <title>Logousek</title>
-      <meta name="description" content="Logopedická aplikace"></meta>
-      <meta property="og:image" content="Obrázek nemáme"></meta>
+      <meta
+        name="description"
+        content="Aplikace pro předškolní děti podporující logopedickou prevenci hravou formou."
+      />
+      <meta name="keywords" content="Průpravná cvičení, logopedická prevence, cvičení pro předškolní věk, předškoláci, logopedie, dílní funkce, rozvoj zrakového vnímání, rozvoj sluchového vnímání, oromotorika, cvičení na motoriku jazyka, serialita, časová posloupnost, předškolní věk, logopedie v MŠ"></meta>
+      <meta name="author" content="Petr Holčák"></meta>
+      <meta property="og:image" content="Prozatím nemáme" />
+      <meta property="og:image:secure_url" content="Prozatím nemáme" /> 
+      <meta property="og:image:type" content="image/jpeg" /> 
+      <meta property="og:image:width" content="400" /> 
+      <meta property="og:image:height" content="300" />
       <body>
         <LoaderScreenPage />
         <Main />

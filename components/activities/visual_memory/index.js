@@ -90,9 +90,8 @@ export default forwardRef(function VisualMemoryActivity(
       </ActivityCard>
     );
   });
-  console.log("generatedSvgs", generatedSvgs, correctAnswers, selectedElements);
   return (
-    <TemplateWrapper isQuesionpart={isQuesionpart}>
+    <TemplateWrapper isQuesionpart={isQuesionpart}> 
       <ShowedPart onClick={() => setIsQuesionpart(true)}>
         <h1>
           <Timer

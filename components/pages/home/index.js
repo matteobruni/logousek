@@ -46,7 +46,6 @@ import Pump from "../../animations/pump";
 import Logousek from "../../svg/templates/logousek";
 import useWindowDimensions from "../../../hooks/useWindowDimensions";
 import { size } from "../../../constants/screens-conf";
-import { redirect } from "next/dist/server/api-utils";
 
 export default function Home() {
   const [isMenuShow, setIsMenuShow] = useState(false);
@@ -219,14 +218,14 @@ export default function Home() {
               </WelcomeBlock>
               <Hill ref={hillElement} />
               <LogousekWrapper ref={logousekElement}>
-                <Logousek />
+                <Logousek alt="logousek" />
               </LogousekWrapper>
               <FirstForegroundTreeWrapper ref={firstForegroundTreeElement}>
                 <Image
                   width="350"
                   height="400"
                   src="/images/trees/tree01.svg"
-                  alt="img"
+                  alt="logousek tree"
                 />
               </FirstForegroundTreeWrapper>
               <SecondForegroundTreeWrapper ref={secondForegroundTreeElement}>
@@ -234,7 +233,7 @@ export default function Home() {
                   width="350"
                   height="400"
                   src="/images/trees/tree02.svg"
-                  alt="img"
+                  alt="logousek second tree"
                 />
               </SecondForegroundTreeWrapper>
               <IntroSectionPlayButton>
@@ -292,7 +291,7 @@ export default function Home() {
                     width="400"
                     height="600"
                     src="/images/phone.png"
-                    alt="img"
+                    alt="logousek preview"
                   />
                 </GameSamplesSectionImageWrapper>
               </Pump>
