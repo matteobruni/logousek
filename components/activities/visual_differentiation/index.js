@@ -1,19 +1,19 @@
-import React, { useState, useImperativeHandle, forwardRef } from 'react'
-import CardList from './card-list'
+import React, { useState, useImperativeHandle, forwardRef } from "react";
+import CardList from "./card-list";
 import {
   getRandomSvgs,
   getRandomSvgsWithChangeConfig,
-  getHideConfig
-} from '../../../helpers/svg-helpers'
-import { shuffle } from '../../../helpers/array-helper'
-const START_COUNT_CARDS = 2
+  getHideConfig,
+} from "../../../helpers/svg-helpers";
+import { shuffle } from "../../../helpers/array-helper";
+const START_COUNT_CARDS = 2;
 
-export default forwardRef(function VisualDifActivity (
+export default forwardRef(function VisualDifActivity(
   { complexity, tasksElapsed, onResetChanged, onHandleChanged },
   ref
 ) {
-  const [lasetSelectedWasCorrect, setLasetSelectedWasCorrect] = useState(false)
-  const [selectedIndex, setSelectedIndex] = useState()
+  const [lasetSelectedWasCorrect, setLasetSelectedWasCorrect] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState();
 
   useImperativeHandle(ref, () => ({
     getResult: () => lasetSelectedWasCorrect,
@@ -21,76 +21,91 @@ export default forwardRef(function VisualDifActivity (
       // setSelectedIndex();
       // setLasetSelectedWasCorrect(false);
       // setCards(getCardsArray());
-    }
-  }))
+    },
+  }));
 
   const getCardsArray = () => {
     if (START_COUNT_CARDS > 1) {
-      const wrongAnswersAdditionalObj = {}
-      const correctAnswersAdditionalObj = {}
-      let WrongCardComponent
-      let CorrectCardComponent
+      const wrongAnswersAdditionalObj = {};
+      const correctAnswersAdditionalObj = {};
+      let WrongCardComponent;
+      let CorrectCardComponent;
 
-      if (complexity === '1') {
-        const [UsedCorectCard, UsedWrongCard] = getRandomSvgs(2)
-        CorrectCardComponent = UsedCorectCard
-        WrongCardComponent = UsedWrongCard
-      } else if (complexity === '2') {
-        const [UsedCard] = getRandomSvgsWithChangeConfig(1, ['car', 'cloud', 'ladyBug', "lego", "logousek", "lolipop", 'bear'])
-        CorrectCardComponent = UsedCard.component
-        WrongCardComponent = UsedCard.component
-        const rotateDegreesCorrect = 0
-        const rotateDegreesWrong = 180
-        wrongAnswersAdditionalObj.rotateDegrees = rotateDegreesWrong
-        correctAnswersAdditionalObj.rotateDegrees = rotateDegreesCorrect
-      } else if (['3', '4'].includes(complexity)) {
+      if (complexity === "1") {
+        const [UsedCorectCard, UsedWrongCard] = getRandomSvgs(2);
+        CorrectCardComponent = UsedCorectCard;
+        WrongCardComponent = UsedWrongCard;
+      } else if (complexity === "2") {
+        const [UsedCard] = getRandomSvgsWithChangeConfig(1, [
+          "car",
+          "cloud",
+          "ladyBug",
+          "lego",
+          "logousek",
+          "lolipop",
+          "bear",
+        ]);
+        CorrectCardComponent = UsedCard.component;
+        WrongCardComponent = UsedCard.component;
+        const rotateDegreesCorrect = 0;
+        const rotateDegreesWrong = 180;
+        wrongAnswersAdditionalObj.rotateDegrees = rotateDegreesWrong;
+        correctAnswersAdditionalObj.rotateDegrees = rotateDegreesCorrect;
+      } else if (["3", "4"].includes(complexity)) {
         const usedPictures =
-          complexity === '3'
-            ? ['car', 'flower', 'cloud', 'ladyBug', 'sun', 'bear']
-            : ['car', 'flower', 'ladyBug', 'bear']
-        const [usedCard] = getRandomSvgsWithChangeConfig(1, usedPictures)
+          complexity === "3"
+            ? ["car", "flower", "cloud", "ladyBug", "sun", "bear"]
+            : ["car", "flower", "ladyBug", "bear"];
+        const [usedCard] = getRandomSvgsWithChangeConfig(1, usedPictures);
 
-        CorrectCardComponent = usedCard.component
-        WrongCardComponent = usedCard.component
+        CorrectCardComponent = usedCard.component;
+        WrongCardComponent = usedCard.component;
         correctAnswersAdditionalObj.hideConfing = getHideConfig(
-          complexity === '3'
+          complexity === "3"
             ? [...usedCard.hideSettings]
             : [...usedCard.hideDetailsSettings]
-        )
-        wrongAnswersAdditionalObj.hideConfing = {}
+        );
+        wrongAnswersAdditionalObj.hideConfing = {};
       }
 
+      console.log(
+        "test43",
+        START_COUNT_CARDS,
+        Math.floor(tasksElapsed / 4),
+        tasksElapsed,
+        START_COUNT_CARDS + Math.floor(tasksElapsed / 4)
+      );
       const wrongAnswers = new Array(
         START_COUNT_CARDS + Math.floor(tasksElapsed / 4)
       ).fill({
         isCorrect: false,
         ...wrongAnswersAdditionalObj,
-        Component: WrongCardComponent
-      })
+        Component: WrongCardComponent,
+      });
 
       const correctAnswers = new Array(1).fill({
         isCorrect: true,
         ...correctAnswersAdditionalObj,
-        Component: CorrectCardComponent
-      })
+        Component: CorrectCardComponent,
+      });
 
-      const mixedAnswers = [...wrongAnswers, ...correctAnswers]
-      return shuffle(mixedAnswers)
+      const mixedAnswers = [...wrongAnswers, ...correctAnswers];
+      return shuffle(mixedAnswers);
     } else {
-      return []
+      return [];
     }
-  }
-  const [cards, setCards] = useState(getCardsArray())
+  };
+  const [cards, setCards] = useState(getCardsArray());
 
   const _success = () => {
-    onHandleChanged()
-    setLasetSelectedWasCorrect(true)
-  }
+    onHandleChanged();
+    setLasetSelectedWasCorrect(true);
+  };
 
   const _fail = () => {
-    onHandleChanged()
-    setLasetSelectedWasCorrect(false)
-  }
+    onHandleChanged();
+    setLasetSelectedWasCorrect(false);
+  };
 
   return (
     <main>
@@ -104,5 +119,5 @@ export default forwardRef(function VisualDifActivity (
         setSelectedIndex={setSelectedIndex}
       />
     </main>
-  )
-})
+  );
+});

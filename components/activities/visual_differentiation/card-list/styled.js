@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const CardWrapper = styled.div`
   display: flex;
@@ -13,4 +13,4 @@ export const CardWrapper = styled.div`
   @media (orientation: portrait) {
     flex-direction: column;
   }
-`;
+`

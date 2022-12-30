@@ -12,7 +12,7 @@ import {
 } from "./styled";
 import ActivityCard from "../activity-card";
 import { getRandomSvgsWithChangeConfig } from "../../../helpers/svg-helpers";
-import Timer from "../../timer";
+import Timer from "../../timer/index";
 import TrafficLights from "../../traffic-lights";
 import { shuffle } from "../../../helpers/array-helper";
 
@@ -71,7 +71,7 @@ export default forwardRef(function VisualMemoryActivity(
       } else {
         if (v.length < correctAnswers.length) {
           return [...v, elementName];
-        }else{
+        } else {
           return v;
         }
       }
@@ -91,7 +91,7 @@ export default forwardRef(function VisualMemoryActivity(
     );
   });
   return (
-    <TemplateWrapper isQuesionpart={isQuesionpart}> 
+    <TemplateWrapper isQuesionpart={isQuesionpart}>
       <ShowedPart onClick={() => setIsQuesionpart(true)}>
         <h1>
           <Timer

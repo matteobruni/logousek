@@ -1,17 +1,17 @@
-import React from "react";
-import { Svg, ClipPathElement } from "./styled";
-import { DEFAULT_VIEWBOX } from "../../../../constants/svg-conf";
+import React from 'react'
+import { Svg, ClipPathElement } from './styled'
+import { DEFAULT_VIEWBOX } from '../../../../constants/svg-conf'
 
-export default function Sun({ changeConfig = {}, customViewBox}) {
+export default function Sun ({ changeConfig = {}, customViewBox }) {
   return (
-    <Svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX} rotate={changeConfig["rotate"]}>
+    <Svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX} rotate={changeConfig.rotate}>
       <defs>
         <clipPath id="clip-path">
           <circle fill="none" cx="384.38" cy="454.56" r="298.61" />
         </clipPath>
       </defs>
       <g id="Sluníčko">
-        {changeConfig["hideFirstFlash"] || (
+        {changeConfig.hideFirstFlash || (
           <>
             <circle fill="#e5c648" cx="522.82" cy="537.96" r="18.41" />
             <rect
@@ -25,7 +25,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           </>
         )}
-        {changeConfig["hideSecondFlash"] || (
+        {changeConfig.hideSecondFlash || (
           <>
             <circle fill="#e5c648" cx="509.81" cy="543.35" r="18.41" />
             <rect
@@ -38,7 +38,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           </>
         )}
-        {changeConfig["hideThirdFlash"] || (
+        {changeConfig.hideThirdFlash || (
           <>
             <circle fill="#e5c648" cx="496.79" cy="537.96" r="18.41" />
             <rect
@@ -52,7 +52,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           </>
         )}
-        {changeConfig["hideFourthFlash"] || (
+        {changeConfig.hideFourthFlash || (
           <>
             <circle fill="#e5c648" cx="491.4" cy="524.94" r="18.41" />
             <rect
@@ -65,7 +65,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           </>
         )}
-        {changeConfig["hideFithFlash"] || (
+        {changeConfig.hideFithFlash || (
           <>
             <circle fill="#e5c648" cx="496.79" cy="511.93" r="18.41" />
             <rect
@@ -79,7 +79,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           </>
         )}
-        {changeConfig["hideSixthFlash"] || (
+        {changeConfig.hideSixthFlash || (
           <>
             <circle fill="#e5c648" cx="509.81" cy="506.53" r="18.41" />
             <rect
@@ -92,7 +92,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           </>
         )}
-        {changeConfig["hideSeventhFlash"] || (
+        {changeConfig.hideSeventhFlash || (
           <>
             <circle fill="#e5c648" cx="522.82" cy="511.93" r="18.41" />
             <rect
@@ -106,7 +106,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           </>
         )}
-        {changeConfig["hideEightFlash"] || (
+        {changeConfig.hideEightFlash || (
           <>
             <circle fill="#e5c648" cx="528.21" cy="524.94" r="18.41" />
             <rect
@@ -122,7 +122,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
         <circle fill="#e5c648" cx="509.81" cy="524.94" r="220.06" />
         <ClipPathElement>
           <circle fill="#f4e397" cx="522.82" cy="537.96" r="18.41" />
-          {changeConfig["hideFirstFlash"] || (
+          {changeConfig.hideFirstFlash || (
             <rect
               fill="#f4e397"
               x="738.68"
@@ -134,7 +134,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           )}
           <circle fill="#f4e397" cx="509.81" cy="543.35" r="18.41" />
-          {changeConfig["hideSecondFlash"] || (
+          {changeConfig.hideSecondFlash || (
             <rect
               fill="#f4e397"
               x="486.54"
@@ -145,7 +145,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           )}
           <circle fill="#f4e397" cx="496.79" cy="537.96" r="18.41" />
-          {changeConfig["hideThirdFlash"] || (
+          {changeConfig.hideThirdFlash || (
             <rect
               fill="#f4e397"
               x="166.36"
@@ -157,7 +157,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           )}
           <circle fill="#f4e397" cx="491.4" cy="524.94" r="18.41" />
-          {changeConfig["hideFourthFlash"] || (
+          {changeConfig.hideFourthFlash || (
             <rect
               fill="#f4e397"
               x="61.92"
@@ -168,7 +168,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           )}
           <circle fill="#f4e397" cx="496.79" cy="511.93" r="18.41" />
-          {changeConfig["hideFithFlash"] || (
+          {changeConfig.hideFithFlash || (
             <rect
               fill="#f4e397"
               x="234.4"
@@ -180,7 +180,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           )}
           <circle fill="#f4e397" cx="509.81" cy="506.53" r="18.41" />
-          {changeConfig["hideSixthFlash"] || (
+          {changeConfig.hideSixthFlash || (
             <rect
               fill="#f4e397"
               x="486.54"
@@ -191,7 +191,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           )}
           <circle fill="#f4e397" cx="522.82" cy="511.93" r="18.41" />
-          {changeConfig["hideSeventhFlash"] || (
+          {changeConfig.hideSeventhFlash || (
             <rect
               fill="#f4e397"
               x="670.65"
@@ -203,7 +203,7 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
             />
           )}
           <circle fill="#f4e397" cx="528.21" cy="524.94" r="18.41" />
-          {changeConfig["hideEightFlash"] || (
+          {changeConfig.hideEightFlash || (
             <rect
               fill="#f4e397"
               x="775.09"
@@ -217,5 +217,5 @@ export default function Sun({ changeConfig = {}, customViewBox}) {
         </ClipPathElement>
       </g>
     </Svg>
-  );
+  )
 }

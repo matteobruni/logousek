@@ -1,14 +1,14 @@
-import React from "react";
-import { DEFAULT_VIEWBOX } from "../../../../constants/svg-conf";
+import React from 'react'
+import { DEFAULT_VIEWBOX } from '../../../../constants/svg-conf'
 
-export default function Car({ changeConfig = {}, customViewBox}) {
+export default function Car ({ changeConfig = {}, customViewBox }) {
   ;
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX}>
       <defs>
         <style>
           {
-            ".cls-2-car{fill:none;stroke:#262626;stroke-width:2px}.cls-2-car,.cls-9-car{stroke-miterlimit:10}.cls-3-car{fill:#262626}.cls-4-car{fill:#111110;opacity:.5}.cls-9-car{fill:#2559a5;stroke:#1c4372;stroke-width:.5px}.cls-10-car{fill:#1c4372}.cls-11-car{fill:#3c78bc}.cls-12-car{fill:#3fa0d9}.cls-13-car{fill:#6dbbe3}.cls-14-car{fill:#18447a}"
+            '.cls-2-car{fill:none;stroke:#262626;stroke-width:2px}.cls-2-car,.cls-9-car{stroke-miterlimit:10}.cls-3-car{fill:#262626}.cls-4-car{fill:#111110;opacity:.5}.cls-9-car{fill:#2559a5;stroke:#1c4372;stroke-width:.5px}.cls-10-car{fill:#1c4372}.cls-11-car{fill:#3c78bc}.cls-12-car{fill:#3fa0d9}.cls-13-car{fill:#6dbbe3}.cls-14-car{fill:#18447a}'
           }
         </style>
       </defs>
@@ -61,7 +61,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
             height={22.67}
             rx={10.89}
             style={{
-              fill: "#5f5f5e",
+              fill: '#5f5f5e'
             }}
           />
           <rect
@@ -71,7 +71,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
             height={11.33}
             rx={5.44}
             style={{
-              fill: "#777",
+              fill: '#777'
             }}
           />
           <rect
@@ -81,7 +81,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
             height={2.83}
             rx={1.36}
             style={{
-              fill: "#c4c4c4",
+              fill: '#c4c4c4'
             }}
           />
         </g>
@@ -90,7 +90,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
           data-name="Obrys auta"
           d="M816.84 459.55h-26l-51.24-80.09-29.24-45.7a74.56 74.56 0 0 0-62.81-34.38H287.44a74.56 74.56 0 0 0-62.81 34.38l-29.24 45.7-51.24 80.09h-69.1a15.32 15.32 0 0 0-15.27 15.28v115a57.87 57.87 0 0 0 57.7 57.71H127c-.12-2-.21-4-.21-6a91.18 91.18 0 0 1 182.36 0c0 2-.09 4-.22 6h348.89c-.13-2-.21-4-.21-6a91.18 91.18 0 0 1 182.36 0c0 2-.09 4-.22 6H974a15.33 15.33 0 0 0 15.28-15.28v-39.7C985.13 500 978.51 468 816.84 459.55Z"
           style={{
-            fill: "#2559a5",
+            fill: '#2559a5'
           }}
         />
         <path
@@ -105,7 +105,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
           className="cls-9-car"
           d="M748.79 550.33a90.68 90.68 0 0 1 42.54 10.54c-4.51-91.15-29.9-121.4-29.9-121.4L638.27 307.29H480.93v321.45h177.59a91.18 91.18 0 0 1 90.27-78.41Z"
         />
-        {changeConfig["hideFirstHandle"] || (
+        {changeConfig.hideFirstHandle || (
           <rect
             id="Zadni_madlo"
             data-name="Zadni madlo"
@@ -117,7 +117,7 @@ export default function Car({ changeConfig = {}, customViewBox}) {
             rx={5.04}
           />
         )}
-        {changeConfig["hideSecondHandle"] || (
+        {changeConfig.hideSecondHandle || (
           <rect
             id="Predni_madlo"
             data-name="Predni madlo"
@@ -136,14 +136,14 @@ export default function Car({ changeConfig = {}, customViewBox}) {
           />
         </g>
         <g id="Okna">
-          {changeConfig["hideDoor"] || (
+          {changeConfig.hideDoor || (
             <g id="Zadni_dvere_okynko" data-name="Zadni dvere okynko">
               <path
-                className={changeConfig["changeDoorColor"] ? "cls-1" : "cls-12-car"}
+                className={changeConfig.changeDoorColor ? 'cls-1' : 'cls-12-car'}
                 d="M271.8 313.68a69.69 69.69 0 0 0-32.54 26.44l-27.52 41.95-37.64 57.4a10.4 10.4 0 0 0 8.7 16.11h70.32Z"
               />
               <path
-                className={changeConfig["changeDoorColor"] ? "cls-1" : "cls-12-car"}
+                className={changeConfig.changeDoorColor ? 'cls-1' : 'cls-12-car'}
                 d="M255.35 458.13H182.8a13 13 0 0 1-10.8-20.06l65.16-99.35a71.89 71.89 0 0 1 33.72-27.41l4-1.61Zm13.33-140.32a66.63 66.63 0 0 0-27.29 23.71l-65.16 99.35A7.85 7.85 0 0 0 182.8 453h68.09Z"
               />
             </g>
@@ -187,5 +187,5 @@ export default function Car({ changeConfig = {}, customViewBox}) {
         </g>
       </g>
     </svg>
-  );
+  )
 }

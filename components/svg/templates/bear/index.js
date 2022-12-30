@@ -1,12 +1,12 @@
-import * as React from "react"
-import { DEFAULT_VIEWBOX } from "../../../../constants/svg-conf"
+import * as React from 'react'
+import { DEFAULT_VIEWBOX } from '../../../../constants/svg-conf'
 
-const Bear = ({changeConfig = {}, customViewBox}) => (
+const Bear = ({ changeConfig = {}, customViewBox }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX}>
     <defs>
       <style>
         {
-          ".cls-5-bear{fill:none;stroke:#282828;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px}"
+          '.cls-5-bear{fill:none;stroke:#282828;stroke-linecap:round;stroke-miterlimit:10;stroke-width:2px}'
         }
       </style>
     </defs>
@@ -50,7 +50,7 @@ const Bear = ({changeConfig = {}, customViewBox}) => (
             ry={85.87}
             transform="rotate(-13.29 371.063 739.332)"
           />
-          {changeConfig["hideLeftFoot"] || <g id="Chodidla_medved" data-name="Chodidla medved">
+          {changeConfig.hideLeftFoot || <g id="Chodidla_medved" data-name="Chodidla medved">
             <ellipse
               id="Chodidlo"
               fill="#4e3615"
@@ -115,7 +115,7 @@ const Bear = ({changeConfig = {}, customViewBox}) => (
             ry={66.33}
             transform="rotate(-76.71 656.322 739.501)"
           />
-          {changeConfig["hideRightFoot"] || <g id="Chodidla_medved-2" data-name="Chodidla medved">
+          {changeConfig.hideRightFoot || <g id="Chodidla_medved-2" data-name="Chodidla medved">
             <ellipse
               id="Chodidlo-2"
               data-name="Chodidlo"
@@ -179,11 +179,11 @@ const Bear = ({changeConfig = {}, customViewBox}) => (
       </g>
       <g id="Leve_ucho_medved" data-name="Leve ucho medved">
         <circle fill="#7a5415" cx={403} cy={257.16} r={47.42} />
-        {changeConfig["hideLeftEarFilling"] || <circle fill="#4e3615" cx={403} cy={257.16} r={30.14} />}
+        {changeConfig.hideLeftEarFilling || <circle fill="#4e3615" cx={403} cy={257.16} r={30.14} />}
       </g>
       <g id="Prave_ucho_medved" data-name="Prave ucho medved">
         <circle fill="#7a5415" cx={625.17} cy={257.16} r={47.42} />
-        {changeConfig["hideRightEarFilling"] || <circle fill="#4e3615" cx={628.08} cy={257.16} r={30.14} />}
+        {changeConfig.hideRightEarFilling || <circle fill="#4e3615" cx={628.08} cy={257.16} r={30.14} />}
       </g>
       <circle id="Hlava" fill="#7a5415" cx={514.33} cy={352.16} r={142.42} />
       <g id="Nos_a_usta_medved" data-name="Nos a usta medved">

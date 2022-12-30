@@ -50,4 +50,4 @@ const DraggableList = ({ items }) => {
   )
 }
 
-export default DraggableList;
+export default DraggableList

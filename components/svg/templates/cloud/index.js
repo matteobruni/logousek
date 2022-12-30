@@ -1,38 +1,38 @@
-import * as React from "react";
-import { DEFAULT_VIEWBOX } from "../../../../constants/svg-conf";
+import * as React from 'react'
+import { DEFAULT_VIEWBOX } from '../../../../constants/svg-conf'
 
-const Cloud = ({ changeConfig = {}, customViewBox}) => {
+const Cloud = ({ changeConfig = {}, customViewBox }) => {
   const lightColors = {
-    first: "#98d1dd",
-    second: "#b9e1eb",
-    third: "#def0f1",
-    fourth: "#e4f1f4",
-    fifth: "#fff",
-  };
+    first: '#98d1dd',
+    second: '#b9e1eb',
+    third: '#def0f1',
+    fourth: '#e4f1f4',
+    fifth: '#fff'
+  }
 
   const darkColors = {
-    first: "#2D6773",
-    second: "#84B5BF",
-    third: "#98d1dd",
-    fourth: "#A7E6F2",
-    fifth: "#fff",
-  };
+    first: '#2D6773',
+    second: '#84B5BF',
+    third: '#98d1dd',
+    fourth: '#A7E6F2',
+    fifth: '#fff'
+  }
 
   const twoColors = {
-    first: "#b9e1eb",
-    second: "#b9e1eb",
-    third: "#b9e1eb",
-    fourth: "#b9e1eb",
-    fifth: "#fff",
+    first: '#b9e1eb',
+    second: '#b9e1eb',
+    third: '#b9e1eb',
+    fourth: '#b9e1eb',
+    fifth: '#fff'
   }
 
-  let colors = lightColors;
-  if(changeConfig["changeColor"]){
-    colors = darkColors;
-  }else if(changeConfig["twoColorPicture"]){
-    colors = twoColors;
+  let colors = lightColors
+  if (changeConfig.changeColor) {
+    colors = darkColors
+  } else if (changeConfig.twoColorPicture) {
+    colors = twoColors
   }
-  
+
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX}>
       <defs>
@@ -70,7 +70,7 @@ const Cloud = ({ changeConfig = {}, customViewBox}) => {
         </g>
         <g
           style={{
-            clipPath: "url(#clip-path)",
+            clipPath: 'url(#clip-path)'
           }}
           id="Treti_oddil_mraku"
           data-name="Treti oddil mraku"
@@ -97,7 +97,7 @@ const Cloud = ({ changeConfig = {}, customViewBox}) => {
         </g>
         <g
           style={{
-            clipPath: "url(#clip-path-2)",
+            clipPath: 'url(#clip-path-2)'
           }}
           id="Druhy_oddil_mraku"
           data-name="Druhy oddil mraku"
@@ -124,7 +124,7 @@ const Cloud = ({ changeConfig = {}, customViewBox}) => {
         </g>
         <g
           style={{
-            clipPath: "url(#clip-path-3)",
+            clipPath: 'url(#clip-path-3)'
           }}
           id="Prvni_oddil_mraku"
           data-name="Prvni oddil mraku"
@@ -157,7 +157,7 @@ const Cloud = ({ changeConfig = {}, customViewBox}) => {
         </g>
       </g>
     </svg>
-  );
-};
+  )
+}
 
-export default Cloud;
+export default Cloud

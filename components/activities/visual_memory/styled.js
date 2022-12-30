@@ -1,12 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const TemplateWrapper = styled.div`
   width: 200vw;
   display: flex;
   transition-duration: 0.5s;
-  transform: translateX(${({isQuesionpart}) => isQuesionpart? "-100" : "0"}vw);
-`;
-
+  transform: translateX(${({ isQuesionpart }) => isQuesionpart ? '-100' : '0'}vw);
+`
 
 export const ShowedPart = styled.div`
   width: 100vw;
@@ -14,7 +13,7 @@ export const ShowedPart = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const QuestionPart = styled.div`
   width: 100vw;
@@ -24,7 +23,7 @@ export const QuestionPart = styled.div`
   flex-wrap: wrap;
   display: flex;
 
-`;
+`
 
 export const ActivityCardWrapper = styled.div`
   display: flex;
