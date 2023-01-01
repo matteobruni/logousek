@@ -1,6 +1,6 @@
 import { MutableRefObject, useEffect, useState } from 'react'
 
-function useElementOnScreen (ref: React.RefObject<HTMLDivElement> | null, rootMargin: string = '0px') {
+function useElementOnScreen(ref: React.RefObject<HTMLDivElement> | null, rootMargin: string = '0px') {
   const [isIntersecting, setIsIntersecting] = useState(true)
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -9,15 +9,16 @@ function useElementOnScreen (ref: React.RefObject<HTMLDivElement> | null, rootMa
       },
       { rootMargin }
     )
-    if (ref?.current) {
-      observer.observe(ref.current)
+    const current = ref?.current;
+    if (current) {
+      observer.observe(current)
     }
     return () => {
-      if (ref?.current) {
-        observer.unobserve(ref.current)
+      if (current) {
+        observer.unobserve(current)
       }
     }
-  }, [])
+  }, [ref, rootMargin])
   return isIntersecting
 }
 

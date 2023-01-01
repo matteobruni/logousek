@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
-import styles from './styles.module.css'
 import HeaderWrapper from '../header-wrapper/header-wrapper'
 import BackIcon from '../back-icon'
 import { useRouter } from 'next/router'
 import ModalContext from '../../contexts/modal-context'
 import * as S from "./styled";
 
-type ActivityHeaderProps = {tasksCount: number, currentTask: number, title: string}
+type ActivityHeaderProps = { tasksCount: number, currentTask: number, title: string }
 
 const ActivityHeader: React.FC<ActivityHeaderProps> = ({ tasksCount, currentTask, title }) => {
   const router = useRouter()

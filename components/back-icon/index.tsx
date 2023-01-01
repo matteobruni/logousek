@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyledBackIconWrapper, StyledBackIcon } from './styled'
 
-type BackIconProps = {onClick: () => void}
+type BackIconProps = { onClick: () => void }
 
 const BackIcon: React.FC<BackIconProps> = ({ onClick }) => {
   return (

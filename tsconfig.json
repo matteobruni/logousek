@@ -37,7 +37,6 @@
       "@public/*": [
         "public/*"
       ]
-
     }, /* Specify a set of entries that re-map imports to additional lookup locations. */
     // "rootDirs": [],                                   /* Allow multiple folders to be treated as one when resolving modules. */
     // "typeRoots": [],                                  /* Specify multiple folders that act like './node_modules/@types'. */
@@ -125,8 +124,10 @@
     "backend/controllers/activity-controller.js",
     "pages/api/activity/add-score.js",
     "components/activities/a_s/as-context-provider/use-get-cards/styled.js",
-    "utils/AnimatedCursor/index.js"
-, "components/timer/index.tss", "helpers/date-helper.js"  ],
+    "utils/AnimatedCursor/index.ts",
+    "components/timer/index.tss",
+    "helpers/date-helper.js"
+  ],
   "exclude": [
     "node_modules"
   ]

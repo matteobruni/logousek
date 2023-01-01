@@ -1,9 +1,8 @@
 import React from 'react'
-import styles from './styles.module.css'
 import * as S from "./styled"
 
 type HeaderWrapperProps = {
-  children: React.ReactElement | string;
+  children: React.ReactElement[] | React.ReactElement | string;
 }
 
 const HeaderWrapper: React.FC<HeaderWrapperProps> = ({ children }) => {
