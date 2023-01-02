@@ -31,7 +31,7 @@ export default forwardRef(function VisualMemoryActivity(
         selectedElements?.length === correctAnswers.length &&
         selectedElements?.reduce(
           (res, currElement) =>
-            correctAnswers.find((answer) => answer.name === currElement.name)
+            correctAnswers.find((answer) => answer.name === currElement)
               ? res
               : false,
           true
