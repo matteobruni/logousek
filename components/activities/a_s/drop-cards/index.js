@@ -3,7 +3,8 @@ import { CardWrapper, CardContainer } from './styled'
 import AsContext from '../../../../contexts/as-context'
 import DropCard from '../drop-card'
 import DragCard from '../drag-card'
-function DropCards () {
+
+function DropCards() {
   const asContext = useContext(AsContext)
 
   const _onItemDropHandle = (item, index) => {

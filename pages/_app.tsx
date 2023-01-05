@@ -31,7 +31,6 @@ interface ThemeType {
 }
 
 function MyApp({ Component, pageProps }: { Component: React.FC, pageProps: any }) {
-  console.log("pageProps", pageProps)
   const [theme, changeTheme] = useDarkMode()
   const modalRef = useRef<ModalInterfaceType>(null)
   const backdropRef = useRef<BackdropInterfaceType>(null)
@@ -117,4 +116,4 @@ function MyApp({ Component, pageProps }: { Component: React.FC, pageProps: any }
   )
 }
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation<never>(MyApp)

@@ -16,6 +16,7 @@ import Timer from '../../timer/index'
 import TrafficLights from '../../traffic-lights'
 import { shuffle } from '../../../helpers/array-helper'
 import { ActivityProps } from '@components/pages/activity'
+import { SvgListType } from '../../../helpers/svg-helpers'
 
 const TIMER_COUNT_DOWN_TIME = 6000
 
@@ -23,16 +24,16 @@ export default forwardRef(function VisualMemoryActivity(
   { complexity, onHandleChanged }: ActivityProps,
   ref
 ) {
-  const [generatedSvgs, setGeneratedSvgs] = useState([])
-  const [correctAnswers, setCorrectAnswers] = useState([])
-  const [selectedElements, setSelectedElements] = useState([])
+  const [generatedSvgs, setGeneratedSvgs] = useState<SvgListType[]>([])
+  const [correctAnswers, setCorrectAnswers] = useState<SvgListType[]>([])
+  const [selectedElements, setSelectedElements] = useState<string[]>([])
   useImperativeHandle(ref, () => ({
     getResult: () => {
       return (
         selectedElements?.length === correctAnswers.length &&
         selectedElements?.reduce(
           (res, currElement) =>
-            correctAnswers.find((answer) => answer.name === currElement.name)
+            correctAnswers.find((answer) => answer.name === currElement)
               ? res
               : false,
           true
@@ -65,7 +66,7 @@ export default forwardRef(function VisualMemoryActivity(
     setIsQuesionpart(true)
   }
 
-  const select = (elementName) => {
+  const select = (elementName: string) => {
     setSelectedElements((v) => {
       if (v.find((vItem) => vItem === elementName)) {
         return v.filter((selectedItem) => selectedItem !== elementName)

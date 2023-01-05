@@ -31,7 +31,7 @@ export default forwardRef(function AsContextProvider(
   { children, count, onHandleChanged }: AsContextProviderType,
   ref
 ) {
-  const [cards, setCards] = useGetCards(count)
+  const { cards, setCards } = useGetCards(count)
   const [aspectRatio] = useState<string>(
     count === 2 ? '1 / 2' : count === 4 ? '1 / 1' : '3 / 2'
   )
@@ -44,7 +44,7 @@ export default forwardRef(function AsContextProvider(
     isAllCardsPlaced && onHandleChanged()
   }, [cards, onHandleChanged])
 
-  useImperativeHandle(ref, ():AsContextProviderInterface => ({
+  useImperativeHandle(ref, (): AsContextProviderInterface => ({
     checkResult: () => {
       const isCorrect = placedCards.reduce((result, currentPlacedCard, index) => {
         const expressedCardKey = SVGS_HASH[count][index]

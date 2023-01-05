@@ -10,15 +10,15 @@ import Lego from '../components/svg/templates/lego'
 import { getRandomElementFromList } from './array-helper'
 import React from 'react'
 
-//ToDo: Remove any type
-type svgListType = {
+//TODO: Remove any type
+export type SvgListType = {
   name: string,
   component: React.FC | any,
   hideSettings: string[],
   hideDetailsSettings?: string[]
 }
 
-const svgList: svgListType[] = [
+const svgList: SvgListType[] = [
   {
     name: 'flower',
     component: Flower,
@@ -115,7 +115,7 @@ export const getRandomSvgs = (count: number, usedPictures?: string[]) => {
   )
 }
 
-export const getRandomSvgsWithChangeConfig = (count: number, usedPictures: string[]) => {
+export const getRandomSvgsWithChangeConfig = (count: number, usedPictures?: string[]): SvgListType[] => {
   const usedSvgList = [
     ...(usedPictures ? getUsedPicturesConf(usedPictures) : svgList)
   ]

@@ -74,7 +74,7 @@ export default forwardRef(function VisualDifActivity(
         correctAnswersAdditionalObj.hideConfing = getHideConfig(
           complexity === '3'
             ? [...usedCard.hideSettings]
-            : [...usedCard.hideDetailsSettings]
+            : [...(usedCard.hideDetailsSettings || [])]
         )
         wrongAnswersAdditionalObj.hideConfing = {}
       }
