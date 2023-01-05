@@ -13,7 +13,6 @@ export const ContentWrapper = styled.main`
 
   @media ${devices.laptop} {
     padding: 0.8rem 6rem;
-    padding-bottom: 100px;
     flex-direction: row;
   }
 
@@ -32,7 +31,7 @@ export const GameTypeDetail = styled.section`
 
   @media ${devices.laptop} {
     max-height: auto;
-    margin: 2rem;
+    margin: 1rem;
   }
   @media ${devices.laptopL} {
     margin: 7rem;
@@ -45,19 +44,20 @@ export const GameList = styled.section`
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  gap: 1.4rem;
 
   @media ${devices.laptopL} {
-    gap: 1.4rem;
+    gap: 0rem;
   }
 `;
 
 export const GamesTypeHeader = styled.h1`
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   color: white;
 
   @media ${devices.laptop} {
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   }
 `;
 
