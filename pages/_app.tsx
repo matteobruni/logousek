@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 import { ThemeProvider } from 'styled-components'
 import '../styles/globals.css'
 import { AnimatePresence } from 'framer-motion'
@@ -13,8 +13,6 @@ import { useDarkMode } from '../hooks/useDarkmode'
 import { appWithTranslation } from 'next-i18next'
 import { showModalModalInfoParam } from '../contexts/modal-context'
 import { ParallaxProvider } from 'react-scroll-parallax'
-
-import AnimatedCursor from '../utils/AnimatedCursor'
 
 interface ThemeType {
   colors: {
@@ -32,7 +30,8 @@ interface ThemeType {
   }
 }
 
-function MyApp({ Component, pageProps }: { Component: any, pageProps: any }) {
+function MyApp({ Component, pageProps }: { Component: React.FC, pageProps: any }) {
+  console.log("pageProps", pageProps)
   const [theme, changeTheme] = useDarkMode()
   const modalRef = useRef<ModalInterfaceType>(null)
   const backdropRef = useRef<BackdropInterfaceType>(null)

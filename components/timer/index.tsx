@@ -3,7 +3,7 @@ import { formatTime } from '../../helpers/time-helper'
 
 type TimerType = { countdownTime?: number, timerIsDone?: () => void }
 
-const Timer: React.FC<TimerType> = ({ countdownTime, timerIsDone = () => { } }) => {
+const Timer: React.FC<TimerType> = ({ countdownTime, timerIsDone }) => {
   const startTime = new Date().getTime()
   const [elapsedMilis, setElapsedMilis] = useState(
     startTime - new Date().getTime()
@@ -16,7 +16,7 @@ const Timer: React.FC<TimerType> = ({ countdownTime, timerIsDone = () => { } }) 
 
     if (countdownTime && elapsedMilis >= countdownTime) {
       clearInterval(interval)
-      timerIsDone()
+      timerIsDone && timerIsDone()
     }
 
     return () => clearInterval(interval)

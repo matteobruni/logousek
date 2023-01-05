@@ -1,6 +1,6 @@
-import { MutableRefObject, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
-function useElementOnScreen(ref: React.RefObject<HTMLDivElement> | null, rootMargin: string = '0px') {
+function useElementOnScreen(ref: React.RefObject<HTMLDivElement> | null, rootMargin = '0px') {
   const [isIntersecting, setIsIntersecting] = useState(true)
   useEffect(() => {
     const observer = new IntersectionObserver(

@@ -25,6 +25,7 @@ export const LogousekWrapper = styled.div`
     width: 400px;
   }
   width: 100%;
+  z-index: 1;
   display: flex;
   justify-content: center;
   height: 400px;
@@ -36,7 +37,7 @@ export const FirstForegroundTreeWrapper = styled.div`
   position: absolute;
   bottom: 0px;
   transition-duration: 0.2s;
-  left: -250px;
+  left: -400px;
   z-index: 2;
   @media ${devices.laptop} {
     left: 20px;
@@ -47,8 +48,8 @@ export const SecondForegroundTreeWrapper = styled.div`
   position: absolute;
   bottom: 0px;
   transition-duration: 0.2s;
-  right: -250px;
-  z-index: 4;
+  right: -400px;
+  z-index: 5;
   @media ${devices.laptop} {
     right: 20px;
   }
@@ -59,7 +60,7 @@ export const Hill = styled.div`
   transition-duration: 0.2s;
   bottom: 0px;
   width: 150vw;
-    left: 0vw;
+  left: 0vw;
   height: 40vh;
   background: green;
   border-top-right-radius: 100%;
@@ -69,9 +70,6 @@ export const Hill = styled.div`
 `
 
 export const IntroSection = styled(Section)`
-  /* background-image: url(https://img.freepik.com/free-vector/gradient-mountain-landscape_23-2149161561.jpg?w=1380&t=st=1671647950~exp=1671648550~hmac=8950676…);
-    background-repeat: no-repeat;
-    background-position: bottom; */
   background: ${({ theme }) =>
     `linear-gradient(to left bottom,${theme.colors.lightGrey}, ${theme.colors.fourty})`};
 

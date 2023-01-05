@@ -3,7 +3,7 @@ import React, {
   useEffect,
   useContext,
   useRef,
-  useCallback
+  useCallback,
 } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
@@ -18,14 +18,20 @@ import RoundFooter from '../../round-footer'
 import ModalContext from '../../../contexts/modal-context'
 import GainedPoints from './gained-points'
 import { GameType } from '../../../constants/activity-conf'
-import * as S from "./styled"
+import * as S from './styled'
 
 const DEFAULT_POINTS_FOR_TASK = 10
 const TASKS_COUNT = 10
 
 export type ActivityInterface = {
-  getResult: () => boolean,
+  getResult: () => boolean
   generateNext: () => void
+}
+
+export type ActivityProps = {
+  complexity: string
+  onHandleChanged: () => void
+  tasksElapsed: number
 }
 
 const Activity = () => {
@@ -42,15 +48,18 @@ const Activity = () => {
 
   const getActivityFromConf = useCallback(
     () =>
-      Object.values(games).reduce((result: GameType | undefined, gamesInType: GameType[]) => {
-        const foundGame = gamesInType.find(
-          (game) => game.name === activityName
-        )
-        if (foundGame) {
-          result = foundGame
-        }
-        return result
-      }, undefined),
+      Object.values(games).reduce(
+        (result: GameType | undefined, gamesInType: GameType[]) => {
+          const foundGame = gamesInType.find(
+            (game) => game.name === activityName
+          )
+          if (foundGame) {
+            result = foundGame
+          }
+          return result
+        },
+        undefined
+      ),
     [activityName]
   )
 
@@ -86,7 +95,7 @@ const Activity = () => {
       modalContext?.showModal({
         header: 'Konec Hry',
         onOkClick: redirectToGameMenu,
-        closeDisabled: true
+        closeDisabled: true,
       })
     }
   }, [gameState, modalContext, router, correctTasks, GetPointsForTask])
@@ -100,14 +109,8 @@ const Activity = () => {
     setCorrectTasks((v) => ++v)
   }
 
-  const reset = () => { }
-
   const onHandleChanged = () => {
     setWasChanged(true)
-  }
-
-  const onResetChanged = () => {
-    setWasChanged(false)
   }
 
   const _checkResult = () => {
@@ -129,7 +132,7 @@ const Activity = () => {
       <ActivityHeader
         tasksCount={TASKS_COUNT}
         currentTask={currentTask}
-        title={getActivityFromConf()?.title || ""}
+        title={getActivityFromConf()?.title || ''}
       />
       <S.ActivityWrapper>
         <S.ContentWrapper>
@@ -139,7 +142,7 @@ const Activity = () => {
               key={`activity_${currentTask}`}
               tasksElapsed={currentTask}
               onHandleChanged={onHandleChanged}
-              complexity={activityDifficulty || "1"}
+              complexity={activityDifficulty || '1'}
             />
           }
         </S.ContentWrapper>
@@ -155,7 +158,7 @@ const Activity = () => {
                   pointsForTask={GetPointsForTask() || DEFAULT_POINTS_FOR_TASK}
                   correctTasks={correctTasks}
                 />
-              )
+              ),
             },
             {
               name: 'timer',
@@ -164,15 +167,15 @@ const Activity = () => {
                   <Timer />
                 </TimerWrapper>
               ),
-              clickable: false
+              clickable: false,
             },
             {
               name: 'sendButton',
               title: <S.SendButton>Potvrdit</S.SendButton>,
               clickable: true,
               onClick: _checkResult,
-              disabled: !wasChanged
-            }
+              disabled: !wasChanged,
+            },
           ]}
         />
       </footer>

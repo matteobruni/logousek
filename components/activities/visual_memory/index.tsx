@@ -3,28 +3,29 @@ import React, {
   forwardRef,
   useEffect,
   useImperativeHandle,
-} from "react";
+} from 'react'
 import {
   TemplateWrapper,
   QuestionPart,
   ShowedPart,
   ActivityCardWrapper,
-} from "./styled";
-import ActivityCard from "../activity-card";
-import { getRandomSvgsWithChangeConfig } from "../../../helpers/svg-helpers";
-import Timer from "../../timer/index";
-import TrafficLights from "../../traffic-lights";
-import { shuffle } from "../../../helpers/array-helper";
+} from './styled'
+import ActivityCard from '../activity-card'
+import { getRandomSvgsWithChangeConfig } from '../../../helpers/svg-helpers'
+import Timer from '../../timer/index'
+import TrafficLights from '../../traffic-lights'
+import { shuffle } from '../../../helpers/array-helper'
+import { ActivityProps } from '@components/pages/activity'
 
-const TIMER_COUNT_DOWN_TIME = 6000;
+const TIMER_COUNT_DOWN_TIME = 6000
 
 export default forwardRef(function VisualMemoryActivity(
-  { complexity, tasksElapsed, onResetChanged, onHandleChanged },
+  { complexity, onHandleChanged }: ActivityProps,
   ref
 ) {
-  const [generatedSvgs, setGeneratedSvgs] = useState([]);
-  const [correctAnswers, setCorrectAnswers] = useState([]);
-  const [selectedElements, setSelectedElements] = useState([]);
+  const [generatedSvgs, setGeneratedSvgs] = useState([])
+  const [correctAnswers, setCorrectAnswers] = useState([])
+  const [selectedElements, setSelectedElements] = useState([])
   useImperativeHandle(ref, () => ({
     getResult: () => {
       return (
@@ -36,50 +37,50 @@ export default forwardRef(function VisualMemoryActivity(
               : false,
           true
         )
-      );
+      )
     },
-  }));
+  }))
 
   useEffect(() => {
     if (correctAnswers.length === selectedElements?.length) {
-      onHandleChanged();
+      onHandleChanged()
     }
-  }, [correctAnswers, onHandleChanged, selectedElements]);
+  }, [correctAnswers, onHandleChanged, selectedElements])
 
   useEffect(() => {
     const svgs = getRandomSvgsWithChangeConfig(
-      complexity === "1" ? 4 : complexity === "2" ? 6 : 9
-    );
+      complexity === '1' ? 4 : complexity === '2' ? 6 : 9
+    )
 
     const correctAnswersName =
-      complexity === "1" ? 1 : complexity === "2" ? 2 : 4;
+      complexity === '1' ? 1 : complexity === '2' ? 2 : 4
 
-    const correctSvgsName = svgs.slice(0, correctAnswersName);
-    setGeneratedSvgs(shuffle(svgs));
-    setCorrectAnswers(correctSvgsName);
-  }, [complexity]);
+    const correctSvgsName = svgs.slice(0, correctAnswersName)
+    setGeneratedSvgs(shuffle(svgs))
+    setCorrectAnswers(correctSvgsName)
+  }, [complexity])
 
-  const [isQuesionpart, setIsQuesionpart] = useState(false);
+  const [isQuesionpart, setIsQuesionpart] = useState(false)
   const onTimerIsDoneHandler = () => {
-    setIsQuesionpart(true);
-  };
+    setIsQuesionpart(true)
+  }
 
   const select = (elementName) => {
     setSelectedElements((v) => {
       if (v.find((vItem) => vItem === elementName)) {
-        return v.filter((selectedItem) => selectedItem !== elementName);
+        return v.filter((selectedItem) => selectedItem !== elementName)
       } else {
         if (v.length < correctAnswers.length) {
-          return [...v, elementName];
+          return [...v, elementName]
         } else {
-          return v;
+          return v
         }
       }
-    });
-  };
+    })
+  }
 
   const questionPartQuestions = generatedSvgs.map((Element) => {
-    const elementName = Element?.name;
+    const elementName = Element?.name
     return (
       <ActivityCard
         key={`element-card-${elementName}`}
@@ -88,8 +89,8 @@ export default forwardRef(function VisualMemoryActivity(
       >
         <Element.component />
       </ActivityCard>
-    );
-  });
+    )
+  })
   return (
     <TemplateWrapper isQuesionpart={isQuesionpart}>
       <ShowedPart onClick={() => setIsQuesionpart(true)}>
@@ -109,16 +110,16 @@ export default forwardRef(function VisualMemoryActivity(
               )
             )
             .map((element) => {
-              const Component = element.component;
+              const Component = element.component
               return (
                 <ActivityCard key={`element-card-${element.name}`}>
                   <Component />
                 </ActivityCard>
-              );
+              )
             })}
         </ActivityCardWrapper>
       </ShowedPart>
       <QuestionPart>{questionPartQuestions}</QuestionPart>
     </TemplateWrapper>
-  );
-});
+  )
+})

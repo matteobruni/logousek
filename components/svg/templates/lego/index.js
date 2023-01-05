@@ -1,13 +1,16 @@
 import * as React from 'react'
 import { DEFAULT_VIEWBOX } from '../../../../constants/svg-conf'
 
-const Lego = ({ hideSomething = {}, customViewBox }) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox={customViewBox || DEFAULT_VIEWBOX}>
+const Lego = ({ customViewBox }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox={customViewBox || DEFAULT_VIEWBOX}
+  >
     <g id="Kostka_lega" data-name="Kostka lega">
       <g id="Telo_lega" data-name="Telo lega">
         <path
           style={{
-            fill: '#821d1e'
+            fill: '#821d1e',
           }}
           d="m870.23 509.86-742.64 99.78V425.13l585.11-45.96 157.53 130.69z"
         />
@@ -21,7 +24,7 @@ const Lego = ({ hideSomething = {}, customViewBox }) => (
         />
         <path
           style={{
-            fill: '#973232'
+            fill: '#973232',
           }}
           d="m127.59 425.13 161.47 36.85 607.35-46.74-183.71-36.07-585.11 45.96z"
         />

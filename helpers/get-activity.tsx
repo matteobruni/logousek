@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import ASActivity from "../components/activities/a_s";
 import VisualDifActivity from "../components/activities/visual_differentiation";
 import VisualMemoryActivity from "../components/activities/visual_memory";

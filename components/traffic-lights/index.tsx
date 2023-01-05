@@ -5,7 +5,7 @@ type TrafficLightsProps = { countdownTime: number; timerIsDone?: () => void };
 
 const TrafficLights: React.FC<TrafficLightsProps> = ({
   countdownTime,
-  timerIsDone = () => {},
+  timerIsDone
 }) => {
   const startTime = new Date().getTime();
   const [activeColor, setActiveColor] = useState("red");
@@ -28,7 +28,7 @@ const TrafficLights: React.FC<TrafficLightsProps> = ({
 
     if (countdownTime && elapsedMilis >= countdownTime) {
       clearInterval(interval);
-      timerIsDone();
+      timerIsDone && timerIsDone();
     }
 
     return () => clearInterval(interval);

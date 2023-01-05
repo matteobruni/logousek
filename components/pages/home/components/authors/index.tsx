@@ -1,5 +1,4 @@
 import React from 'react'
-import styles from './styles.module.css'
 import Label from '@components/label'
 import * as S from "./styled"
 

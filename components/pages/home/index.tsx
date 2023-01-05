@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Head from 'next/head'
@@ -9,7 +9,6 @@ import Footer from './components/footer'
 import ClickableIcon from '@components/clickable-icon'
 import AboutUsList from './components/about-us-list'
 import TimeLine from '../../time-line'
-import RoundFooter from '../../round-footer'
 import Sidebar from '../../side-bar'
 import {
   Container,
@@ -80,6 +79,17 @@ const Home = () => {
     targetElement: scrollTarget.current ? scrollTarget.current : undefined,
   });
 
+  const RowBlockParallax = useParallax<HTMLDivElement>({
+    scale: [1, 1.1, 'ease'],
+    opacity: [1, 0.5, 'easeInQuad'],
+    translateY: [0, (windowDimensions?.height || 1080) / 10, "ease"],
+    translateX: [0, (windowDimensions?.width || 1920) / 5, 'easeInQuad'],
+    startScroll: 0,
+    endScroll: windowDimensions?.height || 1080,
+    targetElement: scrollTarget.current ? scrollTarget.current : undefined,
+  });
+
+
   const hillParallax = useParallax<HTMLDivElement>({
     startScroll: 0,
     translateY: [0, (windowDimensions?.height || 1080) / 15, 'easeInQuad'],
@@ -90,7 +100,7 @@ const Home = () => {
   const firstTreeParallax = useParallax<HTMLDivElement>({
     startScroll: 0,
     translateY: [0, -(windowDimensions?.height || 1080) / 20, 'easeInQuad'],
-    translateX: [0, (windowDimensions?.height || 1080) / 15, 'easeInQuad'],
+    translateX: [0, (windowDimensions?.height || 1920) / 15, 'easeInQuad'],
     scale: [1, 2.5, 'easeInQuad'],
     endScroll: windowDimensions?.height || 1080,
     targetElement: scrollTarget.current ? scrollTarget.current : undefined,
@@ -99,7 +109,7 @@ const Home = () => {
   const secondTreeParallax = useParallax<HTMLDivElement>({
     startScroll: 0,
     translateY: [0, -(windowDimensions?.height || 1080) / 20, 'easeInQuad'],
-    translateX: [0, -(windowDimensions?.height || 1080) / 15, 'easeInQuad'],
+    translateX: [0, -(windowDimensions?.height || 1920) / 15, 'easeInQuad'],
     scale: [1, 2.5, 'easeInQuad'],
     endScroll: windowDimensions?.height || 1080,
     targetElement: scrollTarget.current ? scrollTarget.current : undefined,
@@ -193,7 +203,7 @@ const Home = () => {
                     Hrát
                   </Button>
                 </nav>
-                <RowBlock>
+                <RowBlock ref={RowBlockParallax.ref}>
                   <IntroSectionTextStyle>
                     <h1>Logoušek</h1>
                     <h3>

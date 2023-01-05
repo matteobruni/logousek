@@ -126,7 +126,7 @@ const getUsedPicturesConf = (usedPictures: string[]) => {
   return svgList.filter((svg) => usedPictures.includes(svg.name))
 }
 
-export const getHideConfig = (elementsToHideList = []) => {
+export const getHideConfig = (elementsToHideList: string[] = []) => {
   const elementsToHideObject = elementsToHideList.reduce((result: { [key: string]: boolean }, element) => {
     result[element] = false
     return result

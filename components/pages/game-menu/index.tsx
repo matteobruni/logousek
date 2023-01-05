@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import styled, { ThemeContext } from 'styled-components'
+import { ThemeContext } from 'styled-components'
 import Head from 'next/head'
 import RouteWrapper from '../../route-wrapper'
 import activityConf from '../../../constants/activity-conf'
@@ -18,9 +18,7 @@ import ButtonRow from '../../button-row/button-row'
 import { UserData } from '@helpers/local-storage-helper'
 import * as S from "./styled"
 
-type GameMenuType = {}
-
-const GameMenu: React.FC<GameMenuType> = () => {
+const GameMenu: React.FC = () => {
   const [activeActivity, setActiveActivity] = useState(activityConf[0])
   const [userData, setUserData] = useState<UserData | undefined>()
   const themeContext = useContext(ThemeContext)

@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const TemplateWrapper = styled.div`
+type TemplateWrapperProps = {
+  isQuesionpart: boolean
+}
+
+export const TemplateWrapper = styled.div<TemplateWrapperProps>`
   width: 200vw;
   display: flex;
   transition-duration: 0.5s;

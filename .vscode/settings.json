@@ -12,5 +12,6 @@
   ],
   "eslint.workingDirectories": [
     "./"
-  ]
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

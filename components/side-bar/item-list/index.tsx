@@ -1,19 +1,12 @@
 import React from 'react'
-import { useRouter } from 'next/router'
 import Item from './item'
 import { ItemType } from './item'
-import { UrlObject } from 'url'
 import * as S from "./styled"
 
 type SidebarItemListProps = { itemList: ItemType[], setIsMenuShow: (value: boolean) => void }
 
-const SidebarItemList: React.FC<SidebarItemListProps> = ({ itemList, setIsMenuShow }) => {
-  const router = useRouter()
+const SidebarItemList: React.FC<SidebarItemListProps> = ({ itemList }) => {
   const arrayItemList = Array.isArray(itemList) ? itemList : []
-  const redirect = (link: string | UrlObject) => {
-    setIsMenuShow(false)
-    router.push(link)
-  }
   return (
     <S.List>
       {arrayItemList.map((item) => (

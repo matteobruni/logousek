@@ -4,7 +4,7 @@ export const shuffle = (array: any[]) => {
   };
 
   export const getRandomElementFromList = (list: any[], count: number): any => {
-    let result = [];
+    const result = [];
     for (let i = 0; i < count; i++) {
       const choosedIndex = Math.floor(Math.random() * list.length);
       const selectedElement = list.splice(choosedIndex, 1)[0];

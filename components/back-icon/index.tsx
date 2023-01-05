@@ -9,6 +9,7 @@ const BackIcon: React.FC<BackIconProps> = ({ onClick }) => {
       <StyledBackIcon className={'material-icons'}>close</StyledBackIcon>
     </StyledBackIconWrapper>
   )
+
 }
 
 export default BackIcon;

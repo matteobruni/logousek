@@ -10,14 +10,13 @@ import LoginModal from '../../login-modal'
 import { ThemeContext } from 'styled-components'
 import * as S from "./styled"
 
-type LoginScreenType = {}
 
-const LoginScreen: React.FC<LoginScreenType> = () => {
+const LoginScreen: React.FC = () => {
   const router = useRouter()
   const modalContext = useContext(ModalContext)
   const themeContext = useContext(ThemeContext)
 
-  const redirectToMenu = (userName: any) => {
+  const redirectToMenu = (userName: string) => {
     setNewUser(userName)
     modalContext?.closeModal()
     router.push('/game-menu')
@@ -37,8 +36,6 @@ const LoginScreen: React.FC<LoginScreenType> = () => {
       </Head>
       <S.LoginWrapper>
         <S.LoginButtonsWrapper>
-          <Button onClick={() => { }} disabled>Přihlásit Facebookem</Button>
-          <Button onClick={() => { }} disabled>Přihlásit Google účtem</Button>
           <Button onClick={_loginAsGuess}>Přihlásit Host</Button>
         </S.LoginButtonsWrapper>
         <S.Footer>

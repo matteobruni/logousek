@@ -10,17 +10,10 @@ import CustomDragLayer from './custom-drag-layer'
 import AsContextProvider from '@contexts/as-context/as-context-provider'
 import { ActivityInterface } from '@components/pages/activity'
 import { AsContextProviderInterface } from '@contexts/as-context/as-context-provider'
-
-// enum ASComplexity {
-//   easy = '1',
-//   normal='2',
-//   hard="3"
-// }
-
-type ASProps = { complexity: string, onHandleChanged: () => void}
+import { ActivityProps } from '@components/pages/activity'
 
 const AS = (
-  { complexity, onHandleChanged }: ASProps,
+  { complexity, onHandleChanged }: ActivityProps,
   ref: React.Ref<ActivityInterface> | undefined
 ) => {
   const [cardCount] = useState(
@@ -30,7 +23,7 @@ const AS = (
 
   useImperativeHandle(ref, (): ActivityInterface => ({
     getResult: contextProviderRef?.current?.checkResult || (() => false),
-    generateNext: () => {}
+    generateNext: () => { }
   }))
 
   return (

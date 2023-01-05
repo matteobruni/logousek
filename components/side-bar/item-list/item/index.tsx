@@ -8,7 +8,7 @@ export type ItemType = {
   onClick: () => void;
 };
 
-const Item: React.FC<ItemType> = ({ name, icon, title, onClick }) => {
+const Item: React.FC<ItemType> = ({ icon, title, onClick }) => {
   return (
     <S.ListItem>
       <S.ListItemLink onClick={onClick}>
