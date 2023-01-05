@@ -12,9 +12,13 @@ export const ContentWrapper = styled.main`
   margin-top: 70px;
 
   @media ${devices.laptop} {
-    padding: 0.8rem 8rem;
+    padding: 0.8rem 6rem;
     padding-bottom: 100px;
     flex-direction: row;
+  }
+
+  @media ${devices.laptopL} {
+    padding: 0.8rem 8rem;
   }
 `;
 
@@ -28,6 +32,9 @@ export const GameTypeDetail = styled.section`
 
   @media ${devices.laptop} {
     max-height: auto;
+    margin: 2rem;
+  }
+  @media ${devices.laptopL} {
     margin: 7rem;
   }
 `;
