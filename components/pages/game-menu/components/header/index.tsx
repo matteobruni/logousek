@@ -31,8 +31,7 @@ const GameMenuHeader: React.FC<GameMenuHeaderType> = ({ points, userName }) => {
       <S.UserName>{userName}</S.UserName>
     </S.User>,
     <S.CashContainer key="game-menu-coins">
-      <span>12h 30m |<S.Icon className={'material-icons'}>payments</S.Icon></span>
-      <span>{points || 0}</span>
+      <S.CashWrapper>12h 30m |<S.Icon className={'material-icons'}>payments</S.Icon>{points || 0}</S.CashWrapper>
     </S.CashContainer>,
     <ClickableIconWrapper key="game-menu-icons">
       <S.DarkModeSwitchWrapper>

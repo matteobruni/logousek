@@ -4,17 +4,17 @@ import { hideScrollBarCss } from '../../../styles/scrollbar-styles'
 
 export const ContentWrapper = styled.main`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex: 1;
-  padding: 0.8rem 8rem;
+  padding: 0.8rem 2rem;
   padding-bottom: 100px;
   user-select: none;
   margin-top: 70px;
 
   @media ${devices.laptop} {
-    flex-direction: column;
-    padding: 0.8rem 2rem;
+    padding: 0.8rem 8rem;
     padding-bottom: 100px;
+    flex-direction: row;
   }
 `;
 
@@ -23,17 +23,17 @@ export const GameTypeDetail = styled.section`
   max-height: 80vh;
   flex-direction: column;
   justify-content: center;
-  flex: 4;
-  margin-right: 4rem;
+  flex: 2;
+  margin: 2rem;
 
   @media ${devices.laptop} {
     max-height: auto;
-    margin-right: 0rem;
+    margin: 7rem;
   }
 `;
 
 export const GameList = styled.section`
-  flex: 5;
+  flex: 3;  
   display: flex;
   flex-wrap: wrap;
   align-content: center;
