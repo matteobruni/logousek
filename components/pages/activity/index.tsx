@@ -110,13 +110,21 @@ const Activity = () => {
     }
   }, [gameState, modalContext, router, correctTasks, GetPointsForTask])
 
+  const playAudio = (audio: HTMLAudioElement | undefined) => {
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.play();
+    }
+  }
+
   const fail = () => {
-    wrongAudio && wrongAudio.play();
+    playAudio(wrongAudio)
     setCurrentTask((v) => ++v)
   }
 
   const success = () => {
-    successAudio && successAudio.play();
+    playAudio(successAudio)
     setCurrentTask((v) => ++v)
     setCorrectTasks((v) => ++v)
   }
