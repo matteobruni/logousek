@@ -41,8 +41,8 @@ const Activity = () => {
   const [correctTasks, setCorrectTasks] = useState(0)
   const [wasChanged, setWasChanged] = useState(false)
   const [gameState, setGameState] = useState('playing')
-  const [successAudio] = useState(new Audio(successAudioData));
-  const [wrongAudio] = useState(new Audio(wrongAudioData));
+  const [successAudio, setSuccessAudio] = useState<HTMLAudioElement | undefined>();
+  const [wrongAudio, setWrongAudio] = useState<HTMLAudioElement | undefined>();
 
   const activityRef = useRef<ActivityInterface>(null)
   const router = useRouter()
@@ -81,11 +81,15 @@ const Activity = () => {
       event.returnValue = 'string'
     }
     window.addEventListener('beforeunload', showAlert)
-
     return () => {
       window.removeEventListener('beforeunload', showAlert)
     }
   })
+
+  useEffect(() => {
+    setSuccessAudio(new Audio(successAudioData));
+    setWrongAudio(new Audio(wrongAudioData));
+  }, [])
 
   useEffect(() => {
     if (gameState === 'finish') {
@@ -107,12 +111,12 @@ const Activity = () => {
   }, [gameState, modalContext, router, correctTasks, GetPointsForTask])
 
   const fail = () => {
-    wrongAudio.play();
+    wrongAudio && wrongAudio.play();
     setCurrentTask((v) => ++v)
   }
 
   const success = () => {
-    successAudio.play();
+    successAudio && successAudio.play();
     setCurrentTask((v) => ++v)
     setCorrectTasks((v) => ++v)
   }

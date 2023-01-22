@@ -16,9 +16,13 @@ export default forwardRef(function AudioMemory(
     const [audioElement] = useState(
         getAudioConfElement(complexity, 'audio_memory')
     )
-    const [audio] = useState(new Audio(audioElement.sound));
+    const [audio, setAudio] = useState<HTMLAudioElement | undefined>(undefined);
     const [selectedElements, setSelectedElement] = useState<string[]>([])
-    useEffect(() => { })
+
+    useEffect(() => {
+        setAudio(new Audio(audioElement.sound))
+    }, [audioElement.sound])
+
     useImperativeHandle(ref, () => ({
         getResult: () =>
             checkAnswer(
@@ -41,7 +45,7 @@ export default forwardRef(function AudioMemory(
     }
 
     const onTimerIsDoneHandler = () => {
-        audio.pause()
+        audio && audio.pause()
     }
 
 
