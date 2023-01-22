@@ -5,6 +5,7 @@ export type showModalModalInfoParam = {
     closeDisabled?: boolean,
     onOkClick?: () => void,
     onStornoClick?: () => void,
+    autoWidth?: boolean
 }
 
 type ModalContextType = {

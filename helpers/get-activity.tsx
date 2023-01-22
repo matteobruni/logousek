@@ -1,8 +1,9 @@
 import React from "react";
-import ASActivity from "../components/activities/a_s";
-import VisualDifActivity from "../components/activities/visual_differentiation";
-import VisualMemoryActivity from "../components/activities/visual_memory";
+import ASActivity from "../components/activities/visual/a_s";
+import VisualDifActivity from "../components/activities/visual/visual_differentiation";
+import VisualMemoryActivity from "../components/activities/visual/visual_memory";
 import AudioDifferentiation from "../components/activities/audio/audio-differentiation";
+import Memory from "components/activities/audio/memory";
 
 export const getActivity = (activityName: string) => {
   switch (activityName) {
@@ -12,8 +13,11 @@ export const getActivity = (activityName: string) => {
       return VisualMemoryActivity;
     case "visual_differentiation":
       return VisualDifActivity;
-    case "audio_differentiation":
+    case "sound_differentiation":
+    case "word_differentiation":
       return AudioDifferentiation;
+    case "audio_memory":
+      return Memory;
     default:
       return ActivityNotFound;
   }

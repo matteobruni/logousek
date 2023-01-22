@@ -39,7 +39,8 @@ const Cards: React.FC<CardsProps> = ({ gameInfo }) => {
     Array.isArray(gameInfo.difficulty) && gameInfo.difficulty.length
       ? modalContext?.showModal({
         content: <ItemList items={gameInfo.difficulty} onItemClick={redirectToActivity} />,
-        header: "Vyberte obtížnost"
+        header: "Vyberte obtížnost",
+        autoWidth: true
       })
       : redirectToActivity()
   }

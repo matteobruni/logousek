@@ -4,11 +4,12 @@ import { ButtonSizesEnum } from '.'
 interface ButtonRowWrapperProps {
   children?: string
   title?: string
-  onClick: () => void
+  onClick?: () => void
   size?: ButtonSizesEnum
   disabled?: boolean
   color?: string
   backgroundColor?: string
+  type?: "button" | "submit" | "reset" | undefined
 }
 
 export const ButtonRowWrapper = styled.button<ButtonRowWrapperProps>`

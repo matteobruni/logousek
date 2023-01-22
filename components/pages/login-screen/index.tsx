@@ -6,7 +6,8 @@ import RouteWrapper from '../../route-wrapper'
 import { useRouter } from 'next/router'
 import { setNewUser } from '../../../helpers/local-storage-helper'
 import ModalContext from '../../../contexts/modal-context'
-import LoginModal from '../../login-modal'
+import LoginHost from '@components/login-forms/login-host'
+import LoginUser from '@components/login-forms/login-user'
 import { ThemeContext } from 'styled-components'
 import * as S from "./styled"
 
@@ -22,10 +23,35 @@ const LoginScreen: React.FC = () => {
     router.push('/game-menu')
   }
 
+  const onLoginHandler = ({ userName, password }: { userName: string, password: string }) => {
+
+  }
+
+  const onLoginGuessHandler = ({ userName }: { userName: string }) => {
+
+  }
+
   const _loginAsGuess = () => {
     modalContext?.showModal({
-      content: <LoginModal onFormFilledHandler={redirectToMenu} />,
-      header: 'Vytváření nového uživatele'
+      autoWidth: true,
+      content: <LoginHost onFormFilledHandler={onLoginGuessHandler} />,
+      header: 'Přihlášení hosta'
+    })
+  }
+
+  const _loginAsUser = () => {
+    modalContext?.showModal({
+      autoWidth: true,
+      content: <LoginUser onFormFilledHandler={onLoginHandler} />,
+      header: 'Přihlášení uživatele'
+    })
+  }
+
+  const _loginAsAdmin = () => {
+    modalContext?.showModal({
+      autoWidth: true,
+      content: <LoginUser onFormFilledHandler={onLoginHandler} />,
+      header: 'Přihlášení admina'
     })
   }
 
@@ -36,6 +62,8 @@ const LoginScreen: React.FC = () => {
       </Head>
       <S.LoginWrapper>
         <S.LoginButtonsWrapper>
+          <Button onClick={_loginAsAdmin}>Přihlásit Admina</Button>
+          <Button onClick={_loginAsUser}>Přihlásit Uživatele</Button>
           <Button onClick={_loginAsGuess}>Přihlásit Host</Button>
         </S.LoginButtonsWrapper>
         <S.Footer>

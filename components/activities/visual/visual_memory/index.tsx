@@ -10,13 +10,13 @@ import {
   ShowedPart,
   ActivityCardWrapper,
 } from './styled'
-import ActivityCard from '../activity-card'
-import { getRandomSvgsWithChangeConfig } from '../../../helpers/svg-helpers'
-import Timer from '../../timer/index'
-import TrafficLights from '../../traffic-lights'
-import { shuffle } from '../../../helpers/array-helper'
+import ActivityCard from '../../activity-card'
+import { getRandomSvgsWithChangeConfig } from 'helpers/svg-helpers'
+import Timer from '@components/timer/index'
+import TrafficLights from '@components/traffic-lights'
+import { shuffle } from 'helpers/array-helper'
 import { ActivityProps } from '@components/pages/activity'
-import { SvgListType } from '../../../helpers/svg-helpers'
+import { SvgListType } from 'helpers/svg-helpers'
 
 const TIMER_COUNT_DOWN_TIME = 6000
 
@@ -92,6 +92,8 @@ export default forwardRef(function VisualMemoryActivity(
       </ActivityCard>
     )
   })
+
+
   return (
     <TemplateWrapper isQuesionpart={isQuesionpart}>
       <ShowedPart onClick={() => setIsQuesionpart(true)}>

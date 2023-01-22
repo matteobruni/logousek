@@ -6,8 +6,7 @@ export const LoginModalWrapper = styled.div`
   align-items: center;
 `
 
-export const LoginModalForm = styled.div`
-margin-top: 1rem;
+export const LoginModalForm = styled.form`
   & > * {
     width: 100%;
   margin-top: 1rem;
@@ -38,6 +37,7 @@ export const LabelWithInput = styled.span`
   flex-direction: column;
   justify-content: center;
   align-content: center;
+  margin-top: 0px;
 `
 
 export const CustomLabel = styled.label`

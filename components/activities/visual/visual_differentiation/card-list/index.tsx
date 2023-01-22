@@ -1,6 +1,6 @@
 import React from 'react'
 import { CardWrapper } from './styled'
-import ActivityCard from '../../activity-card'
+import ActivityCard from '../../../activity-card'
 import { AnswerType } from '..'
 
 type CardListType = {
@@ -85,7 +85,7 @@ const CardList: React.FC<CardListType> = ({
         case '2':
           return _getCardsForSecLevel(correctAnswer, index)
         case '3':
-        case '4':
+        default:
           return _getCardsFoThirdLevel(correctAnswer, index)
       }
     })

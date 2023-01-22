@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './styled'
 
-interface ClickableIconProps { onClick: () => void, icon: string, fontSize?: number }
+interface ClickableIconProps { onClick: () => void, icon: string, fontSize?: string }
 
 const ClickableIcon: React.FC<ClickableIconProps> = ({ onClick, icon, fontSize }) => {
   return (

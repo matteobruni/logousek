@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const CardWrapper = styled.div`
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap;    
+  align-items: center;
   gap: 1.2rem;
   max-width: 100vw;
 

@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import { ThemeProvider } from 'styled-components'
-import '../styles/globals.css'
+import { SessionProvider } from "next-auth/react"
 import { AnimatePresence } from 'framer-motion'
+import '../styles/globals.css'
 import Modal, { ModalInterfaceType } from '../components/modal'
 import Backdrop, { BackdropInterfaceType } from '../components/modal/backdrop'
 import ModalContext from '../contexts/modal-context'
@@ -13,7 +14,6 @@ import { useDarkMode } from '../hooks/useDarkmode'
 import { appWithTranslation } from 'next-i18next'
 import { showModalModalInfoParam } from '../contexts/modal-context'
 import { ParallaxProvider } from 'react-scroll-parallax'
-
 interface ThemeType {
   colors: {
     primary: string
@@ -30,7 +30,7 @@ interface ThemeType {
   }
 }
 
-function MyApp({ Component, pageProps }: { Component: React.FC, pageProps: any }) {
+function MyApp({ Component, pageProps, session }: { Component: React.FC, pageProps: any, session: any }) {
   const [theme, changeTheme] = useDarkMode()
   const modalRef = useRef<ModalInterfaceType>(null)
   const backdropRef = useRef<BackdropInterfaceType>(null)
@@ -74,10 +74,10 @@ function MyApp({ Component, pageProps }: { Component: React.FC, pageProps: any }
 
   const themeMode: ThemeType = theme === 'light' ? lightTheme : darkTheme
   return (
-
-    <AnimatePresence mode="wait">
-      <ParallaxProvider>
-        {/* <AnimatedCursor
+    <SessionProvider session={session}>
+      <AnimatePresence mode="wait">
+        <ParallaxProvider>
+          {/* <AnimatedCursor
           innerSize={28}
           outerSize={0}
           innerScale={0.7}
@@ -99,20 +99,21 @@ function MyApp({ Component, pageProps }: { Component: React.FC, pageProps: any }
             zIndex: 1003
           }}
         /> */}
-        <DndProvider backend={TouchBackend} options={backendOptions}>
-          <ThemeProvider theme={themeMode}>
-            <CoreContext.Provider value={{ theme, changeTheme }}>
-              <ModalContext.Provider value={{ showModal, closeModal }}>
-                <Modal ref={modalRef} closeBackdrop={closeBackdrop} />
-                <Backdrop ref={backdropRef}>
-                  <Component {...pageProps} />
-                </Backdrop>
-              </ModalContext.Provider>
-            </CoreContext.Provider>
-          </ThemeProvider>
-        </DndProvider>
-      </ParallaxProvider>
-    </AnimatePresence>
+          <DndProvider backend={TouchBackend} options={backendOptions}>
+            <ThemeProvider theme={themeMode}>
+              <CoreContext.Provider value={{ theme, changeTheme }}>
+                <ModalContext.Provider value={{ showModal, closeModal }}>
+                  <Modal ref={modalRef} closeBackdrop={closeBackdrop} />
+                  <Backdrop ref={backdropRef}>
+                    <Component {...pageProps} />
+                  </Backdrop>
+                </ModalContext.Provider>
+              </CoreContext.Provider>
+            </ThemeProvider>
+          </DndProvider>
+        </ParallaxProvider>
+      </AnimatePresence>
+    </SessionProvider>
   )
 }
 

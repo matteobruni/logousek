@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { useDrag } from 'react-dnd'
-import ActivityCard from '../../activity-card'
+import ActivityCard from '../../../activity-card'
 import { ThemeContext } from 'styled-components'
-import AsContext from '../../../../contexts/as-context'
+import AsContext from '@contexts/as-context'
 import { CardType } from '@contexts/as-context/as-context-provider/use-get-cards'
 
 interface DragCardProps { content?: any, children?: any, customRadius?: string, item?: CardType }
@@ -25,7 +25,7 @@ const DragCard: React.FC<DragCardProps> = ({ content, children, customRadius, it
         customAspectRatio={asContext?.aspectRatio}
         color={themeContext?.colors?.lightGrey}
       />
-      )
+    )
     : (
       <div ref={drag}>
         <ActivityCard
@@ -35,7 +35,7 @@ const DragCard: React.FC<DragCardProps> = ({ content, children, customRadius, it
           {content || children}
         </ActivityCard>
       </div>
-      )
+    )
 }
 
 export default DragCard

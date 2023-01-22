@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 interface StyledIconProps {
-  fontSize?: number
+  fontSize?: string
 }
 
 export const Link = styled.a`

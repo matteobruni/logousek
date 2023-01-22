@@ -118,6 +118,7 @@
     "**/*.ts",
     "**/*.tsx",
     "index.d.ts",
+    "s/*",
     "backend/helpers/handleRequests.js",
     "backend/helpers/checkHttpMethod.js",
     "backend/helpers/checkDtoIn.js",
@@ -126,7 +127,8 @@
     "components/activities/a_s/as-context-provider/use-get-cards/styled.js",
     "utils/AnimatedCursor/index.ts",
     "components/timer/index.tss",
-    "helpers/date-helper.js"
+    "helpers/date-helper.js",
+    "components/activities/audio/audio-differentiation/index.tsx"
   ],
   "exclude": [
     "node_modules"

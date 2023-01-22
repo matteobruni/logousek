@@ -96,7 +96,6 @@ const Home = () => {
     endScroll: windowDimensions?.height || 1080,
     targetElement: scrollTarget.current ? scrollTarget.current : undefined,
   });
-  console.log("windowDimensions?.height", windowDimensions?.height)
   const firstTreeParallax = useParallax<HTMLDivElement>({
     startScroll: 0,
     translateY: [0, -(windowDimensions?.height || 1080) / 20, 'easeInQuad'],
@@ -124,42 +123,6 @@ const Home = () => {
     router.push(url)
   }
 
-  // const parseNumberFromPixelMeasure = (string) => {
-  //   return Number(string.slice(0, -2)) ?? 0
-  // }
-
-  // const onScrollHandler = (event, event2) => {
-  //   const isMobile =
-  //     parseNumberFromPixelMeasure(size.laptop) > windowDimensions.width
-
-  //   introSectionElement.current.style.left =
-  //     event.currentTarget.scrollTop + 'px'
-
-  //   introSectionElement.current.style.top =
-  //     event.currentTarget.scrollTop * 0.7 + 'px'
-
-  //   logousekElement.current.style.bottom =
-  //     -event.currentTarget.scrollTop * 0.22 + 40 + 'px'
-  //   logousekElement.current.style.scale = Math.abs(
-  //     (windowDimensions.height - event.currentTarget.scrollTop * 0.7) /
-  //       windowDimensions.height
-  //   )
-
-  //   firstForegroundTreeElement.current.style.scale =
-  //     (windowDimensions.height + event.currentTarget.scrollTop) /
-  //     windowDimensions.height
-  //   firstForegroundTreeElement.current.style.left =
-  //     event.currentTarget.scrollTop * 0.3 + (isMobile ? -250 : 20) + 'px'
-  //   secondForegroundTreeElement.current.style.scale =
-  //     (windowDimensions.height + event.currentTarget.scrollTop) /
-  //     windowDimensions.height
-  //   secondForegroundTreeElement.current.style.right =
-  //     event.currentTarget.scrollTop * 0.3 + (isMobile ? -250 : 20) + 'px'
-  //   hillElement.current.style.height =
-  //     40 -
-  //     (100 / windowDimensions.height) * (event.currentTarget.scrollTop * 0.4) +
-  //     'vh'
-  // }
   const sideBarPageNav = [
     {
       name: 'introduction',

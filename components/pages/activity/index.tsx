@@ -18,6 +18,8 @@ import RoundFooter from '../../round-footer'
 import ModalContext from '../../../contexts/modal-context'
 import GainedPoints from './gained-points'
 import { GameType } from '../../../constants/activity-conf'
+import successAudioData from "public/sounds/success.mp3"
+import wrongAudioData from "public/sounds/wrong.mp3"
 import * as S from './styled'
 
 const DEFAULT_POINTS_FOR_TASK = 10
@@ -39,6 +41,9 @@ const Activity = () => {
   const [correctTasks, setCorrectTasks] = useState(0)
   const [wasChanged, setWasChanged] = useState(false)
   const [gameState, setGameState] = useState('playing')
+  const [successAudio] = useState(new Audio(successAudioData));
+  const [wrongAudio] = useState(new Audio(wrongAudioData));
+
   const activityRef = useRef<ActivityInterface>(null)
   const router = useRouter()
   const activityName = router.query?.activityName as string
@@ -96,15 +101,18 @@ const Activity = () => {
         header: 'Konec Hry',
         onOkClick: redirectToGameMenu,
         closeDisabled: true,
+        autoWidth: true
       })
     }
   }, [gameState, modalContext, router, correctTasks, GetPointsForTask])
 
   const fail = () => {
+    wrongAudio.play();
     setCurrentTask((v) => ++v)
   }
 
   const success = () => {
+    successAudio.play();
     setCurrentTask((v) => ++v)
     setCorrectTasks((v) => ++v)
   }

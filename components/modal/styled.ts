@@ -6,6 +6,7 @@ interface ModalWrapperType { show?: boolean }
 
 interface ModalContainerProps {
   children: Array<React.ReactElement | undefined>
+  autoWidth: boolean
 }
 
 export const ModalWrapper = styled.div<ModalWrapperType>`
@@ -20,7 +21,7 @@ export const ModalWrapper = styled.div<ModalWrapperType>`
   transform: scale(0);
   opacity: 0;
   animation: ${({ show }) =>
-      show ? 'popup' : show === undefined ? 'none' : 'dump'}
+    show ? 'popup' : show === undefined ? 'none' : 'dump'}
     1s forwards;
   @keyframes popup {
     from {
@@ -52,47 +53,50 @@ export const ModalContainer = styled.div<ModalContainerProps>`
   display: flex;
   flex-direction: column;
   margin: 1rem;
-  width: 100vw;
+  padding: 0.5rem 1rem;
+  width: ${({ autoWidth }) => autoWidth ? "auto" : "100vw"};
   background-color: white;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
 
   @media ${devices.tablet} {
-    width: 70vw;
+    width: ${({ autoWidth }) => autoWidth ? "auto" : "70vw"};
   }
 
   @media ${devices.laptop} {
-    width: 60vw;
+    width:  ${({ autoWidth }) => autoWidth ? "auto" : "60vw"};
   }
 
   @media ${devices.laptopL} {
-    width: 50vw;
+    width:  ${({ autoWidth }) => autoWidth ? "auto" : "50vw"};
   }
 
   @media ${devices.desktop} {
-    width: 40vw;
+    width:  ${({ autoWidth }) => autoWidth ? "auto" : "40vw"};
   }
 
   @media ${devices.desktopL} {
-    width: 25vw;
+    width:  ${({ autoWidth }) => autoWidth ? "auto" : "25vw"};
   }
 `
 
 export const Modalheader = styled.div`
   display: flex;
-  padding: 0.3rem;
-  background: #ccc;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   & > h3 {
-    margin: 0px;
-    text-align: center;
+    margin: 0px;  
+    font-weight: 500;
+    font-size: 20pt;
     flex: 1;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem; 
   }
 `
 
 export const ModalContent = styled.div`
-  padding: 0.5rem 2rem;
   flex: 1;
+`
+
+export const BackIconWrapper = styled.span`
+  margin: 0.5rem;
 `

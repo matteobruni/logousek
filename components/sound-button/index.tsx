@@ -1,24 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import ClickableIcon from "@components/clickable-icon";
 
-type SoundButtonProps = { sound: string; fontSize: number };
-
-const SoundButton: React.FC<SoundButtonProps> = ({ sound, fontSize }) => {
-  const [audio] = useState(new Audio(sound));
+type SoundButtonProps = { sound: string; fontSize: string, customSound?: HTMLAudioElement };
+const SoundButton: React.FC<SoundButtonProps> = ({ sound, fontSize, customSound }) => {
   const [isPlayed, setIsPlayed] = useState(false);
+  const [audio] = useState(new Audio(sound));
+
+  const getSound = useCallback(() => {
+    return customSound || audio
+  }, [audio, customSound])
 
   useEffect(() => {
-    audio.loop = true;
-  }, [audio]);
+    getSound().loop = true;
+    return () => {
+      getSound().pause()
+    }
+  }, [getSound]);
 
   const playAudio = () => {
     setIsPlayed(true);
-    audio.play();
+    try {
+      getSound().play();
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const stopAudio = () => {
     setIsPlayed(false);
-    audio.pause();
+    getSound().pause();
   };
   return (
     <div>

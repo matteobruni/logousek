@@ -60,7 +60,6 @@ const RoundFooter: React.FC<RoundFooterType> = ({
       </S.NavLink>
     )
   })
-  console.log("customHeight", customHeight)
   return (
     <footer>
       <S.NavbarWrapper

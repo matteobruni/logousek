@@ -4,8 +4,8 @@ import {
   getRandomSvgs,
   getRandomSvgsWithChangeConfig,
   getHideConfig,
-} from '../../../helpers/svg-helpers'
-import { shuffle } from '../../../helpers/array-helper'
+} from "helpers/svg-helpers"
+import { shuffle } from 'helpers/array-helper'
 import { ActivityProps } from '@components/pages/activity'
 const START_COUNT_CARDS = 2
 

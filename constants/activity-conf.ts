@@ -68,18 +68,31 @@ export const games: GamesType = {
   ],
   auditory_perception: [
     {
-      name: "audio_differentiation",
+      name: "sound_differentiation",
       title: "Diferenciace zvuků",
+      difficulty: [
+        { id: 1, title: "Lehké", points: 10 },
+        { id: 2, title: "Střední", points: 20 },
+        { id: 3, title: "Těžké", points: 30 }
+      ],
       image: "#",
     },
     {
       name: "word_differentiation",
       title: "Diferenciace slov",
+      difficulty: [
+        { id: 1, title: "Lehké", points: 10 }
+      ],
       image: "#",
     },
     {
       name: "audio_memory",
       title: "Sluchová paměť",
+      difficulty: [
+        { id: 1, title: "Lehké", points: 10 },
+        { id: 2, title: "Střední", points: 20 },
+        { id: 3, title: "Těžké", points: 30 }
+      ],
       image: "#",
     },
   ],
