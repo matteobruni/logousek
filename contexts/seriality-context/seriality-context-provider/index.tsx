@@ -37,10 +37,11 @@ export default forwardRef(function AsContextProvider(
   useImperativeHandle(ref, (): SerialityContextProviderInterface => ({
     checkResult: () => {
       //TODO: check result
+      console.log("checking for result...")
       return true;
     }
   }))
-  console.log("cards", cards)
+
   const serialityContextValue: SerialityContextValueType
     = {
     cards,

@@ -1,17 +1,6 @@
-import React, {
-    useState,
-    forwardRef,
-    useRef,
-    useImperativeHandle,
-} from 'react'
-// import AvaibleCards from './avaible-cards'
-// import DropCards from './drop-cards'
+import React from 'react'
 import CustomDragLayer from './custom-drag-layer'
-import SerialityContextProvider, {
-    SerialityContextProviderInterface,
-} from '@contexts/seriality-context/seriality-context-provider'
-import { ActivityInterface } from '@components/pages/activity'
-import { ActivityProps } from '@components/pages/activity'
+import { CardType } from '@contexts/seriality-context/seriality-context-provider/use-get-cards'
 import CardList from './card-list'
 
 export interface Item {
@@ -19,18 +8,19 @@ export interface Item {
     text: string
 }
 
-const SortableList: React.FC<{ count: number, onHandleChanged: () => void }> = (
-    { onHandleChanged }
+type CardListType = {
+    cards: CardType[],
+    onHandleChange: (cards: CardType[]) => void
+}
+
+const SortableList: React.FC<CardListType> = (
+    { cards, onHandleChange }
 ) => {
 
-    const contextProviderRef = useRef<SerialityContextProviderInterface>(null)
 
     return (
         <div>
-            {/*
-                <DropCards />
-                <AvaibleCards /> */}
-            <CardList />
+            <CardList cards={cards} onHandleChange={onHandleChange} />
             <CustomDragLayer />
         </div>
     )

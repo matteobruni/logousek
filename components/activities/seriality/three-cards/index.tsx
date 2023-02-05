@@ -1,5 +1,4 @@
 import React, {
-    useState,
     forwardRef,
     useRef,
     useImperativeHandle,
@@ -10,7 +9,7 @@ import SerialityContextProvider, {
 } from '@contexts/seriality-context/seriality-context-provider'
 import { ActivityInterface } from '@components/pages/activity'
 import { ActivityProps } from '@components/pages/activity'
-import SortableList from '../sortable-list'
+import ThreeCardContent from "./tree-card-content"
 
 
 export interface Item {
@@ -22,12 +21,12 @@ const ThreeCards = (
     { complexity, onHandleChanged }: ActivityProps,
     ref: React.Ref<ActivityInterface> | undefined
 ) => {
-    const contextProviderRef = useRef<SerialityContextProviderInterface>(null)
+    const serialityContextProviderRef = useRef<SerialityContextProviderInterface>(null)
 
     useImperativeHandle(
         ref,
         (): ActivityInterface => ({
-            getResult: contextProviderRef?.current?.checkResult || (() => false),
+            getResult: serialityContextProviderRef?.current?.checkResult || (() => false),
             generateNext: () => { },
         })
     )
@@ -40,12 +39,11 @@ const ThreeCards = (
 
     return (
         <SerialityContextProvider
-            ref={contextProviderRef}
+            ref={serialityContextProviderRef}
             count={3}
             onHandleChanged={onHandleChanged}
         >
-            <SortableList count={3} onHandleChanged={_onHandleChanged} />
-
+            <ThreeCardContent />
         </SerialityContextProvider>
     )
 }

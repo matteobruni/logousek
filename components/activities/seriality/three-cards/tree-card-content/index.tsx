@@ -1,15 +1,8 @@
 import React, {
-    useState,
-    forwardRef,
-    useRef,
-    useImperativeHandle,
-    useEffect
+    useContext
 } from 'react'
-import SerialityContextProvider, {
-    SerialityContextProviderInterface,
-} from '@contexts/seriality-context/seriality-context-provider'
-import { ActivityInterface } from '@components/pages/activity'
-import { ActivityProps } from '@components/pages/activity'
+import SerialityContext from '@contexts/seriality-context'
+import { CardType } from '@contexts/seriality-context/seriality-context-provider/use-get-cards'
 import SortableList from '../../sortable-list'
 
 
@@ -18,15 +11,18 @@ export interface Item {
     text: string
 }
 
-const ThreeCards = (
+const ThreeCardContent = (
 
 ) => {
+    const serialityContext = useContext(SerialityContext);
 
-
+    const onHandleChange = (cards: CardType[]) => {
+        serialityContext?.setCards(cards)
+    }
 
     return (
-        <SortableList count={3} onHandleChanged={() => { }} />
+        <SortableList onHandleChange={onHandleChange} cards={serialityContext?.cards || []} />
     )
 }
 
-export default forwardRef(ThreeCards)
+export default ThreeCardContent

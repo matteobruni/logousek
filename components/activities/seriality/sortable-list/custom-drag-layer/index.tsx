@@ -1,7 +1,12 @@
-import { CSSProperties } from 'react'
+import React, {
+  useContext,
+  CSSProperties
+} from 'react'
+import SerialityContext from '@contexts/seriality-context'
 import { useDragLayer } from 'react-dnd'
 import Card from '../card'
 import { XYCoord } from 'react-dnd/dist/types'
+import ActivityCard from '@components/activities/activity-card'
 
 const layerStyles: CSSProperties = {
   position: 'fixed',
@@ -18,6 +23,7 @@ function getItemStyles(initialOffset: XYCoord | null, currentOffset: XYCoord | n
       display: 'none'
     }
   }
+  initialOffset.y
   const { x, y } = currentOffset
   const transform = `translate(${x}px, ${y}px)`
   return {
@@ -35,16 +41,11 @@ const CustomDragLayer: React.FC = () => {
       currentOffset: monitor.getSourceClientOffset(),
       isDragging: monitor.isDragging()
     }))
+
+  console.log("item", item)
+  const serialityContext = useContext(SerialityContext);
   function renderItem() {
-    switch (itemType) {
-      case 'image':
-        return (
-          // <Card text="test" index={1} id={1} />
-          <p>dasdsadsa</p>
-        )
-      default:
-        return <p>dasdsadsa</p>
-    }
+    return <ActivityCard>{serialityContext?.cards.find(card => card.keyImage === item.id)?.img}</ActivityCard>
   }
   if (!isDragging) {
     return null

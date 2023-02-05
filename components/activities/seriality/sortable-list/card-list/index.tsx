@@ -1,19 +1,16 @@
 import React, { useContext, useCallback, useRef, useEffect } from 'react'
 import { useDragDropManager } from "react-dnd";
-import update from 'immutability-helper'
 import { useScroll } from 'hooks/useScroll'
-import SerialityContext from '@contexts/seriality-context'
 import { CardType } from '@contexts/seriality-context/seriality-context-provider/use-get-cards'
 import * as S from './styled'
 import Card from '../card'
 
 type CardListType = {
-    // cards: CardType[],
-    // onHandleChange: (cards: CardType[]) => void
+    cards: CardType[],
+    onHandleChange: (cards: CardType[]) => void
 }
 
-const CardList: React.FC<CardListType> = () => {
-    const serialityContext = useContext(SerialityContext)
+const CardList: React.FC<CardListType> = ({ cards, onHandleChange }) => {
     const wrapperRef = useRef<null | HTMLDivElement>(null);
 
     const { updatePosition } = useScroll(wrapperRef);
@@ -24,7 +21,6 @@ const CardList: React.FC<CardListType> = () => {
     useEffect(() => {
         const unsubscribe = monitor.subscribeToOffsetChange(() => {
             const offset = monitor.getSourceClientOffset()?.y as number;
-            console.log("offset", offset)
             updatePosition({ position: offset, isScrollAllowed: true });
         });
         return unsubscribe;
@@ -32,16 +28,13 @@ const CardList: React.FC<CardListType> = () => {
 
     const moveCard = useCallback(
         (dragIndex: number, hoverIndex: number) => {
-            serialityContext?.setCards((prevCards: CardType[]) =>
-                update(prevCards, {
-                    $splice: [
-                        [dragIndex, 1],
-                        [hoverIndex, 0, prevCards[dragIndex] as CardType],
-                    ],
-                })
-            )
+            const updatedCards = [...cards];
+            const draggedCard = cards[dragIndex];
+            updatedCards.splice(dragIndex, 1);
+            updatedCards.splice(hoverIndex, 0, draggedCard)
+            onHandleChange(updatedCards)
         },
-        [serialityContext]
+        [cards, onHandleChange]
     )
 
     const renderCard = useCallback(
@@ -62,7 +55,7 @@ const CardList: React.FC<CardListType> = () => {
 
     return (
         <S.Wrapper ref={wrapperRef}>
-            {serialityContext?.cards.map((card, i) => renderCard(card, i))}
+            {cards.map((card, i) => renderCard(card, i))}
         </S.Wrapper>
     )
 }
