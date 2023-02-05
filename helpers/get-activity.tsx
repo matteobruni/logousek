@@ -4,6 +4,7 @@ import VisualDifActivity from "../components/activities/visual/visual_differenti
 import VisualMemoryActivity from "../components/activities/visual/visual_memory";
 import AudioDifferentiation from "../components/activities/audio/audio-differentiation";
 import Memory from "components/activities/audio/memory";
+import ThreeCards from "@components/activities/seriality/three-cards";
 
 export const getActivity = (activityName: string) => {
   switch (activityName) {
@@ -18,6 +19,10 @@ export const getActivity = (activityName: string) => {
       return AudioDifferentiation;
     case "audio_memory":
       return Memory;
+    case "3_pictures":
+      return ThreeCards;
+    case "story":
+      return ThreeCards;
     default:
       return ActivityNotFound;
   }

@@ -110,6 +110,7 @@ export const getRandomSvgs = (count: number, usedPictures?: string[]) => {
   const usedSvgList = [
     ...(usedPictures ? getUsedPicturesConf(usedPictures) : svgList)
   ]
+
   return getRandomElementFromList(usedSvgList, count).map(
     (elementConf: { component: any }) => elementConf.component
   )

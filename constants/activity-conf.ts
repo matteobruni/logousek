@@ -99,10 +99,16 @@ export const games: GamesType = {
 
   seriality: [
     {
-      name: "3 pictures",
+      name: "3_pictures",
       title: "3 obrázky",
       image: "#",
     },
+    {
+      name: "story",
+      title: "Příběh",
+      image: "#"
+    },
+
   ],
 
   language_practicing: [
