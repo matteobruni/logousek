@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomDragLayer from './custom-drag-layer'
-import { CardType } from '@contexts/seriality-context/seriality-context-provider/use-get-cards'
+import { CardType } from '@contexts/seriality-context/seriality-context-provider'
 import CardList from './card-list'
 
 export interface Item {

@@ -36,13 +36,19 @@ const Cards: React.FC<CardsProps> = ({ gameInfo }) => {
   }
 
   const showDifficultyModal = () => {
-    Array.isArray(gameInfo.difficulty) && gameInfo.difficulty.length
-      ? modalContext?.showModal({
-        content: <ItemList items={gameInfo.difficulty} onItemClick={redirectToActivity} />,
-        header: "Vyberte obtížnost",
-        autoWidth: true
-      })
-      : redirectToActivity()
+    if (Array.isArray(gameInfo.difficulty)) {
+      if (gameInfo.difficulty.length > 1) {
+        modalContext?.showModal({
+          content: <ItemList items={gameInfo.difficulty} onItemClick={redirectToActivity} />,
+          header: "Vyberte obtížnost",
+          autoWidth: true
+        })
+      } else if (gameInfo.difficulty.length === 1) {
+        redirectToActivity(gameInfo.difficulty[0].id)
+      } else {
+        redirectToActivity()
+      }
+    } else { redirectToActivity() }
   }
 
   return (

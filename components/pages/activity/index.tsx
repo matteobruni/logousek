@@ -34,6 +34,7 @@ export type ActivityProps = {
   complexity: string
   onHandleChanged: () => void
   tasksElapsed: number
+  checkResult: () => void
 }
 
 const Activity = () => {
@@ -156,12 +157,13 @@ const Activity = () => {
       />
       <S.ActivityWrapper>
         <S.ContentWrapper>
-          {
+          {gameState !== 'finish' &&
             <Activity
               ref={activityRef}
               key={`activity_${currentTask}`}
               tasksElapsed={currentTask}
               onHandleChanged={onHandleChanged}
+              checkResult={_checkResult}
               complexity={activityDifficulty || '1'}
             />
           }

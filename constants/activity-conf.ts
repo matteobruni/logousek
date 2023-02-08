@@ -116,6 +116,9 @@ export const games: GamesType = {
       name: "language_practicing",
       title: "Cvičení s jazykem",
       image: "#",
+      difficulty: [
+        { id: 1, title: "Střední", points: 5 }
+      ],
     },
   ],
 };

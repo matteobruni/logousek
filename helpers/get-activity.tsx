@@ -5,6 +5,7 @@ import VisualMemoryActivity from "../components/activities/visual/visual_memory"
 import AudioDifferentiation from "../components/activities/audio/audio-differentiation";
 import Memory from "components/activities/audio/memory";
 import ThreeCards from "@components/activities/seriality/three-cards";
+import LanguagePracticing from "@components/activities/oromotorics/language-practicing";
 
 export const getActivity = (activityName: string) => {
   switch (activityName) {
@@ -23,6 +24,8 @@ export const getActivity = (activityName: string) => {
       return ThreeCards;
     case "story":
       return ThreeCards;
+    case "language_practicing":
+      return LanguagePracticing
     default:
       return ActivityNotFound;
   }
