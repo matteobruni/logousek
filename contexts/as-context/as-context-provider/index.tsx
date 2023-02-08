@@ -46,13 +46,15 @@ export default forwardRef(function AsContextProvider(
 
   useImperativeHandle(ref, (): AsContextProviderInterface => ({
     checkResult: () => {
+      console.log("checking for result...", placedCards)
       const isCorrect = placedCards.reduce((result, currentPlacedCard, index) => {
         const expressedCardKey = SVGS_HASH[count][index]
         return currentPlacedCard?.keyImage !== expressedCardKey ? false : result
       }, true)
       return isCorrect
     }
-  }))
+  }),
+    [count, placedCards])
 
   const asContextValue: AsContextValueType
     = {

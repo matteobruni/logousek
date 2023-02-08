@@ -18,7 +18,7 @@ export const ItemTypes = {
 
 export interface CardProps {
     id: any
-    content: React.ReactElement
+    content: React.ReactNode
     index: number
     moveCard?: (dragIndex: number, hoverIndex: number) => void
 }

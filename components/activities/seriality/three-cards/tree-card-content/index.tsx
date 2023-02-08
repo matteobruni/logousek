@@ -2,7 +2,7 @@ import React, {
     useContext
 } from 'react'
 import SerialityContext from '@contexts/seriality-context'
-import { CardType } from '@contexts/seriality-context/seriality-context-provider/use-get-cards'
+import { CardType } from '@contexts/seriality-context/seriality-context-provider'
 import SortableList from '../../sortable-list'
 
 
@@ -17,7 +17,7 @@ const ThreeCardContent = (
     const serialityContext = useContext(SerialityContext);
 
     const onHandleChange = (cards: CardType[]) => {
-        serialityContext?.setCards(cards)
+        serialityContext?.setCards([...cards])
     }
 
     return (

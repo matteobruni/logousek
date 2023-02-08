@@ -35,13 +35,11 @@ const ThreeCards = (
         onHandleChanged()
     }, [onHandleChanged])
 
-    const _onHandleChanged = () => { }
 
     return (
         <SerialityContextProvider
             ref={serialityContextProviderRef}
-            count={3}
-            onHandleChanged={onHandleChanged}
+            type={"threePictures"}
         >
             <ThreeCardContent />
         </SerialityContextProvider>

@@ -5,25 +5,25 @@ export interface IUseScroll {
     isScrollAllowed: boolean;
 }
 
-const BOUND_HEIGHT = 70;
+const BOUND_WIDTH = 70;
 
 function getScrollDirection({
     position,
-    upperBounds = Infinity,
-    lowerBounds = -Infinity
+    leftBounds = Infinity,
+    rightBounds = -Infinity
 }: {
     position: number | undefined;
-    upperBounds: number | undefined;
-    lowerBounds: number | undefined;
-}): "top" | "bottom" | "stable" {
+    leftBounds: number | undefined;
+    rightBounds: number | undefined;
+}): "left" | "right" | "stable" {
     if (position === undefined) {
         return "stable";
     }
-    if (position > lowerBounds - BOUND_HEIGHT) {
-        return "bottom";
+    if (position > rightBounds - BOUND_WIDTH) {
+        return "right";
     }
-    if (position < upperBounds + BOUND_HEIGHT) {
-        return "top";
+    if (position < leftBounds + BOUND_WIDTH) {
+        return "left";
     }
     return "stable";
 }
@@ -38,19 +38,17 @@ export const useScroll = (ref: RefObject<HTMLElement | null>) => {
 
     const scrollSpeed = 1;
     const { position, isScrollAllowed } = config;
-
     const bounds = ref.current?.getBoundingClientRect();
-    console.log(bounds);
     const direction = getScrollDirection({
         position,
-        upperBounds: bounds?.top,
-        lowerBounds: bounds?.bottom
+        leftBounds: bounds?.left,
+        rightBounds: bounds?.right
     });
 
     useEffect(() => {
         if (direction !== "stable" && isScrollAllowed) {
             scrollTimer.current = setInterval(() => {
-                ref.current?.scrollBy(0, scrollSpeed * (direction === "top" ? -1 : 1));
+                ref.current?.scrollBy(scrollSpeed * (direction === "left" ? -1 : 1), 0);
             }, 1);
         }
         return () => {

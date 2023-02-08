@@ -1,7 +1,7 @@
-import React, { useContext, useCallback, useRef, useEffect } from 'react'
+import React, { useCallback, useRef, useEffect } from 'react'
 import { useDragDropManager } from "react-dnd";
 import { useScroll } from 'hooks/useScroll'
-import { CardType } from '@contexts/seriality-context/seriality-context-provider/use-get-cards'
+import { CardType } from '@contexts/seriality-context/seriality-context-provider';
 import * as S from './styled'
 import Card from '../card'
 
@@ -20,7 +20,7 @@ const CardList: React.FC<CardListType> = ({ cards, onHandleChange }) => {
 
     useEffect(() => {
         const unsubscribe = monitor.subscribeToOffsetChange(() => {
-            const offset = monitor.getSourceClientOffset()?.y as number;
+            const offset = monitor.getSourceClientOffset()?.x as number;
             updatePosition({ position: offset, isScrollAllowed: true });
         });
         return unsubscribe;
@@ -54,8 +54,10 @@ const CardList: React.FC<CardListType> = ({ cards, onHandleChange }) => {
 
 
     return (
-        <S.Wrapper ref={wrapperRef}>
-            {cards.map((card, i) => renderCard(card, i))}
+        <S.Wrapper>
+            <S.Container ref={wrapperRef}>
+                {cards.map((card, i) => renderCard(card, i))}
+            </S.Container>
         </S.Wrapper>
     )
 }

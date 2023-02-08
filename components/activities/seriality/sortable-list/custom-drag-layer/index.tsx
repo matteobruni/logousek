@@ -42,7 +42,6 @@ const CustomDragLayer: React.FC = () => {
       isDragging: monitor.isDragging()
     }))
 
-  console.log("item", item)
   const serialityContext = useContext(SerialityContext);
   function renderItem() {
     return <ActivityCard>{serialityContext?.cards.find(card => card.keyImage === item.id)?.img}</ActivityCard>
