@@ -89,10 +89,8 @@ import {
 //     },
 // }
 
-import NextAuth, { NextAuthOptions, Session, User } from "next-auth";
+import NextAuth, { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { AdapterUser } from 'next-auth/adapters';
-import { JWT } from 'next-auth/jwt';
 
 const authOptions: NextAuthOptions = {
     session: {
@@ -137,6 +135,7 @@ const authOptions: NextAuthOptions = {
             }
         })
     ],
+    secret: process.env.JWT_SECRET,
     pages: {
         signIn: "/auth/signIn",
         error: '/auth/error',
