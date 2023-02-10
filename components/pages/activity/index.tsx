@@ -8,18 +8,24 @@ import React, {
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import { useSession } from "next-auth/react";
+
+import PrivateRoute from '@components/auth/private-route'
+import successAudioData from "public/sounds/success.mp3"
+import wrongAudioData from "public/sounds/wrong.mp3"
+import Timer from '@components/timer'
+
+
 import ActivityHeader from '../../activity-header/activity-header'
 import RouteWrapper from '../../route-wrapper'
 import { getActivity } from '../../../helpers/get-activity'
 import { setUserPoints } from '../../../helpers/local-storage-helper'
 import { games } from '../../../constants/activity-conf'
-import Timer from '@components/timer'
 import RoundFooter from '../../round-footer'
 import ModalContext from '../../../contexts/modal-context'
 import GainedPoints from './gained-points'
 import { GameType } from '../../../constants/activity-conf'
-import successAudioData from "public/sounds/success.mp3"
-import wrongAudioData from "public/sounds/wrong.mp3"
+import axios, { AxiosError } from "axios"
 import * as S from './styled'
 
 const DEFAULT_POINTS_FOR_TASK = 10
@@ -51,6 +57,8 @@ const Activity = () => {
   const activityDifficulty = router.query?.difficulty as string
   const Activity = getActivity(activityName)
   const modalContext = useContext(ModalContext)
+  // const sessionData = useSession();
+
 
   const getActivityFromConf = useCallback(
     () =>
@@ -94,6 +102,7 @@ const Activity = () => {
 
   useEffect(() => {
     if (gameState === 'finish') {
+      // console.log("sessionData", sessionData)
       const redirectToGameMenu = () => {
         modalContext?.closeModal()
         router.push('/game-menu')
@@ -101,6 +110,15 @@ const Activity = () => {
           (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks
         )
       }
+      // const sendResult = async () => {
+      //   try {
+      //     await axios.post('/api/activity/add-score', { params: {} });
+      //   } catch (error) {
+
+      //   }
+      // }
+
+      // sendResult()
 
       modalContext?.showModal({
         header: 'Konec Hry',
@@ -147,60 +165,62 @@ const Activity = () => {
 
   return (
     <RouteWrapper colorScheme="#84E065">
-      <Head>
-        <title>Logousek - {getActivityFromConf()?.title}</title>
-      </Head>
-      <ActivityHeader
-        tasksCount={TASKS_COUNT}
-        currentTask={currentTask}
-        title={getActivityFromConf()?.title || ''}
-      />
-      <S.ActivityWrapper>
-        <S.ContentWrapper>
-          {gameState !== 'finish' &&
-            <Activity
-              ref={activityRef}
-              key={`activity_${currentTask}`}
-              tasksElapsed={currentTask}
-              onHandleChanged={onHandleChanged}
-              checkResult={_checkResult}
-              complexity={activityDifficulty || '1'}
-            />
-          }
-        </S.ContentWrapper>
-      </S.ActivityWrapper>
-      <footer>
-        <RoundFooter
-          activityTypes={[
-            {
-              name: '',
-              clickable: false,
-              title: (
-                <GainedPoints
-                  pointsForTask={GetPointsForTask() || DEFAULT_POINTS_FOR_TASK}
-                  correctTasks={correctTasks}
-                />
-              ),
-            },
-            {
-              name: 'timer',
-              title: (
-                <TimerWrapper>
-                  <Timer />
-                </TimerWrapper>
-              ),
-              clickable: false,
-            },
-            {
-              name: 'sendButton',
-              title: <S.SendButton>Potvrdit</S.SendButton>,
-              clickable: true,
-              onClick: _checkResult,
-              disabled: !wasChanged,
-            },
-          ]}
+      <PrivateRoute>
+        <Head>
+          <title>Logousek - {getActivityFromConf()?.title}</title>
+        </Head>
+        <ActivityHeader
+          tasksCount={TASKS_COUNT}
+          currentTask={currentTask}
+          title={getActivityFromConf()?.title || ''}
         />
-      </footer>
+        <S.ActivityWrapper>
+          <S.ContentWrapper>
+            {gameState !== 'finish' &&
+              <Activity
+                ref={activityRef}
+                key={`activity_${currentTask}`}
+                tasksElapsed={currentTask}
+                onHandleChanged={onHandleChanged}
+                checkResult={_checkResult}
+                complexity={activityDifficulty || '1'}
+              />
+            }
+          </S.ContentWrapper>
+        </S.ActivityWrapper>
+        <footer>
+          <RoundFooter
+            activityTypes={[
+              {
+                name: '',
+                clickable: false,
+                title: (
+                  <GainedPoints
+                    pointsForTask={GetPointsForTask() || DEFAULT_POINTS_FOR_TASK}
+                    correctTasks={correctTasks}
+                  />
+                ),
+              },
+              {
+                name: 'timer',
+                title: (
+                  <TimerWrapper>
+                    <Timer />
+                  </TimerWrapper>
+                ),
+                clickable: false,
+              },
+              {
+                name: 'sendButton',
+                title: <S.SendButton>Potvrdit</S.SendButton>,
+                clickable: true,
+                onClick: _checkResult,
+                disabled: !wasChanged,
+              },
+            ]}
+          />
+        </footer>
+      </PrivateRoute>
     </RouteWrapper>
   )
 }

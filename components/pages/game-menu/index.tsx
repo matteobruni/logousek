@@ -1,21 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { ThemeContext } from 'styled-components'
 import Head from 'next/head'
+import Label from '@components/label'
+import PrivateRoute from '@components/auth/private-route'
+import { UserData } from '@helpers/local-storage-helper'
+import {
+  getGuestData,
+  setToLocalSotrage
+} from '../../../helpers/local-storage-helper'
 import RouteWrapper from '../../route-wrapper'
 import activityConf from '../../../constants/activity-conf'
 import Header from "./components/header"
 import RoundFooter from '../../round-footer'
 import Card from '../../card'
-import Label from '@components/label'
-import {
-  getGuestData,
-  setToLocalSotrage
-} from '../../../helpers/local-storage-helper'
 import Blob from '../../blob/blob'
 import TimeLineItem from '../../time-line/item'
 import Button from '../../button'
 import ButtonRow from '../../button-row/button-row'
-import { UserData } from '@helpers/local-storage-helper'
 import * as S from "./styled"
 
 const GameMenu: React.FC = () => {
@@ -58,56 +59,58 @@ const GameMenu: React.FC = () => {
   }))
   return (
     <RouteWrapper colorScheme={activeActivitColor}>
-      <Head>
-        <title>{`Logousek - ${activeActivity.title}`}</title>
-      </Head>
-      <S.MenuWrapper>
-        {userData?.isNewUser === 'true' && (
-          <S.BlobWrapper>
-            <Blob color={activeActivitColor} />
-            <S.RightSideWrapper>
-              <TimeLineItem
-                isEven={false}
-                desc={'Ahoj, já jsem kachna ta a ta a budu vás provázet.'}
-              />
-              <ButtonRow>
-                <Button
-                  color={themeContext.primary}
-                  title={'Spustit průvodce'}
-                  onClick={() => { }}
+      <PrivateRoute>
+        <Head>
+          <title>{`Logousek - ${activeActivity.title}`}</title>
+        </Head>
+        <S.MenuWrapper>
+          {userData?.isNewUser === 'true' && (
+            <S.BlobWrapper>
+              <Blob color={activeActivitColor} />
+              <S.RightSideWrapper>
+                <TimeLineItem
+                  isEven={false}
+                  desc={'Ahoj, já jsem kachna ta a ta a budu vás provázet.'}
                 />
-                <Button
-                  color={themeContext.primary}
-                  title={'Přeskočit průvodce'}
-                  onClick={skipTutorial}
-                />
-              </ButtonRow>
-            </S.RightSideWrapper>
-          </S.BlobWrapper>
-        )}
-        <Header
-          points={typeof userData?.points === "number" ? Number(userData?.points) : 0}
-          userName={userData?.userName || ""}
-        />
-        <S.ContentWrapper>
-          <S.GameTypeDetail>
-            <S.GamesTypeHeader>{activeActivity.title}</S.GamesTypeHeader>
-            <S.LabelWrapper>{labels}</S.LabelWrapper>
-            <S.GamesTypeContent>
-              {activeActivity.description}
-            </S.GamesTypeContent>
-            <S.CitationParagraph>
-              <cite>Bednářová, 2015</cite>
-            </S.CitationParagraph>
-          </S.GameTypeDetail>
-          <S.GameList>{[...Cards]}</S.GameList>
-        </S.ContentWrapper >
-        <RoundFooter
-          activityTypes={activityTypes}
-          activeActivityName={activeActivity.name}
-          selectNewActivity={_changeActiveActivity}
-        />
-      </S.MenuWrapper>
+                <ButtonRow>
+                  <Button
+                    color={themeContext.primary}
+                    title={'Spustit průvodce'}
+                    onClick={() => { }}
+                  />
+                  <Button
+                    color={themeContext.primary}
+                    title={'Přeskočit průvodce'}
+                    onClick={skipTutorial}
+                  />
+                </ButtonRow>
+              </S.RightSideWrapper>
+            </S.BlobWrapper>
+          )}
+          <Header
+            points={typeof userData?.points === "number" ? Number(userData?.points) : 0}
+            userName={userData?.userName || ""}
+          />
+          <S.ContentWrapper>
+            <S.GameTypeDetail>
+              <S.GamesTypeHeader>{activeActivity.title}</S.GamesTypeHeader>
+              <S.LabelWrapper>{labels}</S.LabelWrapper>
+              <S.GamesTypeContent>
+                {activeActivity.description}
+              </S.GamesTypeContent>
+              <S.CitationParagraph>
+                <cite>Bednářová, 2015</cite>
+              </S.CitationParagraph>
+            </S.GameTypeDetail>
+            <S.GameList>{[...Cards]}</S.GameList>
+          </S.ContentWrapper >
+          <RoundFooter
+            activityTypes={activityTypes}
+            activeActivityName={activeActivity.name}
+            selectNewActivity={_changeActiveActivity}
+          />
+        </S.MenuWrapper>
+      </PrivateRoute>
     </RouteWrapper>
   )
 }

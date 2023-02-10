@@ -6,16 +6,15 @@ import ClickableIconWrapper from '@components/clickable-icon-wrapper'
 import { logoutUser } from '@helpers/local-storage-helper'
 import ModalContext from '@contexts/modal-context'
 import DarkModeSwitch from '@components/dark-mode-switch'
+import { signOut } from 'next-auth/react'
 import * as S from './styled'
 
 type GameMenuHeaderType = { points: number, userName: string }
 
 const GameMenuHeader: React.FC<GameMenuHeaderType> = ({ points, userName }) => {
   const modalContext = useContext(ModalContext)
-  const router = useRouter()
   const _onLogoutHandler = () => {
-    logoutUser()
-    router.push('/login-screen')
+    signOut()
   }
 
   const _showSettings = () => {

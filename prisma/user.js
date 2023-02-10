@@ -8,6 +8,7 @@ export const getAllUsers = async () => {
 }
 
 export const getUserByName = async ({ nickName }) => {
+  console.log('nickName', nickName)
   const user = await prisma.user.findMany({
     where: { nickName },
   })

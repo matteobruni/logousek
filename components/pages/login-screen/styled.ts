@@ -6,6 +6,11 @@ export const LoginWrapper = styled.div`
   height: 100vh;
 `
 
+export const Link = styled.span`
+  cursor: pointer;
+  color: red;
+`
+
 export const LoginButtonsWrapper = styled.main`
   flex: 1;
   display: flex;

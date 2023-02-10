@@ -34,10 +34,11 @@ import {
 } from '../../../prisma/user'
 
 async function register(req: NextApiRequest, res: NextApiResponse) {
-  const { password, ...user } = req.body
-
+  const { password, ...user } = req.body.params
+  console.log("user", user)
   // validate
-  const usersWithSameNick = await getUserByName({ nickName: req.body.nickName })
+  const usersWithSameNick = await getUserByName({ nickName: user.nickName })
+  // console.log("usersWithSameNick", usersWithSameNick)
   if (usersWithSameNick && usersWithSameNick.length) {
     return res.status(400).json({ errorCode: "user_exists" })
   }

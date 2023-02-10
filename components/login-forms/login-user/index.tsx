@@ -8,16 +8,16 @@ import { ThemeContext } from 'styled-components'
 import { Form, Input } from 'antd'
 
 type LoginUserType = {
-  onFormFilledHandler: ({ userName, password }: { userName: string, password: string }) => void
+  onFormFilledHandler: ({ nickName, password }: { nickName: string, password: string }) => void
 }
 
-type FormValues = { userName: string, password: string }
+type FormValues = { nickName: string, password: string }
 
 const LoginUser: React.FC<LoginUserType> = ({ onFormFilledHandler }) => {
   const themeContextData = useContext(ThemeContext)
 
   const handleSubmit = (values: FormValues) => {
-    onFormFilledHandler({ userName: values.userName, password: values.password })
+    onFormFilledHandler({ nickName: values.nickName, password: values.password })
   }
   return (
     <LoginModalWrapper>
@@ -30,8 +30,8 @@ const LoginUser: React.FC<LoginUserType> = ({ onFormFilledHandler }) => {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label="nickName"
+          name="nickName"
           rules={[{ required: true, message: 'Zadejte prosím své jméno!' }]}
         >
           <Input />

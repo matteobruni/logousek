@@ -12,7 +12,7 @@ const useUserData = () => {
     useEffect(() => {
         setState("loading")
         const getData = async () => {
-            const res = await axios.get('http://localhost:1990/api/user');
+            const res = await axios.get('/api/user');
             console.log("res", res.data)
             setUsers(res.data)
             setState("ready")

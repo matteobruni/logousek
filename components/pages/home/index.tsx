@@ -7,6 +7,7 @@ import Button, { ButtonSizesEnum } from '../../button'
 import Header from './components/header'
 import Footer from './components/footer'
 import ClickableIcon from '@components/clickable-icon'
+import PublicRoute from '@components/auth/public-route'
 import AboutUsList from './components/about-us-list'
 import TimeLine from '../../time-line'
 import Sidebar from '../../side-bar'
@@ -152,6 +153,7 @@ const Home = () => {
 
   return (
     <RouteWrapper colorScheme="white">
+      {/* <PublicRoute> */}
       <HomeWrapper ref={scrollTarget}>{/*onScroll={onScrollHandler}>*/}
         <Head>
           <title>Logoušek</title>
@@ -277,6 +279,7 @@ const Home = () => {
           </Container>
         </WelcomeRowWrapper>
       </HomeWrapper>
+      {/* </PublicRoute> */}
     </RouteWrapper>
   )
 }

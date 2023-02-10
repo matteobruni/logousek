@@ -7,15 +7,15 @@ import ButtonRow from '../../button-row/button-row'
 import { ThemeContext } from 'styled-components'
 import { Form, Input } from 'antd'
 
-type LoginModalType = { onFormFilledHandler: ({ userName }: { userName: string }) => void }
+type LoginModalType = { onFormFilledHandler: ({ nickName }: { nickName: string }) => void }
 
-type FormValues = { userName: string }
+type FormValues = { nickName: string }
 
 const LoginModal: React.FC<LoginModalType> = ({ onFormFilledHandler }) => {
   const [form] = Form.useForm();
   const themeContextData = useContext(ThemeContext)
   const _generateRandomName = async () => {
-    form.setFieldValue("username", `Guest${Math.round(Math.random() * 9999)}`)
+    form.setFieldValue("nickName", `Guest${Math.round(Math.random() * 9999)}`)
   }
 
   const handleSubmit = (values: FormValues) => {
@@ -34,8 +34,8 @@ const LoginModal: React.FC<LoginModalType> = ({ onFormFilledHandler }) => {
         autoComplete="off"
       >
         <Form.Item
-          label="Username"
-          name="username"
+          label="nickName"
+          name="nickName"
           rules={[{ required: true, message: 'Zadejte prosím svůj login!' }]}
         >
           <Input />
