@@ -9,11 +9,16 @@ import user from 'constants/types/user-type'
 
 const { Search } = Input
 
-const UserSearch: React.FC = () => {
+type UserSearchType = {
+    onUserSelect: (userId: string) => void
+}
+
+const UserSearch: React.FC<UserSearchType> = ({ onUserSelect }) => {
     const { users, state } = useUserData()
 
     const onSearch = () => { }
     const onLoadMore = () => { signIn() }
+
 
     const loadMore =
         state !== "loading" ? (
@@ -39,6 +44,7 @@ const UserSearch: React.FC = () => {
                 />
             </Col>
             <Col span={24}>
+
                 <List
                     className="demo-loadmore-list"
                     // loading={initLoading}
@@ -46,10 +52,10 @@ const UserSearch: React.FC = () => {
                     loadMore={loadMore}
                     dataSource={users}
                     renderItem={(item: user) => (
-                        <List.Item actions={[<a key="list-loadmore-edit">Smaž</a>]}>
+                        <List.Item actions={[<a key="list-loadmore-edit">Smaž</a>]} onClick={() => onUserSelect(item.id)}>
                             <Skeleton avatar title={false} active loading={false}>
                                 <List.Item.Meta
-                                    title={<a href="https://ant.design">{item.nickName}</a>}
+                                    title={<a onClick={() => onUserSelect(item.id)}>{item.nickName}</a>}
                                     description={
                                         <>
                                             <span>Vytvořeno: {item.createdAt ? new Date(item.createdAt).toDateString() : "Neuvedeno"}</span>

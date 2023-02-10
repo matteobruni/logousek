@@ -123,7 +123,7 @@
     "backend/helpers/checkHttpMethod.js",
     "backend/helpers/checkDtoIn.js",
     "backend/controllers/activity-controller.js",
-    "pages/api/activity/add-score.js",
+    "pages/api/activity/score.ts",
     "components/activities/a_s/as-context-provider/use-get-cards/styled.js",
     "utils/AnimatedCursor/index.ts",
     "components/timer/index.tss",

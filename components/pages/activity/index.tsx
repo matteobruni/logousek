@@ -8,13 +8,12 @@ import React, {
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import { useSession } from "next-auth/react";
+import { useSession } from 'next-auth/react'
 
 import PrivateRoute from '@components/auth/private-route'
-import successAudioData from "public/sounds/success.mp3"
-import wrongAudioData from "public/sounds/wrong.mp3"
+import successAudioData from 'public/sounds/success.mp3'
+import wrongAudioData from 'public/sounds/wrong.mp3'
 import Timer from '@components/timer'
-
 
 import ActivityHeader from '../../activity-header/activity-header'
 import RouteWrapper from '../../route-wrapper'
@@ -25,7 +24,7 @@ import RoundFooter from '../../round-footer'
 import ModalContext from '../../../contexts/modal-context'
 import GainedPoints from './gained-points'
 import { GameType } from '../../../constants/activity-conf'
-import axios, { AxiosError } from "axios"
+import axios, { AxiosError } from 'axios'
 import * as S from './styled'
 
 const DEFAULT_POINTS_FOR_TASK = 10
@@ -48,8 +47,10 @@ const Activity = () => {
   const [correctTasks, setCorrectTasks] = useState(0)
   const [wasChanged, setWasChanged] = useState(false)
   const [gameState, setGameState] = useState('playing')
-  const [successAudio, setSuccessAudio] = useState<HTMLAudioElement | undefined>();
-  const [wrongAudio, setWrongAudio] = useState<HTMLAudioElement | undefined>();
+  const [successAudio, setSuccessAudio] = useState<
+    HTMLAudioElement | undefined
+  >()
+  const [wrongAudio, setWrongAudio] = useState<HTMLAudioElement | undefined>()
 
   const activityRef = useRef<ActivityInterface>(null)
   const router = useRouter()
@@ -57,8 +58,7 @@ const Activity = () => {
   const activityDifficulty = router.query?.difficulty as string
   const Activity = getActivity(activityName)
   const modalContext = useContext(ModalContext)
-  // const sessionData = useSession();
-
+  const sessionData = useSession()
 
   const getActivityFromConf = useCallback(
     () =>
@@ -96,44 +96,54 @@ const Activity = () => {
   })
 
   useEffect(() => {
-    setSuccessAudio(new Audio(successAudioData));
-    setWrongAudio(new Audio(wrongAudioData));
+    setSuccessAudio(new Audio(successAudioData))
+    setWrongAudio(new Audio(wrongAudioData))
   }, [])
 
   useEffect(() => {
+    console.log('sessionData', sessionData)
     if (gameState === 'finish') {
-      // console.log("sessionData", sessionData)
       const redirectToGameMenu = () => {
         modalContext?.closeModal()
         router.push('/game-menu')
-        setUserPoints(
-          (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks
-        )
+        // setUserPoints(
+        //   (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks
+        // )
       }
-      // const sendResult = async () => {
-      //   try {
-      //     await axios.post('/api/activity/add-score', { params: {} });
-      //   } catch (error) {
+      const sendResult = async () => {
+        try {
+          const userData = sessionData.data?.user as {
+            email: string
+            name: string
+            id: string
+          }
+          await axios.post('/api/activity/add-score', {
+            params: {
+              userId: userData?.id,
+              activityType: activityName,
+              score:
+                (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks,
+            },
+          })
+        } catch (error) { }
+      }
 
-      //   }
-      // }
-
-      // sendResult()
+      sendResult()
 
       modalContext?.showModal({
         header: 'Konec Hry',
         onOkClick: redirectToGameMenu,
         closeDisabled: true,
-        autoWidth: true
+        autoWidth: true,
       })
     }
   }, [gameState, modalContext, router, correctTasks, GetPointsForTask])
 
   const playAudio = (audio: HTMLAudioElement | undefined) => {
     if (audio) {
-      audio.pause();
-      audio.currentTime = 0;
-      audio.play();
+      audio.pause()
+      audio.currentTime = 0
+      audio.play()
     }
   }
 
@@ -176,7 +186,7 @@ const Activity = () => {
         />
         <S.ActivityWrapper>
           <S.ContentWrapper>
-            {gameState !== 'finish' &&
+            {gameState !== 'finish' && (
               <Activity
                 ref={activityRef}
                 key={`activity_${currentTask}`}
@@ -185,7 +195,7 @@ const Activity = () => {
                 checkResult={_checkResult}
                 complexity={activityDifficulty || '1'}
               />
-            }
+            )}
           </S.ContentWrapper>
         </S.ActivityWrapper>
         <footer>
@@ -196,7 +206,9 @@ const Activity = () => {
                 clickable: false,
                 title: (
                   <GainedPoints
-                    pointsForTask={GetPointsForTask() || DEFAULT_POINTS_FOR_TASK}
+                    pointsForTask={
+                      GetPointsForTask() || DEFAULT_POINTS_FOR_TASK
+                    }
                     correctTasks={correctTasks}
                   />
                 ),

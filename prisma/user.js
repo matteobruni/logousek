@@ -15,9 +15,9 @@ export const getUserByName = async ({ nickName }) => {
   return user
 }
 
-export const getUserById = async ({ id }) => {
+export const getUserById = async ({ userId }) => {
   const user = await prisma.user.findUnique({
-    where: { id },
+    where: { id: userId },
   })
   return user
 }

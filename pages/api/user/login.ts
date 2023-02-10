@@ -16,7 +16,7 @@ import {
 } from '../../../prisma/user'
 
 async function authenticate(req: NextApiRequest, res: NextApiResponse) {
-  const { nickName, password } = req.body
+  const { nickName, password } = req.body.params
   const user = (await getUserByName(nickName))[0]
   // validate
   if (!user || !bcrypt.compareSync(password, user.password)) {

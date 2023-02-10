@@ -4,17 +4,17 @@
 // import NextAuth from "next-auth";
 // import { User } from "next-auth";
 // import jwt from 'jsonwebtoken'
-// import bcrypt from 'bcryptjs'
+import bcrypt from 'bcryptjs'
 // import getConfig from 'next/config'
 // import { NextApiRequest, NextApiResponse } from 'next'
 
-// import {
-//     createUser,
-//     deleteUser,
-//     getAllUsers,
-//     getUserByName,
-//     updateUser,
-// } from '../../../prisma/user'
+import {
+    createUser,
+    deleteUser,
+    getAllUsers,
+    getUserByName,
+    updateUser,
+} from '../../../prisma/user'
 // import { threadId } from "worker_threads";
 
 // export const authOptions: NextAuthOptions = {
@@ -89,8 +89,10 @@
 //     },
 // }
 
-import NextAuth, { NextAuthOptions } from "next-auth";
+import NextAuth, { NextAuthOptions, Session, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { AdapterUser } from 'next-auth/adapters';
+import { JWT } from 'next-auth/jwt';
 
 const authOptions: NextAuthOptions = {
     session: {
@@ -99,15 +101,39 @@ const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
             type: "credentials",
-            credentials: {},
-            authorize(credentials, req) {
-                console.log("credentials", credentials)
-                return {
-                    id: "1234",
-                    name: "John Doe",
-                    email: "john@gmail.com",
-                    role: "admin",
-                };
+            credentials: {
+                nickName: {
+                    label: "NickName",
+                    type: "text",
+                    placeholder: "jsmith",
+                },
+                password: {
+                    label: "Password",
+                    type: "password",
+                },
+            },
+            async authorize(credentials, req) {
+                const { nickName, password } = credentials || {}
+                if (nickName && password) {
+                    const user = (await getUserByName({ nickName }))[0]
+                    // validate
+                    if (!user || !bcrypt.compareSync(password, user.password)) {
+                        throw new Error("wrong_password")
+                    }
+                    // return basic user details and token
+                    console.log("user21", user)
+                    return {
+                        id: user.id,
+                        name: "John Doe",
+                        email: "john@gmail.com",
+                        firstName: user.firstName,
+                        surName: user.surName,
+                        nickName: user.nickName,
+                        // token,
+                    }
+                } else {
+                    throw new Error("Wrong dtoIn")
+                }
             }
         })
     ],
@@ -125,6 +151,11 @@ const authOptions: NextAuthOptions = {
             // }
             // return final_token
             return params.token;
+        },
+        async session({ session, token }) {
+            const updatedUser: User = { ...session.user, id: token?.sub || "" }
+
+            return { ...session, user: updatedUser }
         },
     },
 };
