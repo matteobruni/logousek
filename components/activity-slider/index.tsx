@@ -38,7 +38,7 @@ const ActivitySlider: React.FC<ActivitySliderProps> = ({ questionPart, cardData,
                 onClick={() => setSelectedElement(elementName)}
                 selected={selectedElements?.includes(elementName)}
             >
-                <Element.svg />
+                {Element.svg}
             </ActivityCard>
         )
     })
