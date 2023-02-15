@@ -4,6 +4,8 @@ import React, {
     useImperativeHandle,
     useEffect
 } from 'react'
+import { useRouter } from 'next/router'
+
 import SerialityContextProvider, {
     SerialityContextProviderInterface,
 } from '@contexts/seriality-context/seriality-context-provider'
@@ -21,6 +23,8 @@ const ThreeCards = (
     { complexity, onHandleChanged }: ActivityProps,
     ref: React.Ref<ActivityInterface> | undefined
 ) => {
+    const router = useRouter()
+    const activityName = router.query?.activityName as string
     const serialityContextProviderRef = useRef<SerialityContextProviderInterface>(null)
 
     useImperativeHandle(
@@ -39,7 +43,7 @@ const ThreeCards = (
     return (
         <SerialityContextProvider
             ref={serialityContextProviderRef}
-            type={"threePictures"}
+            type={activityName === "3_pictures" ? "threePictures" : "twoPictures"}
         >
             <ThreeCardContent />
         </SerialityContextProvider>

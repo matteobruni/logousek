@@ -101,14 +101,17 @@ export const games: GamesType = {
     {
       name: "3_pictures",
       title: "3 obrázky",
-      image: "#",
+      image: "#", difficulty: [
+        { id: 1, title: "Lehké", points: 10 },
+      ]
     },
     {
-      name: "story",
-      title: "Příběh",
-      image: "#"
+      name: "2_pictures",
+      title: "2 obrázky",
+      image: "#", difficulty: [
+        { id: 1, title: "Lehké", points: 10 },
+      ]
     },
-
   ],
 
   language_practicing: [

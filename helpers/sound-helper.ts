@@ -1,11 +1,11 @@
 import { getRandomElementFromList } from "./array-helper";
 import { shuffle } from "./array-helper";
-import soundDiffConf from "constants/sound-diff-conf";
-import wordDiffConf from "constants/word-diff-conf";
+import getSoundDiffConf from "constants/sound-diff-conf";
+import getWordDiffConf from "constants/word-diff-conf";
 import audioMemoryConf from "constants/audio-memory-conf";
 
 export type pictureType = {
-  name: string, svg: React.FC<any>
+  name: string, svg: React.ReactNode
 }
 
 export type audioDiffConfType = {
@@ -17,7 +17,7 @@ export type audioDiffConfType = {
   }[]
 }
 
-const getAudioConf = (activityName: string) => activityName === "word_differentiation" ? wordDiffConf : activityName === "audio_memory" ? audioMemoryConf : soundDiffConf
+const getAudioConf = (activityName: string) => activityName === "word_differentiation" ? getWordDiffConf() : activityName === "audio_memory" ? audioMemoryConf : getSoundDiffConf()
 
 export const getAudioConfElement = (difficulty: string, activityName: string) => {
   const audioConf = getAudioConf(activityName)
@@ -31,4 +31,9 @@ export const checkAnswer = (difficulty: string, audioName: string, selectedCardN
   const audiosArray = audioConf[difficulty];
   const correctAnswer = audiosArray.find(audio => audio.name === audioName)?.correct
   return correctAnswer?.name === selectedCardName
+}
+
+export const getIncorectItems = (itemName: string, array: { name: string, svg: React.ReactNode }[]) => {
+  const filtredArray = array.filter(firstLevelImage => firstLevelImage.name !== itemName)
+  return getRandomElementFromList(filtredArray, 2)
 }

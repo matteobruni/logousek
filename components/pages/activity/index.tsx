@@ -11,20 +11,19 @@ import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 
 import PrivateRoute from '@components/auth/private-route'
-import successAudioData from 'public/sounds/success.mp3'
-import wrongAudioData from 'public/sounds/wrong.mp3'
+import successAudioData from 'public/sounds/activity-feedback/success.mp3'
+import wrongAudioData from 'public/sounds/activity-feedback/wrong.mp3'
 import Timer from '@components/timer'
 
 import ActivityHeader from '../../activity-header/activity-header'
 import RouteWrapper from '../../route-wrapper'
 import { getActivity } from '../../../helpers/get-activity'
-import { setUserPoints } from '../../../helpers/local-storage-helper'
 import { games } from '../../../constants/activity-conf'
 import RoundFooter from '../../round-footer'
 import ModalContext from '../../../contexts/modal-context'
 import GainedPoints from './gained-points'
 import { GameType } from '../../../constants/activity-conf'
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import * as S from './styled'
 
 const DEFAULT_POINTS_FOR_TASK = 10
@@ -137,7 +136,7 @@ const Activity = () => {
         autoWidth: true,
       })
     }
-  }, [gameState, modalContext, router, correctTasks, GetPointsForTask])
+  }, [gameState, modalContext, router, correctTasks, GetPointsForTask, sessionData, activityName])
 
   const playAudio = (audio: HTMLAudioElement | undefined) => {
     if (audio) {

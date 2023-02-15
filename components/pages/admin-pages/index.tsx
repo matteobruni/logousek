@@ -81,6 +81,7 @@ function AdminPages({ data }: { data: any }) {
               <Line type="monotone" dataKey="points" stroke="#ff7300" yAxisId={0} />
               {/* <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1} /> */}
             </LineChart>}
+
           </Col>
         </Row>
       </S.Container>

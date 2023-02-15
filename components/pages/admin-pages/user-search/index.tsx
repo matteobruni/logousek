@@ -44,10 +44,7 @@ const UserSearch: React.FC<UserSearchType> = ({ onUserSelect }) => {
                 />
             </Col>
             <Col span={24}>
-
                 <List
-                    className="demo-loadmore-list"
-                    // loading={initLoading}
                     itemLayout="horizontal"
                     loadMore={loadMore}
                     dataSource={users}

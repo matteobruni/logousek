@@ -21,7 +21,7 @@ const CardWrapper: React.FC<ActivityCardProps> = ({ cards, selected, onChange })
           selected={isSelected}
         >
           {isSelected && <i className={'material-icons'}>check</i>}
-          <PictureSvg />
+          {PictureSvg}
         </ActivityCard>
       )
     })

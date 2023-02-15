@@ -22,7 +22,7 @@ export const getActivity = (activityName: string) => {
       return Memory;
     case "3_pictures":
       return ThreeCards;
-    case "story":
+    case "2_pictures":
       return ThreeCards;
     case "language_practicing":
       return LanguagePracticing
