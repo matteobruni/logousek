@@ -19,6 +19,23 @@ export const threePictures: svgConfType[] = [
             <NamedImage key="vase-2" name="vase-2" src={serialitySrcs.vase2} />,
             <NamedImage key="vase-3" name="vase-3" src={serialitySrcs.vase3} />,
         ]
+    },
+
+    {
+        name: "banknote",
+        svgs: [
+            <NamedImage key="banknote-1" name="banknote-1" src={serialitySrcs.banknote} />,
+            <NamedImage key="banknote-2" name="banknote-2" src={serialitySrcs.banknote2} />,
+            <NamedImage key="banknote-3" name="banknote-3" src={serialitySrcs.banknote3} />,
+        ]
+    },
+    {
+        name: "snowman",
+        svgs: [
+            <NamedImage key="snowman-1" name="snowman-1" src={serialitySrcs.snowman} />,
+            <NamedImage key="snowman-2" name="snowman-2" src={serialitySrcs.snowman2} />,
+            <NamedImage key="snowman-3" name="snowman-3" src={serialitySrcs.snowman3} />,
+        ]
     }
 ]
 export const twoPictures: svgConfType[] = [

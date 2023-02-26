@@ -53,10 +53,31 @@ export const serialitySrcs = {
     vase: `${serialityPath}/vase/vase-1.svg`,
     vase2: `${serialityPath}/vase/vase-2.svg`,
     vase3: `${serialityPath}/vase/vase-3.svg`,
+
+    snowman: `${serialityPath}/snowman/snowman-1.svg`,
+    snowman2: `${serialityPath}/snowman/snowman-2.svg`,
+    snowman3: `${serialityPath}/snowman/snowman-3.svg`,
+
+    banknote: `${serialityPath}/banknote/banknote-1.svg`,
+    banknote2: `${serialityPath}/banknote/banknote-2.svg`,
+    banknote3: `${serialityPath}/banknote/banknote-3.svg`,
 }
 
 export const wordDifferentiationSrcs = {
-    train: `${normalPath}/train.jpg`,
-    stork: `${normalPath}/stork.png`,
-    onion: `${normalPath}/onion.png`
+    archery: `${normalPath}/word-diff/archery.png`,
+    hourglass: `${normalPath}/word-diff/hourglass.png`,
+    pouring: `${normalPath}/word-diff/pouring.png`,
+    roseHip: `${normalPath}/word-diff/rose-hip.png`,
+    zipperTool: `${normalPath}/word-diff/zipper-tool.png`,
+    spring: `${normalPath}/word-diff/spring.png`,
+    woman: `${normalPath}/word-diff/woman.png`,
+    groupOfMen: `${normalPath}/word-diff/group-of-men.png`,
+    grass: `${normalPath}/word-diff/grass.png`,
+    cow: `${normalPath}/word-diff/cow.png`,
+    pencil: `${normalPath}/word-diff/pencil.png`,
+    sniper: `${normalPath}/word-diff/sniper.png`,
+    chalks: `${normalPath}/word-diff/chalks.png`,
+    training: `${normalPath}/word-diff/training.png`,
+    honey: `${normalPath}/word-diff/honey.png`,
+    iceCube: `${normalPath}/word-diff/ice-cube.png`,
 }
