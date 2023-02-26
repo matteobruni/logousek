@@ -1,6 +1,7 @@
 import Router from "next/router";
 import React, { useEffect } from "react";
 import { useSession } from "next-auth/react";
+import LoadingPage from "@components/loading-page";
 
 type PrivateRouteProps = {
     children: React.ReactNode
@@ -23,7 +24,7 @@ const OnlyPublicRoute: React.FC<PrivateRouteProps> = ({ children }) => {
             <>{children}</>
         );
     }
-    return <div>loading</div>
+    return <LoadingPage />
 }
 
 export default OnlyPublicRoute

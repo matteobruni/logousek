@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Label from '@components/label'
 import PrivateRoute from '@components/auth/private-route'
 import { UserData } from '@helpers/local-storage-helper'
+import { usePlayerScore } from 'hooks/usePlayerData'
+import { useSession } from 'next-auth/react'
 import {
   getGuestData,
   setToLocalSotrage
@@ -21,12 +23,11 @@ import * as S from "./styled"
 
 const GameMenu: React.FC = () => {
   const [activeActivity, setActiveActivity] = useState(activityConf[0])
-  const [userData, setUserData] = useState<UserData | undefined>()
+  const [{ score }] = usePlayerScore();
+  const sessionData = useSession()
+  console.log("sessionData", sessionData)
   const themeContext = useContext(ThemeContext)
 
-  useEffect(() => {
-    setUserData(getGuestData())
-  }, [])
   const _changeActiveActivity = (name: string) => {
     const newActiveActivity = activityConf.find((activity) => activity.name === name)
     newActiveActivity && setActiveActivity(newActiveActivity)
@@ -42,10 +43,9 @@ const GameMenu: React.FC = () => {
     </Label>
   ))
 
-  const skipTutorial = () => {
-    setToLocalSotrage('isNewUser', false)
-    setUserData(getGuestData())
-  }
+  // const skipTutorial = () => {
+  //   setToLocalSotrage('isNewUser', false)
+  // }
   const activeActivitColor = themeContext?.colors[activeActivity.color]
 
   const activityTypes = activityConf.map(activity => ({
@@ -57,6 +57,8 @@ const GameMenu: React.FC = () => {
     icon: activity.icon,
     shortTitle: activity.shortTitle
   }))
+
+  console.log("sessionData", sessionData)
   return (
     <RouteWrapper colorScheme={activeActivitColor}>
       <PrivateRoute>
@@ -64,7 +66,7 @@ const GameMenu: React.FC = () => {
           <title>{`Logousek - ${activeActivity.title}`}</title>
         </Head>
         <S.MenuWrapper>
-          {userData?.isNewUser === 'true' && (
+          {/* {userData?.isNewUser === 'true' && (
             <S.BlobWrapper>
               <Blob color={activeActivitColor} />
               <S.RightSideWrapper>
@@ -86,10 +88,10 @@ const GameMenu: React.FC = () => {
                 </ButtonRow>
               </S.RightSideWrapper>
             </S.BlobWrapper>
-          )}
+          )} */}
           <Header
-            points={typeof userData?.points === "number" ? Number(userData?.points) : 0}
-            userName={userData?.userName || ""}
+            points={score}
+            userName={sessionData?.data?.user?.name || ""}
           />
           <S.ContentWrapper>
             <S.GameTypeDetail>

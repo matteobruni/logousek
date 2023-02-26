@@ -19,8 +19,6 @@ function AdminPages({ data }: { data: any }) {
     )
   );
 
-  console.log("activities", activities)
-
   const onUserSelect = (userId: string) => {
     setSelectUser(userId);
   }
@@ -42,7 +40,6 @@ function AdminPages({ data }: { data: any }) {
     })).map(scoreItem => ({ points: scoreItem.points })) : []
   }
 
-  console.log("getChartDate", getChartDate())
   return (
     <S.WelcomeRowWrapper>
       <Sidebar pageNav={[
@@ -58,7 +55,7 @@ function AdminPages({ data }: { data: any }) {
       <S.Container>
         <Row gutter={32}>
           <Col span={12}>
-            <UserSearch onUserSelect={onUserSelect} />
+            <UserSearch onUserSelect={onUserSelect} selectUser={selectUser} />
           </Col>
           <Col span={12}>
             <Select

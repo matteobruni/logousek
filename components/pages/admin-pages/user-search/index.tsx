@@ -1,6 +1,7 @@
 import React from 'react'
+import axios from "axios";
+import { Input } from 'antd';
 import useUserData from '../hooks/use-user-data'
-import { Input } from 'antd'
 import { Avatar, Button, List, Skeleton } from 'antd'
 import { Col, Row } from 'antd'
 import { useSession, signIn, signOut } from "next-auth/react"
@@ -11,13 +12,21 @@ const { Search } = Input
 
 type UserSearchType = {
     onUserSelect: (userId: string) => void
+    selectUser?: string
 }
 
-const UserSearch: React.FC<UserSearchType> = ({ onUserSelect }) => {
+const UserSearch: React.FC<UserSearchType> = ({ onUserSelect, selectUser }) => {
     const { users, state } = useUserData()
 
     const onSearch = () => { }
     const onLoadMore = () => { signIn() }
+
+    const deleteUser = () => {
+        const callApi = async () => {
+            await axios.post('/api/user/delete', { params: { userId: selectUser } });
+        }
+        callApi()
+    }
 
 
     const loadMore =
@@ -49,7 +58,7 @@ const UserSearch: React.FC<UserSearchType> = ({ onUserSelect }) => {
                     loadMore={loadMore}
                     dataSource={users}
                     renderItem={(item: user) => (
-                        <List.Item actions={[<a key="list-loadmore-edit">Smaž</a>]} onClick={() => onUserSelect(item.id)}>
+                        <List.Item actions={[<a key="list-loadmore-edit" onClick={deleteUser}>Smaž</a>]} onClick={() => onUserSelect(item.id)}>
                             <Skeleton avatar title={false} active loading={false}>
                                 <List.Item.Meta
                                     title={<a onClick={() => onUserSelect(item.id)}>{item.nickName}</a>}

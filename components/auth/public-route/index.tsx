@@ -1,5 +1,6 @@
 import React from "react";
 import { useSession } from "next-auth/react";
+import LoadingPage from "@components/loading-page";
 
 type PrivateRouteProps = {
     children: React.ReactNode
@@ -13,7 +14,7 @@ const PublicRoute: React.FC<PrivateRouteProps> = ({ children }) => {
             <>{children}</>
         );
 
-    return <div>loading</div>
+    return <LoadingPage />
 }
 
 export default PublicRoute

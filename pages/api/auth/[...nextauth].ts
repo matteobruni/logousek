@@ -122,12 +122,7 @@ const authOptions: NextAuthOptions = {
                     console.log("user21", user)
                     return {
                         id: user.id,
-                        name: "John Doe",
-                        email: "john@gmail.com",
-                        firstName: user.firstName,
-                        surName: user.surName,
-                        nickName: user.nickName,
-                        // token,
+                        name: `${user.firstName} ${user.surName}`,
                     }
                 } else {
                     throw new Error("Wrong dtoIn")
@@ -152,6 +147,7 @@ const authOptions: NextAuthOptions = {
             return params.token;
         },
         async session({ session, token }) {
+            console.log("session, token", session, token)
             const updatedUser: User = { ...session.user, id: token?.sub || "" }
 
             return { ...session, user: updatedUser }

@@ -100,7 +100,6 @@ const Activity = () => {
   }, [])
 
   useEffect(() => {
-    console.log('sessionData', sessionData)
     if (gameState === 'finish') {
       const redirectToGameMenu = () => {
         modalContext?.closeModal()

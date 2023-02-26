@@ -23,7 +23,7 @@ export const LoginButtonsWrapper = styled.main`
   }
 `
 
-export const Footer = styled.footer`
+export const Header = styled.header`
   width: 100vw;
   display: flex;
   justify-content: center;

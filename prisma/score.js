@@ -4,15 +4,23 @@ import prisma from './prisma'
 // READ
 
 export const getScoreByUserId = async (userId) => {
-  const user = await prisma.score.findMany({
+  return await prisma.score.findMany({
     where: { userId },
   })
-  return user
+}
+
+export const getScoreCountByUserId = async (userId) => {
+  const result = await prisma.score.aggregate({
+    where: { userId },
+    _sum: {
+      points: true,
+    },
+  })
+  return result['_sum']
 }
 
 export const addScore = async (userId, result, activityType) => {
-  const user = await prisma.score.create({
+  return await prisma.score.create({
     data: { userId, points: result, activityType },
   })
-  return user
 }
