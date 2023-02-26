@@ -104,9 +104,6 @@ const Activity = () => {
       const redirectToGameMenu = () => {
         modalContext?.closeModal()
         router.push('/game-menu')
-        // setUserPoints(
-        //   (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks
-        // )
       }
       const sendResult = async () => {
         try {
@@ -162,6 +159,7 @@ const Activity = () => {
 
   const _checkResult = () => {
     const isSuccess = activityRef?.current?.getResult()
+    console.log("isSuccess", isSuccess)
     if (currentTask === TASKS_COUNT) {
       isSuccess && setCorrectTasks((prevCorrectTasks) => ++prevCorrectTasks)
       setGameState('finish')

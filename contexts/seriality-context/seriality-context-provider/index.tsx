@@ -2,7 +2,8 @@ import React, {
   useState,
   useEffect,
   forwardRef,
-  useImperativeHandle
+  useImperativeHandle,
+  useCallback
 } from 'react'
 import SerialityContext from '..'
 import { SvgWrapper } from './styled'
@@ -64,11 +65,16 @@ export default forwardRef(function AsContextProvider(
   }, [type])
 
   useImperativeHandle(ref, (): SerialityContextProviderInterface => {
-    console.log("cards333", cards)
-    const updatedCard = [...cards]
+    console.log("test253", cards.map(card => card.keyImage), (() => {
+      const isCorrect = cards.reduce((result, current, index) => {
+        current.keyImage !== correctCards[index] && (result = false)
+        return result;
+      }, true)
+      return isCorrect
+    })())
     return {
       checkResult: () => {
-        const isCorrect = updatedCard.reduce((result, current, index) => {
+        const isCorrect = cards.reduce((result, current, index) => {
           current.keyImage !== correctCards[index] && (result = false)
           return result;
         }, true)
@@ -84,6 +90,8 @@ export default forwardRef(function AsContextProvider(
     setCards,
     correctCards
   }
+
+  console.log("test252", cards.map(card => card.keyImage))
   return (
     <SerialityContext.Provider
       value={serialityContextValue}

@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  forwardRef,
-  useRef,
-  useImperativeHandle
-} from 'react'
+import React, { useState, forwardRef, useRef, useImperativeHandle } from 'react'
 import AvaibleCards from './avaible-cards'
 import DropCards from './drop-cards'
 import CustomDragLayer from './custom-drag-layer'
@@ -21,10 +16,13 @@ const AS = (
   )
   const contextProviderRef = useRef<AsContextProviderInterface>(null)
 
-  useImperativeHandle(ref, (): ActivityInterface => ({
-    getResult: contextProviderRef?.current?.checkResult || (() => false),
-    generateNext: () => { }
-  }))
+  useImperativeHandle(
+    ref,
+    (): ActivityInterface => ({
+      getResult: contextProviderRef?.current?.checkResult || (() => false),
+      generateNext: () => { },
+    })
+  )
 
   return (
     <div>
