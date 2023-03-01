@@ -2,13 +2,12 @@ import React, {
   useState,
   useEffect,
   forwardRef,
-  useImperativeHandle,
-  useCallback
+  useImperativeHandle
 } from 'react'
 import SerialityContext from '..'
 import { SvgWrapper } from './styled'
 import { shuffle, getRandomElementFromList } from '@helpers/array-helper'
-import { threePictures, twoPictures, svgConfType } from 'constants/seriality-conf'
+import { threePictures, svgConfType } from 'constants/seriality-conf'
 
 export type SerialityContextProviderInterface = {
   checkResult: () => boolean
@@ -42,7 +41,7 @@ export default forwardRef(function AsContextProvider(
   useEffect(() => {
     const [svgConf] =
       getRandomElementFromList(
-        [...(type === 'threePictures' ? threePictures : twoPictures)],
+        [...(type === 'threePictures' ? threePictures : [])],
         1
       ) || []
     const svgs: svgConfType['svgs'] = svgConf?.svgs
