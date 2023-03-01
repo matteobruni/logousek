@@ -45,6 +45,7 @@ export const normalSrcs = {
 export const serialitySrcs = {
     banana: `${serialityPath}/banana/banana-1.svg`,
     banana2: `${serialityPath}/banana/banana-2.svg`,
+    banana3: `${serialityPath}/banana/banana-3.svg`,
 
     paper: `${serialityPath}/paper/paper-1.svg`,
     paper2: `${serialityPath}/paper/paper-2.svg`,
@@ -61,6 +62,7 @@ export const serialitySrcs = {
     banknote: `${serialityPath}/banknote/banknote-1.svg`,
     banknote2: `${serialityPath}/banknote/banknote-2.svg`,
     banknote3: `${serialityPath}/banknote/banknote-3.svg`,
+
 }
 
 export const wordDifferentiationSrcs = {
@@ -80,4 +82,8 @@ export const wordDifferentiationSrcs = {
     training: `${normalPath}/word-diff/training.png`,
     honey: `${normalPath}/word-diff/honey.png`,
     iceCube: `${normalPath}/word-diff/ice-cube.png`,
+    vase: `${normalPath}/word-diff/vase.png`,
+    scales: `${normalPath}/word-diff/scales.jpg`,
+    bowl: `${normalPath}/word-diff/bowl.png`,
+    mouse: `${normalPath}/word-diff/mouse.png`,
 }

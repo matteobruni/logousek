@@ -16,10 +16,10 @@ import crumpledPaper from 'public/sounds/normal/crumpling-paper.mp3'
 import paperCut from 'public/sounds/normal/cutting-paper.mp3'
 import doorKnocking from 'public/sounds/normal/door-knocking.mp3'
 import dripingFaucet from 'public/sounds/normal/dripping-water.mp3'
-import flowingFaceut from 'public/sounds/normal/flowing-river.mp3'
+import flowingFaceut from 'public/sounds/normal/running-water.mp3'
 import nailHammering from 'public/sounds/normal/nail-hammering.mp3'
 import ringingPhone from 'public/sounds/normal/ringing-phone.mp3'
-import river from 'public/sounds/normal/running-water.mp3'
+import river from 'public/sounds/normal/flowing-river.mp3'
 import storm from 'public/sounds/normal/storm.mp3'
 import wind from 'public/sounds/normal/wind.mp3'
 
@@ -40,6 +40,11 @@ import roseHip from 'public/sounds/wodr-diff/roseHip.mp3'
 import pouring from 'public/sounds/wodr-diff/pouring.mp3'
 import hourglass from 'public/sounds/wodr-diff/hourglass.mp3'
 import archery from 'public/sounds/wodr-diff/archery.mp3'
+import cowWord from 'public/sounds/wodr-diff/cow-word.mp3'
+import bowl from 'public/sounds/wodr-diff/bowl.mp3'
+import mouse from 'public/sounds/wodr-diff/mouse.mp3'
+import vase from 'public/sounds/wodr-diff/vase.mp3'
+import scales from 'public/sounds/wodr-diff/scales.mp3'
 
 export {
     sheep,
@@ -81,4 +86,9 @@ export {
     pouring,
     hourglass,
     archery,
+    cowWord,
+    scales,
+    vase,
+    mouse,
+    bowl
 }

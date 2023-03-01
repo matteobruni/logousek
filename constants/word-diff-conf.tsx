@@ -1,6 +1,5 @@
 import { audioDiffConfType } from "@helpers/sound-helper";
-import { getIncorectItems } from "@helpers/sound-helper";
-import { NamedImage, animalsSrcs, wordDifferentiationSrcs } from "@helpers/image-helper";
+import { NamedImage, wordDifferentiationSrcs } from "@helpers/image-helper";
 import {
     archery,
     hourglass,
@@ -11,13 +10,17 @@ import {
     woman,
     groupOfMen,
     grass,
-    cow,
+    cowWord,
     pencil,
     sniper,
     chalks,
     training,
     honey,
     iceCube,
+    scales,
+    vase,
+    mouse,
+    bowl
 } from "./sounds";
 
 
@@ -39,6 +42,10 @@ const Images = {
     training: <NamedImage src={wordDifferentiationSrcs.cow} name="training" />,
     honey: <NamedImage src={wordDifferentiationSrcs.honey} name="honey" />,
     iceCube: <NamedImage src={wordDifferentiationSrcs.iceCube} name="iceCube" />,
+    vase: <NamedImage src={wordDifferentiationSrcs.vase} name="vase" />,
+    scales: <NamedImage src={wordDifferentiationSrcs.scales} name="scales" />,
+    bowl: <NamedImage src={wordDifferentiationSrcs.bowl} name="bowl" />,
+    mouse: <NamedImage src={wordDifferentiationSrcs.mouse} name="mouse" />,
 }
 
 const getWordDiffConf = (): audioDiffConfType => ({
@@ -106,7 +113,7 @@ const getWordDiffConf = (): audioDiffConfType => ({
             correct: {
                 name: "cow", svg: Images.cow
             },
-            sound: cow,
+            sound: cowWord,
         },
         {
             name: "pencil",
@@ -172,6 +179,39 @@ const getWordDiffConf = (): audioDiffConfType => ({
                 name: "zipperTool", svg: Images.zipperTool
             },
             sound: zipperTool,
+        },
+
+        {
+            name: "vase",
+            incorrect: [{ name: "scales", svg: Images.scales }],
+            correct: {
+                name: "vase", svg: Images.vase
+            },
+            sound: vase,
+        },
+        {
+            name: "scales",
+            incorrect: [{ name: "vase", svg: Images.vase }],
+            correct: {
+                name: "scales", svg: Images.scales
+            },
+            sound: scales,
+        },
+        {
+            name: "mouse",
+            incorrect: [{ name: "bowl", svg: Images.bowl }],
+            correct: {
+                name: "mouse", svg: Images.mouse
+            },
+            sound: mouse,
+        },
+        {
+            name: "bowl",
+            incorrect: [{ name: "mouse", svg: Images.mouse }],
+            correct: {
+                name: "bowl", svg: Images.bowl
+            },
+            sound: bowl,
         },
     ],
 });

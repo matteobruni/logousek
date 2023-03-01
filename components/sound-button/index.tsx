@@ -17,6 +17,7 @@ const SoundButton: React.FC<SoundButtonProps> = ({ sound, fontSize, customSound 
   useEffect(() => {
     const sound = getSound();
     sound && (sound.loop = true);
+
     return () => {
       sound && sound.pause()
     }
