@@ -13,7 +13,7 @@ import { shuffle } from '@helpers/array-helper'
 
 
 const LanguagePracticing = (
-    { checkResult }: ActivityProps,
+    { onHandleChanged }: ActivityProps,
     ref: React.Ref<ActivityInterface> | undefined
 ) => {
     const videoEl = useRef<any>(null);
@@ -27,11 +27,8 @@ const LanguagePracticing = (
     )
 
     useEffect(() => {
-        if (time) {
-            const timer = setTimeout(() => { checkResult() }, time);
-            return () => clearTimeout(timer);
-        }
-    }, [checkResult, time]);
+        onHandleChanged()
+    }, [onHandleChanged]);
 
     const handleLoadedMetadata = () => {
         const video = videoEl.current;
