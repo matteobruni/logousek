@@ -21,6 +21,7 @@ const getAudioConf = (activityName: string) => activityName === "word_differenti
 
 export const getAudioConfElement = (difficulty: string, activityName: string) => {
   const audioConf = getAudioConf(activityName)
+  console.log("difficulty", audioConf, difficulty)
   const audiosArray = [...audioConf[difficulty]];
   const audioElement = getRandomElementFromList(audiosArray, 1)[0] || {};
   return { name: audioElement.name, sound: audioElement.sound, pictures: audioElement.incorrect && audioElement.correct ? shuffle([...audioElement.incorrect, audioElement.correct]) : [] }

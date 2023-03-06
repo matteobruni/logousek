@@ -28,4 +28,13 @@ model Score {
   userId        String
   points        Int
   activityType  String
+  data     ScoreData[]
+}
+
+model ScoreData {
+  id            String @id @default(auto()) @map("_id") @db.ObjectId
+  order         Int
+  isCorrect     Boolean
+  score         Score @relation(fields: [scoreId], references: [id])
+  scoreId       String @db.ObjectId
 }

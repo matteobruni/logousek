@@ -45,6 +45,8 @@ export type ActivityProps = {
 const Activity = () => {
   const [currentTask, setCurrentTask] = useState(1)
   const [correctTasks, setCorrectTasks] = useState(0)
+
+  const [results, setResults] = useState({})
   const [wasChanged, setWasChanged] = useState(false)
   const [gameState, setGameState] = useState('playing')
   const [successAudio, setSuccessAudio] = useState<
@@ -114,12 +116,11 @@ const Activity = () => {
             id: string
           }
           await axios.post('/api/activity/add-score', {
-            params: {
-              userId: userData?.id,
-              activityType: activityName,
-              score:
-                (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks,
-            },
+            userId: userData?.id,
+            activityType: activityName,
+            points:
+              (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks,
+            results
           })
         } catch (error) { }
       }
@@ -133,7 +134,7 @@ const Activity = () => {
         autoWidth: true,
       })
     }
-  }, [gameState, modalContext, router, correctTasks, GetPointsForTask, sessionData, activityName])
+  }, [gameState, modalContext, router, correctTasks, GetPointsForTask, sessionData, activityName, results])
 
   const playAudio = (audio: HTMLAudioElement | undefined) => {
     if (audio) {
@@ -146,12 +147,14 @@ const Activity = () => {
   const fail = () => {
     playAudio(wrongAudio)
     setCurrentTask((v) => ++v)
+    setResults((v) => ({ ...v, [currentTask]: false }))
   }
 
   const success = () => {
     playAudio(successAudio)
     setCurrentTask((v) => ++v)
     setCorrectTasks((v) => ++v)
+    setResults((v) => ({ ...v, [currentTask]: true }))
   }
 
   const onHandleChanged = () => {

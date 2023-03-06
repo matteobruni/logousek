@@ -3,20 +3,17 @@ import React, {
     useImperativeHandle,
     useEffect,
     useRef,
-    useState,
 } from 'react'
 import { ActivityInterface, ActivityProps } from '@components/pages/activity'
 import { videosArray } from 'constants/language-practicing-conf'
 
 import * as S from './styled'
-import { shuffle } from '@helpers/array-helper'
 
 const LanguagePracticing = (
     { onHandleChanged, currentTask }: ActivityProps,
     ref: React.Ref<ActivityInterface> | undefined
 ) => {
     const videoEl = useRef<any>(null)
-    const [time, setTime] = useState<number | undefined>()
     useImperativeHandle(
         ref,
         (): ActivityInterface => ({
@@ -32,7 +29,6 @@ const LanguagePracticing = (
     const handleLoadedMetadata = () => {
         const video = videoEl.current
         if (!video) return
-        setTime(video.duration * 1000)
     }
 
     const video = videosArray[currentTask]

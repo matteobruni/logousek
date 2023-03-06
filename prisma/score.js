@@ -19,8 +19,8 @@ export const getScoreCountByUserId = async (userId) => {
   return result['_sum']
 }
 
-export const addScore = async (userId, result, activityType) => {
+export const addScore = async (userId, score, activityType) => {
   return await prisma.score.create({
-    data: { userId, points: result, activityType },
+    data: { userId, points: score, activityType },
   })
 }
