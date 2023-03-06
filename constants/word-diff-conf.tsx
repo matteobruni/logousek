@@ -39,7 +39,7 @@ const Images = {
     pencil: <NamedImage src={wordDifferentiationSrcs.pencil} name="spring" />,
     sniper: <NamedImage src={wordDifferentiationSrcs.sniper} name="sniper" />,
     chalks: <NamedImage src={wordDifferentiationSrcs.chalks} name="chalks" />,
-    training: <NamedImage src={wordDifferentiationSrcs.cow} name="training" />,
+    training: <NamedImage src={wordDifferentiationSrcs.training} name="training" />,
     honey: <NamedImage src={wordDifferentiationSrcs.honey} name="honey" />,
     iceCube: <NamedImage src={wordDifferentiationSrcs.iceCube} name="iceCube" />,
     vase: <NamedImage src={wordDifferentiationSrcs.vase} name="vase" />,

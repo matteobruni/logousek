@@ -39,6 +39,7 @@ export type ActivityProps = {
   onHandleChanged: () => void
   tasksElapsed: number
   checkResult: () => void
+  currentTask: number
 }
 
 const Activity = () => {
@@ -190,6 +191,7 @@ const Activity = () => {
                 onHandleChanged={onHandleChanged}
                 checkResult={_checkResult}
                 complexity={activityDifficulty || '1'}
+                currentTask={currentTask}
               />
             )}
           </S.ContentWrapper>
