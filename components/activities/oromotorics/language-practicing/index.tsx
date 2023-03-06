@@ -31,7 +31,7 @@ const LanguagePracticing = (
         if (!video) return
     }
 
-    const video = videosArray[currentTask]
+    const video = videosArray[currentTask - 1]
 
     return (
         <div>
