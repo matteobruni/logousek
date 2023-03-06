@@ -8,6 +8,7 @@
     "lintFix": "eslint --fix --ext .ts,.tsx .",
     "dev": "next dev -p 1990",
     "build": "next build",
+    "postinstall": "prisma generate",
     "export": "next build && next export",
     "start": "next start",
     "lint": "next lint"
