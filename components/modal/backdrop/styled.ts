@@ -9,5 +9,5 @@ export const StyledBackdrop = styled.div<StyledBackdrop>`
   width: 100vw;
   z-index: 1001;
   background-color: rgb(0 0 0 / 54%);
-  filter: ${({ show }) => (show ? 'blur(0.4rem)' : 'none')};
+  filter: ${({ show }) => (show ? 'blur(0.25rem)' : 'none')};
 `

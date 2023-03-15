@@ -49,9 +49,15 @@
     "react-i18next": "^12.1.1",
     "react-router-dom": "6",
     "react-scroll-parallax": "^3.3.2",
+    "react-tsparticles": "^2.9.3",
     "react-with-gesture": "^4.0.8",
     "recharts": "^2.3.2",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "tsparticles": "^2.9.3",
+    "tsparticles-engine": "^2.9.3",
+    "tsparticles-preset-confetti": "^2.9.3",
+    "tsparticles-preset-fireworks": "^2.9.3",
+    "tsparticles-shape-confetti": "^1.14.2"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

@@ -1,15 +1,9 @@
 import React from "react";
-export type showModalModalInfoParam = {
-    header: any,
-    content?: any,
-    closeDisabled?: boolean,
-    onOkClick?: () => void,
-    onStornoClick?: () => void,
-    autoWidth?: boolean
-}
+import { ShowBackdropParam } from "@components/modal/backdrop";
+import { ModalDetailType } from "@components/modal";
 
 type ModalContextType = {
-    showModal: (param: showModalModalInfoParam) => void;
+    showModal: (modalDetail: ModalDetailType, backdropDetail?: ShowBackdropParam) => void;
     closeModal: () => void;
 }
     | undefined;

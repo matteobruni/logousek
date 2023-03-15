@@ -12,7 +12,8 @@ import { DndProvider } from 'react-dnd'
 import { TouchBackend } from 'react-dnd-touch-backend'
 import { useDarkMode } from '../hooks/useDarkmode'
 import { appWithTranslation } from 'next-i18next'
-import { showModalModalInfoParam } from '../contexts/modal-context'
+import { ModalDetailType } from "@components/modal";
+import { ShowBackdropParam } from '../components/modal/backdrop'
 import { ParallaxProvider } from 'react-scroll-parallax'
 interface ThemeType {
   colors: {
@@ -35,9 +36,11 @@ function MyApp({ Component, pageProps, session }: { Component: React.FC, pagePro
   const modalRef = useRef<ModalInterfaceType>(null)
   const backdropRef = useRef<BackdropInterfaceType>(null)
 
-  const showModal = (modalDetail: showModalModalInfoParam) => {
-    typeof modalRef?.current?.show === 'function' && modalRef?.current?.show(modalDetail)
-    backdropRef?.current?.show()
+  const showModal = (modalDetail: ModalDetailType, backdropDetail: ShowBackdropParam) => {
+    if (typeof modalRef?.current?.show === 'function') {
+      modalRef?.current?.show(modalDetail)
+      backdropRef?.current?.show(backdropDetail)
+    }
   }
 
   const closeModal = () => {

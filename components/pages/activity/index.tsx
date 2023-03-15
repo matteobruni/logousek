@@ -130,9 +130,14 @@ const Activity = () => {
       modalContext?.showModal({
         header: 'Konec Hry',
         onOkClick: redirectToGameMenu,
+        onOkText: <S.DoneButtonContent><i className={'material-icons'}>check</i><span>Dokončit</span></S.DoneButtonContent>,
         closeDisabled: true,
         autoWidth: true,
-      })
+      },
+        {
+          backgroundType: "party"
+        }
+      )
     }
   }, [gameState, modalContext, router, correctTasks, GetPointsForTask, sessionData, activityName, results])
 

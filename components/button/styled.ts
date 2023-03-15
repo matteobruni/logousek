@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { ButtonSizesEnum } from '.'
 
 interface ButtonRowWrapperProps {
-  children?: string
+  children?: string | React.ReactNode
   title?: string
   onClick?: () => void
   size?: ButtonSizesEnum

@@ -13,11 +13,13 @@ import { ThemeContext } from 'styled-components'
 
 interface ModalProps { closeBackdrop: () => void }
 
-interface ModalDetailType {
+export interface ModalDetailType {
   header?: string
-  content?: string
+  content?: string | React.ReactNode
   closeDisabled?: boolean
   onOkClick?: () => void
+  onStornoText?: string | React.ReactNode
+  onOkText?: string | React.ReactNode
   onStornoClick?: () => void
   autoWidth?: boolean
 }
@@ -44,6 +46,8 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
     closeDisabled = false,
     onOkClick,
     onStornoClick,
+    onStornoText,
+    onOkText,
     autoWidth = false
   }: ShowModalParamsTypes) => {
     setShow(true)
@@ -53,6 +57,8 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
       closeDisabled,
       onOkClick,
       onStornoClick,
+      onStornoText,
+      onOkText,
       autoWidth
     })
   }
@@ -61,6 +67,7 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
     setShow(false)
     closeBackdrop()
   }
+  console.log("modalDetail.onOkText", modalDetail.onOkText)
   return (
     <ModalWrapper show={show} >
       <ModalContainer autoWidth={!!modalDetail.autoWidth}>
@@ -83,7 +90,7 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
                       backgroundColor={themeContextData?.colors?.tertiary}
                       size={ButtonSizesEnum.xs}
                     >
-                      Pokračovat
+                      {modalDetail.onOkText || "Pokračovat"}
                     </Button>
                   ) : undefined}
                   {
@@ -94,7 +101,7 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
                         backgroundColor={themeContextData?.colors?.seventy}
                         onClick={modalDetail.onStornoClick}
                       >
-                        Storno
+                        {modalDetail.onStornoText || "Storno"}
                       </Button>
                     ) : undefined
                   }</>

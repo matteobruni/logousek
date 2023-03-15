@@ -8,7 +8,7 @@ export enum ButtonSizesEnum {
 }
 
 interface ButtonProps {
-  children?: string
+  children?: string | React.ReactNode
   title?: string
   onClick?: () => void
   size?: ButtonSizesEnum
@@ -30,6 +30,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const themeContext = useContext(ThemeContext)
   const colors = themeContext.colors || {}
+  const i = children || title
   return (
     <S.ButtonRowWrapper
       color={color || colors.seventy}

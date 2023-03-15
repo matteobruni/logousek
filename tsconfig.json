@@ -129,7 +129,8 @@
     "components/timer/index.tss",
     "helpers/date-helper.js",
     "components/activities/audio/audio-differentiation/index.tsx",
-    "prisma/user.js"
+    "prisma/user.js",
+    "components/particles/confetti/index.js"
   ],
   "exclude": [
     "node_modules"
