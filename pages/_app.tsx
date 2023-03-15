@@ -36,7 +36,7 @@ function MyApp({ Component, pageProps, session }: { Component: React.FC, pagePro
   const modalRef = useRef<ModalInterfaceType>(null)
   const backdropRef = useRef<BackdropInterfaceType>(null)
 
-  const showModal = (modalDetail: ModalDetailType, backdropDetail: ShowBackdropParam) => {
+  const showModal = (modalDetail: ModalDetailType, backdropDetail?: ShowBackdropParam) => {
     if (typeof modalRef?.current?.show === 'function') {
       modalRef?.current?.show(modalDetail)
       backdropRef?.current?.show(backdropDetail)

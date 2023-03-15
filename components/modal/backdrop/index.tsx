@@ -11,7 +11,7 @@ export type ShowBackdropParam = {
 }
 
 export interface BackdropInterfaceType {
-  show: (backdropDetail: ShowBackdropParam) => void
+  show: (backdropDetail?: ShowBackdropParam) => void
   close: () => void
 }
 
@@ -24,9 +24,9 @@ export default forwardRef(function Backdrop({ children }: Backdrop, ref) {
     close: closeBackdrop
   }))
 
-  const showBackdrop = (showBackdropParam: ShowBackdropParam) => {
+  const showBackdrop = (showBackdropParam?: ShowBackdropParam) => {
     setShow(true)
-    setBackdropDetail(showBackdropParam)
+    setBackdropDetail(showBackdropParam || {})
   }
 
   const closeBackdrop = () => {
