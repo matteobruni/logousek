@@ -6,3 +6,11 @@ export const addScoreData = async (scoreId, order, isCorrect) => {
     data: { scoreId, order, isCorrect },
   })
 }
+
+export const getScoreDataByUserId = async (scoreId) => {
+  return await prisma.scoreData.findMany({
+    where: {
+      scoreId,
+    },
+  })
+}

@@ -20,6 +20,7 @@ model User {
   surName   String
   nickName  String
   password  String
+  createdAt DateTime @default(now())
 }
 
 model Score {
@@ -28,6 +29,7 @@ model Score {
   userId        String
   points        Int
   activityType  String
+  difficulty    String?
   data     ScoreData[]
 }
 

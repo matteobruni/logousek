@@ -21,8 +21,12 @@ export default async function handle(req, res) {
         if (req.query.id) {
           // Get a single user if id is provided is the query
           // api/users?id=1
-          const user = await getUser(req.query.id)
-          return res.status(200).json(user)
+          try {
+            const user = await getUser(req.query.id)
+            return res.status(200).json(user)
+          } catch (error) {
+            console.log('error', error)
+          }
         } else {
           // Otherwise, fetch all users
           const users = await getAllUsers()

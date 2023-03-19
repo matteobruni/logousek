@@ -17,7 +17,7 @@ import {
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // await activityController.addScore(req, res)
-  const { userId, points, activityType, results } = req?.body || {}
+  const { userId, points, activityType, results, difficulty } = req?.body || {}
   console.log("userId, score", userId, points, req.body)
   const user = await getUserById({ userId })
   console.log("test1")
@@ -32,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let scoreId = ""
   try {
     console.log("test3")
-    scoreId = (await addScore(userId, points, activityType))?.id;
+    scoreId = (await addScore(userId, points, activityType, difficulty))?.id;
     console.log("test4")
   } catch (error) {
     console.error(error)

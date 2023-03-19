@@ -9,7 +9,10 @@ const lightColors = {
   eighty: '#fff',
   white: '#fff',
   lightGrey: '#ccc',
-  darkGreen: '#C9FF6D'
+  darkGreen: '#C9FF6D',
+  black: "#000",
+  alert: '#FA4238',
+  success: '#84E065'
 }
 
 const darkColors = {
@@ -23,7 +26,10 @@ const darkColors = {
   eighty: '#696969',
   white: '#fff',
   lightGrey: '#ccc',
-  darkGreen: '#696969'
+  darkGreen: '#696969',
+  black: "#000",
+  alert: '#FA4238',
+  success: '#84E065'
 }
 
 const cursorColor = '20, 200, 90'

@@ -127,7 +127,7 @@
     "components/activities/a_s/as-context-provider/use-get-cards/styled.js",
     "utils/AnimatedCursor/index.ts",
     "components/timer/index.tss",
-    "helpers/date-helper.js",
+    "helpers/date-helper.tsx",
     "components/activities/audio/audio-differentiation/index.tsx",
     "prisma/user.js",
     "components/particles/confetti/index.js"

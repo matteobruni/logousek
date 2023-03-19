@@ -120,7 +120,8 @@ const Activity = () => {
             activityType: activityName,
             points:
               (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks,
-            results
+            results,
+            difficulty: activityDifficulty
           })
         } catch (error) { }
       }

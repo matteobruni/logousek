@@ -1,10 +1,11 @@
 import React from 'react'
 import axios from "axios";
-import { Input } from 'antd';
-import useUserData from '../hooks/use-user-data'
-import { Avatar, Button, List, Skeleton } from 'antd'
-import { Col, Row } from 'antd'
+import { Input, Button, List, Skeleton, Col, Row } from 'antd'
 import { useSession, signIn, signOut } from "next-auth/react"
+
+import useUserData from '../hooks/use-user-data'
+
+import * as S from "./styled"
 
 import user from 'constants/types/user-type'
 
@@ -42,7 +43,7 @@ const UserSearch: React.FC<UserSearchType> = ({ onUserSelect, selectUser }) => {
                 <Button onClick={onLoadMore}>Načti další</Button>
             </div>
         ) : null;
-
+    console.log("users", users)
     return (
         <Row gutter={16}>
             <Col span={24}>
@@ -61,7 +62,7 @@ const UserSearch: React.FC<UserSearchType> = ({ onUserSelect, selectUser }) => {
                         <List.Item actions={[<a key="list-loadmore-edit" onClick={deleteUser}>Smaž</a>]} onClick={() => onUserSelect(item.id)}>
                             <Skeleton avatar title={false} active loading={false}>
                                 <List.Item.Meta
-                                    title={<a onClick={() => onUserSelect(item.id)}>{item.nickName}</a>}
+                                    title={<S.WelcomeRowWrapper isSelected={selectUser === item.id} onClick={() => onUserSelect(item.id)}>{item.nickName}</S.WelcomeRowWrapper>}
                                     description={
                                         <>
                                             <span>Vytvořeno: {item.createdAt ? new Date(item.createdAt).toDateString() : "Neuvedeno"}</span>
@@ -75,6 +76,7 @@ const UserSearch: React.FC<UserSearchType> = ({ onUserSelect, selectUser }) => {
                     )}
                 />
             </Col>
+
         </Row>
     )
 }
