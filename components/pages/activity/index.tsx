@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useSession } from 'next-auth/react'
+import { ThemeContext } from 'styled-components'
 
 import PrivateRoute from '@components/auth/private-route'
 import successAudioData from 'public/sounds/activity-feedback/success.mp3'
@@ -61,6 +62,7 @@ const Activity = () => {
   const Activity = getActivity(activityName)
   const modalContext = useContext(ModalContext)
   const sessionData = useSession()
+  const themeContext = useContext(ThemeContext)
 
   const getActivityFromConf = useCallback(
     () =>
@@ -231,10 +233,11 @@ const Activity = () => {
               },
               {
                 name: 'sendButton',
-                title: <S.SendButton>Potvrdit</S.SendButton>,
+                title: <S.SendButton><i className="material-icons">done</i>Potvrdit</S.SendButton>,
                 clickable: true,
                 onClick: _checkResult,
                 disabled: !wasChanged,
+                background: wasChanged ? themeContext.colors.darkGreen : "#fff",
               },
             ]}
           />

@@ -58,7 +58,6 @@ const GameMenu: React.FC = () => {
     shortTitle: activity.shortTitle
   }))
 
-  console.log("sessionData", sessionData)
   return (
     <RouteWrapper colorScheme={activeActivitColor}>
       <PrivateRoute>

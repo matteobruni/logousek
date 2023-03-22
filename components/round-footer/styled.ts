@@ -3,6 +3,8 @@ import { motion } from "framer-motion";
 
 type NavProps = { customHeight?: string }
 
+type NavLinkType = { background?: string }
+
 export const NavbarWrapper = styled(motion.div)`
   width: 100vw;
   display: flex;
@@ -26,7 +28,7 @@ export const Nav = styled.nav<NavProps>`
 `;
 
 
-export const NavLink = styled.a`
+export const NavLink = styled.a<NavLinkType>`
   min-width: 60px;
   cursor: pointer;
   display: flex;
@@ -42,6 +44,7 @@ export const NavLink = styled.a`
   text-decoration: none;
   transition: background-color 0.7s ease-in-out;
   user-select: none;
+  background: ${({ background }) => background || "none"};
 
 &:hover {
   background: #eeeeee;

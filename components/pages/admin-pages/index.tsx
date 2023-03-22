@@ -69,6 +69,7 @@ function AdminPages({ data }: { data: any }) {
   }, [selectUser])
 
   const onFilterReset = useCallback(() => {
+    form.resetFields()
     filter({ from: TODAY, to: TODAY })
   }, [filter])
 

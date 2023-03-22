@@ -14,6 +14,10 @@ export const ActivityWrapper = styled.div`
 `;
 
 export const SendButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 8px;
   font-size: 1.1rem;
 `;
 

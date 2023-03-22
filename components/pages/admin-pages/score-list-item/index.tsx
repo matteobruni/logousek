@@ -6,8 +6,8 @@ import Paggination from '../paggination'
 import { games, GameType } from 'constants/activity-conf'
 import { scoreDataItem } from '..'
 import * as S from "./styled"
-import colors from 'constants/colors'
 import { ThemeContext } from 'styled-components'
+import { getFormatedDate } from '@helpers/date-helper'
 
 const { Panel } = Collapse
 
@@ -58,12 +58,10 @@ const ScoreListItem: React.FC<ScoreListItemType> = ({ scoreList }) => {
                     (currentList + 1) * MAX_ITEMS_IN_LIST
                 )
                 .map((score) => (
-                    <Panel header={score.createdAt} key={`score-list-item-${score.id}`}>
+                    <Panel header={getFormatedDate(new Date(score.createdAt))} key={`score-list-item-${score.id}`}>
                         <p>Score: {score.points}</p>
                         <p>
-                            Typ aktivity:
-                            {getActivityTitle(score.activityType) || 'Bez názvu'} -{' '}
-                            {score.activityType}
+                            {`Typ aktivity: ${getActivityTitle(score.activityType) || 'Bez názvu'} - ${score.activityType}`}
                         </p>
                         <p>Obtížnost: {score.difficulty}</p>
                         <S.ScoreDataVisualization>

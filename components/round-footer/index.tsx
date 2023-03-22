@@ -8,6 +8,7 @@ type ActivityType = {
   title?: React.ReactElement | string,
   disabled?: boolean,
   color?: string,
+  background?: string,
   onClick?: () => void
   icon?: string
   shortTitle?: string
@@ -50,6 +51,7 @@ const RoundFooter: React.FC<RoundFooterType> = ({
         key={`activityTypeButton-${activityType.name}`}
         onClick={onClick}
         style={customStyles}
+        background={activityType.background}
       >
         <S.NavIcon className={`material-icons`}>
           {activityType.icon}
