@@ -90,6 +90,7 @@ export const Modalheader = styled.div`
     font-size: 20pt;
     flex: 1;
     padding: 0.5rem 2rem; 
+    color: black;
   }
 `
 

@@ -8,17 +8,19 @@ const { Panel } = Collapse
 type PagginationType = {
     maxIndexes: number
     onLinkClick: (index: number) => void
+    currentList: number
 }
 
 const Paggination: React.FC<PagginationType> = ({
     maxIndexes,
     onLinkClick,
+    currentList
 }) => {
     const getLinks = () => {
         const linkArray = []
         for (let i = 0; i < maxIndexes; i++) {
             linkArray.push(
-                <S.Link onClick={() => onLinkClick(i)} key={i}>
+                <S.Link onClick={() => onLinkClick(i)} isActive={currentList === i} key={i}>
                     {i}
                 </S.Link>
             )

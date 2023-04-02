@@ -9,7 +9,9 @@ export const LinksWrapper = styled.div`
 `
 
 
-export const Link = styled.a`
+export const Link = styled.a<{ isActive: boolean }>`
   text-decoration: underline;
   padding: 8px;
+  text-decoration: ${({ isActive }) => isActive ? "none" : "underline"};
+  color: ${({ isActive }) => isActive ? "green" : "black"};
 `

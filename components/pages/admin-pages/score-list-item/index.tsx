@@ -7,7 +7,7 @@ import { games, GameType } from 'constants/activity-conf'
 import { scoreDataItem } from '..'
 import * as S from "./styled"
 import { ThemeContext } from 'styled-components'
-import { getFormatedDate } from '@helpers/date-helper'
+import { getFormatedDateTime } from '@helpers/date-helper'
 
 const { Panel } = Collapse
 
@@ -58,7 +58,7 @@ const ScoreListItem: React.FC<ScoreListItemType> = ({ scoreList }) => {
                     (currentList + 1) * MAX_ITEMS_IN_LIST
                 )
                 .map((score) => (
-                    <Panel header={getFormatedDate(new Date(score.createdAt))} key={`score-list-item-${score.id}`}>
+                    <Panel header={getFormatedDateTime(new Date(score.createdAt))} key={`score-list-item-${score.id}`}>
                         <p>Score: {score.points}</p>
                         <p>
                             {`Typ aktivity: ${getActivityTitle(score.activityType) || 'Bez názvu'} - ${score.activityType}`}
@@ -70,7 +70,7 @@ const ScoreListItem: React.FC<ScoreListItemType> = ({ scoreList }) => {
                     </Panel>
                 ))}
 
-            <Paggination maxIndexes={maxIndexes} onLinkClick={setCurrentList} />
+            <Paggination maxIndexes={maxIndexes} currentList={currentList} onLinkClick={setCurrentList} />
         </Collapse>
     )
 }

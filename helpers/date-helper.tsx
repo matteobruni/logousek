@@ -5,6 +5,11 @@ export const getFormatedDate = (date: Date) => {
     return date.toLocaleDateString("cs-CZ", options);
 }
 
+export const getFormatedDateTime = (date: Date) => {
+    const options = {} as any;
+    return date.toLocaleString("cs-CZ", options);
+}
+
 export const getDateFromString = (stringDate: string) => {
     return new Date(stringDate)
 }

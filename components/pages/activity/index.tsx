@@ -104,31 +104,30 @@ const Activity = () => {
     setWrongAudio(new Audio(wrongAudioData))
   }, [])
 
+  const sendResult = async () => {
+    try {
+      const userData = sessionData.data?.user as {
+        email: string
+        name: string
+        id: string
+      }
+      await axios.post('/api/activity/add-score', {
+        userId: userData?.id,
+        activityType: activityName,
+        points:
+          (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks,
+        results,
+        difficulty: activityDifficulty
+      })
+    } catch (error) { }
+  }
+
   useEffect(() => {
     if (gameState === 'finish') {
       const redirectToGameMenu = () => {
         modalContext?.closeModal()
         router.push('/game-menu')
       }
-      const sendResult = async () => {
-        try {
-          const userData = sessionData.data?.user as {
-            email: string
-            name: string
-            id: string
-          }
-          await axios.post('/api/activity/add-score', {
-            userId: userData?.id,
-            activityType: activityName,
-            points:
-              (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks,
-            results,
-            difficulty: activityDifficulty
-          })
-        } catch (error) { }
-      }
-
-      sendResult()
 
       modalContext?.showModal({
         header: 'Konec Hry',
@@ -174,6 +173,7 @@ const Activity = () => {
     console.log("isSuccess", isSuccess)
     if (currentTask === TASKS_COUNT) {
       isSuccess && setCorrectTasks((prevCorrectTasks) => ++prevCorrectTasks)
+      sendResult()
       setGameState('finish')
     } else {
       isSuccess ? success() : fail()
@@ -182,7 +182,7 @@ const Activity = () => {
   }
 
   return (
-    <RouteWrapper colorScheme="#84E065">
+    <RouteWrapper colorScheme={themeContext.colors.primary}>
       <PrivateRoute>
         <Head>
           <title>Logousek - {getActivityFromConf()?.title}</title>

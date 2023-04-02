@@ -15,7 +15,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         })
     } catch (error) {
         return res.status(500).json({
-            errorCode: "server_error"
+            errorCode: "database_error"
         })
     }
 }
