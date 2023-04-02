@@ -10,7 +10,7 @@ import {
   createUser,
   deleteUser,
   getAllUsers,
-  getUser,
+  getUserById,
   updateUser,
 } from '../../prisma/user'
 
@@ -22,7 +22,7 @@ export default async function handle(req, res) {
           // Get a single user if id is provided is the query
           // api/users?id=1
           try {
-            const user = await getUser(req.query.id)
+            const user = await getUserById(req.query.id)
             return res.status(200).json(user)
           } catch (error) {
             console.log('error', error)
