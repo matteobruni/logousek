@@ -170,13 +170,12 @@ const Activity = () => {
 
   const _checkResult = () => {
     const isSuccess = activityRef?.current?.getResult()
-    console.log("isSuccess", isSuccess)
+    isSuccess ? success() : fail()
     if (currentTask === TASKS_COUNT) {
       isSuccess && setCorrectTasks((prevCorrectTasks) => ++prevCorrectTasks)
       sendResult()
       setGameState('finish')
     } else {
-      isSuccess ? success() : fail()
       setWasChanged(false)
     }
   }

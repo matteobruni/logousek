@@ -30,7 +30,20 @@ model Score {
   points        Int
   activityType  String
   difficulty    String?
+  // resultData    ResultData
   data     ScoreData[]
+}
+
+type ResultData {
+  exercise1 Boolean
+  exercise2 Boolean
+  exercise3 Boolean
+  exercise4 Boolean
+  exercise5 Boolean
+  exercise6 Boolean
+  exercise7 Boolean
+  exercise8 Boolean
+  exercise9 Boolean
 }
 
 model ScoreData {

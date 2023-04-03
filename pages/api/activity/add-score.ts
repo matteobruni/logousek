@@ -12,6 +12,8 @@ import {
   addScoreData,
 } from '../../../prisma/scoreData'
 
+type scoreDataType = { scoreId: string, order: number, isCorrect: boolean }
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   // await activityController.addScore(req, res)
   const { userId, points, activityType, results, difficulty } = req?.body || {}
@@ -29,7 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   let scoreId = ""
   try {
 
-    scoreId = (await addScore(userId, points, activityType, difficulty))?.id;
+    scoreId = (await addScore(userId, points, activityType, difficulty, results))?.id;
 
   } catch (error) {
     console.error(error)
@@ -40,15 +42,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
 
-    const saveScoreData = async (order: number, isCorrect: boolean) => {
-
-      await addScoreData(scoreId, order, isCorrect);
+    const saveScoreData = async (scoreDataArray: scoreDataType[]) => {
+      await addScoreData(scoreDataArray);
     }
 
 
+    const scoreDataArray: scoreDataType[] = []
     typeof results === "object" && Object.entries(results).map(result => {
-      saveScoreData(parseInt(result[0]) || 0, result[1] as boolean)
+      scoreDataArray.push({
+        scoreId, order: parseInt(result[0]) || 0, isCorrect: result[1] as boolean
+      }
+      )
     })
+
+
+    saveScoreData(scoreDataArray)
+
     return res.status(200).json({})
 
   } catch (error) {
