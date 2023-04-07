@@ -1,4 +1,22 @@
-const lightColors = {
+export type ColorsType = {
+  primary: string
+  secondary: string
+  tertiary: string
+  fourty: string
+  fifty: string
+  sixty: string
+  seventy: string
+  eighty: string
+  white: string
+  lightGrey: string
+  darkGreen: string
+  black: string
+  alert: string
+  success: string
+}
+
+
+export const lightColors: ColorsType = {
   primary: '#84E065',
   secondary: '#F0E400',
   tertiary: '#E0681B',
@@ -15,7 +33,7 @@ const lightColors = {
   success: '#84E065'
 }
 
-const darkColors = {
+export const darkColors: ColorsType = {
   primary: '#696969',
   secondary: '#696969',
   tertiary: '#696969',
@@ -31,9 +49,3 @@ const darkColors = {
   alert: '#FA4238',
   success: '#84E065'
 }
-
-const cursorColor = '20, 200, 90'
-
-const colors = { lightColors, darkColors, cursorColor }
-
-export default colors

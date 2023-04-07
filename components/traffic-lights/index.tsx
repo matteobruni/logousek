@@ -41,15 +41,15 @@ const TrafficLights: React.FC<TrafficLightsProps> = ({
     <TrafficContainer>
       <LightWrapper>
         <Light color="red" isActive={isActiveRed} />
-        {isActiveRed && <Lighting color="red" />}
+        {isActiveRed ? <Lighting color="red" /> : null}
       </LightWrapper>
       <LightWrapper>
         <Light color="orange" isActive={isActiveOrange} />
-        {isActiveOrange && <Lighting color="orange" />}
+        {isActiveOrange ? <Lighting color="orange" /> : null}
       </LightWrapper>
       <LightWrapper>
         <Light color="green" isActive={isActiveGreen} />
-        {isActiveGreen && <Lighting color="green" />}
+        {isActiveGreen ? <Lighting color="green" /> : null}
       </LightWrapper>
     </TrafficContainer>
   );

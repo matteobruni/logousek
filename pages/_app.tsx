@@ -1,42 +1,48 @@
 import React, { useRef } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from 'next-auth/react'
 import { AnimatePresence } from 'framer-motion'
+import { DndProvider } from 'react-dnd'
+import { TouchBackend } from 'react-dnd-touch-backend'
+
 import '../styles/globals.css'
 import Modal, { ModalInterfaceType } from '../components/modal'
 import Backdrop, { BackdropInterfaceType } from '../components/modal/backdrop'
 import ModalContext from '../contexts/modal-context'
 import CoreContext from '../contexts/core-context'
-import colors from '../constants/colors'
-import { DndProvider } from 'react-dnd'
-import { TouchBackend } from 'react-dnd-touch-backend'
+import {
+  fontSize,
+  fontWeight,
+  lineHeight,
+  letterSpacing,
+  radius,
+  lightColors,
+  darkColors
+} from '../styles'
+import { ThemeType } from "../styles/theme/index"
 import { useDarkMode } from '../hooks/useDarkmode'
 import { appWithTranslation } from 'next-i18next'
-import { ModalDetailType } from "@components/modal";
+import { ModalDetailType } from '@components/modal'
 import { ShowBackdropParam } from '../components/modal/backdrop'
 import { ParallaxProvider } from 'react-scroll-parallax'
-interface ThemeType {
-  colors: {
-    primary: string
-    secondary: string
-    tertiary: string
-    fourty: string
-    fifty: string
-    sixty: string
-    seventy: string
-    eighty: string
-    white: string
-    lightGrey: string
-    darkGreen: string
-  }
-}
 
-function MyApp({ Component, pageProps, session }: { Component: React.FC, pageProps: any, session: any }) {
+function MyApp({
+  Component,
+  pageProps,
+  session,
+}: {
+  Component: React.FC
+  pageProps: any
+  session: any
+}) {
   const [theme, changeTheme] = useDarkMode()
   const modalRef = useRef<ModalInterfaceType>(null)
   const backdropRef = useRef<BackdropInterfaceType>(null)
 
-  const showModal = (modalDetail: ModalDetailType, backdropDetail?: ShowBackdropParam) => {
+  const showModal = (
+    modalDetail: ModalDetailType,
+    backdropDetail?: ShowBackdropParam
+  ) => {
     if (typeof modalRef?.current?.show === 'function') {
       modalRef?.current?.show(modalDetail)
       backdropRef?.current?.show(backdropDetail)
@@ -53,14 +59,32 @@ function MyApp({ Component, pageProps, session }: { Component: React.FC, pagePro
   }
 
   const lightTheme = {
-    colors: colors.lightColors
+    colors: lightColors,
+    typography: {
+      fontSize,
+      fontWeight,
+      lineHeight,
+      letterSpacing,
+    },
+    radius,
   }
 
   const darkTheme = {
-    colors: colors.darkColors
+    colors: darkColors,
+    typography: {
+      fontSize,
+      fontWeight,
+      lineHeight,
+      letterSpacing,
+    },
+    radius,
   }
 
-  function getDropTargetElementsAtPoint(x: number, y: number, dropTargets: any[]) {
+  function getDropTargetElementsAtPoint(
+    x: number,
+    y: number,
+    dropTargets: any[]
+  ) {
     return dropTargets.filter((t) => {
       const rect = t.getBoundingClientRect()
       return (
@@ -72,7 +96,7 @@ function MyApp({ Component, pageProps, session }: { Component: React.FC, pagePro
   const backendOptions = {
     getDropTargetElementsAtPoint,
     enableMouseEvents: true,
-    enableTouchEvents: true
+    enableTouchEvents: true,
   }
 
   const themeMode: ThemeType = theme === 'light' ? lightTheme : darkTheme

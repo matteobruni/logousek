@@ -1,20 +1,3 @@
-
-import { testSound } from "constants/sounds";
-import Ladybug from "../components/svg/templates/ladybug";
-import Car from "../components/svg/templates/car";
-import Lego from "../components/svg/templates/lego";
-import Logousek from "@components/svg/templates/logousek";
-import Bear from "@components/svg/templates/bear";
-import Cloud from "@components/svg/templates/cloud";
-//https://freesound.org/people/DigPro120/sounds/394840/
-//https://freesound.org/people/D0tDashDialUp/sounds/652454/
-//https://freesound.org/people/arseniiv/sounds/587724/
-//https://freesound.org/people/payattention/sounds/81001/
-//https://freesound.org/people/Toivo161/sounds/242064/
-//https://freesound.org/people/csengeri/sounds/27247/
-//https://freesound.org/people/acclivity/sounds/24929/
-//https://freesound.org/people/Jagadamba/sounds/257032/
-//https://freesound.org/people/se2001/sounds/513346/
 import {
     sheep, snake, horse, goat, fly, elephant, dog, cow, chicken, cat,
     wind, storm, river, ringingPhone, nailHammering, flowingFaceut, dripingFaucet, doorKnocking, paperCut, crumpledPaper

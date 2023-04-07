@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { devices } from "constants/screens-conf";
-import { hideScrollBarCss } from '../../../styles/scrollbar-styles'
+import { hideScrollBarCss } from '../../../styles/css/scrollbar-styles'
 
 export const ContentWrapper = styled.main`
   display: flex;
