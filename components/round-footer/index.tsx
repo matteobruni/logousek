@@ -39,7 +39,7 @@ const RoundFooter: React.FC<RoundFooterType> = ({
     } else if (activityType.clickable === false) {
       customStyles = { cursor: 'default' }
     } else if (isActiveActivity) {
-      customStyles = { color: activityType?.color ? themeContext?.colors[activityType?.color] : themeContext?.colors?.primary }
+      customStyles = { color: activityType?.color ? themeContext?.colors.primary : themeContext?.colors?.primary }
     }
     const _selectNewActivity = () => typeof selectNewActivity === "function" ? selectNewActivity(activityType.name) : undefined
     const onClick =
