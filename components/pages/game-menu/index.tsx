@@ -46,7 +46,7 @@ const GameMenu: React.FC = () => {
   // const skipTutorial = () => {
   //   setToLocalSotrage('isNewUser', false)
   // }
-  const activeActivitColor = themeContext?.colors[activeActivity.color]
+  const activeActivitColor = themeContext?.colors.primary
 
   const activityTypes = activityConf.map(activity => ({
     name: activity.name,
