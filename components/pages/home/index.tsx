@@ -38,6 +38,7 @@ import Pump from '../../animations/pump'
 import Logousek from '../../svg/templates/logousek'
 import useWindowDimensions from '../../../hooks/useWindowDimensions'
 import { useParallax } from 'react-scroll-parallax';
+import useTranslation from 'next-translate/useTranslation'
 
 const SIDEBAR_APPLICATION_NAV = [
   { name: 'introduction', icon: 'cake', title: 'Visual' },
@@ -71,6 +72,8 @@ const Home = () => {
   const introSectionElement = useRef(null)
   const router = useRouter()
   const scrollTarget = useRef<HTMLDivElement | null>(null);
+  const { t, lang } = useTranslation('common')
+  console.log("test45", t("test"), lang)
   const logousekParallax = useParallax<HTMLDivElement>({
     rootMargin: { bottom: 50, top: 0, left: 0, right: 0 },
     scale: [1, 0.35, 'easeInQuad'],
@@ -171,6 +174,7 @@ const Home = () => {
                 <RowBlock ref={RowBlockParallax.ref}>
                   <IntroSectionTextStyle>
                     <h1>Logoušek</h1>
+                    {t("test")}
                     <h3>
                       Aplikace pro předškolní děti podporující logopedickou
                       prevenci hravou formou.
