@@ -4,6 +4,7 @@ import React, {
   useContext,
   useRef,
   useCallback,
+  useMemo,
 } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
@@ -24,11 +25,10 @@ import RoundFooter from '../../round-footer'
 import ModalContext from '../../../contexts/modal-context'
 import GainedPoints from './gained-points'
 import { GameType } from '../../../constants/activity-confs/activity-conf'
-import axios from 'axios'
+import axios from 'axios';
 import * as S from './styled'
 
 const DEFAULT_POINTS_FOR_TASK = 10
-const TASKS_COUNT = 10
 
 export type ActivityInterface = {
   getResult: () => boolean
@@ -43,6 +43,13 @@ export type ActivityProps = {
   currentTask: number
 }
 
+const DEFAULT_DIFFICULTY = {
+  id: 1,
+  level: 1,
+  points: DEFAULT_POINTS_FOR_TASK,
+  exercisesCount: 5
+}
+
 const Activity = () => {
   const [currentTask, setCurrentTask] = useState(1)
   const [correctTasks, setCorrectTasks] = useState(0)
@@ -50,20 +57,9 @@ const Activity = () => {
   const [results, setResults] = useState({})
   const [wasChanged, setWasChanged] = useState(false)
   const [gameState, setGameState] = useState('playing')
-  const [successAudio, setSuccessAudio] = useState<
-    HTMLAudioElement | undefined
-  >()
-  const [wrongAudio, setWrongAudio] = useState<HTMLAudioElement | undefined>()
-
-  const activityRef = useRef<ActivityInterface>(null)
   const router = useRouter()
   const activityName = router.query?.activityName as string
   const activityDifficulty = router.query?.difficulty as string
-  const Activity = getActivity(activityName)
-  const modalContext = useContext(ModalContext)
-  const sessionData = useSession()
-  const themeContext = useContext(ThemeContext)
-
   const getActivityFromConf = useCallback(
     () =>
       Object.values(games).reduce(
@@ -80,14 +76,28 @@ const Activity = () => {
       ),
     [activityName]
   )
+  const getDifficulty = () => {
+    const difficultyList = getActivityFromConf()?.difficulty || []
+    return difficultyList.find(
+      (difficulty) => difficulty.id.toString() === activityDifficulty
+    ) || DEFAULT_DIFFICULTY
+  }
+  const actualDifficulty = getDifficulty()
+  const [successAudio, setSuccessAudio] = useState<
+    HTMLAudioElement | undefined
+  >()
+  const [wrongAudio, setWrongAudio] = useState<HTMLAudioElement | undefined>()
+
+  const activityRef = useRef<ActivityInterface>(null)
+  const Activity = getActivity(activityName)
+  const modalContext = useContext(ModalContext)
+  const sessionData = useSession()
+  const themeContext = useContext(ThemeContext)
+
 
   const GetPointsForTask = useCallback(() => {
-    const difficultyList = getActivityFromConf()?.difficulty || []
-    const actualDifficulty = difficultyList.find(
-      (difficulty) => difficulty.id.toString() === activityDifficulty
-    )
     return actualDifficulty?.points
-  }, [activityDifficulty, getActivityFromConf])
+  }, [actualDifficulty?.points])
 
   useEffect(() => {
     const showAlert = (event: { returnValue: string }) => {
@@ -115,7 +125,7 @@ const Activity = () => {
         userId: userData?.id,
         activityType: activityName,
         points:
-          (GetPointsForTask() || DEFAULT_POINTS_FOR_TASK) * correctTasks,
+          (GetPointsForTask() || actualDifficulty.points) * correctTasks,
         results,
         difficulty: activityDifficulty
       })
@@ -171,7 +181,7 @@ const Activity = () => {
   const _checkResult = () => {
     const isSuccess = activityRef?.current?.getResult()
     isSuccess ? success() : fail()
-    if (currentTask === TASKS_COUNT) {
+    if (currentTask === actualDifficulty.exercisesCount) {
       isSuccess && setCorrectTasks((prevCorrectTasks) => ++prevCorrectTasks)
       sendResult()
       setGameState('finish')
@@ -179,11 +189,11 @@ const Activity = () => {
       setWasChanged(false)
     }
   }
-
+  console.log("test43", actualDifficulty)
   return (
     <RouteWrapper colorScheme={themeContext.colors.primary} title={`Logousek - ${getActivityFromConf()?.title}`} type="private">
       <ActivityHeader
-        tasksCount={TASKS_COUNT}
+        tasksCount={actualDifficulty.exercisesCount}
         currentTask={currentTask}
         title={getActivityFromConf()?.title || ''}
       />
@@ -211,7 +221,7 @@ const Activity = () => {
               title: (
                 <GainedPoints
                   pointsForTask={
-                    GetPointsForTask() || DEFAULT_POINTS_FOR_TASK
+                    GetPointsForTask() || actualDifficulty.points
                   }
                   correctTasks={correctTasks}
                 />

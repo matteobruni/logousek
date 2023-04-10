@@ -6,6 +6,7 @@ export type GameType = {
     id: number;
     level: number;
     points: number;
+    exercisesCount: number
   }[];
 };
 
@@ -38,10 +39,10 @@ export const games: GamesType = {
       title: "Rozdíly",
       image: "#",
       difficulty: [
-        { id: 1, level: 1, points: 10 },
-        { id: 2, level: 2, points: 20 },
-        { id: 3, level: 3, points: 30 },
-        { id: 4, level: 4, points: 50 },
+        { id: 1, level: 1, points: 10, exercisesCount: 5 },
+        { id: 2, level: 2, points: 20, exercisesCount: 8 },
+        { id: 3, level: 3, points: 30, exercisesCount: 8 },
+        { id: 4, level: 4, points: 50, exercisesCount: 10 },
       ],
     },
     {
@@ -49,9 +50,9 @@ export const games: GamesType = {
       title: "Skládání tvarů",
       image: "#",
       difficulty: [
-        { id: 1, level: 1, points: 10 },
-        { id: 2, level: 2, points: 20 },
-        { id: 3, level: 3, points: 30 },
+        { id: 1, level: 1, points: 10, exercisesCount: 5 },
+        { id: 2, level: 2, points: 20, exercisesCount: 8 },
+        { id: 3, level: 3, points: 30, exercisesCount: 10 },
       ],
     },
     {
@@ -59,10 +60,10 @@ export const games: GamesType = {
       title: "Zraková paměť",
       image: "#",
       difficulty: [
-        { id: 1, level: 1, points: 10 },
-        { id: 2, level: 2, points: 20 },
-        { id: 3, level: 3, points: 30 },
-        { id: 4, level: 4, points: 70 },
+        { id: 1, level: 1, points: 10, exercisesCount: 5 },
+        { id: 2, level: 2, points: 20, exercisesCount: 8 },
+        { id: 3, level: 3, points: 30, exercisesCount: 8 },
+        { id: 4, level: 4, points: 70, exercisesCount: 10 },
       ],
     },
   ],
@@ -71,9 +72,9 @@ export const games: GamesType = {
       name: "sound_differentiation",
       title: "Diferenciace zvuků",
       difficulty: [
-        { id: 1, level: 1, points: 10 },
-        { id: 2, level: 2, points: 20 },
-        { id: 3, level: 3, points: 30 }
+        { id: 1, level: 1, points: 10, exercisesCount: 5 },
+        { id: 2, level: 2, points: 20, exercisesCount: 8 },
+        { id: 3, level: 3, points: 30, exercisesCount: 10 }
       ],
       image: "#",
     },
@@ -81,7 +82,7 @@ export const games: GamesType = {
       name: "word_differentiation",
       title: "Diferenciace slov",
       difficulty: [
-        { id: 1, level: 1, points: 10 }
+        { id: 1, level: 1, points: 10, exercisesCount: 5 }
       ],
       image: "#",
     },
@@ -89,9 +90,9 @@ export const games: GamesType = {
       name: "audio_memory",
       title: "Sluchová paměť",
       difficulty: [
-        { id: 1, level: 1, points: 10 },
-        { id: 2, level: 2, points: 20 },
-        { id: 3, level: 3, points: 30 }
+        { id: 1, level: 1, points: 10, exercisesCount: 5 },
+        { id: 2, level: 2, points: 20, exercisesCount: 8 },
+        { id: 3, level: 3, points: 30, exercisesCount: 10 }
       ],
       image: "#",
     },
@@ -102,7 +103,7 @@ export const games: GamesType = {
       name: "3_pictures",
       title: "3 obrázky",
       image: "#", difficulty: [
-        { id: 1, level: 1, points: 10 },
+        { id: 1, level: 1, points: 10, exercisesCount: 5 },
       ]
     }
   ],
@@ -113,7 +114,7 @@ export const games: GamesType = {
       title: "Cvičení s jazykem",
       image: "#",
       difficulty: [
-        { id: 1, level: 1, points: 5 }
+        { id: 1, level: 1, points: 5, exercisesCount: 5 }
       ],
     },
   ],
