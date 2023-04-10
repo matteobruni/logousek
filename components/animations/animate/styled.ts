@@ -10,5 +10,5 @@ export const AnimateWrapper = styled.div<StylesType>`
   opacity: ${({ opacity }) => opacity};
   translate: ${({ translateTo }) => translateTo};
   transform: scale(${({ scale }) => scale});
-  transition: 900ms linear;
+  transition: 400ms linear;
 `

@@ -11,7 +11,7 @@ type SwitchPointerProps = { enabled: boolean };
 export const SwitchPointer = styled.div<SwitchPointerProps>`
   height: 1.4rem;
   width: 1.4rem;
-  border-radius: 0.7rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   background-color: white;
   position: absolute;
   top: 0.2rem;
@@ -21,6 +21,6 @@ export const SwitchPointer = styled.div<SwitchPointerProps>`
 
 export const SwitchBackground = styled.div`
   height: 1.8rem;
-  border-radius: 1.75rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   background: black;
 `;

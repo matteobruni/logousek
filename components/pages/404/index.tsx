@@ -1,19 +1,23 @@
-import React from 'react'
-import RouteWrapper from '../../route-wrapper'
+import React, { useContext } from 'react'
+import { ThemeContext } from 'styled-components'
 import Link from 'next/link'
-import Head from 'next/head'
-import { NotFoundPageWrapper } from './styled'
 
-function NotFoundPage () {
+import RouteWrapper from '@components/route-wrapper'
+import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
+import Button, { ButtonSizesEnum } from '@components/button'
+
+import * as S from './styled'
+
+function NotFoundPage() {
+  const themeContext = useContext(ThemeContext);
+  const { tNotFound } = useTranslateFunctions();
+
   return (
-    <RouteWrapper colorScheme='green'>
-      <Head>
-        <title>Nic nenalezeno</title>
-      </Head>
-      <NotFoundPageWrapper>
-        <h1>Nic nenalezeno</h1>
-        <Link href="/">Zpět na úvod</Link>
-      </NotFoundPageWrapper>
+    <RouteWrapper colorScheme={themeContext.colors.primary} title={tNotFound("title")}>
+      <S.NotFoundPageWrapper>
+        <h1>{tNotFound("title")}</h1>
+        <Link href="/"><Button size={ButtonSizesEnum.s}>{tNotFound("description")}</Button></Link>
+      </S.NotFoundPageWrapper>
     </RouteWrapper>
   )
 }

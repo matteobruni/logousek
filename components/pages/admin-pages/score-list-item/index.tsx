@@ -3,7 +3,7 @@ import { Collapse } from 'antd'
 
 import { ScoreListType } from '..'
 import Paggination from '../paggination'
-import { games, GameType } from 'constants/activity-conf'
+import { games, GameType } from 'constants/activity-confs/activity-conf'
 import { scoreDataItem } from '..'
 import * as S from "./styled"
 import { ThemeContext } from 'styled-components'

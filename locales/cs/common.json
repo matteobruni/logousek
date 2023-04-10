@@ -1,1 +1,6 @@
-{ "test": "Heloočěšěšě 123" }
+{
+  "appName": "Logoušek",
+  "buttons": {
+    "play": " Hrát"
+  }
+}

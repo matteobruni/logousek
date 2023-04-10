@@ -1,12 +1,12 @@
 import React from 'react'
-import Authors from '../authors'
+import Authors from './authors'
 import FadeIn from '@components/animations/fade-in'
-import AUTHORS_CONF from 'constants/authors-conf'
+import AUTHORS_CONF from '@constants/authors-conf'
 import * as S from "./styled"
 
 const AboutUsList: React.FC = () => {
   return (
-    <S.WelcomePageAboutus>
+    <S.AboutUsListWrapper>
       {AUTHORS_CONF.map((author) => (
         <FadeIn
           key={`welcome-page-author-${author.key}`}>
@@ -19,7 +19,7 @@ const AboutUsList: React.FC = () => {
           />
         </FadeIn>
       ))}
-    </S.WelcomePageAboutus>
+    </S.AboutUsListWrapper>
   )
 }
 

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import img from './../../public/images/02.svg'
 import ModalContext from '../../contexts/modal-context'
 import ItemList from '../item-list'
-import { GameType } from 'constants/activity-conf'
+import { GameType } from 'constants/activity-confs/activity-conf'
 import * as S from "./styled"
 
 type CardsProps = { gameInfo: GameType }

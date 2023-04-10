@@ -7308,7 +7308,7 @@ next-translate-plugin@^2.0.4:
   dependencies:
     typescript "4.5.2"
 
-next-translate@^2.0.4, "next-translate@>= 2.0.0-canary.1":
+"next-translate@>= 2.0.0-canary.1":
   version "2.0.4"
   resolved "https://registry.npmjs.org/next-translate/-/next-translate-2.0.4.tgz"
   integrity sha512-X+85LLkCDeT1L9VuSSnyXem2mxEkWxiqmdqS574QLtM+br6HaKoN7bUVi+9bSc/R0cTSzHs3PcMICPvSQvLn8Q==

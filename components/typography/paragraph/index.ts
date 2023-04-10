@@ -10,30 +10,32 @@ import {
   T7Styles,
 } from '../text/styled'
 
-export const P1 = styled.p<TextWrapType>`
+type ParagraphType = Omit<TextWrapType, "variant">
+
+export const P1 = styled.p<ParagraphType>`
   ${T1Styles};
 `
 
-export const P2 = styled.p<TextWrapType>`
+export const P2 = styled.p<ParagraphType>`
   ${T2Styles};
 `
 
-export const P3 = styled.p<TextWrapType>`
+export const P3 = styled.p<ParagraphType>`
   ${T3Styles};
 `
 
-export const P4 = styled.p<TextWrapType>`
+export const P4 = styled.p<ParagraphType>`
   ${T4Styles};
 `
 
-export const P5 = styled.p<TextWrapType>`
+export const P5 = styled.p<ParagraphType>`
   ${T5Styles}
 `
 
-export const P6 = styled.p<TextWrapType>`
+export const P6 = styled.p<ParagraphType>`
   ${T6Styles};
 `
 
-export const P7 = styled.p<TextWrapType>`
+export const P7 = styled.p<ParagraphType>`
   ${T7Styles};
 `

@@ -9,7 +9,7 @@ export const SidebarItemsWrapper = styled.div<SidebarItemsWrapperProps>`
   display: flex;
   flex-direction: column;
   position: fixed;
-  background-color: ${({ theme }) => theme.colors.seventy};
+  background-color: ${({ theme }) => theme.colors.primary};
   transition-duration: 0.5s;
   height: 100vh;
   overflow: hidden;

@@ -10,7 +10,7 @@ export const HeaderWrapper = styled.header`
   height: 60px;
   background-color: white;
   padding: 0px 15px;
-  border-radius: 30px;
+  border-radius: ${({ theme }) => theme.radius.secondary};
   margin: 0px 10px;
   box-shadow: 0px 5px 40px 0px rgb(58, 58, 58);
   color: black;

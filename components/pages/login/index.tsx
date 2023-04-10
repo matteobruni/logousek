@@ -16,7 +16,7 @@ import * as S from './styled'
 import axios, { AxiosError } from 'axios'
 import { message } from 'antd'
 
-const LoginScreen: React.FC = () => {
+const Login: React.FC = () => {
   const modalContext = useContext(ModalContext)
   const themeContext = useContext(ThemeContext)
   const [messageApi, contextHolder] = message.useMessage()
@@ -141,29 +141,27 @@ const LoginScreen: React.FC = () => {
   }
 
   return (
-    <RouteWrapper colorScheme={themeContext?.colors.primary}>
-      <OnlyPublicRoute>
-        {contextHolder}
-        <Head>
-          <title>Logoušek - login</title>
-        </Head>
-        <S.LoginWrapper>
-          <S.Header>
-            <span>Jetště nemáte účet?</span>
-            <S.Link onClick={_register}>Registrovat se</S.Link>
-          </S.Header>
-          <S.LoginButtonsWrapper>
-            <Button onClick={_loginAsAdmin}>Přihlásit Admina</Button>
-            <Button onClick={_loginAsUser}>Přihlásit Uživatele</Button>
-            {/* <Button onClick={() => signIn("credentials", { email: "SDA", password: "DSADSA", redirect: false })}>Přihlásit Host</Button> */}
-            <Button onClick={_loginAsGuess} disabled>
-              Přihlásit Host
-            </Button>
-          </S.LoginButtonsWrapper>
-        </S.LoginWrapper>
-      </OnlyPublicRoute>
+    <RouteWrapper colorScheme={themeContext?.colors.primary} title={"Logoušek - login"} type="onlyPublic">
+      {contextHolder}
+      <Head>
+        <title>Logoušek - login</title>
+      </Head>
+      <S.LoginWrapper>
+        <S.Header>
+          <span>Jetště nemáte účet?</span>
+          <S.Link onClick={_register}>Registrovat se</S.Link>
+        </S.Header>
+        <S.LoginButtonsWrapper>
+          <Button onClick={_loginAsAdmin}>Přihlásit Admina</Button>
+          <Button onClick={_loginAsUser}>Přihlásit Uživatele</Button>
+          {/* <Button onClick={() => signIn("credentials", { email: "SDA", password: "DSADSA", redirect: false })}>Přihlásit Host</Button> */}
+          <Button onClick={_loginAsGuess} disabled>
+            Přihlásit Host
+          </Button>
+        </S.LoginButtonsWrapper>
+      </S.LoginWrapper>
     </RouteWrapper>
   )
 }
 
-export default LoginScreen
+export default Login

@@ -24,7 +24,7 @@ export const Nav = styled.nav<NavProps>`
   margin: 0px 10px;
   position: relative;
   background-color: #ffffff;
-  border-radius: 30px;
+  border-radius: ${({ theme }) => theme.radius.secondary};
 `;
 
 
@@ -51,13 +51,13 @@ export const NavLink = styled.a<NavLinkType>`
 }
 
 &:last-child {
-  border-bottom-right-radius: 30px;
-  border-top-right-radius: 30px;
+  border-bottom-right-radius: ${({ theme }) => theme.radius.secondary};
+  border-top-right-radius: ${({ theme }) => theme.radius.secondary};
 }
 
 &:first-child {
-  border-bottom-left-radius: 30px;
-  border-top-left-radius: 30px;
+  border-bottom-left-radius: ${({ theme }) => theme.radius.secondary};
+  border-top-left-radius: ${({ theme }) => theme.radius.secondary};
 }
 
 `;

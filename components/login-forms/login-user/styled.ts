@@ -22,13 +22,13 @@ export const CustomInput = styled.input`
   padding: 1rem 1.5rem;
   margin: 0.4rem 0;
   border: 1px solid ${({ theme }) => theme.colors.seventy};
-  border-radius: 0.3rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   box-sizing: border-box;
 
   &:focus {
-        outline: none !important;
-        border-color: ${({ theme }) => theme.colors.primary};
-        box-shadow: 0 0 10px ${({ theme }) => theme.colors.primary};
+    outline: none !important;
+    border-color: ${({ theme }) => theme.colors.primary};
+    box-shadow: 0 0 10px ${({ theme }) => theme.colors.primary};
   }
 `
 
@@ -44,7 +44,7 @@ export const CustomLabel = styled.label`
   display: flex;
   align-items: center;
   padding: 0rem 0.4rem;
-  border-top-left-radius: 0.4rem;
-  border-bottom-left-radius: 0.4rem;
+  border-top-left-radius: ${({ theme }) => theme.radius.primary};
+  border-bottom-left-radius: ${({ theme }) => theme.radius.primary};
   font-size: 1.1rem;
 `

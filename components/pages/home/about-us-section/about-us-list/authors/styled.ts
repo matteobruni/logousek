@@ -12,9 +12,8 @@ export const AuthorContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0px;
+  margin-bottom: 2rem;
   width: 100%;
-  max-width: 30rem;
   align-self: center;
   justify-self: center;
 `;
@@ -26,24 +25,28 @@ export const PictureWrapper = styled.div`
 `;
 
 export const Picture = styled.div`
-  width: 15rem;
-  min-width: 15rem;
-  height: 15rem;
-  border-radius: 7.5rem;
+  width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  border-radius: ${({ theme }) => theme.radius.tertialy};
   background-color: grey;
 `;
 
 export const Authorinfo = styled.div`
-  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0 0 0;
   & > p {
     padding: 0px;
     margin: 0px;
-    padding-top: 0.3rem;
+    text-align: center;
   }
 
   & > h4 {
     margin: 0px;
-    margin-bottom: 1rem;
+    text-align: center;
   }
 `;
 

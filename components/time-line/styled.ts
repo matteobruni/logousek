@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { devices } from "constants/screens-conf";
 
 export const Wrapper = styled.div`
+  max-width: 960px;
   position: relative;
   color: white;
   margin: 0.3rem;

@@ -29,7 +29,7 @@ export const InnedCard = styled.div<InnedCardProps>`
   position: relative;
   width: 100%;
   height: 15rem;
-  border-radius: 1rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
@@ -44,7 +44,7 @@ export const MainSide = styled.div`
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
   flex-direction: column;
   position: absolute;
-  border-radius: 1rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   width: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -52,8 +52,8 @@ export const MainSide = styled.div`
   color: black;
 
   img {
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    border-top-left-radius: ${({ theme }) => theme.radius.primary};
+    border-top-right-radius: ${({ theme }) => theme.radius.primary};
   }
 `;
 
@@ -61,7 +61,7 @@ export const DifficultySide = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 1rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.2);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -98,7 +98,7 @@ export const InformIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.secondary};
   color: #444444;
 
   &:hover {

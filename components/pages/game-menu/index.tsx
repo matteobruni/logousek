@@ -11,7 +11,7 @@ import {
   setToLocalSotrage
 } from '../../../helpers/local-storage-helper'
 import RouteWrapper from '../../route-wrapper'
-import activityConf from '../../../constants/activity-conf'
+import activityConf from '../../../constants/activity-confs/activity-conf'
 import Header from "./components/header"
 import RoundFooter from '../../round-footer'
 import Card from '../../card'
@@ -59,13 +59,9 @@ const GameMenu: React.FC = () => {
   }))
 
   return (
-    <RouteWrapper colorScheme={activeActivitColor}>
-      <PrivateRoute>
-        <Head>
-          <title>{`Logousek - ${activeActivity.title}`}</title>
-        </Head>
-        <S.MenuWrapper>
-          {/* {userData?.isNewUser === 'true' && (
+    <RouteWrapper colorScheme={activeActivitColor} title={`Logousek - ${activeActivity.title}`} type="private">
+      <S.MenuWrapper>
+        {/* {userData?.isNewUser === 'true' && (
             <S.BlobWrapper>
               <Blob color={activeActivitColor} />
               <S.RightSideWrapper>
@@ -88,31 +84,30 @@ const GameMenu: React.FC = () => {
               </S.RightSideWrapper>
             </S.BlobWrapper>
           )} */}
-          <Header
-            points={score}
-            userName={sessionData?.data?.user?.name || ""}
-          />
-          <S.ContentWrapper>
-            <S.GameTypeDetail>
-              <S.GamesTypeHeader>{activeActivity.title}</S.GamesTypeHeader>
-              <S.LabelWrapper>{labels}</S.LabelWrapper>
-              <S.GamesTypeContent>
-                {activeActivity.description}
-              </S.GamesTypeContent>
-              <S.CitationParagraph>
-                <cite>Bednářová, 2015</cite>
-              </S.CitationParagraph>
-            </S.GameTypeDetail>
-            <S.GameList>{[...Cards]}</S.GameList>
-          </S.ContentWrapper >
-          <RoundFooter
-            activityTypes={activityTypes}
-            activeActivityName={activeActivity.name}
-            selectNewActivity={_changeActiveActivity}
-          />
-        </S.MenuWrapper>
-      </PrivateRoute>
-    </RouteWrapper>
+        <Header
+          points={score}
+          userName={sessionData?.data?.user?.name || ""}
+        />
+        <S.ContentWrapper>
+          <S.GameTypeDetail>
+            <S.GamesTypeHeader>{activeActivity.title}</S.GamesTypeHeader>
+            <S.LabelWrapper>{labels}</S.LabelWrapper>
+            <S.GamesTypeContent>
+              {activeActivity.description}
+            </S.GamesTypeContent>
+            <S.CitationParagraph>
+              <cite>Bednářová, 2015</cite>
+            </S.CitationParagraph>
+          </S.GameTypeDetail>
+          <S.GameList>{[...Cards]}</S.GameList>
+        </S.ContentWrapper >
+        <RoundFooter
+          activityTypes={activityTypes}
+          activeActivityName={activeActivity.name}
+          selectNewActivity={_changeActiveActivity}
+        />
+      </S.MenuWrapper>
+    </RouteWrapper >
   )
 }
 

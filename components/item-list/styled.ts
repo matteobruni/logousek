@@ -15,7 +15,7 @@ export const StyledListItem = styled.li`
   cursor: pointer;
   user-select: none;
   margin: 0.5rem;
-  border-radius: 0.3rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   transition: 0.7s;
   background-color: ${({ theme }) => theme.colors.primary};
   color: white;
@@ -29,4 +29,21 @@ export const StyledListItem = styled.li`
   &:hover{
     transform: scale(1.05);
   }
+`
+
+export const StarsWrap = styled.span<{ level: number }>`
+  color: ${({ theme, level }) => {
+    switch (level) {
+      case 1:
+        return theme.colors.blue
+      case 2:
+        return theme.colors.yellow
+      case 3:
+        return theme.colors.orrange
+      case 4:
+        return theme.colors.red
+      default:
+        return theme.colors.white
+    }
+  }}
 `

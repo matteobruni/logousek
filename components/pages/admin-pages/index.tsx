@@ -10,7 +10,7 @@ import {
 } from 'recharts'
 import UserSearch from './user-search'
 import axios from "axios";
-import activityConf, { ActivityType } from 'constants/activity-conf'
+import activityConf, { ActivityType } from 'constants/activity-confs/activity-conf'
 import { ThemeContext } from 'styled-components';
 import ScoreListItem from './score-list-item';
 

@@ -29,7 +29,7 @@ export const UserPhoto = styled.div`
   width: 40px;
   height: 40px;
   margin: 5px;
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.radius.secondary};
   background-color: #444444;
 `
 

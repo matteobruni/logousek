@@ -4,7 +4,7 @@ import { devices } from "constants/screens-conf";
 type TimeLineItemWrapperProps = { isEven: boolean };
 type BeakProps = { isEven: boolean };
 
-export const TimeLineItemWrapper = styled.article<TimeLineItemWrapperProps>`
+export const TimeLineItemWrapper = styled.div<TimeLineItemWrapperProps>`
   display: flex;
   margin: 1rem;
   ${({ isEven }) =>
@@ -23,7 +23,7 @@ export const TimeLineItemWrapper = styled.article<TimeLineItemWrapperProps>`
 export const Container = styled.article`
   position: relative;
   background-color: ${({ theme }) => theme.colors.primary};
-  border-radius: 1rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   width: 100%;
   padding: 1rem;
 

@@ -4,7 +4,7 @@ export const ListItem = styled.li`
   width: 100%;
   margin-right: 2rem;
   transition-duration: 0.5s;
-  border-radius: 0.5rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   cursor: pointer;
 
   &:hover {
@@ -22,6 +22,6 @@ export const ListItemDesc = styled.p`
 export const Picture = styled.div`
   height: 5rem;
   width: 100%;
-  border-radius: 0.5rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   background-color: grey;
 `;

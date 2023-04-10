@@ -10,6 +10,7 @@ export const FooterWrapper = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-top-right-radius: ${({ theme }) => theme.radius.tertialy};
 
   & > h2 {
     margin-top: 1rem;
@@ -21,6 +22,7 @@ export const FooterWrapper = styled.footer`
   }
 
   @media ${devices.laptop} {
+    border-top-right-radius: ${({ theme }) => theme.radius.quaternary};
     padding-bottom: 0rem;
   }
 `

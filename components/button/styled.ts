@@ -21,7 +21,7 @@ export const ButtonRowWrapper = styled.button<ButtonRowWrapperProps>`
     text-transform: uppercase;
     text-decoration: none;
     display: inline-block;
-    border-radius: 10rem;
+    border-radius: ${({ theme }) => theme.radius.tertialy};
     transition: all 0.2s;
     position: relative;
     border: none;
@@ -91,7 +91,7 @@ export const ButtonRowWrapper = styled.button<ButtonRowWrapperProps>`
             display: inline-block;
             height: 100%;
             width: 100%;
-            border-radius: 10rem;
+            border-radius: ${({ theme }) => theme.radius.tertialy};
             position: absolute;
             top: 0;
             left: 0;

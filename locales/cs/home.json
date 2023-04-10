@@ -1,0 +1,21 @@
+{
+  "introSection": {
+    "header": "Představení aplikace",
+    "description": "Aplikace pro předškolní děti podporující logopedickou prevenci hravou formou."
+  },
+  "gameSamplesSection": {
+    "header": "Ukázka aplikace"
+  },
+  "gameInfoSection": {
+    "header": "Co aplikace nabídne"
+  },
+  "activityListSection": {
+    "header": "Seznam aktivit"
+  },
+  "aboutAsSection": {
+    "header": "O nás"
+  },
+  "footer": {
+    "yearAndAuthor": "2022 | Created By Petr Holčák"
+  }
+}

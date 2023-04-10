@@ -57,7 +57,7 @@ export const ModalContainer = styled.div<ModalContainerProps>`
   width: ${({ autoWidth }) => autoWidth ? "auto" : "100vw"};
   background-color: white;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.4);
-  border-radius: 1rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
 
   @media ${devices.tablet} {
     width: ${({ autoWidth }) => autoWidth ? "auto" : "70vw"};
@@ -82,8 +82,8 @@ export const ModalContainer = styled.div<ModalContainerProps>`
 
 export const Modalheader = styled.div`
   display: flex;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-top-left-radius: ${({ theme }) => theme.radius.primary};
+  border-top-right-radius: ${({ theme }) => theme.radius.primary};
   & > h3 {
     margin: 0px;  
     font-weight: 500;

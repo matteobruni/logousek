@@ -9,10 +9,15 @@ export type ColorsType = {
   eighty: string
   white: string
   lightGrey: string
+  lightGreen: string
   darkGreen: string
   black: string
   alert: string
   success: string
+  blue: string
+  yellow: string
+  orrange: string
+  red: string
 }
 
 
@@ -26,11 +31,16 @@ export const lightColors: ColorsType = {
   seventy: '#696969',
   eighty: '#fff',
   white: '#fff',
-  lightGrey: '#ccc',
-  darkGreen: '#C9FF6D',
+  lightGrey: '#aaa',
+  lightGreen: '#C9FF6D',
+  darkGreen: "#008000",
   black: "#000",
   alert: '#FA4238',
-  success: '#84E065'
+  success: '#84E065',
+  blue: '#26A5E0',
+  yellow: '#F0E400',
+  orrange: '#E0681B',
+  red: '#FA4238'
 }
 
 export const darkColors: ColorsType = {
@@ -44,8 +54,13 @@ export const darkColors: ColorsType = {
   eighty: '#696969',
   white: '#fff',
   lightGrey: '#ccc',
-  darkGreen: '#696969',
+  lightGreen: '#696969',
+  darkGreen: "#696969",
   black: "#000",
   alert: '#FA4238',
-  success: '#84E065'
+  success: '#84E065',
+  blue: '#26A5E0',
+  yellow: '#F0E400',
+  orrange: '#E0681B',
+  red: '#FA4238'
 }

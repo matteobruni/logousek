@@ -19,11 +19,11 @@ import Timer from '@components/timer'
 import ActivityHeader from '../../activity-header/activity-header'
 import RouteWrapper from '../../route-wrapper'
 import { getActivity } from '../../../helpers/get-activity'
-import { games } from '../../../constants/activity-conf'
+import { games } from '../../../constants/activity-confs/activity-conf'
 import RoundFooter from '../../round-footer'
 import ModalContext from '../../../contexts/modal-context'
 import GainedPoints from './gained-points'
-import { GameType } from '../../../constants/activity-conf'
+import { GameType } from '../../../constants/activity-confs/activity-conf'
 import axios from 'axios'
 import * as S from './styled'
 
@@ -181,67 +181,62 @@ const Activity = () => {
   }
 
   return (
-    <RouteWrapper colorScheme={themeContext.colors.primary}>
-      <PrivateRoute>
-        <Head>
-          <title>Logousek - {getActivityFromConf()?.title}</title>
-        </Head>
-        <ActivityHeader
-          tasksCount={TASKS_COUNT}
-          currentTask={currentTask}
-          title={getActivityFromConf()?.title || ''}
+    <RouteWrapper colorScheme={themeContext.colors.primary} title={`Logousek - ${getActivityFromConf()?.title}`} type="private">
+      <ActivityHeader
+        tasksCount={TASKS_COUNT}
+        currentTask={currentTask}
+        title={getActivityFromConf()?.title || ''}
+      />
+      <S.ActivityWrapper>
+        <S.ContentWrapper>
+          {gameState !== 'finish' && (
+            <Activity
+              ref={activityRef}
+              key={`activity_${currentTask}`}
+              tasksElapsed={currentTask}
+              onHandleChanged={onHandleChanged}
+              checkResult={_checkResult}
+              complexity={activityDifficulty || '1'}
+              currentTask={currentTask}
+            />
+          )}
+        </S.ContentWrapper>
+      </S.ActivityWrapper>
+      <footer>
+        <RoundFooter
+          activityTypes={[
+            {
+              name: '',
+              clickable: false,
+              title: (
+                <GainedPoints
+                  pointsForTask={
+                    GetPointsForTask() || DEFAULT_POINTS_FOR_TASK
+                  }
+                  correctTasks={correctTasks}
+                />
+              ),
+            },
+            {
+              name: 'timer',
+              title: (
+                <TimerWrapper>
+                  <Timer />
+                </TimerWrapper>
+              ),
+              clickable: false,
+            },
+            {
+              name: 'sendButton',
+              title: <S.SendButton><i className="material-icons">done</i>Potvrdit</S.SendButton>,
+              clickable: true,
+              onClick: _checkResult,
+              disabled: !wasChanged,
+              background: wasChanged ? themeContext.colors.lightGreen : "#fff",
+            },
+          ]}
         />
-        <S.ActivityWrapper>
-          <S.ContentWrapper>
-            {gameState !== 'finish' && (
-              <Activity
-                ref={activityRef}
-                key={`activity_${currentTask}`}
-                tasksElapsed={currentTask}
-                onHandleChanged={onHandleChanged}
-                checkResult={_checkResult}
-                complexity={activityDifficulty || '1'}
-                currentTask={currentTask}
-              />
-            )}
-          </S.ContentWrapper>
-        </S.ActivityWrapper>
-        <footer>
-          <RoundFooter
-            activityTypes={[
-              {
-                name: '',
-                clickable: false,
-                title: (
-                  <GainedPoints
-                    pointsForTask={
-                      GetPointsForTask() || DEFAULT_POINTS_FOR_TASK
-                    }
-                    correctTasks={correctTasks}
-                  />
-                ),
-              },
-              {
-                name: 'timer',
-                title: (
-                  <TimerWrapper>
-                    <Timer />
-                  </TimerWrapper>
-                ),
-                clickable: false,
-              },
-              {
-                name: 'sendButton',
-                title: <S.SendButton><i className="material-icons">done</i>Potvrdit</S.SendButton>,
-                clickable: true,
-                onClick: _checkResult,
-                disabled: !wasChanged,
-                background: wasChanged ? themeContext.colors.darkGreen : "#fff",
-              },
-            ]}
-          />
-        </footer>
-      </PrivateRoute>
+      </footer>
     </RouteWrapper>
   )
 }

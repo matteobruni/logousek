@@ -5,7 +5,7 @@ export const ListItem = styled.li`
   justify-content: flex-start;
   margin-right: 2rem;
   transition-duration: 0.5s;
-  border-radius: 0.5rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
   cursor: pointer;
 
   &:hover {
@@ -29,4 +29,5 @@ export const ListItemLink = styled.a`
 export const ListItemIcon = styled.i`
    font-size: 2.5rem;
    padding: 0.75rem;
+   color: ${({ theme }) => theme.colors.black}
 `;
