@@ -1,7 +1,10 @@
 import React from 'react'
-import CustomDragLayer from './custom-drag-layer'
+
 import { CardType } from '@contexts/seriality-context/seriality-context-provider'
+import { P5 } from '@components/typography/paragraph'
+
 import CardList from './card-list'
+import CustomDragLayer from './custom-drag-layer'
 
 export interface Item {
     id: number
@@ -20,6 +23,7 @@ const SortableList: React.FC<CardListType> = (
 
     return (
         <div>
+            <P5 align="center">Slož správně příběh</P5>
             <CardList cards={cards} onHandleChange={onHandleChange} />
             <CustomDragLayer />
         </div>
