@@ -7,6 +7,7 @@ import {
 } from "helpers/svg-helpers"
 import { shuffle } from 'helpers/array-helper'
 import { ActivityProps } from '@components/pages/activity'
+import { P5 } from '@components/typography/paragraph'
 const START_COUNT_CARDS = 2
 
 type AddictionObjType = {
@@ -112,6 +113,7 @@ export default forwardRef(function VisualDifActivity(
 
   return (
     <main>
+      <P5 align="center">Vyber odlišný obrázek</P5>
       <CardList
         cards={cards}
         chooseWrong={_fail}

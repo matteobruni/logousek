@@ -1,10 +1,14 @@
 import styled, { css } from "styled-components";
 import { Variant } from "./index"
 
-export type TextWrapType = { variant: Variant, type?: "primary" | "ghost" }
+export type TextWrapType = { variant: Variant, type?: "primary" | "ghost", align?: "center" }
 
 export const ColorStyles = css<{ type?: "primary" | "ghost" }>`
   color: ${({ type, theme }) => type === "ghost" ? theme.colors.white : theme.colors.black};
+`
+
+export const AlignStyles = css<{ align?: "left" | "center" | "end" }>`
+  text-align: ${({ align }) => align};
 `
 
 export const T1Styles = css<{ type?: "primary" | "ghost" }>`
@@ -13,6 +17,7 @@ export const T1Styles = css<{ type?: "primary" | "ghost" }>`
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing.xxl};
   line-height: ${({ theme }) => theme.typography.lineHeight.xxl};
   ${ColorStyles};
+  ${AlignStyles};
 `
 
 export const T2Styles = css<{ type?: "primary" | "ghost" }>`
@@ -21,6 +26,7 @@ export const T2Styles = css<{ type?: "primary" | "ghost" }>`
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing.xl};
   line-height: ${({ theme }) => theme.typography.lineHeight.xl};
   ${ColorStyles};
+  ${AlignStyles};
 `
 
 export const T3Styles = css<{ type?: "primary" | "ghost" }>`
@@ -29,6 +35,7 @@ export const T3Styles = css<{ type?: "primary" | "ghost" }>`
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing.lg};
   line-height: ${({ theme }) => theme.typography.lineHeight.lg};
   ${ColorStyles};
+  ${AlignStyles};
 `
 
 export const T4Styles = css<{ type?: "primary" | "ghost" }>`
@@ -45,6 +52,7 @@ export const T5Styles = css<{ type?: "primary" | "ghost" }>`
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing.md};
   line-height: ${({ theme }) => theme.typography.lineHeight.md};
   ${ColorStyles};
+  ${AlignStyles};
 `
 
 export const T6Styles = css<{ type?: "primary" | "ghost" }>`
@@ -53,6 +61,7 @@ export const T6Styles = css<{ type?: "primary" | "ghost" }>`
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing.sm};
   line-height: ${({ theme }) => theme.typography.lineHeight.sm};
   ${ColorStyles};
+  ${AlignStyles};
 `
 
 export const T7Styles = css<{ type?: "primary" | "ghost" }>`
@@ -61,6 +70,7 @@ export const T7Styles = css<{ type?: "primary" | "ghost" }>`
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing.xs};
   line-height: ${({ theme }) => theme.typography.lineHeight.xs};
   ${ColorStyles};
+  ${AlignStyles};
 `
 
 
