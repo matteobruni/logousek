@@ -104,7 +104,7 @@ export default forwardRef(function VisualMemoryActivity(
           />
         </h1>
         <TrafficLights countdownTime={TIMER_COUNT_DOWN_TIME} />
-        <h2>Zapamatuj si obrázek</h2>
+        <h2>{correctAnswers.length > 1 ? "Zapamatuj si obrázky" : "Zapamatuj si obrázek"}</h2>
         <ActivityCardWrapper>
           {generatedSvgs
             .filter((Svg) =>

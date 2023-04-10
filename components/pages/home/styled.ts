@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { devices } from '../../../constants/screens-conf'
+import { devices } from '@constants/screens-conf'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.eighty};

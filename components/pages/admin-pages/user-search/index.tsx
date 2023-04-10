@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios";
 import { Input, Button, List, Skeleton, Col, Row } from 'antd'
-import { useSession, signIn, signOut } from "next-auth/react"
+import { signIn } from "next-auth/react"
 
 import useUserData from '../hooks/use-user-data'
 

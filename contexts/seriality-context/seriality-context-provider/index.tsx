@@ -7,7 +7,7 @@ import React, {
 import SerialityContext from '..'
 import { SvgWrapper } from './styled'
 import { shuffle, getRandomElementFromList } from '@helpers/array-helper'
-import { threePictures, svgConfType } from 'constants/seriality-conf'
+import { threePictures, svgConfType } from 'constants/activity-confs/seriality-conf'
 
 export type SerialityContextProviderInterface = {
   checkResult: () => boolean

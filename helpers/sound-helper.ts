@@ -1,8 +1,8 @@
 import { getRandomElementFromList } from "./array-helper";
 import { shuffle } from "./array-helper";
-import getSoundDiffConf from "constants/sound-diff-conf";
-import getWordDiffConf from "constants/word-diff-conf";
-import audioMemoryConf from "constants/audio-memory-conf";
+import getSoundDiffConf from "constants/activity-confs/sound-diff-conf";
+import getWordDiffConf from "constants/activity-confs/word-diff-conf";
+import audioMemoryConf from "constants/activity-confs/audio-memory-conf";
 
 export type pictureType = {
   name: string, svg: React.ReactNode

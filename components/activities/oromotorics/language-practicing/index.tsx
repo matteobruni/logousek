@@ -5,7 +5,7 @@ import React, {
     useRef,
 } from 'react'
 import { ActivityInterface, ActivityProps } from '@components/pages/activity'
-import { videosArray } from 'constants/language-practicing-conf'
+import { videosArray } from 'constants/activity-confs/language-practicing-conf'
 
 import * as S from './styled'
 

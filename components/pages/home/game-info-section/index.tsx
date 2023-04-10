@@ -2,7 +2,6 @@ import React from 'react'
 
 import Cards from '@components/card'
 import FadeIn from '@components/animations/fade-in'
-import { getTranslation } from '@helpers/get-translation'
 
 import Header from "../header"
 import * as S from "./styled"
