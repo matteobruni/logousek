@@ -1,11 +1,14 @@
 import React, { useState, forwardRef, useRef, useImperativeHandle } from 'react'
-import AvaibleCards from './avaible-cards'
-import DropCards from './drop-cards'
-import CustomDragLayer from './custom-drag-layer'
+
 import AsContextProvider from '@contexts/as-context/as-context-provider'
 import { ActivityInterface } from '@components/pages/activity'
 import { AsContextProviderInterface } from '@contexts/as-context/as-context-provider'
 import { ActivityProps } from '@components/pages/activity'
+import { P5 } from '@components/typography/paragraph'
+
+import AvaibleCards from './avaible-cards'
+import DropCards from './drop-cards'
+import CustomDragLayer from './custom-drag-layer'
 
 const AS = (
   { complexity, onHandleChanged }: ActivityProps,
@@ -31,6 +34,7 @@ const AS = (
         count={cardCount}
         onHandleChanged={onHandleChanged}
       >
+        <P5 align="center">Slož obrázek</P5>
         <CustomDragLayer />
         <DropCards />
         <AvaibleCards />
