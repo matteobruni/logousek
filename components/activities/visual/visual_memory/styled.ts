@@ -21,12 +21,8 @@ export const ShowedPart = styled.div`
 
 export const QuestionPart = styled.div`
   width: 100vw;
-  justify-content: center;
-  align-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
   display: flex;
-
+  flex-direction: column;
 `
 
 export const ActivityCardWrapper = styled.div`
@@ -34,4 +30,13 @@ export const ActivityCardWrapper = styled.div`
   justify-content: center;
   gap: 0.5rem;
   flex-wrap: wrap;
+`
+
+export const QuestionsWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 0.5rem;
 `

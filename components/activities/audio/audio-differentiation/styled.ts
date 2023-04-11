@@ -12,9 +12,3 @@ display: flex;
 flex-direction: column;
 margin: 4rem;
 `
-
-
-export const Label = styled.p`
-    text-align: center;
-    font-size: 12pt;
-`

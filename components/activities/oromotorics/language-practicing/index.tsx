@@ -5,7 +5,8 @@ import React, {
     useRef,
 } from 'react'
 import { ActivityInterface, ActivityProps } from '@components/pages/activity'
-import { videosArray } from 'constants/activity-confs/language-practicing-conf'
+import { videosArray } from '@constants/activity-confs/language-practicing-conf'
+import { P5 } from '@components/typography/paragraph'
 
 import * as S from './styled'
 
@@ -35,6 +36,7 @@ const LanguagePracticing = (
 
     return (
         <div>
+            <P5 align="center" type="ghost">Opakuj po mě</P5>
             <S.StyledVideo
                 ref={videoEl}
                 autoPlay

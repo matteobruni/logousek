@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { getAudioConfElement, checkAnswer } from '@helpers/sound-helper'
 import { ActivityProps } from '@components/pages/activity'
 import CardWrapper from '@components/card-wrapper'
+import { P5 } from '@components/typography/paragraph'
 import SoundButton from '../../../sound-button'
 import * as S from './styled'
 
@@ -27,17 +28,17 @@ export default forwardRef(function AudioDifferentiation(
   return (
     <div>
       <S.SoundWrapper>
+        <P5 align="center" type="ghost">Přehrajde si zvuk</P5>
         <S.SoundButtonWrapper>
           <SoundButton fontSize="4rem" sound={audioElement.sound} />
         </S.SoundButtonWrapper>
-        <S.Label>Přehrajde si zvuk</S.Label>
       </S.SoundWrapper>
+      <P5 align="center" type="ghost">Vyberte správnou odpověď</P5>
       <CardWrapper
         cards={audioElement.pictures}
         onChange={onCardSelectHandle}
         selected={selected}
       />
-      <S.Label>Vyberte správnou odpověď</S.Label>
     </div>
   )
 })

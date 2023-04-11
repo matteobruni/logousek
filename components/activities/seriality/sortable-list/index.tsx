@@ -23,7 +23,7 @@ const SortableList: React.FC<CardListType> = (
 
     return (
         <div>
-            <P5 align="center">Slož správně příběh</P5>
+            <P5 align="center" type="ghost">Slož správně příběh</P5>
             <CardList cards={cards} onHandleChange={onHandleChange} />
             <CustomDragLayer />
         </div>

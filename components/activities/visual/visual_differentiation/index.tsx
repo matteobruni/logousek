@@ -113,7 +113,7 @@ export default forwardRef(function VisualDifActivity(
 
   return (
     <main>
-      <P5 align="center">Vyber odlišný obrázek</P5>
+      <P5 align="center" type="ghost">Vyber odlišný obrázek</P5>
       <CardList
         cards={cards}
         chooseWrong={_fail}

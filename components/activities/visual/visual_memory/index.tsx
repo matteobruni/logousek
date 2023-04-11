@@ -4,19 +4,15 @@ import React, {
   useEffect,
   useImperativeHandle,
 } from 'react'
-import {
-  TemplateWrapper,
-  QuestionPart,
-  ShowedPart,
-  ActivityCardWrapper,
-} from './styled'
+import * as S from './styled'
 import ActivityCard from '../../activity-card'
 import { getRandomSvgsWithChangeConfig } from 'helpers/svg-helpers'
 import Timer from '@components/timer/index'
 import TrafficLights from '@components/traffic-lights'
-import { shuffle } from 'helpers/array-helper'
+import { shuffle } from '@helpers/array-helper'
 import { ActivityProps } from '@components/pages/activity'
-import { SvgListType } from 'helpers/svg-helpers'
+import { SvgListType } from '@helpers/svg-helpers'
+import { P5 } from '@components/typography/paragraph'
 
 const TIMER_COUNT_DOWN_TIME = 6000
 
@@ -95,8 +91,8 @@ export default forwardRef(function VisualMemoryActivity(
 
 
   return (
-    <TemplateWrapper isQuesionpart={isQuesionpart}>
-      <ShowedPart onClick={() => setIsQuesionpart(true)}>
+    <S.TemplateWrapper isQuesionpart={isQuesionpart}>
+      <S.ShowedPart onClick={() => setIsQuesionpart(true)}>
         <h1>
           <Timer
             countdownTime={TIMER_COUNT_DOWN_TIME}
@@ -104,8 +100,8 @@ export default forwardRef(function VisualMemoryActivity(
           />
         </h1>
         <TrafficLights countdownTime={TIMER_COUNT_DOWN_TIME} />
-        <h2>{correctAnswers.length > 1 ? "Zapamatuj si obrázky" : "Zapamatuj si obrázek"}</h2>
-        <ActivityCardWrapper>
+        <P5 align="center" type="ghost">{correctAnswers.length > 1 ? "Zapamatuj si obrázky" : "Zapamatuj si obrázek"}</P5>
+        <S.ActivityCardWrapper>
           {generatedSvgs
             .filter((Svg) =>
               correctAnswers.find(
@@ -120,9 +116,14 @@ export default forwardRef(function VisualMemoryActivity(
                 </ActivityCard>
               )
             })}
-        </ActivityCardWrapper>
-      </ShowedPart>
-      <QuestionPart>{questionPartQuestions}</QuestionPart>
-    </TemplateWrapper>
+        </S.ActivityCardWrapper>
+      </S.ShowedPart>
+      <S.QuestionPart>
+        <P5 align="center" type="ghost">Vyberte správnou odpověď</P5>
+        <S.QuestionsWrap>
+          {questionPartQuestions}
+        </S.QuestionsWrap>
+      </S.QuestionPart>
+    </S.TemplateWrapper>
   )
 })

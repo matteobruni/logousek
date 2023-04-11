@@ -34,7 +34,7 @@ const AS = (
         count={cardCount}
         onHandleChanged={onHandleChanged}
       >
-        <P5 align="center">Slož obrázek</P5>
+        <P5 align="center" type="ghost">Slož obrázek</P5>
         <CustomDragLayer />
         <DropCards />
         <AvaibleCards />
