@@ -70,7 +70,7 @@ export const games: GamesType = {
   auditory_perception: [
     {
       name: "sound_differentiation",
-      title: "Diferenciace zvuků",
+      title: "Zvuky",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -80,7 +80,7 @@ export const games: GamesType = {
     },
     {
       name: "word_differentiation",
-      title: "Diferenciace slov",
+      title: "Slova",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 }
       ],
@@ -101,7 +101,7 @@ export const games: GamesType = {
   seriality: [
     {
       name: "3_pictures",
-      title: "3 obrázky",
+      title: "Příběh",
       image: "#", difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
       ]
