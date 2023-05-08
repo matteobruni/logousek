@@ -126,7 +126,7 @@ export const games: GamesType = {
       description: "language_practicing description",
       image: "#",
       difficulty: [
-        { id: 1, level: 1, points: 5, exercisesCount: 5 }
+        { id: 1, level: 1, points: 5, exercisesCount: 10 }
       ],
     },
   ],
