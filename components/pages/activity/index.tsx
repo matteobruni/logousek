@@ -4,17 +4,13 @@ import React, {
   useContext,
   useRef,
   useCallback,
-  useMemo,
 } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
-import Head from 'next/head'
 import { useSession } from 'next-auth/react'
 import { ThemeContext } from 'styled-components'
 
-import PrivateRoute from '@components/auth/private-route'
-import successAudioData from 'public/sounds/activity-feedback/success.mp3'
-import wrongAudioData from 'public/sounds/activity-feedback/wrong.mp3'
+import { useActivitySouds } from '@hooks/useActivitySouds'
 import Timer from '@components/timer'
 
 import ActivityHeader from '../../activity-header/inedex'
@@ -58,6 +54,8 @@ const Activity = () => {
   const [wasChanged, setWasChanged] = useState(false)
   const [gameState, setGameState] = useState('playing')
   const router = useRouter()
+  const { playWrongAudio, playSuccessAudio } = useActivitySouds()
+
   const activityName = router.query?.activityName as string
   const activityDifficulty = router.query?.difficulty as string
   const getActivityFromConf = useCallback(
@@ -85,10 +83,6 @@ const Activity = () => {
     )
   }
   const actualDifficulty = getDifficulty()
-  const [successAudio, setSuccessAudio] = useState<
-    HTMLAudioElement | undefined
-  >()
-  const [wrongAudio, setWrongAudio] = useState<HTMLAudioElement | undefined>()
 
   const activityRef = useRef<ActivityInterface>(null)
   const Activity = getActivity(activityName)
@@ -110,10 +104,6 @@ const Activity = () => {
     }
   })
 
-  useEffect(() => {
-    setSuccessAudio(new Audio(successAudioData))
-    setWrongAudio(new Audio(wrongAudioData))
-  }, [])
 
   const sendResult = async () => {
     try {
@@ -168,22 +158,14 @@ const Activity = () => {
     results,
   ])
 
-  const playAudio = (audio: HTMLAudioElement | undefined) => {
-    if (audio) {
-      audio.pause()
-      audio.currentTime = 0
-      audio.play()
-    }
-  }
-
   const fail = () => {
-    playAudio(wrongAudio)
+    playWrongAudio()
     setCurrentTask((v) => ++v)
     setResults((v) => ({ ...v, [currentTask]: false }))
   }
 
   const success = () => {
-    playAudio(successAudio)
+    playSuccessAudio()
     setCurrentTask((v) => ++v)
     setCorrectTasks((v) => ++v)
     setResults((v) => ({ ...v, [currentTask]: true }))
@@ -235,7 +217,7 @@ const Activity = () => {
       clickable: true,
       onClick: _checkResult,
       disabled: !wasChanged,
-      background: wasChanged ? themeContext.colors.lightGreen : '#fff',
+      background: wasChanged ? themeContext.colors.lightGreen : themeContext.colors.white,
     },
   ]
 
