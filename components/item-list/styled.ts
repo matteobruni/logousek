@@ -18,7 +18,7 @@ export const StyledListItem = styled.li`
   border-radius: ${({ theme }) => theme.radius.primary};
   transition: 0.7s;
   background-color: ${({ theme }) => theme.colors.primary};
-  color: white;
+  color: ${({ theme }) => theme.colors.white};;
 
   &>span{
     display: flex;

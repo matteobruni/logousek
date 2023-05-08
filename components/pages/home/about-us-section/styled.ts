@@ -3,8 +3,11 @@ import { devices } from '@constants/screens-conf'
 import { Section } from "../styled"
 
 export const AboutAsSectionWrapper = styled(Section)`
+  width: 100%;
   height: auto;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.darkGreen};
+  display: flex;
+  justify-content: center;
 `
 
 export const AboutAsSectionContainer = styled.div`
@@ -17,6 +20,6 @@ export const AboutAsSectionContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
 
   @media ${devices.laptop} {
-  border-bottom-left-radius: ${({ theme }) => theme.radius.quaternary};
+    border-bottom-left-radius: ${({ theme }) => theme.radius.quaternary};
   }
 `

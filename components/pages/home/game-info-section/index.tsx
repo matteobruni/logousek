@@ -1,8 +1,9 @@
 import React from 'react'
 
-import Cards from '@components/card'
+import Cards from '@components/game-card'
 import FadeIn from '@components/animations/fade-in'
 
+import SectionLayout from '../section-layout'
 import Header from "../header"
 import * as S from "./styled"
 
@@ -48,10 +49,12 @@ const GameInfoSection: React.FC = () => {
   return (
     <S.GameInfoSection id="gameInfo">
       <S.GameInfoWrapper>
-        <Header>{tHome("gameInfoSection.header")}</Header>
-        <S.GameInfoSectionArticles>
-          {cards}
-        </S.GameInfoSectionArticles>
+        <SectionLayout>
+          <Header>{tHome("gameInfoSection.header")}</Header>
+          <S.GameInfoSectionArticles>
+            {cards}
+          </S.GameInfoSectionArticles>
+        </SectionLayout>
       </S.GameInfoWrapper>
     </S.GameInfoSection>
   )

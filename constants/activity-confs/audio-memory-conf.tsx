@@ -1,10 +1,10 @@
-import { audioDiffConfType } from "@helpers/sound-helper";
+import { AudioDiffConfType } from "@helpers/sound-helper";
 
 
 
 
 
-const audioMemoryConf: audioDiffConfType = {
+const audioMemoryConf: AudioDiffConfType = {
     "1": [
     ],
 };

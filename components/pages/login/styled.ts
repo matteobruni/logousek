@@ -8,7 +8,7 @@ export const LoginWrapper = styled.div`
 
 export const Link = styled.span`
   cursor: pointer;
-  color: red;
+  color: ${({ theme }) => theme.colors.red};
 `
 
 export const LoginButtonsWrapper = styled.main`

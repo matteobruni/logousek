@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
 
+import SectionLayout from '../section-layout'
 import AboutUsList from './about-us-list'
 import Header from "../header"
 import * as S from "./styled"
@@ -12,8 +13,10 @@ const AboutAsSection: React.FC = () => {
   return (
     <S.AboutAsSectionWrapper id="aboutAs">
       <S.AboutAsSectionContainer>
-        <Header>{tHome("aboutAsSection.header")}</Header>
-        <AboutUsList />
+        <SectionLayout>
+          <Header>{tHome("aboutAsSection.header")}</Header>
+          <AboutUsList />
+        </SectionLayout>
       </S.AboutAsSectionContainer>
     </S.AboutAsSectionWrapper>
   )

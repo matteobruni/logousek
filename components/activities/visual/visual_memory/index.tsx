@@ -5,7 +5,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import * as S from './styled'
-import ActivityCard from '../../activity-card'
+import ActivityCard from '../../../activity-card'
 import { getRandomSvgsWithChangeConfig } from 'helpers/svg-helpers'
 import Timer from '@components/timer/index'
 import TrafficLights from '@components/traffic-lights'
@@ -101,7 +101,7 @@ export default forwardRef(function VisualMemoryActivity(
         </h1>
         <TrafficLights countdownTime={TIMER_COUNT_DOWN_TIME} />
         <P5 align="center" type="ghost">{correctAnswers.length > 1 ? "Zapamatuj si obrázky" : "Zapamatuj si obrázek"}</P5>
-        <S.ActivityCardWrapper>
+        <S.ActivityCardList>
           {generatedSvgs
             .filter((Svg) =>
               correctAnswers.find(
@@ -116,7 +116,7 @@ export default forwardRef(function VisualMemoryActivity(
                 </ActivityCard>
               )
             })}
-        </S.ActivityCardWrapper>
+        </S.ActivityCardList>
       </S.ShowedPart>
       <S.QuestionPart>
         <P5 align="center" type="ghost">Vyberte správnou odpověď</P5>

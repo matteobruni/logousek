@@ -2,15 +2,7 @@ import type { Identifier, XYCoord } from 'dnd-core'
 import type { FC } from 'react'
 import { useRef } from 'react'
 import { useDrag, useDrop } from 'react-dnd'
-import ActivityCard from '@components/activities/activity-card'
-
-const style = {
-    border: '1px dashed gray',
-    padding: '0.5rem 1rem',
-    marginBottom: '.5rem',
-    backgroundColor: 'white',
-    cursor: 'move',
-}
+import ActivityCard from '@components/activity-card'
 
 export const ItemTypes = {
     CARD: 'card',

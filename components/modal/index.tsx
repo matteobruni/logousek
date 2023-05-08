@@ -1,13 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle, useContext } from 'react'
 import BackIcon from '../back-icon'
 import ButtonRow from '../button-row/button-row'
-import {
-  ModalWrapper,
-  ModalContainer,
-  Modalheader,
-  ModalContent,
-  BackIconWrapper
-} from './styled'
+import * as S from './styled'
 import Button, { ButtonSizesEnum } from '../button'
 import { ThemeContext } from 'styled-components'
 
@@ -67,17 +61,16 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
     setShow(false)
     closeBackdrop()
   }
-  console.log("modalDetail.onOkText", modalDetail.onOkText)
   return (
-    <ModalWrapper show={show} >
-      <ModalContainer autoWidth={!!modalDetail.autoWidth}>
-        <Modalheader>
-          <h3>{modalDetail.header} </h3>
+    <S.ModalWrapper show={show} >
+      <S.ModalContainer autoWidth={!!modalDetail.autoWidth}>
+        <S.Modalheader>
+          <S.ModalTitle>{modalDetail.header} </S.ModalTitle>
           {
-            !modalDetail.closeDisabled && <BackIconWrapper><BackIcon onClick={closeModal} /></BackIconWrapper>
+            !modalDetail.closeDisabled ? <S.BackIconWrapper><BackIcon onClick={closeModal} /></S.BackIconWrapper> : null
           }
-        </Modalheader>
-        < ModalContent >{modalDetail.content}</ModalContent>
+        </S.Modalheader>
+        < S.ModalContent >{modalDetail.content}</S.ModalContent>
         {
           ((modalDetail.onOkClick != null) || (modalDetail.onStornoClick != null))
             ? (
@@ -108,7 +101,7 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
               </ButtonRow>
             )
             : undefined}
-      </ModalContainer>
-    </ModalWrapper>
+      </S.ModalContainer>
+    </S.ModalWrapper>
   )
 })

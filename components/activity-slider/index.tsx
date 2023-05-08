@@ -6,16 +6,16 @@ import {
     QuestionPart,
     ShowedPart,
 } from './styled'
-import ActivityCard from '@components/activities/activity-card'
+import ActivityCard from '@components/activity-card'
 import Timer from '@components/timer/index'
 import TrafficLights from '@components/traffic-lights'
-import { pictureType } from 'helpers/sound-helper'
+import { PictureType } from 'helpers/sound-helper'
 
 const TIMER_COUNT_DOWN_TIME = 6000
 
 type ActivitySliderProps = {
     questionPart?: React.ReactElement
-    cardData: pictureType[]
+    cardData: PictureType[]
     setSelectedElement: (value: string) => void
     selectedElements: string[]
     onTimerIsDoneHandler?: () => void

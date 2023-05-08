@@ -2,7 +2,7 @@ import React, { useState, forwardRef, useImperativeHandle } from 'react'
 import { useRouter } from 'next/router'
 import { getAudioConfElement, checkAnswer } from '@helpers/sound-helper'
 import { ActivityProps } from '@components/pages/activity'
-import CardWrapper from '@components/card-wrapper'
+import CardList from '@components/card-list'
 import { P5 } from '@components/typography/paragraph'
 import SoundButton from '../../../sound-button'
 import * as S from './styled'
@@ -34,7 +34,7 @@ export default forwardRef(function AudioDifferentiation(
         </S.SoundButtonWrapper>
       </S.SoundWrapper>
       <P5 align="center" type="ghost">Vyberte správnou odpověď</P5>
-      <CardWrapper
+      <CardList
         cards={audioElement.pictures}
         onChange={onCardSelectHandle}
         selected={selected}

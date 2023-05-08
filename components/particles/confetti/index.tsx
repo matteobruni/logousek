@@ -1,7 +1,6 @@
 import React from 'react'
 import Particles from 'react-tsparticles'
 import { loadConfettiPreset } from 'tsparticles-preset-confetti'
-import { loadFull } from 'tsparticles'
 
 export default function Confetti() {
   const loadConfetti = async (engine: any) => {

@@ -8,11 +8,11 @@ export const StyledBackIconWrapper = styled.a`
   cursor: pointer;
 
   &:hover {
-    color: red;
+    color: ${({ theme }) => theme.colors.red};
     transform: scale(1.1) rotate(90deg);
   }
 `
 
 export const StyledBackIcon = styled.i`
-  font-size: 28pt;
+  font-size: 32px;
 `

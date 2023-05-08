@@ -4,15 +4,19 @@ import getSoundDiffConf from "constants/activity-confs/sound-diff-conf";
 import getWordDiffConf from "constants/activity-confs/word-diff-conf";
 import audioMemoryConf from "constants/activity-confs/audio-memory-conf";
 
-export type pictureType = {
-  name: string, svg: React.ReactNode
+export type PictureType = {
+  name: string,
+  svg: React.ReactNode,
+  rotate?: number
+  rotateDegrees?: number
+  hideConfing?: { [key: string]: boolean }
 }
 
-export type audioDiffConfType = {
+export type AudioDiffConfType = {
   [key: string]: {
     name: string,
-    incorrect: pictureType[],
-    correct: pictureType,
+    incorrect: PictureType[],
+    correct: PictureType,
     sound: string
   }[]
 }

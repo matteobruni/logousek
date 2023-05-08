@@ -17,7 +17,7 @@ import successAudioData from 'public/sounds/activity-feedback/success.mp3'
 import wrongAudioData from 'public/sounds/activity-feedback/wrong.mp3'
 import Timer from '@components/timer'
 
-import ActivityHeader from '../../activity-header/activity-header'
+import ActivityHeader from '../../activity-header/inedex'
 import RouteWrapper from '../../route-wrapper'
 import { getActivity } from '../../../helpers/get-activity'
 import { games } from '../../../constants/activity-confs/activity-conf'
@@ -25,7 +25,7 @@ import RoundFooter from '../../round-footer'
 import ModalContext from '../../../contexts/modal-context'
 import GainedPoints from './gained-points'
 import { GameType } from '../../../constants/activity-confs/activity-conf'
-import axios from 'axios';
+import axios from 'axios'
 import * as S from './styled'
 
 const DEFAULT_POINTS_FOR_TASK = 10
@@ -47,7 +47,7 @@ const DEFAULT_DIFFICULTY = {
   id: 1,
   level: 1,
   points: DEFAULT_POINTS_FOR_TASK,
-  exercisesCount: 5
+  exercisesCount: 5,
 }
 
 const Activity = () => {
@@ -78,9 +78,11 @@ const Activity = () => {
   )
   const getDifficulty = () => {
     const difficultyList = getActivityFromConf()?.difficulty || []
-    return difficultyList.find(
-      (difficulty) => difficulty.id.toString() === activityDifficulty
-    ) || DEFAULT_DIFFICULTY
+    return (
+      difficultyList.find(
+        (difficulty) => difficulty.id.toString() === activityDifficulty
+      ) || DEFAULT_DIFFICULTY
+    )
   }
   const actualDifficulty = getDifficulty()
   const [successAudio, setSuccessAudio] = useState<
@@ -93,7 +95,6 @@ const Activity = () => {
   const modalContext = useContext(ModalContext)
   const sessionData = useSession()
   const themeContext = useContext(ThemeContext)
-
 
   const GetPointsForTask = useCallback(() => {
     return actualDifficulty?.points
@@ -124,10 +125,9 @@ const Activity = () => {
       await axios.post('/api/activity/add-score', {
         userId: userData?.id,
         activityType: activityName,
-        points:
-          (GetPointsForTask() || actualDifficulty.points) * correctTasks,
+        points: (GetPointsForTask() || actualDifficulty.points) * correctTasks,
         results,
-        difficulty: activityDifficulty
+        difficulty: activityDifficulty,
       })
     } catch (error) { }
   }
@@ -139,19 +139,34 @@ const Activity = () => {
         router.push('/game-menu')
       }
 
-      modalContext?.showModal({
-        header: 'Konec Hry',
-        onOkClick: redirectToGameMenu,
-        onOkText: <S.DoneButtonContent><i className={'material-icons'}>check</i><span>Dokončit</span></S.DoneButtonContent>,
-        closeDisabled: true,
-        autoWidth: true,
-      },
+      modalContext?.showModal(
         {
-          backgroundType: "party"
+          header: 'Konec Hry',
+          onOkClick: redirectToGameMenu,
+          onOkText: (
+            <S.DoneButtonContent>
+              <i className={'material-icons'}>check</i>
+              <span>Dokončit</span>
+            </S.DoneButtonContent>
+          ),
+          closeDisabled: true,
+          autoWidth: true,
+        },
+        {
+          backgroundType: 'party',
         }
       )
     }
-  }, [gameState, modalContext, router, correctTasks, GetPointsForTask, sessionData, activityName, results])
+  }, [
+    gameState,
+    modalContext,
+    router,
+    correctTasks,
+    GetPointsForTask,
+    sessionData,
+    activityName,
+    results,
+  ])
 
   const playAudio = (audio: HTMLAudioElement | undefined) => {
     if (audio) {
@@ -189,9 +204,47 @@ const Activity = () => {
       setWasChanged(false)
     }
   }
-  console.log("test43", actualDifficulty)
+
+  const footerActivityTypes = [
+    {
+      name: '',
+      clickable: false,
+      title: (
+        <GainedPoints
+          pointsForTask={GetPointsForTask() || actualDifficulty.points}
+          correctTasks={correctTasks}
+        />
+      ),
+    },
+    {
+      name: 'timer',
+      title: (
+        <TimerWrapper>
+          <Timer />
+        </TimerWrapper>
+      ),
+      clickable: false,
+    },
+    {
+      name: 'sendButton',
+      title: (
+        <S.SendButton>
+          <i className="material-icons">done</i>Potvrdit
+        </S.SendButton>
+      ),
+      clickable: true,
+      onClick: _checkResult,
+      disabled: !wasChanged,
+      background: wasChanged ? themeContext.colors.lightGreen : '#fff',
+    },
+  ]
+
   return (
-    <RouteWrapper colorScheme={themeContext.colors.primary} title={`Logousek - ${getActivityFromConf()?.title}`} type="private">
+    <RouteWrapper
+      colorScheme={themeContext.colors.primary}
+      title={`Logousek - ${getActivityFromConf()?.title}`}
+      type="private"
+    >
       <ActivityHeader
         tasksCount={actualDifficulty.exercisesCount}
         currentTask={currentTask}
@@ -214,37 +267,7 @@ const Activity = () => {
       </S.ActivityWrapper>
       <footer>
         <RoundFooter
-          activityTypes={[
-            {
-              name: '',
-              clickable: false,
-              title: (
-                <GainedPoints
-                  pointsForTask={
-                    GetPointsForTask() || actualDifficulty.points
-                  }
-                  correctTasks={correctTasks}
-                />
-              ),
-            },
-            {
-              name: 'timer',
-              title: (
-                <TimerWrapper>
-                  <Timer />
-                </TimerWrapper>
-              ),
-              clickable: false,
-            },
-            {
-              name: 'sendButton',
-              title: <S.SendButton><i className="material-icons">done</i>Potvrdit</S.SendButton>,
-              clickable: true,
-              onClick: _checkResult,
-              disabled: !wasChanged,
-              background: wasChanged ? themeContext.colors.lightGreen : "#fff",
-            },
-          ]}
+          activityTypes={footerActivityTypes}
         />
       </footer>
     </RouteWrapper>

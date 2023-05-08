@@ -1,5 +1,5 @@
 import React from 'react'
-import TimeLineItem from './item'
+import TimeLineItem from './time-line-item'
 import * as S from "./styled"
 
 const NEWS = [

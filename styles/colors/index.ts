@@ -1,23 +1,28 @@
+export enum ColorsEnum {
+  primary = "primary",
+  secondary = "secondary",
+  tertiary = "tertiary",
+  fourty = "fourty",
+  fifty = "fifty",
+  sixty = "sixty",
+  seventy = "seventy",
+  eighty = "eighty",
+  white = "white",
+  lightGrey = "lightGrey",
+  lightGreen = "lightGreen",
+  darkGreen = "darkGreen",
+  black = "black",
+  alert = "alert",
+  success = "success",
+  blue = "blue",
+  yellow = "yellow",
+  orrange = "orrange",
+  red = "red",
+  transparent = "transparent"
+}
+
 export type ColorsType = {
-  primary: string
-  secondary: string
-  tertiary: string
-  fourty: string
-  fifty: string
-  sixty: string
-  seventy: string
-  eighty: string
-  white: string
-  lightGrey: string
-  lightGreen: string
-  darkGreen: string
-  black: string
-  alert: string
-  success: string
-  blue: string
-  yellow: string
-  orrange: string
-  red: string
+  [key in keyof typeof ColorsEnum]: string
 }
 
 
@@ -30,17 +35,23 @@ export const lightColors: ColorsType = {
   sixty: '#FA4238',
   seventy: '#696969',
   eighty: '#fff',
+
   white: '#fff',
   lightGrey: '#aaa',
   lightGreen: '#C9FF6D',
   darkGreen: "#008000",
+
   black: "#000",
   alert: '#FA4238',
   success: '#84E065',
   blue: '#26A5E0',
   yellow: '#F0E400',
   orrange: '#E0681B',
-  red: '#FA4238'
+  red: '#FA4238',
+
+  transparent: "transparent",
+
+
 }
 
 export const darkColors: ColorsType = {
@@ -52,15 +63,19 @@ export const darkColors: ColorsType = {
   sixty: '#84E065',
   seventy: '#696969',
   eighty: '#696969',
+
   white: '#fff',
   lightGrey: '#ccc',
   lightGreen: '#696969',
   darkGreen: "#696969",
+
   black: "#000",
   alert: '#FA4238',
   success: '#84E065',
   blue: '#26A5E0',
   yellow: '#F0E400',
   orrange: '#E0681B',
-  red: '#FA4238'
+  red: '#FA4238',
+
+  transparent: "transparent"
 }

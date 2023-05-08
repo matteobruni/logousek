@@ -6,6 +6,8 @@ import Button, { ButtonSizesEnum } from '@components/button'
 import ClickableIcon from '@components/clickable-icon'
 import Logousek from '@components/svg/templates/logousek'
 import routes from '@constants/routes'
+import { PageTitle } from '@components/typography/header'
+import { P3 } from '@components/typography/paragraph'
 
 import { useHomeIntroSectionParallax } from 'hooks/useHomeIntroSectionParallax'
 import { useTranslateFunctions } from 'hooks/useTranslateFunctions'
@@ -46,13 +48,13 @@ const IntroSection: React.FC<IntroSectionProps> = ({ scrollTarget }) => {
         </nav>
         <S.DescriptionWrapper ref={descriptionWrapperParallax.ref}>
           <S.Description>
-            <h1>{tCommon('appName')}</h1>
-            <h3>{tHome('introSection.description')}</h3>
-            <div className="introSectionButtonRow">
+            <PageTitle type="ghost">{tCommon('appName')}</PageTitle>
+            <P3 type="ghost">{tHome('introSection.description')}</P3>
+            <S.ButtonRow>
               <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu}>
                 {tCommon('buttons.play')}
               </Button>
-            </div>
+            </S.ButtonRow>
           </S.Description>
         </S.DescriptionWrapper>
       </S.IntroSectionContainer>

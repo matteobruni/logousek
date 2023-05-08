@@ -10,7 +10,7 @@ export const ListItem = styled.li`
 
   &:hover {
     box-shadow: 0 3rem 5rem rgb(0 0 0 / 8%);
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.white};
   }
 `;
 

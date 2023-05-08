@@ -1,7 +1,10 @@
+import { ColorsEnum } from "styles/colors";
+
 export type GameType = {
   name: string;
   title: string;
   image: string;
+  description?: string;
   difficulty?: {
     id: number;
     level: number;
@@ -26,8 +29,9 @@ export type ActivityType = {
   title: string;
   shortTitle?: string;
   labels?: LabelType[];
-  color: string;
+  color: ColorsEnum;
   description?: string;
+  cite?: string,
   games: GameType[];
   disabled?: boolean;
 };
@@ -38,6 +42,7 @@ export const games: GamesType = {
       name: "visual_differentiation",
       title: "Rozdíly",
       image: "#",
+      description: "visual_differentiation description",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -48,6 +53,7 @@ export const games: GamesType = {
     {
       name: "a_s",
       title: "Skládání tvarů",
+      description: "a_s description",
       image: "#",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
@@ -58,6 +64,7 @@ export const games: GamesType = {
     {
       name: "visual_memory",
       title: "Zraková paměť",
+      description: "visual_memory description",
       image: "#",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
@@ -71,6 +78,7 @@ export const games: GamesType = {
     {
       name: "sound_differentiation",
       title: "Zvuky",
+      description: "sound_differentiation description",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -81,6 +89,7 @@ export const games: GamesType = {
     {
       name: "word_differentiation",
       title: "Slova",
+      description: "word_differentiation description",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 }
       ],
@@ -89,6 +98,7 @@ export const games: GamesType = {
     {
       name: "audio_memory",
       title: "Sluchová paměť",
+      description: "audio_memory description",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -102,6 +112,7 @@ export const games: GamesType = {
     {
       name: "3_pictures",
       title: "Příběh",
+      description: "3_pictures description",
       image: "#", difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
       ]
@@ -112,6 +123,7 @@ export const games: GamesType = {
     {
       name: "language_practicing",
       title: "Cvičení s jazykem",
+      description: "language_practicing description",
       image: "#",
       difficulty: [
         { id: 1, level: 1, points: 5, exercisesCount: 5 }
@@ -126,9 +138,10 @@ const activityConf: ActivityType[] = [
     icon: "visibility",
     title: "Zrakové vnímání",
     shortTitle: "Zrak",
-    color: "primary",
+    color: ColorsEnum.primary,
     description:
       "Prostřednictvím zraku poznáváme okolní svět. Hry na rozvoj zrakového vnímání podporují vývoj mluvené řeči, dílčí funkce jsou úzce provázány. Správně rozvinuté zrakové vnímání je důležité pro získávání, zpracování a uchování informací z okolí a následně pozitivně ovlivní výuku a úspěšnost ve škole.",
+    cite: "Bednářová, 2015",
     games: games.visual_perception,
   },
 
@@ -136,7 +149,7 @@ const activityConf: ActivityType[] = [
     name: "auditory_perception",
     title: "Sluchové vnímání",
     shortTitle: "Sluch",
-    color: "secondary",
+    color: ColorsEnum.secondary,
     icon: "hearing",
     labels: [
       {
@@ -144,20 +157,21 @@ const activityConf: ActivityType[] = [
         color: "#48CDD1",
         description: "Posiluje sluchové vnímání",
       },
-      { name: "test", color: "#A7E843", description: "test24" },
     ],
     description:
       "Sluch je nezastupitelný pro řečový vývoj, je jedním z prostředků komunikace. Pro osvojení správné artikulace má sluch spolu se zrakem zásadní význam. Hry na rozvoj sluchového vnímání podporují rozlišovací schopnosti, všímání si melodie a rytmu řeči, délek a pořadí hlásek.",
+    cite: "Bednářová, 2015",
     games: games.auditory_perception,
   },
 
   {
     name: "seriality",
     title: "Serialita",
-    color: "tertiary",
+    color: ColorsEnum.tertiary,
     icon: "layers",
     description:
       "Hry na rozvoj časové posloupnosti podporují rozumění dějovým souvislostem, uvědomování si příčiny a důsledku a vnímání plynutí času.",
+    cite: "Bednářová, 2015",
     games: games.seriality,
   },
 
@@ -165,10 +179,11 @@ const activityConf: ActivityType[] = [
     name: "language_practicing",
     title: "Procvičování jazyka",
     shortTitle: "Jazyk",
-    color: "fourty",
+    color: ColorsEnum.fourty,
     icon: "language",
     description:
       "Cvičení na rozvoj obratnosti jazyka pomáhají zlepšit motoriku, cit a vnímání pozice jazyka a tím následně usnadňují výslovnost jednotlivých hlásek.",
+    cite: "Bednářová, 2015",
     games: games.language_practicing,
   },
 
@@ -176,7 +191,7 @@ const activityConf: ActivityType[] = [
     name: "space_orientation",
     title: "Prostorová orientace",
     shortTitle: "Prostor",
-    color: "fourty",
+    color: ColorsEnum.fifty,
     icon: "accessibility",
     disabled: true,
     games: [],

@@ -1,14 +1,15 @@
-import { type FontSizeType, type LineHeight, type LetterSpacing, type FontWeight, type RadiusType, type ColorsType } from "../"
+import { type FontSizeType, type LineHeightType, type LetterSpacingType, type FontWeightType, type RadiusType, type ColorsType, type ZIndexType } from "../"
 
 
 
 export type ThemeType = {
     typography: {
         fontSize: FontSizeType,
-        lineHeight: LineHeight,
-        letterSpacing: LetterSpacing,
-        fontWeight: FontWeight,
+        lineHeight: LineHeightType,
+        letterSpacing: LetterSpacingType,
+        fontWeight: FontWeightType,
     },
     radius: RadiusType,
     colors: ColorsType
+    zIndex: ZIndexType
 }

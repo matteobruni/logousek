@@ -1,4 +1,4 @@
-import { audioDiffConfType } from "@helpers/sound-helper";
+import { AudioDiffConfType } from "@helpers/sound-helper";
 import { NamedImage, wordDifferentiationSrcs } from "@helpers/image-helper";
 import {
     archery,
@@ -48,7 +48,7 @@ const Images = {
     mouse: <NamedImage src={wordDifferentiationSrcs.mouse} name="mouse" />,
 }
 
-const getWordDiffConf = (): audioDiffConfType => ({
+const getWordDiffConf = (): AudioDiffConfType => ({
     "1": [
         {
             name: "chalks",

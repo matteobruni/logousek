@@ -1,5 +1,7 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
+import { ColorsEnum } from 'styles/colors'
+
 import * as S from "./styled"
 
 type ActivityType = {
@@ -7,7 +9,7 @@ type ActivityType = {
   clickable: boolean,
   title?: React.ReactElement | string,
   disabled?: boolean,
-  color?: string,
+  color?: ColorsEnum,
   background?: string,
   onClick?: () => void
   icon?: string
@@ -17,7 +19,7 @@ type ActivityType = {
 type RoundFooterType = {
   activityTypes: ActivityType[],
   activeActivityName?: string,
-  selectNewActivity?: (name: string) => void,
+  selectNewActivity?: (name: string, index: number) => void,
   children?: React.ReactElement
   customHeight?: string
 }
@@ -30,27 +32,33 @@ const RoundFooter: React.FC<RoundFooterType> = ({
   customHeight
 }) => {
   const themeContext = useContext(ThemeContext)
-  const activityTypesButtons = activityTypes.map((activityType) => {
+  const activityTypesButtons = activityTypes.map((activityType, index) => {
     const isActiveActivity = activityType.name === activeActivityName
-    let customStyles = {}
 
-    if (activityType.disabled) {
-      customStyles = { color: '#aaa', cursor: 'default' }
-    } else if (activityType.clickable === false) {
-      customStyles = { cursor: 'default' }
-    } else if (isActiveActivity) {
-      customStyles = { color: activityType?.color ? themeContext?.colors.primary : themeContext?.colors?.primary }
+    const getCustomStyles = () => {
+      if (activityType.disabled) {
+        return { color: themeContext?.colors[ColorsEnum.lightGrey], cursor: 'default' }
+      } else if (activityType.clickable === false) {
+        return { cursor: 'default' }
+      } else if (isActiveActivity) {
+        return { color: activityType?.color ? themeContext?.colors[activityType?.color] : themeContext?.colors?.primary }
+      }
     }
-    const _selectNewActivity = () => typeof selectNewActivity === "function" ? selectNewActivity(activityType.name) : undefined
-    const onClick =
-      activityType.disabled || activityType.clickable === false
-        ? undefined
-        : activityType.onClick || _selectNewActivity
+
+    const onLinkClickHandler = () => {
+      if (typeof activityType.onClick === "function") {
+        activityType.onClick()
+      }
+      else if (!activityType.disabled || activityType.clickable === true) {
+        typeof selectNewActivity === "function" ? selectNewActivity(activityType.name, index) : undefined
+      }
+    }
+
     return (
       <S.NavLink
         key={`activityTypeButton-${activityType.name}`}
-        onClick={onClick}
-        style={customStyles}
+        onClick={onLinkClickHandler}
+        style={getCustomStyles()}
         background={activityType.background}
       >
         <S.NavIcon className={`material-icons`}>
@@ -62,6 +70,7 @@ const RoundFooter: React.FC<RoundFooterType> = ({
       </S.NavLink>
     )
   })
+
   return (
     <footer>
       <S.NavbarWrapper

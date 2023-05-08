@@ -29,7 +29,7 @@ export const Picture = styled.div`
   aspect-ratio: 1;
   height: auto;
   border-radius: ${({ theme }) => theme.radius.tertialy};
-  background-color: grey;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
 `;
 
 export const Authorinfo = styled.div`

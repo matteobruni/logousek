@@ -7,7 +7,7 @@ export const GameInfoSection = styled(Section)`
   flex-direction: column;
   height: auto;
   padding: 2rem;
-  background-color: green;
+  background-color: ${({ theme }) => theme.colors.darkGreen};
   border-radius: 0;
   padding: 0px;
 `

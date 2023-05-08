@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-export const CardWrapper = styled.div`
+export const CardList = styled.div`
   display: flex;
-  justify-content:center;
+  justify-content: center;
 `
 
 export const CardContainer = styled.div`

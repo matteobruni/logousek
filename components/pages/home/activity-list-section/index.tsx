@@ -4,6 +4,7 @@ import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
 
 import Header from "../header"
 import TimeLine from '../../../time-line'
+import SectionLayout from '../section-layout'
 import * as S from "./styled"
 
 const ActivityListSection: React.FC = () => {
@@ -11,8 +12,10 @@ const ActivityListSection: React.FC = () => {
 
   return (
     <S.ActivityListSection id="activityList">
-      <Header>{tHome("activityListSection.header")}</Header>
-      <TimeLine />
+      <SectionLayout>
+        <Header>{tHome("activityListSection.header")}</Header>
+        <TimeLine />
+      </SectionLayout>
     </S.ActivityListSection>
   )
 }

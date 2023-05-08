@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { useDrag } from 'react-dnd'
-import ActivityCard from '../../../activity-card'
+import ActivityCard from '../../../../activity-card'
 import { ThemeContext } from 'styled-components'
 import AsContext from '@contexts/as-context'
 import { CardType } from '@contexts/as-context/as-context-provider/use-get-cards'

@@ -14,7 +14,7 @@ export const ModalWrapper = styled.div<ModalWrapperType>`
   display: flex;
   z-index: 1002;
   justify-content: center;
-  background-color: transparent;
+  background-color: ${({ theme }) => theme.colors.transparent};
   align-items: center;
   width: 100vw;
   height: 100vh;
@@ -55,7 +55,7 @@ export const ModalContainer = styled.div<ModalContainerProps>`
   margin: 1rem;
   padding: 0.5rem 1rem;
   width: ${({ autoWidth }) => autoWidth ? "auto" : "100vw"};
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.4);
   border-radius: ${({ theme }) => theme.radius.primary};
 
@@ -84,14 +84,15 @@ export const Modalheader = styled.div`
   display: flex;
   border-top-left-radius: ${({ theme }) => theme.radius.primary};
   border-top-right-radius: ${({ theme }) => theme.radius.primary};
-  & > h3 {
-    margin: 0px;  
-    font-weight: 500;
-    font-size: 20pt;
-    flex: 1;
-    padding: 0.5rem 2rem; 
-    color: black;
-  }
+`
+
+export const ModalTitle = styled.h3`
+  margin: 0px;  
+  font-weight: 500;
+  font-size: 20pt;
+  flex: 1;
+  padding: 0.5rem 2rem; 
+  color: ${({ theme }) => theme.colors.black};
 `
 
 export const ModalContent = styled.div`

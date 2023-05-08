@@ -40,10 +40,11 @@ export const NavLink = styled.a<NavLinkType>`
   flex: 1;
   overflow: hidden;
   white-space: nowrap;
-  color: #444444;
   text-decoration: none;
   transition: background-color 0.7s ease-in-out;
   user-select: none;
+  
+  color: ${({ theme }) => theme.colors.seventy};
   background: ${({ background }) => background || "none"};
 
 &:hover {

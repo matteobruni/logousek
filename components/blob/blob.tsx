@@ -17,12 +17,9 @@ const Blob = ({ color = 'green' }) => {
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" style={{ stopColor: color }}></stop>
-              <stop
-                offset="100%"
-                style={{ stopColor: 'rgb(0, 0, 0)' }}
-              ></stop>{' '}
-            </linearGradient>{' '}
-          </defs>{' '}
+              <stop offset="100%" style={{ stopColor: 'rgb(0, 0, 0)' }}></stop>
+            </linearGradient>
+          </defs>
           <path id="blob" fill="url(#gradient)">
             <animate
               attributeName="d"
@@ -86,21 +83,6 @@ const Blob = ({ color = 'green' }) => {
             cy="134.83"
             r="21.616"
           />
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
-          <g></g>
         </svg>
       </S.Figure>
     </S.BlobContainer>

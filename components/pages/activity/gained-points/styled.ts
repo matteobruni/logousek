@@ -25,10 +25,10 @@ export const GainedPointsWrapper = styled.div<GainedPointsWrapperProps>`
 
   &::before {
     content: ${({ dataContent, animate }) =>
-      `"${animate ? `+${dataContent}` : ""}"`};
+    `"${animate ? `+${dataContent}` : ""}"`};
     position: absolute;
     font-weight: 700;
-    color: green;
+    color: ${({ theme }) => theme.colors.darkGreen};
     animation: ${({ animate }) => (animate ? pointsAddedAnim : "none")} 2s
       forwards;
     transform: translateY(-0.5rem);

@@ -55,27 +55,21 @@ export const DescriptionWrapper = styled.div`
   }
 `
 
-export const Description = styled.div`
-  & > .introSectionButtonRow {
-    display: none;
-  }
-
-  & > h1 {
-    margin-top: 0.3rem;
-    font-size: 3.2rem;
-    margin-bottom: 0.3rem;
-  }
+export const ButtonRow = styled.div`
+  
+  display: none;
 
   @media ${devices.laptop} {
-    & > .introSectionButtonRow {
-      display: flex;
-      justify-content: flex-end;
-    }
+    display: flex;
+    justify-content: flex-end;
+  }
+`
 
-    & > h1 {
-      font-size: 5rem;
-      margin-bottom: 1rem;
-    }
+export const Description = styled.div`
+  & > p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
 `
 
@@ -143,7 +137,7 @@ export const IntroSectionPlayButton = styled.div`
   }};
 
   &:hover {
-    color: black;
+    color: ${({ theme }) => theme.colors.black};
   }
 
   i {

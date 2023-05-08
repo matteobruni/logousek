@@ -12,7 +12,7 @@ export const SwitchPointer = styled.div<SwitchPointerProps>`
   height: 1.4rem;
   width: 1.4rem;
   border-radius: ${({ theme }) => theme.radius.primary};
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   position: absolute;
   top: 0.2rem;
   left: ${({ enabled }) => (enabled ? "1.8rem" : "0.2rem")};

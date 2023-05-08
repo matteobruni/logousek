@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import ActivityCard from '../../../activity-card'
+import ActivityCard from '../../../../activity-card'
 import { ThemeContext } from 'styled-components'
 import AsContext from '@contexts/as-context'
 import CustomDragLayer from '../custom-drag-layer'

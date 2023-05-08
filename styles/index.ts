@@ -1,8 +1,8 @@
 export {
     type FontSizeType,
-    type LineHeight,
-    type LetterSpacing,
-    type FontWeight,
+    type LineHeightType,
+    type LetterSpacingType,
+    type FontWeightType,
     fontSize,
     fontWeight,
     lineHeight,
@@ -10,3 +10,4 @@ export {
 } from './typography'
 export { type RadiusType, radius } from './geometry'
 export { type ColorsType, lightColors, darkColors } from './colors'
+export { type ZIndexType, zIndex } from './z-index'

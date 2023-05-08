@@ -147,7 +147,6 @@ const authOptions: NextAuthOptions = {
             return params.token;
         },
         async session({ session, token }) {
-            console.log("session, token", session, token)
             const updatedUser: User = { ...session.user, id: token?.sub || "" }
 
             return { ...session, user: updatedUser }

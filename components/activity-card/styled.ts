@@ -1,51 +1,51 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import { ActivityCardType } from '.'
 
-type ActivityCardWrapperProps = { 
-  onClick: () => void,
-  selected: boolean,
-  rotate: string,
-  color: string,
-  customRadius: string,
-  customAspectRatio: string
-}
-
-export const ActivityCardWrapper = styled.div<ActivityCardWrapperProps>`
-  width: 10rem;
+export const ActivityCardList = styled.div<ActivityCardType>`
   border-radius: ${({ customRadius }) => customRadius || '1rem'};
-  height: fit-content;
   background-color: ${({ color, theme }) => {
     return color || theme.colors.white
-    }};
-  aspect-ratio: ${({ customAspectRatio }) => customAspectRatio || '1 / 1'};
+  }};
   cursor: pointer;
-  border: ${({ selected }) => selected ? '0.4rem' : '0rem'} solid blue;
+  border: ${({ theme, selected }) =>
+    selected ? `0.4rem solid ${theme.colors.blue}` : '0rem'};
   transition-duration: 0.3s;
   overflow: hidden;
+
+  ${({ fill, customAspectRatio }) =>
+    fill
+      ? css`
+          height: 100%;
+          width: 100%;
+        `
+      : css`
+          aspect-ratio: ${customAspectRatio || '1 / 1'};
+          height: fit-content;
+          width: 10rem;
+        `}
 
   &>svg {
     transform: rotate(${({ rotate }) => rotate}deg);
   }
 
-  &>i {
+  & > i {
     position: absolute;
     box-sizing: border-box;
-    background-color: blue;
+    background-color: ${({ theme }) => theme.colors.blue};
     color: white;
     width: 1.5rem;
     height: 1.5rem;
     animation: pump 0.5s forwards;
 
     @keyframes pump {
-    from {
-      opacity: 0;
-      transform: translateX(-1.5rem);
-      transform: translateY(-0.5rem);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0rem);
-      transform: translateY(0rem);
+      from {
+        opacity: 0;
+        transform: translateY(-0.5rem) translateX(-1.5rem) scale(0);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0rem) translateX(0rem) scale(1);
+      }
     }
   }
-}
 `

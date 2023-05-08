@@ -2,7 +2,7 @@ import {
     sheep, snake, horse, goat, fly, elephant, dog, cow, chicken, cat,
     wind, storm, river, ringingPhone, nailHammering, flowingFaceut, dripingFaucet, doorKnocking, paperCut, crumpledPaper
 } from "constants/activity-confs/sounds";
-import { audioDiffConfType } from "@helpers/sound-helper";
+import { AudioDiffConfType } from "@helpers/sound-helper";
 import { NamedImage, animalsSrcs, normalSrcs } from "@helpers/image-helper";
 import { getIncorectItems } from "@helpers/sound-helper";
 
@@ -63,7 +63,7 @@ const thirdLevelImages = [
     { name: "wind", svg: NormalImages.wind }
 ]
 
-const getSoundDiffConf = (): audioDiffConfType => ({
+const getSoundDiffConf = (): AudioDiffConfType => ({
     "1": [
         {
             name: "sheep",

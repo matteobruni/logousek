@@ -9,11 +9,15 @@ export const SidebarItemsWrapper = styled.div<SidebarItemsWrapperProps>`
   display: flex;
   flex-direction: column;
   position: fixed;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.darkGreen};
   transition-duration: 0.5s;
   height: 100vh;
   overflow: hidden;
-  z-index: 998;
+  z-index: ${({ theme }) => {
+    console.log("theme", theme)
+    return theme.zIndex.xxl
+
+  }};
   overflow: auto;
   width: ${({ isMenuShow }) => (isMenuShow ? '100vw' : '0px')};
 

@@ -29,7 +29,7 @@ export const QuestionPart = styled.div`
 
 `
 
-export const ActivityCardWrapper = styled.div`
+export const ActivityCardList = styled.div`
   display: flex;
   justify-content: center;
   gap: 0.5rem;

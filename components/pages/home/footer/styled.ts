@@ -4,8 +4,8 @@ import { devices } from 'constants/screens-conf'
 export const FooterWrapper = styled.footer`
   width: 100%;
   padding-bottom: 5rem;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: white;
+  background-color: ${({ theme }) => theme.colors.darkGreen};
+  color: ${({ theme }) => theme.colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;

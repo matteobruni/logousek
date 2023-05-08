@@ -2,15 +2,10 @@ import React, { useState } from "react";
 import ItemList from "./item-list";
 import ItemRectList from "./item-rect-list";
 import DarkModeSwitch from "../dark-mode-switch";
-import {
-  ApplicationNavigation,
-  Navigation,
-  SidebarWrapper,
-  SidebarItemsWrapper,
-  RoundFooterWrapper,
-} from "./styled";
+import * as S from "./styled";
 import { SidebarRectItemProps } from "./item-rect-list/rect-item";
 import { ItemType } from "./item-list/item";
+import { ColorsEnum } from "styles/colors";
 import RoundFooter from "@components/round-footer";
 
 type ApplicationNavType = SidebarRectItemProps[];
@@ -28,24 +23,24 @@ const Sidebar: React.FC<SidebarProps> = ({ pageNav, applicationNav }) => {
   };
   return (
     <>
-      <SidebarWrapper
+      <S.SidebarWrapper
         onMouseEnter={() => setIsMenuShow(true)}
         onMouseLeave={() => setIsMenuShow(false)}
         isMenuShow={isMenuShow}
       >
-        <SidebarItemsWrapper isMenuShow={isMenuShow}>
-          <Navigation>
+        <S.SidebarItemsWrapper isMenuShow={isMenuShow}>
+          <S.Navigation>
             <h4>Navigace stránky</h4>
             <ItemList itemList={pageNav} setIsMenuShow={setIsMenuShow} />
-          </Navigation>
-          <ApplicationNavigation>
+          </S.Navigation>
+          <S.ApplicationNavigation>
             <h4>Navigace aplikace</h4>
             <ItemRectList itemList={applicationNav} />
             <DarkModeSwitch />
-          </ApplicationNavigation>
-        </SidebarItemsWrapper>
-      </SidebarWrapper>
-      <RoundFooterWrapper>
+          </S.ApplicationNavigation>
+        </S.SidebarItemsWrapper>
+      </S.SidebarWrapper>
+      <S.RoundFooterWrapper>
         <RoundFooter
           customHeight={"4rem"}
           activityTypes={[
@@ -54,11 +49,11 @@ const Sidebar: React.FC<SidebarProps> = ({ pageNav, applicationNav }) => {
               icon: isMenuShow ? "close" : "menu",
               clickable: true,
               onClick: toggleMenu,
-              color: "grey",
+              color: ColorsEnum.lightGrey,
             },
           ]}
         />
-      </RoundFooterWrapper>
+      </S.RoundFooterWrapper>
     </>
   );
 };

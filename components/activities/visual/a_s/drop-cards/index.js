@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { CardWrapper, CardContainer } from './styled'
+import { CardList, CardContainer } from './styled'
 import AsContext from '@contexts/as-context'
 import DropCard from '../drop-card'
 import DragCard from '../drag-card'
@@ -37,7 +37,7 @@ function DropCards() {
     })
   }
   return (
-    <CardWrapper>
+    <CardList>
       <CardContainer>
         {asContext?.placedCards.map((card, index) => {
           return (
@@ -58,7 +58,7 @@ function DropCards() {
           )
         })}
       </CardContainer>
-    </CardWrapper>
+    </CardList>
   )
 }
 

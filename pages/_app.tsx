@@ -17,9 +17,9 @@ import {
   letterSpacing,
   radius,
   lightColors,
-  darkColors
+  darkColors,
+  zIndex
 } from '../styles'
-import { ThemeType } from "../styles/theme/index"
 import { useDarkMode } from '../hooks/useDarkmode'
 import { appWithTranslation } from 'next-i18next'
 import { ModalDetailType } from '@components/modal'
@@ -58,8 +58,8 @@ function MyApp({
     backdropRef?.current?.close()
   }
 
-  const lightTheme = {
-    colors: lightColors,
+  const themeObject = {
+    colors: theme === 'light' ? lightColors : darkColors,
     typography: {
       fontSize,
       fontWeight,
@@ -67,17 +67,7 @@ function MyApp({
       letterSpacing,
     },
     radius,
-  }
-
-  const darkTheme = {
-    colors: darkColors,
-    typography: {
-      fontSize,
-      fontWeight,
-      lineHeight,
-      letterSpacing,
-    },
-    radius,
+    zIndex
   }
 
   function getDropTargetElementsAtPoint(
@@ -99,35 +89,12 @@ function MyApp({
     enableTouchEvents: true,
   }
 
-  const themeMode: ThemeType = theme === 'light' ? lightTheme : darkTheme
   return (
     <SessionProvider session={session}>
       <AnimatePresence mode="wait">
         <ParallaxProvider>
-          {/* <AnimatedCursor
-          innerSize={28}
-          outerSize={0}
-          innerScale={0.7}
-          color={colors.cursorColor}
-          clickables={[
-            'a',
-            'input[type="text"]',
-            'input[type="email"]',
-            'input[type="number"]',
-            'input[type="submit"]',
-            'input[type="image"]',
-            'label[for]',
-            'select',
-            'textarea',
-            'button',
-            '.link'
-          ]}
-          innerStyle={{
-            zIndex: 1003
-          }}
-        /> */}
           <DndProvider backend={TouchBackend} options={backendOptions}>
-            <ThemeProvider theme={themeMode}>
+            <ThemeProvider theme={themeObject}>
               <CoreContext.Provider value={{ theme, changeTheme }}>
                 <ModalContext.Provider value={{ showModal, closeModal }}>
                   <Modal ref={modalRef} closeBackdrop={closeBackdrop} />

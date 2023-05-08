@@ -9,7 +9,7 @@ export const ListItem = styled.li`
 
   &:hover {
     box-shadow: 0 3rem 5rem rgb(0 0 0 / 8%);
-    background-color: white;
+    background-color: ${({ theme }) => theme.colors.white};
   }
 `;
 
@@ -23,5 +23,5 @@ export const Picture = styled.div`
   height: 5rem;
   width: 100%;
   border-radius: ${({ theme }) => theme.radius.primary};
-  background-color: grey;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
 `;

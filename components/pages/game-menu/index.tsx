@@ -1,113 +1,114 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { ThemeContext } from 'styled-components'
-import Head from 'next/head'
-import Label from '@components/label'
-import PrivateRoute from '@components/auth/private-route'
-import { UserData } from '@helpers/local-storage-helper'
-import { usePlayerScore } from 'hooks/usePlayerData'
 import { useSession } from 'next-auth/react'
-import {
-  getGuestData,
-  setToLocalSotrage
-} from '../../../helpers/local-storage-helper'
+import { useRouter } from 'next/router'
+
+import Label from '@components/label'
+import { usePlayerScore } from 'hooks/usePlayerData'
 import RouteWrapper from '../../route-wrapper'
 import activityConf from '../../../constants/activity-confs/activity-conf'
-import Header from "./components/header"
+import Header from './header'
 import RoundFooter from '../../round-footer'
-import Card from '../../card'
-import Blob from '../../blob/blob'
-import TimeLineItem from '../../time-line/item'
-import Button from '../../button'
-import ButtonRow from '../../button-row/button-row'
-import * as S from "./styled"
+import Card from '../../game-card'
+import { ActivityType } from '../../../constants/activity-confs/activity-conf'
+import * as S from './styled'
 
 const GameMenu: React.FC = () => {
+  const router = useRouter()
+  const [currentSlide, setCurrentSlide] = useState(1)
   const [activeActivity, setActiveActivity] = useState(activityConf[0])
-  const [{ score }] = usePlayerScore();
+  const [{ score }] = usePlayerScore()
   const sessionData = useSession()
-  console.log("sessionData", sessionData)
   const themeContext = useContext(ThemeContext)
 
-  const _changeActiveActivity = (name: string) => {
-    const newActiveActivity = activityConf.find((activity) => activity.name === name)
-    newActiveActivity && setActiveActivity(newActiveActivity)
+  useEffect(() => {
+    const DEFAULT_INDEX = 0;
+    const { newActiveActivity, index } = activityConf.reduce(
+      (
+        result: { newActiveActivity?: ActivityType; index?: number },
+        activity,
+        index
+      ) => {
+        if (activity.name === router.query.activityType) {
+          result = { newActiveActivity: activity, index }
+        }
+        return result
+      },
+      {}
+    )
+
+    setCurrentSlide(index || DEFAULT_INDEX)
+    newActiveActivity && setActiveActivity(newActiveActivity || activityConf[DEFAULT_INDEX])
+  }, [router.query.activityType])
+
+  const selectNewActivityHandle = (name: string) => {
+    router.push({
+      query: { activityType: name },
+    })
   }
-  const Cards = [...(activeActivity.games || [])].map((game, index) => (
-    <Card key={`Card-${game.name}-${index}`} gameInfo={game} />
-  ))
-  const labels = (
-    Array.isArray(activeActivity.labels) ? activeActivity.labels : []
-  ).map((label, index) => (
-    <Label key={`label-${index}-${label.name}`} color={label.color}>
-      {label.description}
-    </Label>
-  ))
 
-  // const skipTutorial = () => {
-  //   setToLocalSotrage('isNewUser', false)
-  // }
-  const activeActivitColor = themeContext?.colors.primary
+  const getCards = (activity: ActivityType) => {
+    const games = [...(activity.games || [])]
+    return games.map((game, index) => (
+      <Card key={`Card-${game.name}-${index}`} gameInfo={game} />
+    ))
+  }
 
-  const activityTypes = activityConf.map(activity => ({
+  const getLabels = (activity: ActivityType) => {
+    const notNullLabels = Array.isArray(activity.labels) ? activity.labels : []
+    return notNullLabels.map((label, index) => (
+      <Label key={`label-${index}-${label.name}`} color={label.color}>
+        {label.description}
+      </Label>
+    ))
+  }
+
+  const activeActivitColor = themeContext?.colors[activeActivity.color]
+
+  const activityTypes = activityConf.map((activity) => ({
     name: activity.name,
-    clickable: !activity.disabled,
-    title: activity.title,
-    disabled: activity.disabled,
-    color: activity.color,
     icon: activity.icon,
-    shortTitle: activity.shortTitle
+    title: activity.title,
+    shortTitle: activity.shortTitle,
+    color: activity.color,
+    clickable: !activity.disabled,
+    disabled: activity.disabled,
   }))
 
+  const getSlides = () => {
+    return activityConf.map((activity) => (
+      <S.Slide key={`slide_${activity.name}`}>
+        <S.GameTypeDetail>
+          <S.GamesTypeHeader>{activity.title}</S.GamesTypeHeader>
+          <S.LabelWrapper>{getLabels(activity)}</S.LabelWrapper>
+          <S.GamesTypeContent>{activity.description}</S.GamesTypeContent>
+          <S.CitationParagraph>
+            <cite>{activity.cite}</cite>
+          </S.CitationParagraph>
+        </S.GameTypeDetail>
+        <S.GameList>{getCards(activity)}</S.GameList>
+      </S.Slide>
+    ))
+  }
+
   return (
-    <RouteWrapper colorScheme={activeActivitColor} title={`Logousek - ${activeActivity.title}`} type="private">
+    <RouteWrapper
+      colorScheme={activeActivitColor}
+      title={`Logousek - ${activeActivity.title}`}
+      type="private"
+    >
       <S.MenuWrapper>
-        {/* {userData?.isNewUser === 'true' && (
-            <S.BlobWrapper>
-              <Blob color={activeActivitColor} />
-              <S.RightSideWrapper>
-                <TimeLineItem
-                  isEven={false}
-                  desc={'Ahoj, já jsem kachna ta a ta a budu vás provázet.'}
-                />
-                <ButtonRow>
-                  <Button
-                    color={themeContext.primary}
-                    title={'Spustit průvodce'}
-                    onClick={() => { }}
-                  />
-                  <Button
-                    color={themeContext.primary}
-                    title={'Přeskočit průvodce'}
-                    onClick={skipTutorial}
-                  />
-                </ButtonRow>
-              </S.RightSideWrapper>
-            </S.BlobWrapper>
-          )} */}
-        <Header
-          points={score}
-          userName={sessionData?.data?.user?.name || ""}
-        />
-        <S.ContentWrapper>
-          <S.GameTypeDetail>
-            <S.GamesTypeHeader>{activeActivity.title}</S.GamesTypeHeader>
-            <S.LabelWrapper>{labels}</S.LabelWrapper>
-            <S.GamesTypeContent>
-              {activeActivity.description}
-            </S.GamesTypeContent>
-            <S.CitationParagraph>
-              <cite>Bednářová, 2015</cite>
-            </S.CitationParagraph>
-          </S.GameTypeDetail>
-          <S.GameList>{[...Cards]}</S.GameList>
-        </S.ContentWrapper >
+        <Header points={score} userName={sessionData?.data?.user?.name || ''} />
+        <S.ContentWrapper currentSlide={currentSlide}>
+          {getSlides()}
+        </S.ContentWrapper>
         <RoundFooter
           activityTypes={activityTypes}
           activeActivityName={activeActivity.name}
-          selectNewActivity={_changeActiveActivity}
+          selectNewActivity={selectNewActivityHandle}
         />
       </S.MenuWrapper>
-    </RouteWrapper >
+    </RouteWrapper>
   )
 }
 
