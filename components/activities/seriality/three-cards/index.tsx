@@ -19,7 +19,7 @@ export interface Item {
 }
 
 const ThreeCards = (
-    { complexity, onHandleChanged }: ActivityProps,
+    { onHandleChanged, currentTask }: ActivityProps,
     ref: React.Ref<ActivityInterface> | undefined
 ) => {
     const router = useRouter()
@@ -47,6 +47,7 @@ const ThreeCards = (
 
     return (
         <SerialityContextProvider
+            currentTask={currentTask}
             ref={serialityContextProviderRef}
             type={activityName === '3_pictures' ? 'threePictures' : 'twoPictures'}
         >

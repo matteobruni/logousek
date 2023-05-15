@@ -63,6 +63,9 @@ export const serialitySrcs = {
     banknote2: `${serialityPath}/banknote/banknote-2.svg`,
     banknote3: `${serialityPath}/banknote/banknote-3.svg`,
 
+    plate: `${serialityPath}/plate/plate-1.svg`,
+    plate2: `${serialityPath}/plate/plate-2.svg`,
+    plate3: `${serialityPath}/plate/plate-3.svg`,
 }
 
 export const wordDifferentiationSrcs = {
