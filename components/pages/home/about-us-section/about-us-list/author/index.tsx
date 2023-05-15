@@ -1,6 +1,7 @@
 import React from 'react'
 import Label from '@components/label'
 import { P6 } from '@components/typography/paragraph'
+import { TextWrap } from '@components/typography/text/styled'
 import * as S from './styled'
 
 interface RoleItem {
@@ -32,7 +33,7 @@ const Author: React.FC<AuthorType> = ({
           <S.Picture src={picture} />
         </S.PictureWrapper>
         <S.Authorinfo>
-          <h4>{name}</h4>
+          <TextWrap variant="T5" type="primary" >{name}</TextWrap>
           <S.LabelsWrapper>
             {role.map((roleItem, index) => (
               <Label
