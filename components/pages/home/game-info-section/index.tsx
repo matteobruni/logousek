@@ -2,6 +2,7 @@ import React from 'react'
 
 import Cards from '@components/game-card'
 import FadeIn from '@components/animations/fade-in'
+import publicImages from '@constants/public-images'
 
 import SectionLayout from '../section-layout'
 import Header from "../header"
@@ -14,22 +15,22 @@ const CARDS_CONFIG = [
   {
     name: 'visibility',
     title: 'Zraková cvičení',
-    image: "#"
+    image: publicImages.activityIcons.differentiation
   },
   {
     name: 'hear',
     title: 'Sluchová cvičení',
-    image: "#"
+    image: publicImages.activityIcons.differentiation
   },
   {
     name: 'seriality',
     title: 'Cvičení na serialitu',
-    image: "#"
+    image: publicImages.activityIcons.seriality
   },
   {
     name: 'language',
     title: 'Procvičování jazyka',
-    image: "#"
+    image: publicImages.activityIcons.oromotorics
   }
 ]
 
