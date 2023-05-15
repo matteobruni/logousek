@@ -1,5 +1,5 @@
 import React from 'react'
-import Authors from './authors'
+import Authors from './author'
 import FadeIn from '@components/animations/fade-in'
 import AUTHORS_CONF from '@constants/authors-conf'
 import * as S from "./styled"
@@ -11,11 +11,12 @@ const AboutUsList: React.FC = () => {
         <FadeIn
           key={`welcome-page-author-${author.key}`}>
           <Authors
-            picture={undefined}
+            picture={author.profilePic}
             role={author.role}
             name={author.name}
             technicalName={author.key}
             aboutAuthor={author.aboutAuthor}
+            minimized={author.minimized}
           />
         </FadeIn>
       ))}
