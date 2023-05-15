@@ -63,7 +63,7 @@ const GameCard: React.FC<GameCardProps> = ({ gameInfo }) => {
                 <i className={`material-icons`}>inform</i>
               </S.InformIcon>
               <S.Image
-                src={"/images/01.jpg"}
+                src={gameInfo.image}
                 alt={`${gameInfo.name}-image`}
               />
               <S.Description>{gameInfo.title}</S.Description>

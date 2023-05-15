@@ -1,4 +1,5 @@
 import { ColorsEnum } from "styles/colors";
+import publicImages from "@constants/public-images";
 
 export type GameType = {
   name: string;
@@ -41,7 +42,7 @@ export const games: GamesType = {
     {
       name: "visual_differentiation",
       title: "Rozdíly",
-      image: "#",
+      image: publicImages.activityIcons.differentiation,
       description: "visual_differentiation description",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
@@ -54,7 +55,7 @@ export const games: GamesType = {
       name: "a_s",
       title: "Skládání tvarů",
       description: "a_s description",
-      image: "#",
+      image: publicImages.activityIcons.a_s,
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -65,7 +66,7 @@ export const games: GamesType = {
       name: "visual_memory",
       title: "Zraková paměť",
       description: "visual_memory description",
-      image: "#",
+      image: publicImages.activityIcons.memory,
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -84,7 +85,7 @@ export const games: GamesType = {
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
         { id: 3, level: 3, points: 30, exercisesCount: 10 }
       ],
-      image: "#",
+      image: publicImages.activityIcons.differentiation,
     },
     {
       name: "word_differentiation",
@@ -93,7 +94,7 @@ export const games: GamesType = {
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 }
       ],
-      image: "#",
+      image: publicImages.activityIcons.words,
     },
     {
       name: "audio_memory",
@@ -104,7 +105,7 @@ export const games: GamesType = {
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
         { id: 3, level: 3, points: 30, exercisesCount: 10 }
       ],
-      image: "#",
+      image: publicImages.activityIcons.memory,
     },
   ],
 
@@ -113,7 +114,8 @@ export const games: GamesType = {
       name: "3_pictures",
       title: "Příběh",
       description: "3_pictures description",
-      image: "#", difficulty: [
+      image: publicImages.activityIcons.seriality,
+      difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
       ]
     }
@@ -124,7 +126,7 @@ export const games: GamesType = {
       name: "language_practicing",
       title: "Cvičení s jazykem",
       description: "language_practicing description",
-      image: "#",
+      image: publicImages.activityIcons.oromotorics,
       difficulty: [
         { id: 1, level: 1, points: 5, exercisesCount: 10 }
       ],
