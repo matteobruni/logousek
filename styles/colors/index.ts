@@ -9,6 +9,7 @@ export enum ColorsEnum {
   eighty = "eighty",
   white = "white",
   lightGrey = "lightGrey",
+  wtiteTransparent = "wtiteTransparent",
   lightGreen = "lightGreen",
   darkGreen = "darkGreen",
   black = "black",
@@ -38,6 +39,7 @@ export const lightColors: ColorsType = {
 
   white: '#fff',
   lightGrey: '#aaa',
+  wtiteTransparent: "#ffffffaa",
   lightGreen: '#C9FF6D',
   darkGreen: "#008000",
 
@@ -66,6 +68,7 @@ export const darkColors: ColorsType = {
 
   white: '#fff',
   lightGrey: '#ccc',
+  wtiteTransparent: "#ffffffaa",
   lightGreen: '#696969',
   darkGreen: "#696969",
 

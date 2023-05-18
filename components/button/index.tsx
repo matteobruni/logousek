@@ -7,7 +7,7 @@ export enum ButtonSizesEnum {
   s = 's',
 }
 
-interface ButtonProps {
+export type ButtonProps = {
   children?: string | React.ReactNode
   title?: string
   onClick?: () => void
@@ -16,6 +16,7 @@ interface ButtonProps {
   color?: string
   backgroundColor?: string
   type?: "button" | "submit" | "reset" | undefined
+  id?: string
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -26,11 +27,11 @@ const Button: React.FC<ButtonProps> = ({
   disabled,
   color,
   backgroundColor,
-  type
+  type,
+  id
 }) => {
   const themeContext = useContext(ThemeContext)
   const colors = themeContext.colors || {}
-  const i = children || title
   return (
     <S.ButtonRowWrapper
       color={color || colors.seventy}
@@ -43,6 +44,7 @@ const Button: React.FC<ButtonProps> = ({
       size={size}
       onClick={onClick}
       type={type}
+      id={id}
     >
       {children || title}
     </S.ButtonRowWrapper>

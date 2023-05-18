@@ -94,3 +94,20 @@ h2 {
 h1 {
   font-size: 2rem;
 }
+
+@keyframes beat {
+  0%,
+  50%,
+  100% {
+    transform: scale(1.2, 1.2);
+    box-shadow: 0 0 32px 2px #f0e400;
+  }
+  30%,
+  80% {
+    transform: scale(0.85, 0.9);
+    box-shadow: 0 0 4px #e0681b;
+  }
+}
+.highlight {
+  animation: 3s ease 0s infinite beat;
+}

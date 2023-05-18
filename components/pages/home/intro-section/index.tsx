@@ -42,7 +42,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ scrollTarget }) => {
         id="IntroSectionContainerId"
       >
         <nav>
-          <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu}>
+          <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu} id="navbarPlayButton">
             {tCommon('buttons.play')}
           </Button>
         </nav>
@@ -51,7 +51,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ scrollTarget }) => {
             <PageTitle type="ghost">{tCommon('appName')}</PageTitle>
             <P3 type="ghost">{tHome('introSection.description')}</P3>
             <S.ButtonRow>
-              <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu}>
+              <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu} id="mainPlayButton">
                 {tCommon('buttons.play')}
               </Button>
             </S.ButtonRow>
@@ -79,7 +79,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ scrollTarget }) => {
         />
       </S.SecondForegroundTreeWrapper>
       <S.IntroSectionPlayButton>
-        <ClickableIcon icon="play_circle_filled" onClick={redirectToGameMenu} />
+        <ClickableIcon icon="play_circle_filled" onClick={redirectToGameMenu} id="secondaryPlayButton" />
       </S.IntroSectionPlayButton>
     </S.IntroSection>
   )

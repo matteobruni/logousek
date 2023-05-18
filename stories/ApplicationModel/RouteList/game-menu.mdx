@@ -1,0 +1,60 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../styles.ts'
+import appConf from '../../../constants/app-conf'
+import RouterTable from '../../Components/router-table'
+import ReferenceList from '../../Components/reference-list'
+
+# GameMenu
+
+<RouterTable
+  name="GameMenu"
+  description="During the route, the user selects the activity and difficulty level they wish to play."
+  source="components/pages/game-menu"
+/>
+
+<S.StyledDiv>
+<Mermaid
+  chart={`
+     classDiagram
+      Home "1" <--o "1" HomeWrapper
+      HomeWrapper "1" <--o "1" WelcomeRowWrapper
+      WelcomeRowWrapper "1" <--o "1" Sidebar
+      WelcomeRowWrapper "1" <--o "1" Container
+      Container "1" <--o "1" IntroSection
+      Container "1" <--o "1" GameInfoSection
+      Container "1" <--o "1" GameSamplesSection
+      Container "1" <--o "1" ActivityListSection
+      Container "1" <--o "1" AboutAsSection
+      Container "1" <--o "1" Footer
+
+      class Home:::green
+      class HomeWrapper
+      class WelcomeRowWrapper
+      class Sidebar:::blue
+      class Container
+      class IntroSection:::blue
+      class GameInfoSection:::blue
+      class GameSamplesSection:::blue
+      class ActivityListSection:::blue
+      class AboutAsSection:::blue
+      class Footer:::blue
+
+`}
+/>
+
+</S.StyledDiv>
+
+<ReferenceList
+  tableRows={[
+    { name: 'Sidebar', description: 'dsa' },
+    { name: 'IntroSection', description: 'dsa' },
+    { name: 'GameInfoSection', description: 'dsa' },
+    { name: 'GameInfoSection', description: 'dsa' },
+    { name: 'GameSamplesSection', description: 'dsa' },
+    { name: 'ActivityListSection', description: 'dsa' },
+    { name: 'AboutAsSection', description: 'dsa' },
+    { name: 'WelcomeRowWrapper', description: 'dsa' },
+    { name: 'Footer', description: 'dsa' },
+  ]}
+/>

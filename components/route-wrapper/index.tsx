@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import PrivateRoute from '@components/auth/private-route'
 import OnlyPublicRoute from '@components/auth/only-public-route'
 import PublicRoute from '@components/auth/public-route'
+import Tutorial from "@components/tutorial";
 import * as S from "./styled";
 
 type RouteWrapperProps = {
@@ -85,6 +86,7 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
           variants={CONTENT_VARIANTS}
         >
           {children}
+          <Tutorial />
         </S.ContentWrapper>
       </S.BackgroundWapper>
     </AuthWrapper>

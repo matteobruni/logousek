@@ -1,5 +1,5 @@
 import React from 'react'
-import TimeLineItem from './time-line-item'
+import Bubble from '../bubble'
 import * as S from "./styled"
 
 const NEWS = [
@@ -26,8 +26,8 @@ const TimeLine = () => {
     <S.Wrapper>
       <S.CenterLine />
       {NEWS.map((newObj, index) => (
-        <TimeLineItem
-          isEven={index % 2 === 0}
+        <Bubble
+          leftSide={index % 2 === 0}
           desc={newObj.desc}
           date={newObj.data}
           key={`new-${index}`}
