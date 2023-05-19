@@ -8,18 +8,18 @@ import Header from "../header"
 import * as S from "./styled"
 
 
-const AboutAsSection: React.FC = () => {
+const AboutAs: React.FC = () => {
   const { tHome } = useTranslateFunctions()
   return (
-    <S.AboutAsSectionWrapper id="aboutAs">
-      <S.AboutAsSectionContainer>
+    <S.AboutAsWrapper id="aboutAs">
+      <S.AboutAsContainer>
         <SectionLayout>
-          <Header>{tHome("aboutAsSection.header")}</Header>
+          <Header>{tHome("AboutAs.header")}</Header>
           <AboutUsList />
         </SectionLayout>
-      </S.AboutAsSectionContainer>
-    </S.AboutAsSectionWrapper>
+      </S.AboutAsContainer>
+    </S.AboutAsWrapper>
   )
 }
 
-export default AboutAsSection
+export default AboutAs

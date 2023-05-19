@@ -11,10 +11,7 @@ export const Link = styled.a`
     cursor: pointer;
     user-select: none;
 
-    &:hover{
-        transition: all .2s ease-in-out;
-        transform: scale(1.2);
-    }
+
 `
 
 export const StyledIcon = styled.i<StyledIconProps>`

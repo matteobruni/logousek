@@ -1,0 +1,74 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import * as ClickableIcon from './ClickableIcon.stories'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+
+<Meta of={ClickableIcon} />
+
+# ClickableIcon
+
+<ComponentInfoTable
+  name={'ClickableIcon'}
+  description="An icon that triggers an action when clicked."
+  source="components/clickable-icon"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'fontSize',
+      type: `string`,
+      defaultValue: '',
+      description: `Determines the size of the element.`,
+      required: true,
+    },
+    {
+      name: 'onClick',
+      type: `() => void`,
+      defaultValue: '',
+      description: `Callback that is triggered after click on ClickableIcon`,
+      required: true,
+    },
+    {
+      name: 'icon',
+      type: `string`,
+      defaultValue: '',
+      description: `Name of the Material Design icon.`,
+    },
+    {
+      name: 'id',
+      type: `string`,
+      defaultValue: '',
+      description: `Element identifier.`,
+    },
+  ]}
+/>
+
+<Canvas story={ClickableIcon} withToolbar />
+
+<S.MermaidWrapper>
+  <Mermaid
+    chart={`
+     classDiagram
+     direction RL
+    ClickableIcon "1" <-- "1" Link
+    Link "1" <-- "1" StyledIcon
+    Link --|>  onClick : onClick
+
+    class ClickableIcon:::green
+    class Link
+    class StyledIcon
+    class onClick["props.onClick"]:::oval
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

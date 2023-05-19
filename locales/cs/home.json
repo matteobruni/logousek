@@ -1,18 +1,18 @@
 {
-  "introSection": {
+  "Intro": {
     "header": "Představení aplikace",
     "description": "Aplikace pro předškolní děti podporující logopedickou prevenci hravou formou."
   },
-  "gameSamplesSection": {
+  "GameSamples": {
     "header": "Ukázka aplikace"
   },
-  "gameInfoSection": {
+  "GameInfo": {
     "header": "Co aplikace nabídne"
   },
-  "activityListSection": {
+  "ActivityList": {
     "header": "Seznam aktivit"
   },
-  "aboutAsSection": {
+  "AboutAs": {
     "header": "O nás"
   },
   "footer": {

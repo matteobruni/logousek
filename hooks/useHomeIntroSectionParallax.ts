@@ -2,7 +2,7 @@ import { useParallax } from 'react-scroll-parallax';
 import useWindowDimensions from 'hooks/useWindowDimensions'
 
 
-export const useHomeIntroSectionParallax = (scrollTarget: React.MutableRefObject<HTMLDivElement | null>) => {
+export const useHomeIntroParallax = (scrollTarget: React.MutableRefObject<HTMLDivElement | null>) => {
     const windowDimensions = useWindowDimensions();
 
     const logousekParallax = useParallax<HTMLDivElement>({

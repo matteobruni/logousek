@@ -9,26 +9,26 @@ import Header from "../header"
 import * as S from "./styled"
 
 
-const GameSamplesSection: React.FC = () => {
+const GameSamples: React.FC = () => {
   const { tHome } = useTranslateFunctions()
 
   return (
-    <S.GameSamplesSection>
+    <S.GameSamples>
       <SectionLayout>
-        <Header>{tHome("gameSamplesSection.header")}</Header>
+        <Header>{tHome("GameSamples.header")}</Header>
         <Pump>
-          <S.GameSamplesSectionImageWrapper>
+          <S.GameSamplesImageWrapper>
             <Image
               width="400"
               height="600"
               src="/images/phone.png"
               alt="logousek preview"
             />
-          </S.GameSamplesSectionImageWrapper>
+          </S.GameSamplesImageWrapper>
         </Pump>
       </SectionLayout>
-    </S.GameSamplesSection>
+    </S.GameSamples>
   )
 }
 
-export default GameSamplesSection
+export default GameSamples

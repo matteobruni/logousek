@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Button, { ButtonProps } from '@components/button';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<ButtonProps> = {
   title: 'ApplicationModel/Components/Button',
   component: Button,
   argTypes: {

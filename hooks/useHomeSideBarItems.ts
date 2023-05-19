@@ -40,25 +40,25 @@ export const useHomeSideBarItems = () => {
         {
             name: 'introduction',
             icon: 'cake',
-            title: tHome("introSection.header"),
+            title: tHome("Intro.header"),
             onClick: () => redirect('#introduction')
         },
         {
             name: 'gameInfo',
             icon: 'call',
-            title: tHome("gameInfoSection.header"),
+            title: tHome("GameInfo.header"),
             onClick: () => redirect('#gameInfo')
         },
         {
             name: 'activityList',
             icon: 'camera_alt',
-            title: tHome("activityListSection.header"),
+            title: tHome("ActivityList.header"),
             onClick: () => redirect('#activityList')
         },
         {
             name: 'aboutAs',
             icon: 'card_giftcard',
-            title: tHome("aboutAsSection.header"),
+            title: tHome("AboutAs.header"),
             onClick: () => redirect('#aboutAs')
         }
     ]

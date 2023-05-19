@@ -1,7 +1,9 @@
 import React from 'react'
 import * as S from './styled'
 
-const Blob = ({ color = 'green' }) => {
+type BlobProps = { color: string, children: React.ReactNode, isBlobShowed?: boolean }
+
+const Blob: React.FC<BlobProps> = ({ color = 'green', children, isBlobShowed }) => {
   return (
     <S.BlobContainer>
       <div>
@@ -16,8 +18,8 @@ const Blob = ({ color = 'green' }) => {
         >
           <defs>
             <linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" style={{ stopColor: color }}></stop>
-              <stop offset="100%" style={{ stopColor: 'rgb(0, 0, 0)' }}></stop>
+              <stop offset="0%" style={{ stopColor: isBlobShowed ? color : "transparent", transitionDuration: "1.5s" }}></stop>
+              <stop offset="100%" style={{ stopColor: isBlobShowed ? "black" : "transparent", transitionDuration: "1.5s" }}></stop>
             </linearGradient>
           </defs>
           <path id="blob" fill="url(#gradient)">
@@ -39,51 +41,7 @@ const Blob = ({ color = 'green' }) => {
         </svg>
       </div>
       <S.Figure>
-        <svg
-          version="1.1"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 512 512"
-        >
-          <path
-            style={{ fill: '#FFC843' }}
-            d="M444.189,228.957h-48.428c-9.024,0-16.34-7.316-16.34-16.34v-51.471c0-9.024,7.316-16.34,16.34-16.34
-	h99.898c9.024,0,16.34,7.316,16.34,16.34C512,198.536,481.58,228.957,444.189,228.957z"
-          />
-          <g>
-            <path
-              style={{ fill: '#58A4B3' }}
-              d="M395.762,264.74H264.033c-9.024,0-16.34-7.316-16.34-16.34V139.753
-		c0-45.327,36.877-82.204,82.204-82.204c45.328,0,82.205,36.877,82.205,82.204V248.4C412.102,257.425,404.786,264.74,395.762,264.74
-		z"
-            />
-            <path
-              style={{ fill: '#58A4B3' }}
-              d="M206.051,454.451C92.435,454.451,0,362.017,0,248.4c0-9.024,7.316-16.34,16.34-16.34h379.421
-		c9.024,0,16.34,7.316,16.34,16.34C412.102,362.017,319.668,454.451,206.051,454.451z"
-            />
-          </g>
-          <path
-            style={{ fill: '#FFC843' }}
-            d="M206.051,386.574c-46.016,0-88.888-22.867-114.681-61.169c-7.297-10.832,0.483-25.468,13.553-25.468
-	h202.256c13.056,0,20.857,14.622,13.553,25.468C294.939,363.707,252.067,386.574,206.051,386.574z"
-          />
-          <path
-            style={{ fill: '#58A4B3' }}
-            d="M395.762,232.059H206.051V454.45c113.617,0,206.051-92.434,206.051-206.051
-	C412.102,239.375,404.786,232.059,395.762,232.059z"
-          />
-          <path
-            style={{ fill: '#FFC843' }}
-            d="M307.178,299.937H206.051v86.637c46.016,0,88.889-22.867,114.68-61.169
-	C328.036,314.56,320.235,299.937,307.178,299.937z"
-          />
-          <circle
-            style={{ fill: '#4A5052' }}
-            cx="345.153"
-            cy="134.83"
-            r="21.616"
-          />
-        </svg>
+        {children}
       </S.Figure>
     </S.BlobContainer>
   )

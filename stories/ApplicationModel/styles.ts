@@ -1,7 +1,7 @@
 import { styled } from '@storybook/theming';
 import { lightColors } from 'styles/colors';
 
-export const StyledDiv = styled.div`
+export const MermaidWrapper = styled.div`
   // background: red;
 
 .nodes g > line {
@@ -29,6 +29,11 @@ rect {
 .blue > rect {
     fill: ${lightColors.blue} !important;
     stroke: ${lightColors.blue} !important;
+}
+
+.oval > rect {
+    rx: 50%;
+    ry: 50%;
 }
 
 `

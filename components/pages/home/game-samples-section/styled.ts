@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const GameSamplesSection = styled.section``
+export const GameSamples = styled.section``
 
-export const GameSamplesSectionImageWrapper = styled.div`
+export const GameSamplesImageWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;

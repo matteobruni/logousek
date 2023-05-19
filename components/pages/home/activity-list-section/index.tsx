@@ -7,17 +7,17 @@ import TimeLine from '../../../time-line'
 import SectionLayout from '../section-layout'
 import * as S from "./styled"
 
-const ActivityListSection: React.FC = () => {
+const ActivityList: React.FC = () => {
   const { tHome } = useTranslateFunctions()
 
   return (
-    <S.ActivityListSection id="activityList">
+    <S.ActivityList id="activityList">
       <SectionLayout>
-        <Header>{tHome("activityListSection.header")}</Header>
+        <Header>{tHome("ActivityList.header")}</Header>
         <TimeLine />
       </SectionLayout>
-    </S.ActivityListSection>
+    </S.ActivityList>
   )
 }
 
-export default ActivityListSection
+export default ActivityList

@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
+
 export const BlobContainer = styled.div`
-  position: relative;
+  position: relative;    
 `
 
 export const Figure = styled.div`

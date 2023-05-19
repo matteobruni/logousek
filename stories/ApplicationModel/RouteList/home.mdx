@@ -13,48 +13,51 @@ import ReferenceList from '../../Components/reference-list'
   source="components/pages/home"
 />
 
-<S.StyledDiv>
+<S.MermaidWrapper>
 <Mermaid
   chart={`
      classDiagram
-      Home "1" <--o "1" HomeWrapper
-      HomeWrapper "1" <--o "1" WelcomeRowWrapper
-      WelcomeRowWrapper "1" <--o "1" Sidebar
-      WelcomeRowWrapper "1" <--o "1" Container
-      Container "1" <--o "1" IntroSection
-      Container "1" <--o "1" GameInfoSection
-      Container "1" <--o "1" GameSamplesSection
-      Container "1" <--o "1" ActivityListSection
-      Container "1" <--o "1" AboutAsSection
-      Container "1" <--o "1" Footer
+     direction RL
+      Home "1" <-- "1" HomeWrapper
+      HomeWrapper "1" <-- "1" WelcomeRowWrapper
+      WelcomeRowWrapper "1" <-- "1" Sidebar
+      WelcomeRowWrapper "1" <-- "1" Container
+      Container "1" <-- "1" Intro
+      Container "1" <-- "1" GameInfo
+      Container "1" <-- "1" GameSamples
+      Container "1" <-- "1" ActivityList
+      Container "1" <-- "1" AboutAs
+      Container "1" <-- "1" Footer
 
       class Home:::green
       class HomeWrapper
       class WelcomeRowWrapper
       class Sidebar:::blue
       class Container
-      class IntroSection:::blue
-      class GameInfoSection:::blue
-      class GameSamplesSection:::blue
-      class ActivityListSection:::blue
-      class AboutAsSection:::blue
+      class Intro:::blue
+      class GameInfo:::blue
+      class GameSamples:::blue
+      class ActivityList:::blue
+      class AboutAs:::blue
       class Footer:::blue
 
 `}
 />
 
-</S.StyledDiv>
+</S.MermaidWrapper>
 
 <ReferenceList
   tableRows={[
-    { name: 'Sidebar', description: 'dsa' },
-    { name: 'IntroSection', description: 'dsa' },
-    { name: 'GameInfoSection', description: 'dsa' },
-    { name: 'GameInfoSection', description: 'dsa' },
-    { name: 'GameSamplesSection', description: 'dsa' },
-    { name: 'ActivityListSection', description: 'dsa' },
-    { name: 'AboutAsSection', description: 'dsa' },
-    { name: 'WelcomeRowWrapper', description: 'dsa' },
-    { name: 'Footer', description: 'dsa' },
+    { name: 'Sidebar', description: 'Sidebar menu of home page.' },
+    { name: 'Intro', description: 'Intro section of home page.' },
+    { name: 'GameInfo', description: 'Game info section of home page.' },
+    { name: 'GameSamples', description: 'Game samples section of home page.' },
+    {
+      name: 'ActivityList',
+      description: 'Activity list section of home page.',
+    },
+    { name: 'AboutAs', description: 'About us section of home page.' },
+    { name: 'WelcomeRowWrapper', description: 'Intro section of home page.' },
+    { name: 'Footer', description: 'Intro section of home page.' },
   ]}
 />

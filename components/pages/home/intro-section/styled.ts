@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Section } from "../styled"
 import { devices } from '@constants/screens-conf'
 
-export const IntroSection = styled(Section)`
+export const IntroWrapper = styled(Section)`
   background: ${({ theme }) =>
     `linear-gradient(to left bottom,${theme.colors.lightGrey}, ${theme.colors.fourty})`};
 
@@ -14,18 +14,13 @@ export const IntroSection = styled(Section)`
     border-bottom-right-radius: ${({ theme }) => theme.radius.quaternary};
   }
 `
-export const IntroSectionContainer = styled.div`
+export const IntroContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 50vh;
   border-bottom-right-radius: ${({ theme }) => theme.radius.secondary};
   position: absolute;
   z-index: 3;
-  & > nav {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0.5rem;
-  }
 
   @media ${devices.laptop} {
     align-self: center;
@@ -33,9 +28,18 @@ export const IntroSectionContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: calc(50vw - 2rem);
-    & > nav {
-      display: none;
-    }
+  }
+`
+
+export const Navbar = styled.nav`
+  & > nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem;
+  }
+
+  @media ${devices.laptop} {
+    display: none;
   }
 `
 
@@ -123,7 +127,7 @@ export const SecondForegroundTreeWrapper = styled.div`
   }
 `
 
-export const IntroSectionPlayButton = styled.div`
+export const IntroPlayButton = styled.div`
   position: fixed;
   z-index: 999;
   display: flex;

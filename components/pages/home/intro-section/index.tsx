@@ -8,48 +8,47 @@ import Logousek from '@components/svg/templates/logousek'
 import routes from '@constants/routes'
 import { PageTitle } from '@components/typography/header'
 import { P3 } from '@components/typography/paragraph'
-
-import { useHomeIntroSectionParallax } from 'hooks/useHomeIntroSectionParallax'
-import { useTranslateFunctions } from 'hooks/useTranslateFunctions'
+import { useHomeIntroParallax } from '@hooks/useHomeIntroSectionParallax'
+import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
 
 import * as S from './styled'
 
-type IntroSectionProps = {
+type IntroProps = {
   scrollTarget: React.MutableRefObject<HTMLDivElement | null>
 }
 
-const IntroSection: React.FC<IntroSectionProps> = ({ scrollTarget }) => {
+const Intro: React.FC<IntroProps> = ({ scrollTarget }) => {
   const {
     logousekParallax,
     descriptionWrapperParallax,
     hillParallax,
     firstTreeParallax,
     secondTreeParallax,
-  } = useHomeIntroSectionParallax(scrollTarget)
+  } = useHomeIntroParallax(scrollTarget)
 
   const { tHome, tCommon } = useTranslateFunctions()
   const router = useRouter()
-  const introSectionElement = useRef(null)
+  const IntroElement = useRef(null)
 
   const redirectToGameMenu = () => {
     router.push(routes.gameMenu)
   }
 
   return (
-    <S.IntroSection id="introduction">
-      <S.IntroSectionContainer
-        ref={introSectionElement}
-        id="IntroSectionContainerId"
+    <S.IntroWrapper id="introduction">
+      <S.IntroContainer
+        ref={IntroElement}
+        id="IntroContainerId"
       >
-        <nav>
+        <S.Navbar>
           <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu} id="navbarPlayButton">
             {tCommon('buttons.play')}
           </Button>
-        </nav>
+        </S.Navbar>
         <S.DescriptionWrapper ref={descriptionWrapperParallax.ref}>
           <S.Description>
             <PageTitle type="ghost">{tCommon('appName')}</PageTitle>
-            <P3 type="ghost">{tHome('introSection.description')}</P3>
+            <P3 type="ghost">{tHome('Intro.description')}</P3>
             <S.ButtonRow>
               <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu} id="mainPlayButton">
                 {tCommon('buttons.play')}
@@ -57,7 +56,7 @@ const IntroSection: React.FC<IntroSectionProps> = ({ scrollTarget }) => {
             </S.ButtonRow>
           </S.Description>
         </S.DescriptionWrapper>
-      </S.IntroSectionContainer>
+      </S.IntroContainer>
       <S.Hill ref={hillParallax.ref} />
       <S.LogousekWrapper ref={logousekParallax.ref} className="spinner">
         <Logousek />
@@ -78,11 +77,11 @@ const IntroSection: React.FC<IntroSectionProps> = ({ scrollTarget }) => {
           alt="logousek second tree"
         />
       </S.SecondForegroundTreeWrapper>
-      <S.IntroSectionPlayButton>
+      <S.IntroPlayButton>
         <ClickableIcon icon="play_circle_filled" onClick={redirectToGameMenu} id="secondaryPlayButton" />
-      </S.IntroSectionPlayButton>
-    </S.IntroSection>
+      </S.IntroPlayButton>
+    </S.IntroWrapper>
   )
 }
 
-export default IntroSection
+export default Intro

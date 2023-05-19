@@ -23,17 +23,19 @@ export const TutorialWrapper = styled.div<TutorialWrapperProps>`
     top: 50%;
     transform: translate(-50%, -50%);
   ` : null}
+
+  & > div {
+    transition-duration: 1s;
+    width: ${({ isTutorialOpened }) => isTutorialOpened ? "320px" : "auto"};
+
+    @media ${devices.tablet} {
+      width: ${({ isTutorialOpened }) => isTutorialOpened ? "440px" : "auto"};
+    }
+  }
 `;
 
 export const TutorialContainer = styled.div<TutorialWrapperProps>`
   position: relative;
-  background-color: ${({ theme }) => theme.colors.transparent};
-  transition-duration: 1s;
-
-  ${({ isTutorialOpened }) => isTutorialOpened ? css`
-    background-color: ${({ theme }) => theme.colors.wtiteTransparent};
-    border-radius: ${({ theme }) => theme.radius.secondary};
-    ` : null}
 `;
 
 export const LogosekWrapper = styled.div<LogosekWrapperProps>`
@@ -70,7 +72,7 @@ export const BubbleWrapper = styled.div`
   padding-right: 2px;
   margin: 0 auto;
   animation: 
-    typing 4s steps(40, end),
+    typing 4s steps(21, end),
     blink-caret 0.8s step-end 5;
   }
 

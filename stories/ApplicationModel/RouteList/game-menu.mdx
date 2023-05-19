@@ -21,11 +21,11 @@ import ReferenceList from '../../Components/reference-list'
       HomeWrapper "1" <--o "1" WelcomeRowWrapper
       WelcomeRowWrapper "1" <--o "1" Sidebar
       WelcomeRowWrapper "1" <--o "1" Container
-      Container "1" <--o "1" IntroSection
-      Container "1" <--o "1" GameInfoSection
-      Container "1" <--o "1" GameSamplesSection
-      Container "1" <--o "1" ActivityListSection
-      Container "1" <--o "1" AboutAsSection
+      Container "1" <--o "1" Intro
+      Container "1" <--o "1" GameInfo
+      Container "1" <--o "1" GameSamples
+      Container "1" <--o "1" ActivityList
+      Container "1" <--o "1" AboutAs
       Container "1" <--o "1" Footer
 
       class Home:::green
@@ -33,11 +33,11 @@ import ReferenceList from '../../Components/reference-list'
       class WelcomeRowWrapper
       class Sidebar:::blue
       class Container
-      class IntroSection:::blue
-      class GameInfoSection:::blue
-      class GameSamplesSection:::blue
-      class ActivityListSection:::blue
-      class AboutAsSection:::blue
+      class Intro:::blue
+      class GameInfo:::blue
+      class GameSamples:::blue
+      class ActivityList:::blue
+      class AboutAs:::blue
       class Footer:::blue
 
 `}
@@ -48,12 +48,12 @@ import ReferenceList from '../../Components/reference-list'
 <ReferenceList
   tableRows={[
     { name: 'Sidebar', description: 'dsa' },
-    { name: 'IntroSection', description: 'dsa' },
-    { name: 'GameInfoSection', description: 'dsa' },
-    { name: 'GameInfoSection', description: 'dsa' },
-    { name: 'GameSamplesSection', description: 'dsa' },
-    { name: 'ActivityListSection', description: 'dsa' },
-    { name: 'AboutAsSection', description: 'dsa' },
+    { name: 'Intro', description: 'dsa' },
+    { name: 'GameInfo', description: 'dsa' },
+    { name: 'GameInfo', description: 'dsa' },
+    { name: 'GameSamples', description: 'dsa' },
+    { name: 'ActivityList', description: 'dsa' },
+    { name: 'AboutAs', description: 'dsa' },
     { name: 'WelcomeRowWrapper', description: 'dsa' },
     { name: 'Footer', description: 'dsa' },
   ]}

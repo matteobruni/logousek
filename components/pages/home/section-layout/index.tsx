@@ -2,11 +2,11 @@ import React from 'react'
 
 import * as S from "./styled"
 
-type AboutAsSectionType = {
+type AboutAsType = {
   children: React.ReactNode
 }
 
-const SectionLayout: React.FC<AboutAsSectionType> = ({ children }) => {
+const SectionLayout: React.FC<AboutAsType> = ({ children }) => {
   return (
     <S.SectionLayoutWrapper>
       <S.SectionLayoutContainer>

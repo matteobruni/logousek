@@ -44,21 +44,21 @@ const getCards = () => {
   )
 }
 
-const GameInfoSection: React.FC = () => {
+const GameInfo: React.FC = () => {
   const { tHome } = useTranslateFunctions()
   const cards = getCards();
   return (
-    <S.GameInfoSection id="gameInfo">
+    <S.GameInfo id="gameInfo">
       <S.GameInfoWrapper>
         <SectionLayout>
-          <Header>{tHome("gameInfoSection.header")}</Header>
-          <S.GameInfoSectionArticles>
+          <Header>{tHome("GameInfo.header")}</Header>
+          <S.GameInfoArticles>
             {cards}
-          </S.GameInfoSectionArticles>
+          </S.GameInfoArticles>
         </SectionLayout>
       </S.GameInfoWrapper>
-    </S.GameInfoSection>
+    </S.GameInfo>
   )
 }
 
-export default GameInfoSection
+export default GameInfo

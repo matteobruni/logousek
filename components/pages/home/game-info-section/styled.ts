@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Section } from "../styled"
 import { devices } from '@constants/screens-conf'
 
-export const GameInfoSection = styled(Section)`
+export const GameInfo = styled(Section)`
   display: flex;
   flex-direction: column;
   height: auto;
@@ -28,7 +28,7 @@ export const GameInfoWrapper = styled.div`
   }
 `
 
-export const GameInfoSectionArticles = styled.div`
+export const GameInfoArticles = styled.div`
   overflow: auto;
   display: flex;
   flex-wrap: wrap;

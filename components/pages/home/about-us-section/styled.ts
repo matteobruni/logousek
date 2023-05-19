@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { devices } from '@constants/screens-conf'
 import { Section } from "../styled"
 
-export const AboutAsSectionWrapper = styled(Section)`
+export const AboutAsWrapper = styled(Section)`
   width: 100%;
   height: auto;
   background-color: ${({ theme }) => theme.colors.darkGreen};
@@ -10,7 +10,7 @@ export const AboutAsSectionWrapper = styled(Section)`
   justify-content: center;
 `
 
-export const AboutAsSectionContainer = styled.div`
+export const AboutAsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
