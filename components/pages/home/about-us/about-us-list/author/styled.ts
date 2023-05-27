@@ -39,7 +39,6 @@ export const PictureWrapper = styled.div`
     width: 100%;
     height: calc(50% + 24px);
     position: absolute;
-    background:  ${({ theme }) => theme.colors.blue};
     background: linear-gradient(347deg, ${({ theme }) => theme.colors.yellow} 0%, ${({ theme }) => theme.colors.orrange} 100%);
     z-index: ${({ theme }) => theme.zIndex.negative};
     border-radius: ${({ theme }) => theme.radius.secondary} ${({ theme }) => theme.radius.secondary} 0 0;
@@ -65,7 +64,7 @@ export const Picture = styled.div<PictureProps>`
   }
 `;
 
-export const Authorinfo = styled.div`
+export const AuthorInfo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

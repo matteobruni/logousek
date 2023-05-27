@@ -1,0 +1,56 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../styles.ts'
+import PropertiesTable from '../../../../../Components/properties-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Pages/Home/Header/docs" />
+
+# Header
+
+<ComponentInfoTable
+  name={'Header'}
+  description={`Section heading component`}
+  source="components/pages/home/Header"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `string`,
+      defaultValue: '',
+      description: `The value of the property is displayed as header text.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      Header "1" <-- "1" HeaderWrapper
+      HeaderWrapper "1" <-- "1" HeaderContainer
+      HeaderContainer "1" <-- "1" H2
+      HeaderContainer "1" <-- "1" UnderlineBlock
+     
+      class Header:::green
+      class HeaderWrapper
+      class HeaderContainer
+      class H2:::blue
+      class UnderlineBlock
+     
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[{ name: 'H2', description: 'This is a level 2 heading.' }]}
+/>

@@ -9,8 +9,20 @@
   "GameInfo": {
     "header": "Co aplikace nabídne"
   },
-  "ActivityList": {
-    "header": "Seznam aktivit"
+  "news": {
+    "header": "Seznam aktivit",
+    "timeLine": {
+      "start": "Zahájení prací na aplikaci.",
+      "startRequirements": "Zahájení sepisování požadavků na apliakci.",
+      "startImplementation": "Zahájení práce na implementační části aplikace.",
+      "startApplicationModel": "Zahájení práce na popisování aplikačního modelu aplikace.",
+      "completionOfApplicationModel": "Dokončení aplikačního modelu",
+      "deliveryAllRequirements": "Dodání všech požadavků na aplikaci.",
+      "endImplementation": "Ukončení práce na implementační části aplikace.",
+      "startOfBussinessRequests": "Zahájení práce na sepisování bussiness modelu.",
+      "endOfBussinessRequests": "Ukončení práce na sepisování bussiness modelu.",
+      "end": "Ukončení práce na aplikaci."
+    }
   },
   "AboutAs": {
     "header": "O nás"

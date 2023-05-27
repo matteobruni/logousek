@@ -11,7 +11,7 @@ interface RoleItem {
 
 interface AuthorType {
   name: string
-  picture: any
+  picture: string
   technicalName: string
   role: RoleItem[]
   minimized: boolean
@@ -32,7 +32,7 @@ const Author: React.FC<AuthorType> = ({
         <S.PictureWrapper>
           <S.Picture src={picture} />
         </S.PictureWrapper>
-        <S.Authorinfo>
+        <S.AuthorInfo>
           <TextWrap variant="T5" type="primary" >{name}</TextWrap>
           <S.LabelsWrapper>
             {role.map((roleItem, index) => (
@@ -45,7 +45,7 @@ const Author: React.FC<AuthorType> = ({
             ))}
           </S.LabelsWrapper>
           <P6>{aboutAuthor}</P6>
-        </S.Authorinfo>
+        </S.AuthorInfo>
       </S.AuthorContainer>
     </S.AuthorWrapper>
   )

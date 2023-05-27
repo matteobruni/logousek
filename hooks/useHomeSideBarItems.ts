@@ -13,7 +13,7 @@ export const useHomeSideBarItems = () => {
         { name: 'introduction', icon: 'cake', title: 'Visual' },
         { name: 'gameInfo', icon: 'call', title: 'Sluch' },
         {
-            name: 'activityList',
+            name: 'news',
             icon: 'camera_alt',
             title: 'Serialita'
         },
@@ -25,7 +25,7 @@ export const useHomeSideBarItems = () => {
         { name: 'introduction', icon: 'cake', title: 'Visual' },
         { name: 'gameInfo', icon: 'call', title: 'Sluch' },
         {
-            name: 'activityList',
+            name: 'news',
             icon: 'camera_alt',
             title: 'Serialita'
         },

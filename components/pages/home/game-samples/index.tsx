@@ -3,6 +3,7 @@ import Image from 'next/image'
 
 import Pump from '@components/animations/pump'
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
+import publicImages from '@constants/public-images'
 
 import SectionLayout from '../section-layout'
 import Header from "../header"
@@ -18,16 +19,11 @@ const GameSamples: React.FC = () => {
         <Header>{tHome("GameSamples.header")}</Header>
         <Pump>
           <S.GameSamplesImageWrapper>
-            <Image
-              width="400"
-              height="600"
-              src="/images/phone.png"
-              alt="logousek preview"
-            />
+            <S.GameSamplesImage src={publicImages.gameSample["01"]} />
           </S.GameSamplesImageWrapper>
         </Pump>
       </SectionLayout>
-    </S.GameSamples>
+    </S.GameSamples >
   )
 }
 

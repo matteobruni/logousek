@@ -1,0 +1,48 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../../styles.ts'
+import PropertiesTable from '../../../../../../Components/properties-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Pages/Home/News/TimeLine/docs" />
+
+# TimeLine
+
+<ComponentInfoTable
+  name={'TimeLine'}
+  description={`Component shows list of Bubbles that represents news.`}
+  source="components/pages/home/time-line"
+/>
+<PropertiesTable tableRows={[]} />
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      TimeLine "1" <-- "1" Wrapper
+      Wrapper "1" <-- "1" CenterLine
+      Wrapper "1" <-- "n" Bubble
+
+      class TimeLine:::green
+      class Wrapper
+      class CenterLine
+      class Bubble:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Bubble',
+      description: 'Visual component. It is used here to display new.',
+    },
+  ]}
+/>

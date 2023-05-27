@@ -11,7 +11,7 @@ export const Score = styled.div`
   }
 `
 
-export const BackIconWrapper = styled.span`
+export const CloseIconWrapper = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;

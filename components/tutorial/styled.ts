@@ -14,28 +14,46 @@ export const TutorialWrapper = styled.div<TutorialWrapperProps>`
   align-items: center;
   bottom: 0px;
   left: 0px;
-  transition-duration: 1s;
-  width: auto;
-  height: auto;
+  width: 160px;
+  height: 160px;
 
   ${({ isTutorialOpened }) => isTutorialOpened ? css`
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-  ` : null}
+  ` : css`
+    left: 0%;
+    bottom: 0%;
+
+    transform: translate(-0%, -0%);
+    `}
 
   & > div {
     transition-duration: 1s;
-    width: ${({ isTutorialOpened }) => isTutorialOpened ? "320px" : "auto"};
+    width: ${({ isTutorialOpened }) => isTutorialOpened ? "344px" : "auto"};
 
-    @media ${devices.tablet} {
+    @media ${devices.laptop} {
       width: ${({ isTutorialOpened }) => isTutorialOpened ? "440px" : "auto"};
     }
   }
+
+  
+  @media ${devices.laptop} {
+    transition-duration: 1s;
+    width: 280px;
+    height: 280px;
+  }
 `;
 
-export const TutorialContainer = styled.div<TutorialWrapperProps>`
+export const BlobContainer = styled.div<TutorialWrapperProps>`
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  @media ${devices.laptop} {
+    flex-direction: row;
+  }
 `;
 
 export const LogosekWrapper = styled.div<LogosekWrapperProps>`
@@ -43,7 +61,7 @@ export const LogosekWrapper = styled.div<LogosekWrapperProps>`
   height: 160px;
   width: 160px;
   
-  @media ${devices.tablet} {
+  @media ${devices.laptop} {
     height: 280px;
     width: 280px;
   }
@@ -53,7 +71,7 @@ export const LogosekWrapper = styled.div<LogosekWrapperProps>`
       width: 280px;
       transition-duration: 1s;
 
-      @media ${devices.tablet} {
+      @media ${devices.laptop} {
         height: 360px;
         width: 360px;
       }
@@ -61,12 +79,15 @@ export const LogosekWrapper = styled.div<LogosekWrapperProps>`
 `
 
 export const BubbleWrapper = styled.div`
-  position: absolute;
-  top: 104px;
-  left: 280px;
+  position: relative;
+
+  @media ${devices.laptop} {
+    position: absolute;
+    top: 147px;
+    left: 320px;
+  }
 
   article > div > p {
-  /* width: 300px; */
   overflow: hidden;
   border-right: 2px solid transparent;
   padding-right: 2px;
@@ -91,4 +112,8 @@ export const ButtonRow = styled.div`
   display: flex;
   margin: 8px;
   gap: 8px;
+`
+
+export const TutorialContainer = styled.div`
+  position: relative;
 `

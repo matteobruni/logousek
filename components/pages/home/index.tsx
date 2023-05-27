@@ -2,12 +2,12 @@ import React, { useRef } from 'react'
 import RouteWrapper from '../../route-wrapper'
 import Footer from './footer'
 import Sidebar from '../../side-bar'
-import Intro from './intro-section'
+import Intro from './intro'
 import * as S from './styled'
 import { useHomeSideBarItems } from '@hooks/useHomeSideBarItems'
-import GameInfo from './game-info-section'
-import GameSamples from './game-samples-section'
-import ActivityList from './activity-list-section'
+import GameInfo from './game-info'
+import GameSamples from './game-samples'
+import News from './news'
 import AboutAs from './about-us'
 import { useTranslateFunctions } from 'hooks/useTranslateFunctions'
 
@@ -28,7 +28,7 @@ const Home = () => {
             <Intro scrollTarget={scrollTarget} />
             <GameInfo />
             <GameSamples />
-            <ActivityList />
+            <News />
             <AboutAs />
             <Footer />
           </S.Container>

@@ -4,7 +4,10 @@ export default function useWindowDimensions() {
 
   const hasWindow = typeof window !== 'undefined';
 
-  const getWindowDimensions = useCallback(
+  const getWindowDimensions: () => {
+    width: number | null,
+    height: number | null,
+  } = useCallback(
     () => {
       const width = hasWindow ? window.innerWidth : null;
       const height = hasWindow ? window.innerHeight : null;

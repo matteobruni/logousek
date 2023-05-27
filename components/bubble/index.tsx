@@ -1,10 +1,9 @@
 import React from 'react'
-import { getFormatedDate } from '../../helpers/date-helper'
 import FadeRight from '../animations/fade-right'
 import FadeLeft from '../animations/fade-left'
 import * as S from "./styled"
 
-type BubbleProps = { leftSide: boolean, desc: string, date?: Date, fillWidth?: boolean }
+type BubbleProps = { leftSide: boolean, desc: string, date?: string, fillWidth?: boolean }
 
 const Bubble: React.FC<BubbleProps> = ({ leftSide, desc, date, fillWidth }) => {
   const UsedAnimationWrapper = leftSide ? FadeLeft : FadeRight
@@ -14,7 +13,7 @@ const Bubble: React.FC<BubbleProps> = ({ leftSide, desc, date, fillWidth }) => {
         <S.Container fillWidth={fillWidth}>
           <S.Beak leftSide={leftSide} />
           <S.Content >
-            {date && <S.Date>{getFormatedDate(date)}</S.Date>}
+            {date && <S.Date>{date}</S.Date>}
             <S.Desc>{desc}</S.Desc>
           </S.Content>
         </S.Container>

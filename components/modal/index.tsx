@@ -1,5 +1,5 @@
 import React, { useState, forwardRef, useImperativeHandle, useContext } from 'react'
-import BackIcon from '../back-icon'
+import CloseIcon from '../close-icon'
 import ButtonRow from '../button-row/button-row'
 import * as S from './styled'
 import Button, { ButtonSizesEnum } from '../button'
@@ -67,7 +67,7 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
         <S.Modalheader>
           <S.ModalTitle>{modalDetail.header} </S.ModalTitle>
           {
-            !modalDetail.closeDisabled ? <S.BackIconWrapper><BackIcon onClick={closeModal} /></S.BackIconWrapper> : null
+            !modalDetail.closeDisabled ? <S.CloseIconWrapper><CloseIcon onClick={closeModal} /></S.CloseIconWrapper> : null
           }
         </S.Modalheader>
         < S.ModalContent >{modalDetail.content}</S.ModalContent>

@@ -1,0 +1,106 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../styles.ts'
+import PropertiesTable from '../../../../../Components/properties-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Pages/Home/Intro/docs" />
+
+# Intro
+
+<ComponentInfoTable
+  name={'Intro'}
+  description={`A component to wrap a section on the main page.`}
+  source="components/pages/home/intro"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'scrollTarget',
+      type: `React.MutableRefObject<HTMLDivElement | null>`,
+      defaultValue: '',
+      description: `A reference to the element being scrolled.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      Intro "1" <-- "1" IntroWrapper
+      IntroWrapper "1" <-- "1" IntroContainer
+      IntroWrapper "1" <-- "1" Hill
+      IntroWrapper "1" <-- "1" LogousekWrapper
+      IntroWrapper "1" <-- "1" FirstForegroundTreeWrapper
+      IntroWrapper "1" <-- "1" SecondForegroundTreeWrapper
+      IntroWrapper "1" <-- "1" IntroPlayButton
+
+      IntroContainer "1" <-- "1" Navbar
+      IntroContainer "1" <-- "1" DescriptionWrapper
+      Navbar "1" <-- "1" NavbarButton
+      DescriptionWrapper "1" <-- "1" Description
+      Description "1" <-- "1" PageTitle
+      Description "1" <-- "1" P3
+      Description "1" <-- "1" ButtonRow
+      ButtonRow "1" <-- "1" ButtonRowButton
+
+      LogousekWrapper "1" <-- "1" Logousek
+
+      FirstForegroundTreeWrapper "1" <-- "1" FirstImage
+
+      SecondForegroundTreeWrapper "1" <-- "1" SecondImage
+
+      IntroPlayButton "1" <-- "1" ClickableIcon
+
+      class Intro:::green
+      class IntroWrapper
+      class IntroContainer
+
+      class Navbar
+      class NavbarButton["Button"]:::blue
+      class DescriptionWrapper
+      class Description
+      class PageTitle:::blue
+      class P3:::blue
+      class ButtonRow
+      class ButtonRowButton["Button"]:::blue
+
+      class Hill
+      class LogousekWrapper
+      class Logousek
+
+      class FirstForegroundTreeWrapper
+      class FirstImage["Image"]
+      class SecondForegroundTreeWrapper
+      class SecondImage["Image"]
+
+      class IntroPlayButton
+      class ClickableIcon:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    { name: 'PageTitle', description: 'Section title component' },
+    { name: 'Button', description: 'Button component' },
+    {
+      name: 'ClickableIcon',
+      description: 'An icon that triggers an action when clicked.',
+    },
+    {
+      name: 'P3',
+      description: 'Paragraph component',
+    },
+  ]}
+/>

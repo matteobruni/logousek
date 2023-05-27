@@ -11,6 +11,9 @@ const publicImages = {
         "memory": "/images/activity-icons/memory.svg",
         "seriality": "/images/activity-icons/seriality.svg",
         "words": "/images/activity-icons/words.svg",
+    },
+    gameSample: {
+        "01": "/images/phone.png"
     }
 }
 

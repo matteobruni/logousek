@@ -86,7 +86,7 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
           variants={CONTENT_VARIANTS}
         >
           {children}
-          <Tutorial />
+          {/* <Tutorial /> */}
         </S.ContentWrapper>
       </S.BackgroundWapper>
     </AuthWrapper>

@@ -1,0 +1,73 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Auths/PrivateRoute/docs" />
+
+# PrivateRoute
+
+<ComponentInfoTable
+  name={'PrivateRoute'}
+  description={`The component will render "children" if the user is authenticated. If the status changes to "unauthenticated" or the user is "unauthenticated" during rendering, the component redirects the user to the login page.`}
+  source="components/auth/private-route"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `React.ReactElement`,
+      defaultValue: '',
+      description: `An element that should be displayed if the user is authenticated.`,
+      required: true,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     PrivateRoute "1" <-- "1" LoadingPage : status in neither "unauthenticated" nor "authenticated"
+     PrivateRoute "1" <-- "1" children : authenticated
+     PrivateRoute --|> statusChange
+     PrivateRoute  --|>  redirect : unauthenticated
+     statusChange --|> redirect : unauthenticated
+
+     class PrivateRoute:::green
+     class LoadingPage["R - LoadingPage"]:::blue
+
+    class redirect["redirect to Login"]:::oval
+    class statusChange["status change"]:::oval
+    class children["R - props.children"]
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'LoadingPage',
+      rules: `Rendered only if status is neither "unauthenticated" nor "authenticated"`,
+    },
+    {
+      name: 'children',
+      rules: `Rendered only if status is "authenticated"`,
+    },
+  ]}
+/>
+
+<ReferenceList
+  tableRows={[
+    { name: 'LoadingPage', description: 'A loading page component.' },
+  ]}
+/>

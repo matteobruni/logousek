@@ -9,12 +9,8 @@ type PrivateRouteProps = {
 
 const OnlyPublicRoute: React.FC<PrivateRouteProps> = ({ children }) => {
     const { status } = useSession();
-
-    console.log("status", status)
     useEffect(() => {
-        console.log("status", status)
         if (status === "authenticated") {
-            console.log("isAuthenticated")
             Router.replace("/game-menu");
         }
     }, [status]);

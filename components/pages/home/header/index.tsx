@@ -2,14 +2,14 @@ import React from 'react'
 import * as S from './styled'
 
 type HeaderProps = {
-  content?: any, children?: any
+  children: string
 }
 
-const Header: React.FC<HeaderProps> = ({ content, children }) => {
+const Header: React.FC<HeaderProps> = ({ children }) => {
   return (
     <S.HeaderWrapper>
       <S.HeaderContainer>
-        <S.HeaderText>{content || children}</S.HeaderText>
+        <S.HeaderText>{children}</S.HeaderText>
         <S.UnderlineBlock />
       </S.HeaderContainer>
     </S.HeaderWrapper>

@@ -16,6 +16,7 @@ const Footer = () => {
           <ClickableIcon icon="tiktok" onClick={() => { }} />
         </ClickableIconWrapper>
       </S.ClickableIconContainer>
+      <a href="https://www.freepik.com/free-psd/smartphone-mock-up-isolated_4075457.htm#query=phone&position=0&from_view=search&track=sph">Image by zlatko_plamenov</a> on Freepik
       <p>
         Image by
         <a href="https://www.freepik.com/free-vector/flat-design-green-type-trees_18895291.htm#query=tree&position=48&from_view=search&track=sph">

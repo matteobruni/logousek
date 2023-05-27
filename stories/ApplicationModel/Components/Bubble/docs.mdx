@@ -1,0 +1,113 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Bubble/docs" />
+
+# Bubble
+
+<ComponentInfoTable
+  name={'Bubble'}
+  description={`Component shows list of Bubbles that represents news.`}
+  source="components/pages/home/time-line"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'leftSide',
+      type: `boolean`,
+      defaultValue: '',
+      description: `Should be bubbe shown on left side.`,
+      required: true,
+    },
+    {
+      name: 'desc',
+      type: `string`,
+      defaultValue: '',
+      description: `Main text`,
+      required: true,
+    },
+    {
+      name: 'date',
+      type: `string`,
+      defaultValue: '',
+      description: `Date in bubble`,
+      required: false,
+    },
+    {
+      name: 'fillWidth',
+      type: `boolean`,
+      defaultValue: '',
+      description: `Show bubble on full width`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      Bubble "1" <-- "1" FadeLeft : props.leftSide === true
+      Bubble "1" <-- "1" FadeRight : props.leftSide === false
+      FadeLeft "1" <-- "1" TimeLineItemWrapper
+      FadeRight "1" <-- "1" TimeLineItemWrapper
+      TimeLineItemWrapper "1" <-- "1" Container
+      Container "1" <-- "1" Beak
+      Container "1" <-- "1" Content
+      Content "1" <-- "1" Date : Boolean(props.data) === true
+      Content "1" <-- "1" Desc
+
+      class Bubble:::green
+      class FadeLeft["R - FadeLeft"]:::blue
+      class FadeRight["R - FadeRight"]:::blue
+      class TimeLineItemWrapper
+      class Container
+      class Beak
+      class Content
+      class Date["R - Date"]
+      class Desc
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'FadeLeft',
+      rules: `Rendered only if props.leftSide is true`,
+    },
+    {
+      name: 'FadeRight',
+      rules: `Rendered only if props.leftSide is false`,
+    },
+    {
+      name: 'Date',
+      rules: `Rendered only if props.data has value`,
+    },
+  ]}
+/>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'FadeLeft',
+      description: 'Fade left animation.',
+    },
+    {
+      name: 'FadeRight',
+      description: 'Fade right animation.',
+    },
+  ]}
+/>

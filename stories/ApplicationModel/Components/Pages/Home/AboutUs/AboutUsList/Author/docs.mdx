@@ -1,0 +1,111 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../../../styles.ts'
+import PropertiesTable from '../../../../../../../Components/properties-table'
+import ReferenceList from '../../../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Pages/Home/AboutUs/AboutUsList/Author/docs" />
+
+# About
+
+<ComponentInfoTable
+  name={'AboutUs'}
+  description={`The component represents the author card`}
+  source="components/pages/home/about-us/about-us-list/author"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'name',
+      type: `string`,
+      defaultValue: '',
+      description: `Name of author`,
+      required: true,
+    },
+    {
+      name: 'picture',
+      type: `string`,
+      defaultValue: '',
+      description: `Path to the image to be used as the author's photo`,
+      required: true,
+    },
+
+       {
+      name: 'technicalName',
+      type: `string`,
+      defaultValue: '',
+      description: `The technical name that the component uses to set unique keys`,
+      required: true,
+    },
+    {
+      name: 'role',
+      type: `{
+              color: string,
+              name: string
+            }[]`,
+      defaultValue: '',
+      description: `The author's role`,
+      required: true,
+    },
+
+    {
+      name: 'minimized',
+      type: `boolean`,
+      defaultValue: '',
+      description: `If true, it will shrink the author card.`,
+      required: true,
+      },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      Author "1" <-- "1" AuthorWrapper
+      AuthorWrapper "1" <-- "1" AuthorContainer
+      AuthorContainer "1" <-- "1" PictureWrapper
+      AuthorContainer "1" <-- "1" Authorinfo
+
+      PictureWrapper "1" <-- "1" Picture
+      AuthorContainer "1" <-- "1" TextWrap
+      AuthorContainer "1" <-- "1" LabelsWrapper
+      AuthorContainer "1" <-- "1" P6
+
+      LabelsWrapper "1" <-- "n" Label
+
+      class Author:::green
+      class AuthorWrapper
+      class AuthorContainer
+      class PictureWrapper
+      class Authorinfo
+      class TextWrap:::blue
+      class LabelsWrapper
+      class Label:::blue
+      class P6:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    { name: 'P6', description: 'Paragraph component' },
+    {
+      name: 'Label',
+      description: 'Label component',
+    },
+    {
+      name: 'TextWrap',
+      description: 'A styled text component.',
+    },
+  ]}
+/>

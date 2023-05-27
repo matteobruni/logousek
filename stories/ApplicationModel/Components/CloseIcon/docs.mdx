@@ -1,0 +1,49 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/CloseIcon/docs" />
+
+# CloseIcon
+
+<ComponentInfoTable
+  name={'CloseIcon'}
+  description={`The component represents the click button of the cross`}
+  source="components/close-icon"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'onClick',
+      type: `() => void`,
+      defaultValue: '',
+      description: `Callback that is called when the button is pressed.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     CloseIcon "1" <-- "1" IconWrapper
+     IconWrapper "1" <-- "1" Icon
+
+     class CloseIcon:::green
+     class IconWrapper
+     class Icon
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

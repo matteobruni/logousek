@@ -1,0 +1,58 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../styles.ts'
+import PropertiesTable from '../../../../../Components/properties-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Pages/Home/News/docs" />
+
+# News
+
+<ComponentInfoTable
+  name={'News'}
+  description={`Component shows list of news.`}
+  source="components/pages/home/news"
+/>
+<PropertiesTable tableRows={[]} />
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      News "1" <-- "1" NewsWrapper
+      NewsWrapper "1" <-- "1" SectionLayout
+      SectionLayout "1" <-- "1" Header
+      SectionLayout "1" <-- "1" TimeLine
+
+      class News:::green
+      class NewsWrapper
+      class SectionLayout:::blue
+      class Header:::blue
+      class TimeLine:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Header',
+      description: 'Header section component on the main page',
+    },
+    {
+      name: 'SectionLayout',
+      description: 'Layout section on the main page.',
+    },
+    {
+      name: 'TimeLine',
+      description: 'Shows the progress of working on the application.',
+    },
+  ]}
+/>

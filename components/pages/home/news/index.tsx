@@ -3,21 +3,21 @@ import React from 'react'
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
 
 import Header from "../header"
-import TimeLine from '../../../time-line'
+import TimeLine from './time-line'
 import SectionLayout from '../section-layout'
 import * as S from "./styled"
 
-const ActivityList: React.FC = () => {
+const News: React.FC = () => {
   const { tHome } = useTranslateFunctions()
 
   return (
-    <S.ActivityList id="activityList">
+    <S.NewsWrapper id="news">
       <SectionLayout>
-        <Header>{tHome("ActivityList.header")}</Header>
+        <Header>{tHome("news.header")}</Header>
         <TimeLine />
       </SectionLayout>
-    </S.ActivityList>
+    </S.NewsWrapper>
   )
 }
 
-export default ActivityList
+export default News

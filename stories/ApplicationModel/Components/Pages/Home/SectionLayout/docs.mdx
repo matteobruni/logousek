@@ -1,0 +1,50 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../styles.ts'
+import PropertiesTable from '../../../../../Components/properties-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Pages/Home/SectionLayout/docs" />
+
+# SectionLayout
+
+<ComponentInfoTable
+  name={'SectionLayout'}
+  description={`A component to wrap a section on the main page.`}
+  source="components/pages/home/section-layout"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `React.ReactNode`,
+      defaultValue: '',
+      description: `The content of the section to display`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      SectionLayout "1" <-- "1" SectionLayoutWrapper
+      SectionLayoutWrapper "1" <-- "1" SectionLayoutContainer
+
+      class SectionLayout:::green
+      class SectionLayoutWrapper
+      class SectionLayoutContainer
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

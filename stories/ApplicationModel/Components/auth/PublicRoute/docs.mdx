@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Auths/PublicRoute/docs" />
+
+# PublicRoute
+
+<ComponentInfoTable
+  name={'PublicRoute'}
+  description={`The component renders children when the user is both authenticated and unauthenticated.`}
+  source="components/auth/public-route"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `React.ReactElement`,
+      defaultValue: '',
+      description: `An element that should be displayed if the user is both authenticated and unauthenticated.`,
+      required: true,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     PublicRoute "1" <-- "1" LoadingPage : status in neither "unauthenticated" nor "authenticated"
+     PublicRoute "1" <-- "1" children : authenticated or unauthenticated
+
+     class PublicRoute:::green
+     class LoadingPage["R - LoadingPage"]:::blue
+
+    class children["R - props.children"]
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'LoadingPage',
+      rules: `Rendered only if status is neither "unauthenticated" nor "authenticated"`,
+    },
+    {
+      name: 'children',
+      rules: `Rendered only if status is "authenticated or unauthenticated"`,
+    },
+  ]}
+/>
+
+<ReferenceList
+  tableRows={[
+    { name: 'LoadingPage', description: 'A loading page component.' },
+  ]}
+/>

@@ -66,5 +66,4 @@ export const Desc = styled.p`
   margin: 0.3rem;
   font-weight: 600;
   font-size: ${({ theme }) => theme.typography.fontSize.lg};
-  white-space: nowrap;
 `;

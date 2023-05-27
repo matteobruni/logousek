@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Auths/OnlyPublicRoute/docs" />
+
+# OnlyPublicRoute
+
+<ComponentInfoTable
+  name={'OnlyPublicRoute'}
+  description={`The component will render "children" if the user is not authenticated. If the status changes to "authenticated" or the user is already "authenticated" during rendering, the component redirects the user to the game menu.`}
+  source="components/auth/only-public-route"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `React.ReactElement`,
+      defaultValue: '',
+      description: `An element that should be displayed if the user is unauthenticated.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     OnlyPublicRoute "1" <-- "1" LoadingPage : status in neither "unauthenticated" nor "authenticated"
+     OnlyPublicRoute "1" <-- "1" children : unauthenticated
+     OnlyPublicRoute --|> statusChange
+     OnlyPublicRoute  --|>  redirect : authenticated
+     statusChange --|> redirect : authenticated
+
+     class OnlyPublicRoute:::green
+     class LoadingPage["R - LoadingPage"]:::blue
+
+    class redirect["redirect to HomePage"]:::oval
+    class statusChange["status change"]:::oval
+    class children["R - props.children"]
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'LoadingPage',
+      rules: `Rendered only if status is neither "unauthenticated" nor "authenticated"`,
+    },
+    {
+      name: 'children',
+      rules: `Rendered only if status is "unauthenticated"`,
+    },
+  ]}
+/>
+
+<ReferenceList
+  tableRows={[
+    { name: 'LoadingPage', description: 'A loading page component.' },
+  ]}
+/>

@@ -1,3 +1,4 @@
+import { H2 } from '@components/typography/header'
 import styled from 'styled-components'
 
 export const HeaderWrapper = styled.div`
@@ -11,7 +12,7 @@ export const HeaderContainer = styled.div`
   margin: 2rem 0rem;
 `
 
-export const HeaderText = styled.h2`
+export const HeaderText = styled(H2)`
   font-size: 1.5rem;
   margin: 0px;
   margin-bottom: 0.6rem;

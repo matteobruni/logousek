@@ -3,14 +3,20 @@
 import { Canvas, Meta } from '@storybook/blocks'
 import { Mermaid } from 'mdx-mermaid/Mermaid'
 
-import * as S from '../../styles.ts'
-import PropertiesTable from '../../../Components/properties-table'
-import ReferenceList from '../../../Components/reference-list'
+import * as S from '../../../../styles.ts'
+import PropertiesTable from '../../../../../Components/properties-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
 
-<Meta title="ApplicationModel/Components/AboutUs/docs" />
+<Meta title="ApplicationModel/Components/Pages/Home/AboutUs/docs" />
 
 # AboutUs
 
+<ComponentInfoTable
+  name={'AboutUs'}
+  description={``}
+  source="components/pages/home/about-us/about-us-list"
+/>
 <PropertiesTable tableRows={[]} />
 
 <S.MermaidWrapper>

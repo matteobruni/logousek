@@ -33,7 +33,7 @@ const Intro: React.FC<IntroProps> = ({ scrollTarget }) => {
   const redirectToGameMenu = () => {
     router.push(routes.gameMenu)
   }
-
+  console.log("secondTreeParallax", secondTreeParallax.ref)
   return (
     <S.IntroWrapper id="introduction">
       <S.IntroContainer

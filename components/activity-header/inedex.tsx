@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import HeaderWrapper from '../header-wrapper/header-wrapper'
-import BackIcon from '../back-icon'
+import CloseIcon from '../close-icon'
 import { useRouter } from 'next/router'
 import ModalContext from '../../contexts/modal-context'
 import * as S from "./styled";
@@ -25,9 +25,9 @@ const ActivityHeader: React.FC<ActivityHeaderProps> = ({ tasksCount, currentTask
   const taskElapsed = currentTask - 1
 
   const menuItems = [
-    <S.BackIconWrapper key="game-menu-icons">
-      <BackIcon onClick={routeBack} />
-    </S.BackIconWrapper>,
+    <S.CloseIconWrapper key="game-menu-icons">
+      <CloseIcon onClick={routeBack} />
+    </S.CloseIconWrapper>,
     <div key="game-menu-timer">
       <p>{title}</p>
     </div>,

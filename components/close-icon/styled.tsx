@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledBackIconWrapper = styled.a`
+export const IconWrapper = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,6 +13,6 @@ export const StyledBackIconWrapper = styled.a`
   }
 `
 
-export const StyledBackIcon = styled.i`
+export const Icon = styled.i`
   font-size: 32px;
 `

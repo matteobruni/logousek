@@ -99,6 +99,6 @@ export const ModalContent = styled.div`
   flex: 1;
 `
 
-export const BackIconWrapper = styled.span`
+export const CloseIconWrapper = styled.span`
   margin: 0.5rem;
 `
