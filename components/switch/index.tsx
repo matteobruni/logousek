@@ -1,5 +1,5 @@
 import React from "react";
-import { SwitchWrapper, SwitchPointer, SwitchBackground } from "./styled";
+import * as S from "./styled";
 
 type SwitchProps = {
   enabledIcon: React.ReactElement | string;
@@ -18,12 +18,12 @@ const Switch: React.FC<SwitchProps> = ({
     onChange(!value);
   };
   return (
-    <SwitchWrapper onClick={_onChangeHangler}>
-      <SwitchPointer enabled={value}>
+    <S.SwitchWrapper onClick={_onChangeHangler}>
+      <S.SwitchPointer enabled={value}>
         {value ? enabledIcon : disabledIcon}
-      </SwitchPointer>
-      <SwitchBackground />
-    </SwitchWrapper>
+      </S.SwitchPointer>
+      <S.SwitchBackground />
+    </S.SwitchWrapper>
   );
 };
 

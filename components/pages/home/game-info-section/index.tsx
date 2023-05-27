@@ -1,44 +1,28 @@
 import React from 'react'
 
-import Cards from '@components/game-card'
 import FadeIn from '@components/animations/fade-in'
+import activityConf from '@constants/activity-confs/activity-conf'
+import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
+import TwoSideCard from '@components/two-side-card'
 import publicImages from '@constants/public-images'
 
 import SectionLayout from '../section-layout'
 import Header from "../header"
 import * as S from "./styled"
 
-import { useTranslateFunctions } from 'hooks/useTranslateFunctions'
 
-
-const CARDS_CONFIG = [
-  {
-    name: 'visibility',
-    title: 'Zraková cvičení',
-    image: publicImages.activityIcons.differentiation
-  },
-  {
-    name: 'hear',
-    title: 'Sluchová cvičení',
-    image: publicImages.activityIcons.differentiation
-  },
-  {
-    name: 'seriality',
-    title: 'Cvičení na serialitu',
-    image: publicImages.activityIcons.seriality
-  },
-  {
-    name: 'language',
-    title: 'Procvičování jazyka',
-    image: publicImages.activityIcons.oromotorics
-  }
-]
 
 const getCards = () => {
-  return CARDS_CONFIG.map(cardConf => (
+  const notDisabledActivityConf = activityConf.filter(activity => !activity.disabled)
+
+  return notDisabledActivityConf.map(cardConf => (
     <FadeIn key={cardConf.name}>
-      <Cards
-        gameInfo={cardConf}
+      <TwoSideCard
+        name={cardConf.name}
+        title={cardConf.title}
+        image={cardConf.image || publicImages.activityIcons.differentiation}
+        description={cardConf.description}
+        onMainSideClick={() => { }}
       />
     </FadeIn >)
   )

@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React, { useContext } from "react"
+import { ThemeContext } from 'styled-components'
+
 import Bubble from '@components/bubble'
 import Logousek from '@components/svg/templates/logousek'
 import { useTutorial, TutorialConfigType } from "@hooks/useTutorial"
@@ -24,6 +26,7 @@ const config: TutorialConfigType = [{
 
 const Tutorial: React.FC = () => {
     const { text, runTutorial, isTutorialOpened, reset, next } = useTutorial(config)
+    const themeContext = useContext(ThemeContext)
 
 
     const startTutorial = () => {
@@ -32,7 +35,7 @@ const Tutorial: React.FC = () => {
 
     return (
         <S.TutorialWrapper isTutorialOpened={isTutorialOpened}>
-            <Blob color="#ff000055" isBlobShowed={isTutorialOpened}>
+            <Blob color={themeContext.colors.red} isBlobShowed={isTutorialOpened}>
                 <S.TutorialContainer isTutorialOpened={isTutorialOpened}>
                     <S.LogosekWrapper onClick={startTutorial} isTutorialOpened={isTutorialOpened}>
                         <Logousek />

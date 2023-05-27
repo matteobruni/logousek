@@ -1,0 +1,43 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/About/docs" />
+
+# About
+
+<PropertiesTable tableRows={[]} />
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      AboutUsList "1" <-- "1" AboutUsListWrapper
+      AboutUsListWrapper "1" <-- "n" FadeIn
+      FadeIn "1" <-- "1" Authors
+
+      class AuthorWrapper:::green
+      class AuthorContainer
+      class FadeIn:::blue
+      class Authors:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    { name: 'FadeIn', description: 'Component with animation effect' },
+    {
+      name: 'Authors',
+      description: 'Author card component',
+    },
+  ]}
+/>

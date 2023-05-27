@@ -62,14 +62,12 @@ export const Navbar = styled.div`
 `;
 
 export const Description = styled.p`
-  flex: 1;
+  width: 100%;
   align-items: center;
-  display: flex;
-  justify-content: center;
-  margin: 0px;
-  padding: 0.5rem;
+  margin: 0;
+  padding: 0.5rem 0;
   font-weight: 600;
-  text-align: center;
+  text-align: "center";
   color: ${({ theme }) => theme.colors.seventy};
 `;
 
@@ -105,4 +103,12 @@ export const Image = styled.img`
 export const MainSideContainer = styled.div`
   display: flex;
   flex-direction: column;
+`
+
+export const SecondSideContentWrap = styled.div`
+  height: calc(100% - 24px);
+  margin: 24px 8px 0;
+  overflow: auto;
+  padding-bottom: 8px;
+
 `

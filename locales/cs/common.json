@@ -1,6 +1,14 @@
 {
   "appName": "Logoušek",
   "buttons": {
-    "play": " Hrát"
+    "play": "Hrát"
+  },
+  "sideBar": {
+    "currentSiteNavigation": {
+      "title": "Navigace stránky"
+    },
+    "applicationNavigation": {
+      "title": "Navigace aplikace"
+    }
   }
 }

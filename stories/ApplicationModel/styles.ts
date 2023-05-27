@@ -36,4 +36,8 @@ rect {
     ry: 50%;
 }
 
+.edgeLabels > .edgeTerminals > foreignObject {
+    overflow: visible;
+}
+
 `

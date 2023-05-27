@@ -23,6 +23,7 @@ export const AuthorContainer = styled.div`
   width: 100%;
   align-self: center;
   justify-self: center;
+  background-color: ${({ theme }) => theme.colors.wtiteTransparent};
   box-shadow: 0px 2px 16px ${({ theme }) => theme.colors.seventy};
   border-radius: ${({ theme }) => theme.radius.secondary};
 `;

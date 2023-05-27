@@ -17,7 +17,7 @@ export const AboutAsContainer = styled.div`
   align-items: center;
   width: 100%;
   border-bottom-left-radius: ${({ theme }) => theme.radius.tertialy};
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.eighty};
 
   @media ${devices.laptop} {
     border-bottom-left-radius: ${({ theme }) => theme.radius.quaternary};

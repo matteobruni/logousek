@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { P5 } from "@components/typography/paragraph";
 
 export const ListItem = styled.li`
   width: 100%;
@@ -13,7 +14,7 @@ export const ListItem = styled.li`
   }
 `;
 
-export const ListItemDesc = styled.p`
+export const ListItemDesc = styled(P5)`
   margin: 0px;
   text-align: center;
   padding: 0.5rem;

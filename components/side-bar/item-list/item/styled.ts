@@ -18,11 +18,11 @@ export const ListItemLink = styled.a`
   display: flex;
   width: 100%;
 
-  & > span {
+  & > p {
     flex: 1;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
   }
 `;
 

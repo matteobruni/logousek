@@ -1,0 +1,69 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Animations/Animate/docs" />
+
+# Animate
+
+<ComponentInfoTable
+  name={'Animate'}
+  description="A animate component."
+  source="components/animations/animate"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'fromStyles',
+      type: `{
+              opacity: number,
+              translateTo: string,
+              scale: number
+            }`,
+      defaultValue: '',
+      description: `A style object defining styles before the animation starts.`,
+      required: true,
+    },
+    {
+      name: 'toStyles',
+      type: `{
+              opacity: number,
+              translateTo: string,
+              scale: number
+            }`,
+      defaultValue: '',
+      description: `A style object defining styles after the animation starts.`,
+      required: true,
+    },
+     {
+      name: 'children',
+      type: `React.ReactElement`,
+      defaultValue: '',
+      description: `An element that should be animated`,
+      required: true,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Animate "1" <-- "1" AnimateWrapper
+
+     class Animate:::green
+     class AnimateWrapper
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

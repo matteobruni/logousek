@@ -9,6 +9,9 @@ export const SwitchWrapper = styled.div`
 type SwitchPointerProps = { enabled: boolean };
 
 export const SwitchPointer = styled.div<SwitchPointerProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 1.4rem;
   width: 1.4rem;
   border-radius: ${({ theme }) => theme.radius.primary};
@@ -22,5 +25,5 @@ export const SwitchPointer = styled.div<SwitchPointerProps>`
 export const SwitchBackground = styled.div`
   height: 1.8rem;
   border-radius: ${({ theme }) => theme.radius.primary};
-  background: black;
+  background: ${({ theme }) => theme.colors.black};
 `;

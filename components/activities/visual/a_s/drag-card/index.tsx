@@ -1,9 +1,11 @@
 import { useContext } from 'react'
-import { useDrag } from 'react-dnd'
-import ActivityCard from '../../../../activity-card'
 import { ThemeContext } from 'styled-components'
+import { useDrag } from 'react-dnd'
+
 import AsContext from '@contexts/as-context'
 import { CardType } from '@contexts/as-context/as-context-provider/use-get-cards'
+
+import ActivityCard from '../../../../activity-card'
 
 interface DragCardProps { content?: any, children?: any, customRadius?: string, item?: CardType }
 

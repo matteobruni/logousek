@@ -35,6 +35,7 @@ export type ActivityType = {
   cite?: string,
   games: GameType[];
   disabled?: boolean;
+  image?: string
 };
 
 export const games: GamesType = {
@@ -145,6 +146,7 @@ const activityConf: ActivityType[] = [
       "Prostřednictvím zraku poznáváme okolní svět. Hry na rozvoj zrakového vnímání podporují vývoj mluvené řeči, dílčí funkce jsou úzce provázány. Správně rozvinuté zrakové vnímání je důležité pro získávání, zpracování a uchování informací z okolí a následně pozitivně ovlivní výuku a úspěšnost ve škole.",
     cite: "Bednářová, 2015",
     games: games.visual_perception,
+    image: publicImages.activityIcons.differentiation
   },
 
   {
@@ -164,6 +166,7 @@ const activityConf: ActivityType[] = [
       "Sluch je nezastupitelný pro řečový vývoj, je jedním z prostředků komunikace. Pro osvojení správné artikulace má sluch spolu se zrakem zásadní význam. Hry na rozvoj sluchového vnímání podporují rozlišovací schopnosti, všímání si melodie a rytmu řeči, délek a pořadí hlásek.",
     cite: "Bednářová, 2015",
     games: games.auditory_perception,
+    image: publicImages.activityIcons.differentiation
   },
 
   {
@@ -175,6 +178,7 @@ const activityConf: ActivityType[] = [
       "Hry na rozvoj časové posloupnosti podporují rozumění dějovým souvislostem, uvědomování si příčiny a důsledku a vnímání plynutí času.",
     cite: "Bednářová, 2015",
     games: games.seriality,
+    image: publicImages.activityIcons.seriality
   },
 
   {
@@ -187,6 +191,7 @@ const activityConf: ActivityType[] = [
       "Cvičení na rozvoj obratnosti jazyka pomáhají zlepšit motoriku, cit a vnímání pozice jazyka a tím následně usnadňují výslovnost jednotlivých hlásek.",
     cite: "Bednářová, 2015",
     games: games.language_practicing,
+    image: publicImages.activityIcons.oromotorics
   },
 
   {

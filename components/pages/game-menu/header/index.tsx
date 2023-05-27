@@ -1,8 +1,7 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import HeaderWrapper from '@components/header-wrapper/header-wrapper'
 import ClickableIcon from '@components/clickable-icon'
 import ClickableIconWrapper from '@components/clickable-icon-wrapper'
-import ModalContext from '@contexts/modal-context'
 import DarkModeSwitch from '@components/dark-mode-switch'
 import { signOut } from 'next-auth/react'
 import * as S from './styled'
@@ -10,16 +9,8 @@ import * as S from './styled'
 type GameMenuHeaderType = { points?: string, userName: string }
 
 const GameMenuHeader: React.FC<GameMenuHeaderType> = ({ points, userName }) => {
-  const modalContext = useContext(ModalContext)
   const _onLogoutHandler = () => {
     signOut()
-  }
-
-  const _showSettings = () => {
-    modalContext?.showModal({
-      content: <div></div>,
-      header: 'Nastavení'
-    })
   }
 
   const menuItems = [
@@ -35,7 +26,6 @@ const GameMenuHeader: React.FC<GameMenuHeaderType> = ({ points, userName }) => {
         <DarkModeSwitch />
       </S.DarkModeSwitchWrapper>
       <ClickableIcon icon="logout" onClick={_onLogoutHandler} />
-      <ClickableIcon icon="settings" onClick={_showSettings} />
     </ClickableIconWrapper>
   ]
 

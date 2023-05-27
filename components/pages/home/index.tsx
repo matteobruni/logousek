@@ -8,7 +8,7 @@ import { useHomeSideBarItems } from '@hooks/useHomeSideBarItems'
 import GameInfo from './game-info-section'
 import GameSamples from './game-samples-section'
 import ActivityList from './activity-list-section'
-import AboutAs from './about-us-section'
+import AboutAs from './about-us'
 import { useTranslateFunctions } from 'hooks/useTranslateFunctions'
 
 

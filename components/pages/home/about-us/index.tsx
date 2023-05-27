@@ -8,7 +8,7 @@ import Header from "../header"
 import * as S from "./styled"
 
 
-const AboutAs: React.FC = () => {
+const AboutUs: React.FC = () => {
   const { tHome } = useTranslateFunctions()
   return (
     <S.AboutAsWrapper id="aboutAs">
@@ -22,4 +22,4 @@ const AboutAs: React.FC = () => {
   )
 }
 
-export default AboutAs
+export default AboutUs

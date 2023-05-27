@@ -68,7 +68,7 @@ export const darkColors: ColorsType = {
 
   white: '#fff',
   lightGrey: '#ccc',
-  wtiteTransparent: "#ffffffaa",
+  wtiteTransparent: "#ffffff77",
   lightGreen: '#696969',
   darkGreen: "#696969",
 

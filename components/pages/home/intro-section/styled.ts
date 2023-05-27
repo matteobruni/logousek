@@ -32,11 +32,9 @@ export const IntroContainer = styled.div`
 `
 
 export const Navbar = styled.nav`
-  & > nav {
-    display: flex;
-    justify-content: flex-end;
-    padding: 0.5rem;
-  }
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem;
 
   @media ${devices.laptop} {
     display: none;
@@ -146,6 +144,7 @@ export const IntroPlayButton = styled.div`
 
   i {
     font-size: 3rem;
+    border-radius: 50%;
   }
 
   @media ${devices.laptop} {

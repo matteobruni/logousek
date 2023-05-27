@@ -1,0 +1,47 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/AboutUs/docs" />
+
+# AboutUs
+
+<PropertiesTable tableRows={[]} />
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      AboutUs "1" <-- "1" AboutAsWrapper
+      AboutAsWrapper "1" <-- "1" AboutAsContainer
+      AboutAsContainer "1" <-- "1" SectionLayout
+      SectionLayout "1" <-- "1" Header
+      SectionLayout "1" <-- "1" AboutUsList
+
+      class AboutUs:::green
+      class AboutAsWrapper
+      class AboutAsContainer
+      class SectionLayout
+      class Header:::blue
+      class AboutUsList:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    { name: 'Header', description: 'Section header component' },
+    {
+      name: 'AboutUsList',
+      description: 'List of creators',
+    },
+  ]}
+/>

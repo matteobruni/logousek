@@ -9,6 +9,26 @@ const meta: Meta<ButtonProps> = {
     backgroundColor: {
       control: 'color',
     },
+    color: {
+      control: 'color',
+    },
+    children: {
+      control: 'text',
+    },
+    title: {
+      control: 'text',
+    },
+    size: {
+      options: ['xs', 's', undefined],
+      control: { type: 'radio' },
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    type: {
+      options: ["button", "submit", "reset", undefined],
+      control: { type: 'radio' },
+    }
 
   },
 };
@@ -20,5 +40,7 @@ type Story = StoryObj<ButtonProps>;
 export const Primary: Story = {
   args: {
     children: 'Button',
+    backgroundColor: "#aaaaff",
+    color: "#fff"
   },
 };

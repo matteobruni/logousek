@@ -9,14 +9,12 @@ export const SidebarItemsWrapper = styled.div<SidebarItemsWrapperProps>`
   display: flex;
   flex-direction: column;
   position: fixed;
-  background-color: ${({ theme }) => theme.colors.darkGreen};
+  background: ${({ theme }) => `linear-gradient(-0.25turn, ${theme.colors.darkGreen}, ${theme.colors.lightGreen})`};
   transition-duration: 0.5s;
   height: 100vh;
   overflow: hidden;
   z-index: ${({ theme }) => {
-    console.log("theme", theme)
     return theme.zIndex.xxl
-
   }};
   overflow: auto;
   width: ${({ isMenuShow }) => (isMenuShow ? '100vw' : '0px')};
@@ -65,9 +63,9 @@ export const Navigation = styled.div`
 `
 
 export const ApplicationNavigation = styled.div`
+  position: relative;
   @media ${devices.laptop} {
     flex: 1;
-
     & > h4 {
       padding-left: 40px;
       text-align: center;
@@ -79,4 +77,10 @@ export const RoundFooterWrapper = styled.div`
   @media ${devices.laptop} {
     display: none;
   }
+`
+
+export const DarkModeSwitchWrapper = styled.div`
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
 `

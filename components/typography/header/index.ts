@@ -24,7 +24,7 @@ export const H3 = styled.h3<HeaderType>`
   ${T3Styles};
 `
 
-export const P4 = styled.h4<HeaderType>`
+export const H4 = styled.h4<HeaderType>`
   ${T4Styles};
 `
 
