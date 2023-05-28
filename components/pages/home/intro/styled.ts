@@ -127,7 +127,7 @@ export const SecondForegroundTreeWrapper = styled.div`
 
 export const IntroPlayButton = styled.div`
   position: fixed;
-  z-index: 999;
+  z-index: ${({ theme }) => theme.zIndex.xl};
   display: flex;
   align-items: center;
   top: 1rem;

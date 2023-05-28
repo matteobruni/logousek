@@ -7,6 +7,8 @@ export enum ColorsEnum {
   sixty = "sixty",
   seventy = "seventy",
   eighty = "eighty",
+  ninghty = "ninghty",
+  tenth = "tenth",
   white = "white",
   lightGrey = "lightGrey",
   wtiteTransparent = "wtiteTransparent",
@@ -36,6 +38,8 @@ export const lightColors: ColorsType = {
   sixty: '#FA4238',
   seventy: '#696969',
   eighty: '#fff',
+  ninghty: '#696969',
+  tenth: "#000",
 
   white: '#fff',
   lightGrey: '#aaa',
@@ -65,6 +69,8 @@ export const darkColors: ColorsType = {
   sixty: '#84E065',
   seventy: '#696969',
   eighty: '#696969',
+  ninghty: "#fff",
+  tenth: "#fff",
 
   white: '#fff',
   lightGrey: '#ccc',

@@ -1,17 +1,16 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import RoundFooter from "@components/round-footer";
-import { useTranslateFunctions } from "@hooks/useTranslateFunctions";
-import { H4 } from "@components/typography/header";
+import useWindowDimensions from '@hooks/useWindowDimensions'
 import { ColorsEnum } from "styles/colors";
-import ItemList from "./item-list";
-import ItemRectList from "./item-rect-list";
 import DarkModeSwitch from "../dark-mode-switch";
+import { RectItemProps } from "./application-navigation/item-rect-list/rect-item";
+import ApplicationNavigation from "./application-navigation";
+import PageNavigation from "./page-navigation";
+import { ItemType } from "./page-navigation/item-list/item";
 import * as S from "./styled";
-import { SidebarRectItemProps } from "./item-rect-list/rect-item";
-import { ItemType } from "./item-list/item";
 
-type ApplicationNavType = SidebarRectItemProps[];
-type PageNavType = ItemType[];
+type ApplicationNavType = RectItemProps[];
+type PageNavType = Omit<ItemType, "isMenuShow">[];
 
 type SidebarProps = {
   pageNav: PageNavType;
@@ -19,11 +18,15 @@ type SidebarProps = {
 };
 
 const Sidebar: React.FC<SidebarProps> = ({ pageNav, applicationNav }) => {
-  const { tCommon } = useTranslateFunctions()
   const [isMenuShow, setIsMenuShow] = useState(false);
+  const { width } = useWindowDimensions();
   const toggleMenu = () => {
     setIsMenuShow((v) => !v);
   };
+
+  useEffect(() => {
+    setIsMenuShow(false)
+  }, [width])
 
   const roundFooterActivityTypes = useMemo(() => ([
     {
@@ -35,27 +38,27 @@ const Sidebar: React.FC<SidebarProps> = ({ pageNav, applicationNav }) => {
     },
   ]), [isMenuShow])
 
+  const onSidebarMouseLeavehandle = () => {
+    if (width && (width >= 1024)) {
+      setIsMenuShow(false)
+    }
+  }
+
   return (
     <>
       <S.SidebarWrapper
         onMouseEnter={() => setIsMenuShow(true)}
-        onMouseLeave={() => setIsMenuShow(false)}
+        onMouseLeave={onSidebarMouseLeavehandle}
         isMenuShow={isMenuShow}
       >
         <S.SidebarItemsWrapper isMenuShow={isMenuShow}>
-          <S.Navigation>
-            <H4>{tCommon("sideBar.currentSiteNavigation.title")}</H4>
-            <ItemList itemList={pageNav} setIsMenuShow={setIsMenuShow} />
-          </S.Navigation>
-          <S.ApplicationNavigation>
-            <H4>{tCommon("sideBar.applicationNavigation.title")}</H4>
-            <ItemRectList itemList={applicationNav} />
-            <S.DarkModeSwitchWrapper>
-              <DarkModeSwitch />
-            </S.DarkModeSwitchWrapper>
-          </S.ApplicationNavigation>
+          <S.MobileDarkModeSwitchWrapper>
+            <DarkModeSwitch />
+          </S.MobileDarkModeSwitchWrapper>
+          <PageNavigation isMenuShow={isMenuShow} setIsMenuShow={setIsMenuShow} pageNav={pageNav} />
+          <ApplicationNavigation isMenuShow={isMenuShow} applicationNav={applicationNav} />
         </S.SidebarItemsWrapper>
-      </S.SidebarWrapper>
+      </S.SidebarWrapper >
       <S.RoundFooterWrapper>
         <RoundFooter
           customHeight={"4rem"}

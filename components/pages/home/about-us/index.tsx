@@ -14,7 +14,7 @@ const AboutUs: React.FC = () => {
     <S.AboutAsWrapper id="aboutAs">
       <S.AboutAsContainer>
         <SectionLayout>
-          <Header>{tHome("AboutAs.header")}</Header>
+          <Header>{tHome("aboutAs.header")}</Header>
           <AboutUsList />
         </SectionLayout>
       </S.AboutAsContainer>

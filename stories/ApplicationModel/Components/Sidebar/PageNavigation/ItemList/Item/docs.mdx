@@ -1,0 +1,89 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../../styles.ts'
+import PropertiesTable from '../../../../../../Components/properties-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Sidebar/PageNavigation/ItemList/Item/docs" />
+
+# Item
+
+<ComponentInfoTable
+  name={'Item'}
+  description={`This is a list item.`}
+  source="components/side-bar/page-navigation/item-list/item"
+/>
+
+<PropertiesTable
+  tableRows={[
+
+       {
+      name: 'name',
+      type: `string`,
+      defaultValue: '',
+      description: `Technical name`,
+      required: true,
+    },
+    {
+      name: 'icon',
+      type: `string`,
+      defaultValue: '',
+      description: `Icon displayed next to a list item.`,
+      required: true,
+    },
+     {
+      name: 'title',
+      type: `string`,
+      defaultValue: '',
+      description: `Text that appears as a label.`,
+      required: true,
+    },
+    {
+      name: 'onClick',
+      type: `() => void`,
+      defaultValue: '',
+      description: `Callback that is called when an item is clicked.`,
+      required: true,
+    },
+
+      {
+      name: 'isMenuShow',
+      type: `() => void`,
+      defaultValue: '',
+      description: `This property indicates whether the menu is open or not.`,
+      required: true,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Item "1" <-- "1" ItemWrap
+     ItemWrap "1" <-- "1" ItemIcon
+     ItemWrap "1" <-- "1" P5
+
+     class Item:::green
+     class ItemWrap
+     class ItemIcon
+     class P5:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'P5',
+      description: 'It is a level 3 Paragraph component.',
+    },
+  ]}
+/>

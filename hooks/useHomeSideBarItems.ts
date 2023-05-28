@@ -1,67 +1,65 @@
 import { useRouter } from 'next/router'
+import { useMemo, useCallback } from 'react'
 
-import { useTranslateFunctions } from './useTranslateFunctions';
+import publicImages from '@constants/public-images'
+import { useTranslateFunctions } from './useTranslateFunctions'
 
 export const useHomeSideBarItems = () => {
     const { tHome } = useTranslateFunctions()
     const router = useRouter()
-    const redirect = (url: string) => {
+    const redirect = useCallback((url: string) => {
         router.push(url)
-    }
+    }, [router])
 
-    const applicationNavItems = [
-        { name: 'introduction', icon: 'cake', title: 'Visual' },
-        { name: 'gameInfo', icon: 'call', title: 'Sluch' },
+    const applicationNavItems = useMemo(() => [
         {
-            name: 'news',
-            icon: 'camera_alt',
-            title: 'Serialita'
+            name: 'introduction', icon: publicImages.activityIcons.differentiation, title: 'Visual',
+            onClick: () => redirect('game-menu?activityType=visual_perception'),
         },
         {
-            name: 'aboutAs',
-            icon: 'card_giftcard',
-            title: 'Login'
-        },
-        { name: 'introduction', icon: 'cake', title: 'Visual' },
-        { name: 'gameInfo', icon: 'call', title: 'Sluch' },
-        {
-            name: 'news',
-            icon: 'camera_alt',
-            title: 'Serialita'
+            name: 'gameInfo', icon: publicImages.activityIcons.differentiation, title: 'Sluch',
+            onClick: () => redirect('game-menu?activityType=auditory_perception'),
         },
         {
-            name: 'aboutAs',
-            icon: 'card_giftcard',
-            title: 'Login'
+            name: 'seriality',
+            icon: publicImages.activityIcons.seriality,
+            title: 'Serialita',
+            onClick: () => redirect('game-menu?activityType=seriality'),
+        },
+        {
+            name: 'oromotorics',
+            icon: publicImages.activityIcons.oromotorics,
+            title: 'Oromotorika',
+            onClick: () => redirect('game-menu?activityType=language_practicing'),
         }
-    ]
+    ], [])
 
-    const sideBarPageNavItems = [
+    const sideBarPageNavItems = useMemo(() => [
         {
             name: 'introduction',
-            icon: 'cake',
-            title: tHome("Intro.header"),
-            onClick: () => redirect('#introduction')
+            icon: 'pageview',
+            title: tHome('intro.header'),
+            onClick: () => redirect('#introduction'),
         },
         {
             name: 'gameInfo',
-            icon: 'call',
-            title: tHome("GameInfo.header"),
-            onClick: () => redirect('#gameInfo')
+            icon: 'videogame_asset',
+            title: tHome('gameInfo.header'),
+            onClick: () => redirect('#gameInfo'),
         },
         {
-            name: 'activityList',
-            icon: 'camera_alt',
-            title: tHome("ActivityList.header"),
-            onClick: () => redirect('#activityList')
+            name: 'news',
+            icon: 'library_books',
+            title: tHome('news.header'),
+            onClick: () => redirect('#news'),
         },
         {
             name: 'aboutAs',
-            icon: 'card_giftcard',
-            title: tHome("AboutAs.header"),
-            onClick: () => redirect('#aboutAs')
-        }
-    ]
+            icon: 'person',
+            title: tHome('aboutAs.header'),
+            onClick: () => redirect('#aboutAs'),
+        },
+    ], [redirect, tHome])
 
     return { applicationNavItems, sideBarPageNavItems }
-};
+}

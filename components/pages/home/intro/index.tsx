@@ -48,7 +48,7 @@ const Intro: React.FC<IntroProps> = ({ scrollTarget }) => {
         <S.DescriptionWrapper ref={descriptionWrapperParallax.ref}>
           <S.Description>
             <PageTitle type="ghost">{tCommon('appName')}</PageTitle>
-            <P3 type="ghost">{tHome('Intro.description')}</P3>
+            <P3 type="ghost">{tHome('intro.description')}</P3>
             <S.ButtonRow>
               <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu} id="mainPlayButton">
                 {tCommon('buttons.play')}

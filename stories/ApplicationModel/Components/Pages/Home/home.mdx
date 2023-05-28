@@ -1,0 +1,63 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import appConf from '../../../../../constants/app-conf'
+import RouterTable from '../../../../Components/router-table'
+import ReferenceList from '../../../../Components/reference-list'
+
+# Home
+
+<RouterTable
+  name="Home"
+  description="The home page is the initial gateway to a website"
+  source="components/pages/home"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      Home "1" <-- "1" HomeWrapper
+      HomeWrapper "1" <-- "1" WelcomeRowWrapper
+      WelcomeRowWrapper "1" <-- "1" Sidebar
+      WelcomeRowWrapper "1" <-- "1" Container
+      Container "1" <-- "1" Intro
+      Container "1" <-- "1" GameInfo
+      Container "1" <-- "1" GameSamples
+      Container "1" <-- "1" ActivityList
+      Container "1" <-- "1" AboutAs
+      Container "1" <-- "1" Footer
+
+      class Home:::green
+      class HomeWrapper
+      class WelcomeRowWrapper
+      class Sidebar:::blue
+      class Container
+      class Intro:::blue
+      class GameInfo:::blue
+      class GameSamples:::blue
+      class ActivityList:::blue
+      class AboutAs:::blue
+      class Footer:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    { name: 'Sidebar', description: 'Sidebar menu of home page.' },
+    { name: 'Intro', description: 'Intro section of home page.' },
+    { name: 'GameInfo', description: 'Game info section of home page.' },
+    { name: 'GameSamples', description: 'Game samples section of home page.' },
+    {
+      name: 'ActivityList',
+      description: 'Activity list section of home page.',
+    },
+    { name: 'AboutAs', description: 'About us section of home page.' },
+    { name: 'WelcomeRowWrapper', description: 'Intro section of home page.' },
+    { name: 'Footer', description: 'Intro section of home page.' },
+  ]}
+/>

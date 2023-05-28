@@ -1,5 +1,4 @@
-import React from 'react'
-import Image from 'next/image'
+import React, { useRef, useEffect } from 'react'
 
 import Pump from '@components/animations/pump'
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
@@ -12,14 +11,30 @@ import * as S from "./styled"
 
 const GameSamples: React.FC = () => {
   const { tHome } = useTranslateFunctions()
+  const videoEl = useRef<any>(null)
+  console.log("videoEl", videoEl)
+  const handleLoadedMetadata = () => {
+    const video = videoEl.current
+    if (!video) return
+  }
 
   return (
     <S.GameSamples>
       <SectionLayout>
-        <Header>{tHome("GameSamples.header")}</Header>
+        <Header>{tHome("gameSamples.header")}</Header>
         <Pump>
           <S.GameSamplesImageWrapper>
-            <S.GameSamplesImage src={publicImages.gameSample["01"]} />
+            <S.GameSamplesImage src={publicImages.gameSample["01"]} >
+              <S.StyledVideo
+                ref={videoEl}
+                autoPlay
+                loop
+                onLoadedMetadata={handleLoadedMetadata}
+                playsInline
+              >
+                <source src={`/videos/game-samples.mp4`} />
+              </S.StyledVideo>
+            </S.GameSamplesImage>
           </S.GameSamplesImageWrapper>
         </Pump>
       </SectionLayout>

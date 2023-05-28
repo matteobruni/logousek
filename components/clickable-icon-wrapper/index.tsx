@@ -7,7 +7,7 @@ type ClickableIconWrapperProps = {
 
 const ClickableIconWrapper: React.FC<ClickableIconWrapperProps> = ({ children }) => {
   return (
-    <S.IconWrapper key="game-menu-icons">
+    <S.IconWrapper>
       {children}
     </S.IconWrapper>
   )

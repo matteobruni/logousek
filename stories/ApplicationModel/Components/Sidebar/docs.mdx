@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Sidebar/docs" />
+
+# Sidebar
+
+<ComponentInfoTable
+  name={'Sidebar'}
+  description={`This is a side menu.`}
+  source="components/side-bar"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'pageNav',
+      type: `{
+              name: string;
+              icon: string;
+              title: string;
+              onClick: () => void;
+            }`,
+      defaultValue: '',
+      description: `This is the menu configuration of the current page.`,
+      required: true,
+    },
+    {
+      name: 'applicationNav',
+      type: `{ name: string, icon: string, title: string, onClick: () => void }`,
+      defaultValue: '',
+      description: `This is an application menu configuration.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Sidebar "1" <-- "1" SidebarWrapper
+     SidebarWrapper "1" <-- "1" SidebarItemsWrapper
+     
+     SidebarItemsWrapper "1" <-- "1" MobileDarkModeSwitchWrapper
+     MobileDarkModeSwitchWrapper "1" <-- "1" DarkModeSwitch
+     SidebarItemsWrapper "1" <-- "1" PageNavigation
+     SidebarItemsWrapper "1" <-- "1" ApplicationNavigation
+     
+     Sidebar "1" <-- "1" RoundFooterWrapper
+     RoundFooterWrapper "1" <-- "1" RoundFooter
+
+     class Sidebar:::green
+     class SidebarWrapper
+     class SidebarItemsWrapper
+     class MobileDarkModeSwitchWrapper
+     class DarkModeSwitch:::blue
+     class PageNavigation:::blue
+     class ApplicationNavigation:::blue
+     class RoundFooterWrapper
+     class RoundFooter:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'RoundFooterWrapper ',
+      rules: `Rendered only if the device has a width smaller than 1024px.`,
+    },
+    {
+      name: 'MobileDarkModeSwitchWrapper',
+      rules: `Rendered only if the device has a width smaller than 1024px.`,
+    },
+  ]}
+/>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'DarkModeSwitch',
+      description:
+        'Switch component, which changes the theme of the application when the state changes.',
+    },
+    {
+      name: 'PageNavigation',
+      description: 'It is a navigation component of a specific page.',
+    },
+    {
+      name: 'ApplicationNavigation',
+      description: 'It is a navigation component of application.',
+    },
+    {
+      name: 'RoundFooter',
+      description:
+        'This is a footer displayed at the bottom of the page. It is used for mobile devices.',
+    },
+  ]}
+/>

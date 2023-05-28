@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Sidebar/PageNavigation/docs" />
+
+# PageNavigation
+
+<ComponentInfoTable
+  name={'PageNavigation'}
+  description={`This is a page navigation.`}
+  source="components/side-bar/page-navigation"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'pageNav',
+      type: `{
+              name: string;
+              icon: string;
+              title: string;
+              onClick: () => void;
+            }`,
+      defaultValue: '',
+      description: `This is the menu configuration of the current page menu.`,
+      required: true,
+    },
+    {
+      name: 'setIsMenuShow',
+      type: `(value: boolean) => void`,
+      defaultValue: '',
+      description: `A callback that sets the isMenuShow.`,
+      required: true,
+    },
+    {
+      name: 'isMenuShow',
+      type: `boolean`,
+      defaultValue: '',
+      description: `Indicates whether the menu is open.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     PageNavigation "1" <-- "1" PageNavigationWrapper
+     PageNavigationWrapper "1" <-- "1" H4
+     PageNavigationWrapper "1" <-- "1" ItemListWrapper
+     ItemListWrapper "1" <-- "1" ItemList
+
+     class PageNavigation:::green
+     class PageNavigationWrapper
+     class H4:::blue
+     class ItemListWrapper
+     class ItemList:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'H4',
+      description: 'It is a Level 4 Header component',
+    },
+    {
+      name: 'ItemList',
+      description: 'It is a list of items.',
+    },
+  ]}
+/>

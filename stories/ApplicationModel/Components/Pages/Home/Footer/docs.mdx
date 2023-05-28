@@ -1,0 +1,83 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../styles.ts'
+import PropertiesTable from '../../../../../Components/properties-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Pages/Home/Footer/docs" />
+
+# Footer
+
+<ComponentInfoTable
+  name={'Footer'}
+  description={`This is the footer component of the main page.`}
+  source="components/pages/home/footer"
+/>
+
+<PropertiesTable
+  tableRows={[
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      Footer "1" <-- "1" FooterWrapper
+      FooterWrapper "1" <-- "1" FooterSection1
+      FooterWrapper "1" <-- "1" FooterSection2
+      FooterSection1 "1" <-- "1" P3
+      FooterSection1 "1" <-- "1" ClickableIconContainer
+      ClickableIconContainer "1" <-- "1" ClickableIconWrapper
+      ClickableIconWrapper "1" <-- "n" ClickableIcon
+      FooterSection1 "1" <-- "1" P61
+      FooterSection2 "1" <-- "1" P62
+      FooterSection2 "1" <-- "1" P63
+      P62 "1" <-- "1" a1
+      P63 "1" <-- "1" a2
+
+      class Footer:::green
+      class FooterWrapper
+      class FooterSection1["FooterSection"]
+      class FooterSection2["FooterSection"]
+      class P3:::blue
+      class ClickableIconContainer
+      class ClickableIconWrapper:::blue
+      class ClickableIcon:::blue
+      class P61["P6"]:::blue
+      class P62["P6"]:::blue
+      class P63["P6"]:::blue
+      class a1["a"]
+      class a2["a"]
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'P3',
+      description: 'A paragraph component.',
+    },
+    {
+      name: 'P6',
+      description: 'A paragraph component with smaller font-size then P3.',
+    },
+    {
+      name: 'ClickableIconWrapper',
+      description: 'Wraps Clickable icons components.',
+    },
+    {
+      name: 'ClickableIcon',
+      description: 'An icon that triggers an action when the user clicks it.',
+    },
+  ]}
+/>

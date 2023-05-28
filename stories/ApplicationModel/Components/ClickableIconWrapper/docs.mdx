@@ -1,0 +1,48 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/ClickableIconWrapper/docs" />
+
+# ClickableIconWrapper
+
+<ComponentInfoTable
+  name={'ClickableIconWrapper'}
+  description="An icon that triggers an action when clicked."
+  source="components/clickable-icon-wrapper"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `JSX.Element | JSX.Element[]`,
+      defaultValue: '',
+      description: `The property value should be a single ClickableIcons component or an array of ClickableIcons components.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+  <Mermaid
+    chart={`
+     classDiagram
+     direction RL
+     ClickableIcon "1" <-- "1" IconWrapper
+
+     class ClickableIcon:::green
+     class IconWrapper
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

@@ -1,0 +1,68 @@
+{/* Checkbox.mdx */}
+
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../styles.ts'
+import PropertiesTable from '../../../../../Components/properties-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Pages/Home/GameSamples/docs" />
+
+# GameSamples
+
+<ComponentInfoTable
+  name={'GameSamples'}
+  description={`This section will show the user samples of the games in the application.`}
+  source="components/pages/home/game-samples"
+/>
+
+<PropertiesTable
+  tableRows={[
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      GameSamples "1" <-- "1" SectionLayout
+      SectionLayout "1" <-- "1" Header
+      SectionLayout "1" <-- "1" Pump
+      Pump "1" <-- "1" GameSamplesImageWrapper
+      GameSamplesImageWrapper "1" <-- "1" GameSamplesImage
+      GameSamplesImage "1" <-- "1" StyledVideo
+      StyledVideo "1" <-- "1" source
+     
+      class GameSamples:::green
+      class SectionLayout:::blue
+      class Header:::blue
+      class Pump:::blue
+      class GameSamplesImageWrapper
+      class GameSamplesImage
+      class StyledVideo
+      class source
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'SectionLayout',
+      description: 'Layout section on the main page.',
+    },
+    {
+      name: 'Header',
+      description: 'Header section component on the main page.',
+    },
+    {
+      name: 'Pump',
+      description: 'A pump animation.',
+    },
+  ]}
+/>

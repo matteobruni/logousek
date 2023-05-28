@@ -20,3 +20,11 @@ export const GameSamplesImage = styled.div<GameSamplesImageProps>`
   background-image: url("${({ src }) => src}");
   background-size: cover;
 `
+
+export const StyledVideo = styled.video`
+  padding: 10px;
+  border-radius: ${({ theme }) => theme.radius.tertialy};
+  width: 100%;
+  height: auto;
+  z-index: ${({ theme }) => theme.zIndex.negative};
+`

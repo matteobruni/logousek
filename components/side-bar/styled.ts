@@ -4,49 +4,6 @@ import { devices } from '../../constants/screens-conf'
 type SidebarItemsWrapperProps = { isMenuShow: boolean }
 type SidebarWrapperProps = { isMenuShow: boolean }
 
-export const SidebarItemsWrapper = styled.div<SidebarItemsWrapperProps>`
-  top: 0px;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  background: ${({ theme }) => `linear-gradient(-0.25turn, ${theme.colors.darkGreen}, ${theme.colors.lightGreen})`};
-  transition-duration: 0.5s;
-  height: 100vh;
-  overflow: hidden;
-  z-index: ${({ theme }) => {
-    return theme.zIndex.xxl
-  }};
-  overflow: auto;
-  width: ${({ isMenuShow }) => (isMenuShow ? '100vw' : '0px')};
-
-  & > * {
-    width: 100vw;
-    padding: 0rem 10% 5rem 10%;
-  }
-
-  & h4 {
-    transition-duration: 0.5s;
-    opacity: ${({ isMenuShow }) => (isMenuShow ? '1' : '0')};
-  }
-
-  @media ${devices.laptop} {
-    flex-direction: row;
-    width: 50vw;
-    padding: 0%;
-    z-index: 1;
-
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.eighty};
-      padding: 0px 3rem;
-    }
-
-    & > * {
-      width: auto;
-      padding: 0px;
-    }
-  }
-`
-
 export const SidebarWrapper = styled.nav<SidebarWrapperProps>`
   position: relative;
   transition-duration: 1s;
@@ -57,19 +14,62 @@ export const SidebarWrapper = styled.nav<SidebarWrapperProps>`
   }
 `
 
-export const Navigation = styled.div`
-  flex: 1;
-  text-align: center;
+export const SidebarItemsWrapper = styled.div<SidebarItemsWrapperProps>`
+  top: 0px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  flex-wrap: wrap;
+  transition-duration: 0.5s;
+  min-height: 100vh;
+  overflow: hidden;
+  z-index: ${({ theme }) => {
+    return theme.zIndex.xxl
+  }};
+  overflow: auto;
+  width: ${({ isMenuShow }) => (isMenuShow ? '100vw' : '0px')};
+  background: ${({ theme }) => theme.colors.eighty};
+  z-index: ${({ theme }) => theme.zIndex.xxl};
+
+  & h4 {
+    transition-duration: 0.5s;
+    opacity: ${({ isMenuShow }) => (isMenuShow ? '1' : '0')};
+    color: ${({ theme }) => theme.colors.ninghty};
+  }
+
+  @media ${devices.laptop} {
+    max-width: 50vw;
+    height: 100vh;
+    flex-direction: row;
+    width: 50vw;
+    padding: 0;
+    z-index: 1;
+    background: ${({ theme }) => theme.colors.darkGreen};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.eighty};
+      padding: 0px 3rem;
+    }
+
+    & > * {
+      width: auto;
+      padding: 0px;
+    }
+
+
+    & h4 {
+      color: ${({ theme }) => theme.colors.black};
+    }
+  }
 `
 
-export const ApplicationNavigation = styled.div`
-  position: relative;
+export const MobileDarkModeSwitchWrapper = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 4px;
+
   @media ${devices.laptop} {
-    flex: 1;
-    & > h4 {
-      padding-left: 40px;
-      text-align: center;
-    }
+    display: none;
   }
 `
 
@@ -77,10 +77,4 @@ export const RoundFooterWrapper = styled.div`
   @media ${devices.laptop} {
     display: none;
   }
-`
-
-export const DarkModeSwitchWrapper = styled.div`
-  position: absolute;
-  bottom: 16px;
-  left: 16px;
 `

@@ -12,6 +12,8 @@ import { devices } from 'constants/screens-conf'
 
 export type HeaderType = Omit<TextWrapType, "variant">
 
+
+
 export const H1 = styled.h1<HeaderType>`
   ${T1Styles};
 `

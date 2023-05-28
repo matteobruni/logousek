@@ -35,7 +35,7 @@ const GameInfo: React.FC = () => {
     <S.GameInfo id="gameInfo">
       <S.GameInfoWrapper>
         <SectionLayout>
-          <Header>{tHome("GameInfo.header")}</Header>
+          <Header>{tHome("gameInfo.header")}</Header>
           <S.GameInfoArticles>
             {cards}
           </S.GameInfoArticles>
