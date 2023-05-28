@@ -105,7 +105,7 @@ function AdminPages({ data }: { data: any }) {
           onClick: () => { }
         }
       ]} applicationNav={[
-        { name: 'introduction', icon: 'cake', title: 'Visual' }
+        { name: 'introduction', icon: 'cake', title: 'Visual', onClick: () => { } }
       ]} />
       <S.Container>
         <Row style={{ width: "100%" }} gutter={24}>
