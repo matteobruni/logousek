@@ -2,12 +2,12 @@ import { Mermaid } from 'mdx-mermaid/Mermaid'
 
 import * as S from '../../../styles.ts'
 import appConf from '../../../../../constants/app-conf'
-import RouterTable from '../../../../Components/router-table'
+import ComponentInfoTable from '../../../../Components/component-info-table'
 import ReferenceList from '../../../../Components/reference-list'
 
 # Home
 
-<RouterTable
+<ComponentInfoTable
   name="Home"
   description="The home page is the initial gateway to a website"
   source="components/pages/home"
@@ -30,6 +30,7 @@ import ReferenceList from '../../../../Components/reference-list'
       Container "1" <-- "1" Footer
 
       class Home:::green
+      class RouteWrapper:::blue
       class HomeWrapper
       class WelcomeRowWrapper
       class Sidebar:::blue
@@ -48,6 +49,11 @@ import ReferenceList from '../../../../Components/reference-list'
 
 <ReferenceList
   tableRows={[
+    {
+      name: 'RouteWrapper',
+      description:
+        'This component is responsible for handling authentication, adding title of document, adding basic page styles and providing a tutorial',
+    },
     { name: 'Sidebar', description: 'Sidebar menu of home page.' },
     { name: 'Intro', description: 'Intro section of home page.' },
     { name: 'GameInfo', description: 'Game info section of home page.' },

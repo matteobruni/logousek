@@ -153,7 +153,7 @@ const activityConf: ActivityType[] = [
     name: "auditory_perception",
     title: "Sluchové vnímání",
     shortTitle: "Sluch",
-    color: ColorsEnum.secondary,
+    color: ColorsEnum.fifty,
     icon: "hearing",
     labels: [
       {

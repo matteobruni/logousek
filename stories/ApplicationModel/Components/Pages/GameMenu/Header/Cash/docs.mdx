@@ -1,0 +1,59 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../../styles.ts'
+import appConf from '../../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+import PropertiesTable from '../../../../../../Components/properties-table'
+
+<Meta title="ApplicationModel/Components/Pages/GameMenu/Header/Cash/docs" />
+
+# Cash
+
+<ComponentInfoTable
+  name="Cash"
+  description="The component is responsible for displaying information about the Cash."
+  source="components/pages/game-menu/header/Cash"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'points',
+      type: `string`,
+      defaultValue: '',
+      description: `The number of points the user has earned.`,
+      required: false,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      Cash "1" <-- "1" CashWrapper
+      CashWrapper "1" <-- "1" CashContainer
+      CashContainer "1" <-- "1" Icon
+      CashContainer "1" <-- "1" TextWrap
+
+      class Cash:::green
+      class CashWrapper
+      class CashContainer
+      class Icon
+      class TextWrap:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'TextWrap',
+      description: 'The component is responsible for displaying the text.',
+    },
+  ]}
+/>

@@ -1,0 +1,50 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../../styles.ts'
+import appConf from '../../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+import PropertiesTable from '../../../../../../Components/properties-table'
+
+<Meta title="ApplicationModel/Components/Pages/GameMenu/Header/User/docs" />
+
+# User
+
+<ComponentInfoTable
+  name="User"
+  description="The component is responsible for displaying information about the user."
+  source="components/pages/game-menu/header/user"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'userName',
+      type: `string`,
+      defaultValue: '',
+      description: `The prop value represents the user name.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      User "1" <-- "1" UserWrapper
+      UserWrapper "1" <-- "1" UserPhoto
+      UserWrapper "1" <-- "1" UserName
+
+      class User:::green
+      class UserWrapper
+      class UserPhoto
+      class UserName
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

@@ -1,0 +1,55 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../styles.ts'
+import appConf from '../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ReferenceList from '../../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/Pages/GameMenu/docs" />
+
+# GameMenu
+
+<ComponentInfoTable
+  name="GameMenu"
+  description="During the route, the user selects the activity and difficulty level they wish to play."
+  source="components/pages/game-menu"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      GameMenu "1" <-- "1" RouteWrapper
+      RouteWrapper "1" <-- "1" MenuWrapper
+      MenuWrapper "1" <-- "1" Header
+      MenuWrapper "1" <-- "1" SlideList
+      MenuWrapper "1" <-- "1" RoundFooter
+
+      class GameMenu:::green
+      class RouteWrapper:::blue
+      class MenuWrapper
+      class Header:::blue
+      class SlideList:::blue
+      class RoundFooter:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'RouteWrapper',
+      description:
+        'This component is responsible for handling authentication, adding title of document, adding basic page styles and providing a tutorial',
+    },
+    { name: 'Header', description: 'This is the game menu header.' },
+    { name: 'SlideList', description: 'This is a game menu slide list.' },
+    {
+      name: 'RoundFooter',
+      description: 'This is a footer with a rounded look.',
+    },
+  ]}
+/>

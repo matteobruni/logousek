@@ -1,0 +1,108 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../../styles.ts'
+import appConf from '../../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+import PropertiesTable from '../../../../../../Components/properties-table'
+
+<Meta title="ApplicationModel/Components/Pages/GameMenu/SlideList/Slide/docs" />
+
+# Slide
+
+<ComponentInfoTable
+  name="Slide"
+  description="This component represents one slide."
+  source="components/pages/game-menu/slide-list/slide"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'name',
+      type: `string`,
+      defaultValue: '',
+      description: `Technical name`,
+      required: true,
+    },
+    {
+      name: 'title',
+      type: `string`,
+      defaultValue: '',
+      description: `Text that that shows in slide.`,
+      required: true,
+    },
+    {
+      name: 'labels',
+      type: `LabelType[]`,
+      defaultValue: '',
+      description: `label list`,
+      required: false,
+    },
+    {
+      name: 'description',
+      type: `string`,
+      defaultValue: '',
+      description: `Slide description`,
+      required: false,
+    },
+    {
+      name: 'description',
+      type: `string`,
+      defaultValue: '',
+      description: `Slide cite`,
+      required: false,
+    },
+    {
+      name: 'games',
+      type: `GameType[]`,
+      defaultValue: '',
+      description: `Games list`,
+      required: false,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      Slide "1" <-- "1" SlideWrapper
+      SlideWrapper "1" <-- "1" GameTypeDetail
+      GameTypeDetail "1" <-- "1" GamesTypeHeader
+      GameTypeDetail "1" <-- "1" LabelWrapper
+      LabelWrapper "1" <-- "1" Label
+      GameTypeDetail "1" <-- "1" GamesTypeContent
+      GameTypeDetail "1" <-- "1" CitationParagraph
+      SlideWrapper "1" <-- "1" GameList
+      GameList "1" <-- "1" GameCard
+
+      class Slide:::green
+      class SlideWrapper
+      class GameTypeDetail
+      class GamesTypeHeader
+      class LabelWrapper
+      class Label:::blue
+      class GamesTypeContent
+      class CitationParagraph
+      class GameList
+      class GameCard:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Label',
+      description: 'A component that displays labels.',
+    },
+    {
+      name: 'GameCard',
+      description: 'Game card component',
+    },
+  ]}
+/>

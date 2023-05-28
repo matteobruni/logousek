@@ -1,0 +1,30 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../styles.ts'
+import RouterTable from '../../Components/router-table'
+import ReferenceList from '../../Components/reference-list'
+
+# Home
+
+<RouterTable
+  name="Home"
+  description="The home page is the initial gateway to a website"
+  source="components/pages/home"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Home "1" <-- "1" HomeComponent
+
+      class Home:::green
+      class HomeComponent["Home"]:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[{ name: 'Home', description: 'Home component.' }]} />

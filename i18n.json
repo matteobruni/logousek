@@ -2,6 +2,6 @@
   "locales": ["cs"],
   "defaultLocale": "cs",
   "pages": {
-    "*": ["common", "home", "notFound", "activity"]
+    "*": ["common", "home", "notFound", "gameMenu", "activity"]
   }
 }

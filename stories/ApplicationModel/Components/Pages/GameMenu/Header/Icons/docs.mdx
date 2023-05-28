@@ -1,0 +1,55 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../../styles.ts'
+import appConf from '../../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/Pages/GameMenu/Header/Icons/docs" />
+
+# Icons
+
+<ComponentInfoTable
+  name="Icons"
+  description="The component displays a list of icons."
+  source="components/pages/game-menu/header/icons"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      Icons "1" <-- "1" ClickableIconWrapper
+      ClickableIconWrapper "1" <-- "1" DarkModeSwitchWrapper
+      DarkModeSwitchWrapper "1" <-- "1" DarkModeSwitch
+      ClickableIconWrapper "1" <-- "1" ClickableIcon
+
+      class Icons:::green
+      class ClickableIconWrapper:::blue
+      class DarkModeSwitchWrapper
+      class DarkModeSwitch:::blue
+      class ClickableIcon:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'ClickableIconWrapper',
+      description: 'A component wraps one or more ClickableIcon components.',
+    },
+    {
+      name: 'DarkModeSwitch',
+      description:
+        'The component is responsible for displaying information about how much cash the user has.',
+    },
+    {
+      name: 'ClickableIcon',
+      description: 'An icon that triggers an action when clicked.',
+    },
+  ]}
+/>

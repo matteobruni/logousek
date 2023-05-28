@@ -13,48 +13,20 @@ import ReferenceList from '../../Components/reference-list'
   source="components/pages/game-menu"
 />
 
-<S.StyledDiv>
+<S.MermaidWrapper>
 <Mermaid
   chart={`
      classDiagram
-      Home "1" <--o "1" HomeWrapper
-      HomeWrapper "1" <--o "1" WelcomeRowWrapper
-      WelcomeRowWrapper "1" <--o "1" Sidebar
-      WelcomeRowWrapper "1" <--o "1" Container
-      Container "1" <--o "1" Intro
-      Container "1" <--o "1" GameInfo
-      Container "1" <--o "1" GameSamples
-      Container "1" <--o "1" ActivityList
-      Container "1" <--o "1" AboutAs
-      Container "1" <--o "1" Footer
+      GameMenu "1" <-- "1" GameMenuComponent
 
-      class Home:::green
-      class HomeWrapper
-      class WelcomeRowWrapper
-      class Sidebar:::blue
-      class Container
-      class Intro:::blue
-      class GameInfo:::blue
-      class GameSamples:::blue
-      class ActivityList:::blue
-      class AboutAs:::blue
-      class Footer:::blue
+      class GameMenu:::green
+      class GameMenuComponent["GameMenu"]:::blue
 
 `}
 />
 
-</S.StyledDiv>
+</S.MermaidWrapper>
 
 <ReferenceList
-  tableRows={[
-    { name: 'Sidebar', description: 'dsa' },
-    { name: 'Intro', description: 'dsa' },
-    { name: 'GameInfo', description: 'dsa' },
-    { name: 'GameInfo', description: 'dsa' },
-    { name: 'GameSamples', description: 'dsa' },
-    { name: 'ActivityList', description: 'dsa' },
-    { name: 'AboutAs', description: 'dsa' },
-    { name: 'WelcomeRowWrapper', description: 'dsa' },
-    { name: 'Footer', description: 'dsa' },
-  ]}
+  tableRows={[{ name: 'GameMenu', description: 'Game menu component.' }]}
 />
