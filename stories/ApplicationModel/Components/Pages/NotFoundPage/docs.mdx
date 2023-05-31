@@ -1,0 +1,51 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import appConf from '../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ReferenceList from '../../../../Components/reference-list'
+
+# NotFoundPage
+
+<ComponentInfoTable
+  name="NotFoundPage"
+  description="The component is displayed if the user accesses a non-existent route."
+  source="components/pages/404"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      NotFoundPage "1" <-- "1" RouteWrapper
+      RouteWrapper "1" <-- "1" NotFoundPageWrapper
+      NotFoundPageWrapper "1" <-- "1" H1
+      NotFoundPageWrapper "1" <-- "1" Link
+      Link "1" <-- "1" Button
+
+      class NotFoundPage:::green
+      class NotFoundPageWrapper
+      class H1:::blue
+      class Link
+      class Button:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'H1',
+      description: 'The component is a level 1 header.',
+    },
+
+    {
+      name: 'Button',
+      description: 'A Button component. When pressed, it invokes the onClick callback.',
+    }
+
+]}
+/>

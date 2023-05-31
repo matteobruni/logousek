@@ -1,21 +1,16 @@
 import React, { useContext } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import Button from '../../button'
 import RouteWrapper from '../../route-wrapper'
-import { useRouter } from 'next/router'
-import { setNewUser } from '../../../helpers/local-storage-helper'
 import ModalContext from '../../../contexts/modal-context'
 import LoginHost from '@components/login-forms/login-host'
 import LoginUser from '@components/login-forms/login-user'
 import RegisterUser from '@components/login-forms/register-user'
-import OnlyPublicRoute from '@components/auth/only-public-route'
 import { ThemeContext } from 'styled-components'
 import { signIn } from 'next-auth/react'
 import * as S from './styled'
 import axios, { AxiosError } from 'axios'
 import { message } from 'antd'
-import LoadingPage from '../loading-page'
 
 const Login: React.FC = () => {
   const modalContext = useContext(ModalContext)
@@ -143,7 +138,6 @@ const Login: React.FC = () => {
 
   return (
     <RouteWrapper colorScheme={themeContext?.colors.primary} title={"Logoušek - login"} type="onlyPublic">
-      <LoadingPage />
       {contextHolder}
       <Head>
         <title>Logoušek - login</title>
