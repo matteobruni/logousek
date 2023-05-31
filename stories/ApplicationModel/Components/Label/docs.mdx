@@ -1,0 +1,64 @@
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as Label from './Label.stories'
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+
+<Meta of={Label} />
+
+# Label
+
+<ComponentInfoTable
+  name={'Label'}
+  description="This is a label component. It appears as a pill."
+  source="components/label"
+/>
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `string | React.ReactNode`,
+      defaultValue: '',
+      description: `The value of the property is displayed as the label text. The text of the label can also be set via the content prop. If both props (children and children) have a value, the value from the children prop will be used`,
+      required: false,
+    },
+    {
+      name: 'content',
+      type: `string | React.ReactNode`,
+      defaultValue: '',
+      description: `The value of the property is displayed as the label text. The text of the label can also be set via the children prop. If both props (children and children) have a value, the value from the children prop will be used`,
+      required: false,
+    },
+    {
+      name: 'color',
+      type: `string`,
+      defaultValue: '',
+      description: `Sets a background color.`,
+      required: true,
+    },
+  ]}
+/>
+
+<Canvas of={Label.Primary} withToolbar />
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Label "1" <-- "1" LabelWrapper
+     LabelWrapper "1" <-- "1" LabelText
+
+      class Label:::green
+      class LabelWrapper
+      class LabelText
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

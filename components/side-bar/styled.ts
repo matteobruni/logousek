@@ -19,10 +19,12 @@ export const SidebarItemsWrapper = styled.div<SidebarItemsWrapperProps>`
   display: flex;
   flex-direction: column;
   position: fixed;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   transition-duration: 0.5s;
   min-height: 100vh;
+  height: 100vh;
   overflow: hidden;
+  padding: 32px 0 64px;
   z-index: ${({ theme }) => {
     return theme.zIndex.xxl
   }};
@@ -39,8 +41,11 @@ export const SidebarItemsWrapper = styled.div<SidebarItemsWrapperProps>`
 
   @media ${devices.laptop} {
     max-width: 50vw;
+    padding: 0;
     height: 100vh;
     flex-direction: row;
+    flex-wrap: wrap;    
+    align-content: flex-start;
     width: 50vw;
     padding: 0;
     z-index: 1;

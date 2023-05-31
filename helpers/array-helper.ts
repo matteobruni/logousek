@@ -17,3 +17,8 @@ export const getRandomElementFromList = (list: any[], count: number): any => {
 export const isEmptyArray = (value: any) => {
   return Array.isArray(value) && value.length
 }
+
+
+export const getEmptyArray = (length: number) => {
+  return new Array(length).fill(undefined)
+}

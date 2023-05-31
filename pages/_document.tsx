@@ -1,6 +1,5 @@
 import React from 'react'
 import { Html, Head, Main, NextScript } from 'next/document'
-import LoaderScreenPage from '../components/loader-screen-page'
 
 export default function Document() {
   return (
@@ -17,8 +16,7 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;500;700&display=swap" rel="stylesheet" />
       </Head>
-
-      <title>Logousek</title>
+      <title>Logoušek</title>
       <meta
         name="description"
         content="Aplikace pro předškolní děti podporující logopedickou prevenci hravou formou."
@@ -34,7 +32,6 @@ export default function Document() {
       <meta property="og:image:width" content="400" />
       <meta property="og:image:height" content="300" />
       <body>
-        <LoaderScreenPage />
         <Main />
         <NextScript />
       </body>

@@ -1,7 +1,17 @@
 {
   "visual": {
+    "title": "Zrak",
     "visualDifferentation": {
       "description": "Vyber odlišný obrázek"
     }
+  },
+  "audio": {
+    "title": "Sluch"
+  },
+  "seriality": {
+    "title": "Serialita"
+  },
+  "oromotorics": {
+    "title": "Jazyk"
   }
 }

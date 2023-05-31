@@ -9,6 +9,9 @@ const meta: Meta<ClickableIconProps> = {
     fontSize: {
       control: 'text',
     },
+    color: {
+      control: 'color',
+    },
     icon: {
       options: ['tiktok', "insert_chart", "accessible", "alarm_add", "facebook"],
       control: { type: 'radio' },

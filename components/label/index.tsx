@@ -1,6 +1,6 @@
 import * as S from './styled'
 
-interface LabelProps { children?: string, content?: string, color: string }
+export type LabelProps = { children?: string, content?: string, color: string }
 
 const Label: React.FC<LabelProps> = ({ children, content, color }) => {
   return (

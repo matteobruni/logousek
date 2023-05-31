@@ -1,6 +1,6 @@
 import React from "react";
 import { useSession } from "next-auth/react";
-import LoadingPage from "@components/loading-page";
+import LoadingPage from "@components/pages/loading-page";
 
 type PrivateRouteProps = {
     children: React.ReactNode

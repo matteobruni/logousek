@@ -15,6 +15,7 @@ import { signIn } from 'next-auth/react'
 import * as S from './styled'
 import axios, { AxiosError } from 'axios'
 import { message } from 'antd'
+import LoadingPage from '../loading-page'
 
 const Login: React.FC = () => {
   const modalContext = useContext(ModalContext)
@@ -142,6 +143,7 @@ const Login: React.FC = () => {
 
   return (
     <RouteWrapper colorScheme={themeContext?.colors.primary} title={"Logoušek - login"} type="onlyPublic">
+      <LoadingPage />
       {contextHolder}
       <Head>
         <title>Logoušek - login</title>

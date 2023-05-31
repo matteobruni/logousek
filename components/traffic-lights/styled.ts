@@ -6,7 +6,7 @@ export const TrafficContainer = styled.div`
   align-items: center;
 `
 
-type LightProps ={isActive: boolean}
+type LightProps = { isActive: boolean }
 
 export const Light = styled.div<LightProps>`
   width: 1.5rem;
@@ -37,7 +37,7 @@ export const Lighting = styled.div`
   border-radius: 50%;
   height: 1.8rem;
   aspect-ratio: 1 / 1;
-  animation: ${pulsate} 1.2s linear;
+  animation: ${pulsate} 1s forwards;
   animation-iteration-count: infinite;
   opacity: 0;
 `

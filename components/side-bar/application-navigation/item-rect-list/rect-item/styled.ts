@@ -9,14 +9,14 @@ export const RectItemWrapper = styled.li`
 
   &:hover {
     box-shadow: 0 3rem 5rem rgb(0 0 0 / 8%);
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.lightGrey};
   }
 `;
 
 export const RectItemDesc = styled(P5)`
   margin: 0px;
   text-align: center;
-  padding: 0.5rem;
+  padding: 0 0.5rem 0.5rem;
   color: ${({ theme }) => theme.colors.tenth};
 `;
 

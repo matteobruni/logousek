@@ -46,8 +46,16 @@ import ComponentInfoTable from '../../../Components/component-info-table'
       type: `string`,
       defaultValue: '',
       description: `Element identifier.`,
+    },   
+    {
+      name: 'color',
+      type: `string`,
+      defaultValue: '',
+      description: `Sets icon color.`,
+      required: false,
     },
   ]}
+
 />
 
 <Canvas story={ClickableIcon} withToolbar />

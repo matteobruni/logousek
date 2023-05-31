@@ -1,0 +1,50 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import appConf from '../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ReferenceList from '../../../../Components/reference-list'
+
+# LoadingPage
+
+<ComponentInfoTable
+  name="LoadingPage"
+  description="The component is displayed if something is loading and informs the user that they have to wait"
+  source="components/pages/loading-page"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      LoadingPage "1" <-- "1" LoadingPageWrapper
+      LoadingPageWrapper "1" <-- "1" ClickableIconWrapper
+      LoadingPageWrapper "1" <-- "1" Loading
+      ClickableIconWrapper "1" <-- "1" ClickableIcon
+
+      class LoadingPage:::green
+      class LoadingPageWrapper
+      class ClickableIconWrapper
+      class ClickableIcon:::blue
+      class Loading:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Loading',
+      description: 'The component renders the loading animation.',
+    },
+
+    {
+      name: 'ClickableIcon',
+      description: 'An icon that triggers an action when clicked.',
+    }
+
+]}
+/>

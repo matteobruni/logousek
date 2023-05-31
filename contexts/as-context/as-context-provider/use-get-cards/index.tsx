@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { getRandomSvgs } from '@helpers/svg-helpers'
+
+import { shuffle, getEmptyArray } from '@helpers/array-helper'
+
 import { SvgWrapper } from './styled'
-import { shuffle } from '@helpers/array-helper'
 type ViewBoxSettingType = {
   [settingKey: string]: string
 }
@@ -40,7 +42,7 @@ export const SVGS_HASH: SvgHashType = {
 const useGetCards = (count: number) => {
   const _getCards = (): CardType[] => {
     const [Svg] = getRandomSvgs(1)
-    return shuffle(new Array(count).fill(undefined).map((card, index) => {
+    return shuffle(getEmptyArray(count).map((card, index) => {
       const keyImage = (SVGS_HASH[count])[index]
       return {
         img: (

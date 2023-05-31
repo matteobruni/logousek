@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 import { useRouter } from 'next/router'
 
-import ItemList from 'components/item-list';
-import ModalContext from 'contexts/modal-context';
-import { GameType } from 'constants/activity-confs/activity-conf';
-
+import ItemList from '@components/item-list';
+import ModalContext from '@contexts/modal-context';
+import { GameType } from '@constants/activity-confs/activity-conf';
+import routes from "@constants/routes"
 import TwoSideCard from '@components/two-side-card';
 
 type GameCardProps = { gameInfo: GameType }
@@ -17,7 +17,7 @@ const GameCard: React.FC<GameCardProps> = ({ gameInfo }) => {
     const addictionQuery = difficultyId ? { difficulty: difficultyId } : {}
     modalContext?.closeModal()
     router.push({
-      pathname: '/activity',
+      pathname: routes.activity,
       query: { activityName: gameInfo.name, ...addictionQuery }
     })
   }

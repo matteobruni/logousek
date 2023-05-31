@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 interface StyledIconProps {
   fontSize?: string
+  color?: string
 }
 
 export const Link = styled.a`
@@ -15,5 +16,6 @@ export const Link = styled.a`
 `
 
 export const StyledIcon = styled.i<StyledIconProps>`
-  font-size: ${({ fontSize }) => fontSize}
+  font-size: ${({ fontSize }) => fontSize};
+  color: ${({ theme, color }) => color || theme.colors.black}
 `

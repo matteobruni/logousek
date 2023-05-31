@@ -4,6 +4,9 @@ import React, {
   forwardRef,
   useImperativeHandle
 } from 'react'
+
+import { getEmptyArray } from "@helpers/array-helper"
+
 import AsContext from '..'
 import useGetCards, { SVGS_HASH } from './use-get-cards'
 import { CardType } from './use-get-cards'
@@ -36,7 +39,7 @@ export default forwardRef(function AsContextProvider(
     count === 2 ? '1 / 2' : count === 4 ? '1 / 1' : '3 / 2'
   )
   const [placedCards, setPlacedCards] = useState<CardType[]>(
-    new Array(count).fill(undefined)
+    getEmptyArray(count)
   )
 
   useEffect(() => {
@@ -46,7 +49,6 @@ export default forwardRef(function AsContextProvider(
 
   useImperativeHandle(ref, (): AsContextProviderInterface => ({
     checkResult: () => {
-      console.log("checking for result...", placedCards)
       const isCorrect = placedCards.reduce((result, currentPlacedCard, index) => {
         const expressedCardKey = SVGS_HASH[count][index]
         return currentPlacedCard?.keyImage !== expressedCardKey ? false : result

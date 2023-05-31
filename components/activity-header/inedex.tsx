@@ -1,7 +1,8 @@
 import React, { useContext } from 'react'
+import { useRouter } from 'next/router'
+
 import HeaderWrapper from '../header-wrapper/header-wrapper'
 import CloseIcon from '../close-icon'
-import { useRouter } from 'next/router'
 import ModalContext from '../../contexts/modal-context'
 import * as S from "./styled";
 

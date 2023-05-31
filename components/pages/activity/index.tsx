@@ -11,6 +11,7 @@ import { useSession } from 'next-auth/react'
 import { ThemeContext } from 'styled-components'
 
 import { useActivitySouds } from '@hooks/useActivitySouds'
+import routes from '@constants/routes'
 import Timer from '@components/timer'
 
 import ActivityHeader from '../../activity-header/inedex'
@@ -126,7 +127,7 @@ const Activity = () => {
     if (gameState === 'finish') {
       const redirectToGameMenu = () => {
         modalContext?.closeModal()
-        router.push('/game-menu')
+        router.push(routes.gameMenu)
       }
 
       modalContext?.showModal(
@@ -224,7 +225,7 @@ const Activity = () => {
   return (
     <RouteWrapper
       colorScheme={themeContext.colors.primary}
-      title={`Logousek - ${getActivityFromConf()?.title}`}
+      title={`Logoušek - ${getActivityFromConf()?.title}`}
       type="private"
     >
       <ActivityHeader

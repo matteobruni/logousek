@@ -10,5 +10,6 @@
     "applicationNavigation": {
       "title": "Navigace aplikace"
     }
-  }
+  },
+  "loading": "Načítání"
 }
