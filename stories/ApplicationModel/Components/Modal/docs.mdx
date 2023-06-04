@@ -1,0 +1,74 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Modal/docs" />
+
+# Modal
+
+<ComponentInfoTable
+  name={'Modal'}
+  description="It is a modal component that can be invoked anywhere in the application using the ModalContext."
+  source="components/modal"
+/>
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'closeBackdrop',
+      type: `() => void`,
+      defaultValue: '',
+      description: `Closes the modal background.`,
+      required: false,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Modal "1" <-- "1" ModalWrapper
+     ModalWrapper "1" <-- "1" ModalContainer
+     ModalContainer "1" <-- "1" Modalheader
+     Modalheader "1" <-- "1" ModalTitle
+     Modalheader "1" <-- "1" CloseIconWrapper : modalDetail.closeDisabled !== true
+     CloseIconWrapper "1" <-- "1" CloseIcon
+     ModalContainer "1" <-- "1" ModalContent
+     ModalContainer "1" <-- "1" ModalButtons
+
+      class Modal:::green
+      class ModalWrapper
+      class ModalContainer
+      class Modalheader
+      class ModalTitle
+      class CloseIconWrapper["R - CloseIconWrapper"]
+      class CloseIcon:::blue
+      class ModalContent
+      class ModalButtons:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    { name: 'ModalButtons', description: 'These are modal buttons.' },
+    { name: 'CloseIcon', description: 'It is a clickable cross icon.' },
+  ]}
+/>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'CloseIconWrapper',
+      rules: `Rendered only if modalDetail.closeDisabled is false`,
+    },
+  ]}
+/>

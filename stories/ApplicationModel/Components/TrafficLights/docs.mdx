@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/TrafficLights/docs" />
+
+# TrafficLights
+
+<ComponentInfoTable
+  name={'TrafficLights'}
+  description={`Traffic light component, visually shows how much is left until the end. If there are more than 4 seconds left, it lights up red. Orange glows when 2 to 4 seconds remain. If there are less than 2 seconds left, it lights up green.`}
+  source="components/traffic-lights"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'countdownTime',
+      type: `number`,
+      defaultValue: '',
+      description: `This is a countdown time.`,
+      required: true,
+    },
+    {
+      name: 'timerIsDone',
+      type: `() => void`,
+      defaultValue: '',
+      description: `A callback that is called after the timer has finished.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     TrafficLights "1" <-- "1" TrafficContainer
+     TrafficContainer "1" <-- "n" LightWrapper
+     LightWrapper "1" <-- "1" Light
+     Light "1" <-- "1" Lighting
+
+     class TrafficLights:::green
+     class TrafficContainer
+     class LightWrapper
+     class Light
+     class Lighting
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

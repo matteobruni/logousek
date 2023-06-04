@@ -1,11 +1,16 @@
-import React, { useState, forwardRef, useImperativeHandle, useContext } from 'react'
-import CloseIcon from '../close-icon'
-import ButtonRow from '../button-row/button-row'
-import * as S from './styled'
-import Button, { ButtonSizesEnum } from '../button'
-import { ThemeContext } from 'styled-components'
+import React, {
+  useState,
+  forwardRef,
+  useImperativeHandle,
+} from 'react'
 
-interface ModalProps { closeBackdrop: () => void }
+import ModalButtons from './modal-buttons'
+import CloseIcon from '../close-icon'
+import * as S from './styled'
+
+interface ModalProps {
+  closeBackdrop: () => void
+}
 
 export interface ModalDetailType {
   header?: string
@@ -28,32 +33,25 @@ export interface ModalInterfaceType {
 export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
   const [show, setShow] = useState<boolean>()
   const [modalDetail, setModalDetail] = useState<ShowModalParamsTypes>({})
-  const themeContextData = useContext(ThemeContext)
   useImperativeHandle(ref, () => ({
     show: showModal,
-    close: closeModal
+    close: closeModal,
   }))
 
   const showModal = ({
     header = '',
     content = '',
     closeDisabled = false,
-    onOkClick,
-    onStornoClick,
-    onStornoText,
-    onOkText,
-    autoWidth = false
+    autoWidth = false,
+    ...remainAttrs
   }: ShowModalParamsTypes) => {
     setShow(true)
     setModalDetail({
       header,
       content,
       closeDisabled,
-      onOkClick,
-      onStornoClick,
-      onStornoText,
-      onOkText,
-      autoWidth
+      autoWidth,
+      ...remainAttrs
     })
   }
 
@@ -61,46 +59,20 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
     setShow(false)
     closeBackdrop()
   }
+
   return (
-    <S.ModalWrapper show={show} >
+    <S.ModalWrapper show={show}>
       <S.ModalContainer autoWidth={!!modalDetail.autoWidth}>
         <S.Modalheader>
           <S.ModalTitle>{modalDetail.header} </S.ModalTitle>
-          {
-            !modalDetail.closeDisabled ? <S.CloseIconWrapper><CloseIcon onClick={closeModal} /></S.CloseIconWrapper> : null
-          }
+          {!modalDetail.closeDisabled ? (
+            <S.CloseIconWrapper>
+              <CloseIcon onClick={closeModal} />
+            </S.CloseIconWrapper>
+          ) : null}
         </S.Modalheader>
-        < S.ModalContent >{modalDetail.content}</S.ModalContent>
-        {
-          ((modalDetail.onOkClick != null) || (modalDetail.onStornoClick != null))
-            ? (
-              <ButtonRow>
-                <>
-                  {modalDetail.onOkClick !== undefined ? (
-                    <Button
-                      onClick={modalDetail.onOkClick}
-                      color="#fff"
-                      backgroundColor={themeContextData?.colors?.tertiary}
-                      size={ButtonSizesEnum.xs}
-                    >
-                      {modalDetail.onOkText || "Pokračovat"}
-                    </Button>
-                  ) : undefined}
-                  {
-                    modalDetail.onStornoClick !== undefined ? (
-                      <Button
-                        color="#fff"
-                        size={ButtonSizesEnum.xs}
-                        backgroundColor={themeContextData?.colors?.seventy}
-                        onClick={modalDetail.onStornoClick}
-                      >
-                        {modalDetail.onStornoText || "Storno"}
-                      </Button>
-                    ) : undefined
-                  }</>
-              </ButtonRow>
-            )
-            : undefined}
+        <S.ModalContent>{modalDetail.content}</S.ModalContent>
+        <ModalButtons onOkClick={modalDetail.onOkClick} onStornoClick={modalDetail.onStornoClick} onOkText={modalDetail.onOkText} onStornoText={modalDetail.onStornoText} />
       </S.ModalContainer>
     </S.ModalWrapper>
   )

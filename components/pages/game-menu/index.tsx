@@ -43,9 +43,9 @@ const GameMenu: React.FC = () => {
         <Header points={score} userName={sessionData?.data?.user?.name || ''} />
         <SlideList currentSlide={currentSlide} />
         <RoundFooter
-          activityTypes={activityTypes}
-          activeActivityName={activeActivity.name}
-          selectNewActivity={selectNewActivityHandle}
+          footerConf={activityTypes}
+          activeItemName={activeActivity.name}
+          selectNewItem={selectNewActivityHandle}
         />
       </S.MenuWrapper>
     </RouteWrapper>

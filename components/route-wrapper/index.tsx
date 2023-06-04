@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Head from 'next/head'
 import { useRouter } from "next/router";
 
@@ -50,7 +50,7 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
 }) => {
   const router = useRouter();
 
-  const AuthWrapper = type === "private" ? PrivateRoute : type === "onlyPublic" ? OnlyPublicRoute : PublicRoute
+  const AuthWrapper = useMemo(() => type === "private" ? PrivateRoute : type === "onlyPublic" ? OnlyPublicRoute : PublicRoute, [type])
   return (
     <AuthWrapper>
       <Head>
@@ -86,7 +86,7 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
           variants={CONTENT_VARIANTS}
         >
           {children}
-          {/* <Tutorial /> */}
+          <Tutorial />
         </S.ContentWrapper>
       </S.BackgroundWapper>
     </AuthWrapper>

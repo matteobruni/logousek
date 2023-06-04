@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Typography/Text/docs" />
+
+# Text
+
+<ComponentInfoTable
+  name={'Text'}
+  description={`It is a text component.`}
+  source="components/typography/text"
+/>
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'variant',
+      type: `"T1" | "T2" | "T3" | "T4" | "T5" | "T6" | "T7"`,
+      defaultValue: '',
+      description: `It is used to determine the level of the text.`,
+      required: true,
+    },
+    {
+      name: 'children',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the text that will be displayed.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Text "1" <-- "1" TextWrap
+
+     class Text:::green
+     class TextWrap
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

@@ -1,0 +1,30 @@
+{
+  "title": "Logoušek - login",
+  "register": {
+    "haveNotAnAccountYet": "Ještě nemáte účet?",
+    "register": "Registrovat se"
+  },
+  "loginButtons": {
+    "userLogin": "Přihlásit uživatele",
+    "guessLogin": "Přihlásit hosta"
+  },
+  "modals": {
+    "registerUser": {
+      "title": "Registrace uživatele",
+      "firstName": "Jméno",
+      "surName": "Přijmení",
+      "nickName": "Přezdívka",
+      "password": "Heslo",
+      "rules": {
+        "notEntry": {
+          "firstName": "Zadejte prosím své jméno!",
+          "surName": "Zadejte prosím své přijmení!",
+          "nickName": "Zadejte prosím svou přezdívku!",
+          "password": "Zadejte prosím heslo!"
+        },
+        "insufficientLength": "Zadejte alespoň {{value}} znaků!",
+        "moreThenMaxLength": "Zadejte maximálně {{value}} znaků!"
+      }
+    }
+  }
+}

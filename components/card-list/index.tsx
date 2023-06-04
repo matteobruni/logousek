@@ -29,7 +29,7 @@ const CardList: React.FC<ActivityCardProps> = ({ cards, selected, onChange }) =>
     })
   }
 
-  return <S.CardList>{getCards()}</S.CardList>
+  return <S.CardListWrapper>{getCards()}</S.CardListWrapper>
 }
 
 export default CardList

@@ -1,0 +1,46 @@
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/ButtonRow/docs" />
+
+# ButtonRow
+
+<ComponentInfoTable
+  name={'ButtonRow'}
+  description="The component wraps the buttons that should come to it in props.children and positions them."
+  source="components/ButtonRow"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `React.ReactElement | React.ReactElement[]`,
+      defaultValue: '',
+      description: `These are children. These are supposed to be Button or link components.`,
+      required: false,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     ButtonRow "1" <-- "1" ButtonRowRowWrapper
+
+      class ButtonRow:::green
+      class ButtonRowRowWrapper
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

@@ -62,7 +62,7 @@ const Sidebar: React.FC<SidebarProps> = ({ pageNav, applicationNav }) => {
       <S.RoundFooterWrapper>
         <RoundFooter
           customHeight={"4rem"}
-          activityTypes={roundFooterActivityTypes}
+          footerConf={roundFooterActivityTypes}
         />
       </S.RoundFooterWrapper>
     </>

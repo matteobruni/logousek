@@ -11,6 +11,7 @@ import { useSession } from 'next-auth/react'
 import { ThemeContext } from 'styled-components'
 
 import { useActivitySouds } from '@hooks/useActivitySouds'
+import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
 import routes from '@constants/routes'
 import Timer from '@components/timer'
 
@@ -48,6 +49,7 @@ const DEFAULT_DIFFICULTY = {
 }
 
 const Activity = () => {
+  const { tActivity } = useTranslateFunctions()
   const [currentTask, setCurrentTask] = useState(1)
   const [correctTasks, setCorrectTasks] = useState(0)
 
@@ -105,7 +107,6 @@ const Activity = () => {
     }
   })
 
-
   const sendResult = async () => {
     try {
       const userData = sessionData.data?.user as {
@@ -132,14 +133,9 @@ const Activity = () => {
 
       modalContext?.showModal(
         {
-          header: 'Konec Hry',
+          header: tActivity('completionModal.header'),
           onOkClick: redirectToGameMenu,
-          onOkText: (
-            <S.DoneButtonContent>
-              <i className={'material-icons'}>check</i>
-              <span>Dokončit</span>
-            </S.DoneButtonContent>
-          ),
+          onOkText: tActivity('completionModal.complete'),
           closeDisabled: true,
           autoWidth: true,
         },
@@ -157,6 +153,7 @@ const Activity = () => {
     sessionData,
     activityName,
     results,
+    tActivity,
   ])
 
   const fail = () => {
@@ -212,13 +209,15 @@ const Activity = () => {
       name: 'sendButton',
       title: (
         <S.SendButton>
-          <i className="material-icons">done</i>Potvrdit
+          <i className="material-icons">done</i><span>Potvrdit</span>
         </S.SendButton>
       ),
       clickable: true,
       onClick: _checkResult,
       disabled: !wasChanged,
-      background: wasChanged ? themeContext.colors.lightGreen : themeContext.colors.white,
+      background: wasChanged
+        ? themeContext.colors.lightGreen
+        : themeContext.colors.white,
     },
   ]
 
@@ -248,11 +247,7 @@ const Activity = () => {
           )}
         </S.ContentWrapper>
       </S.ActivityWrapper>
-      <footer>
-        <RoundFooter
-          activityTypes={footerActivityTypes}
-        />
-      </footer>
+      <RoundFooter footerConf={footerActivityTypes} />
     </RouteWrapper>
   )
 }

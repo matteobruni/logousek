@@ -1,0 +1,96 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/TwoSideCard/docs" />
+
+# TwoSideCard
+
+<ComponentInfoTable
+  name={'TwoSideCard'}
+  description={`This is a card with two sides, the user can view these sides by turning the card.`}
+  source="components/two-side-card"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'name',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the technical name of the card.`,
+      required: true,
+    },
+    {
+      name: 'title',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the label displayed on the both side of the card.`,
+      required: true,
+    },
+    {
+      name: 'image',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the image displayed on the main side of the card.`,
+      required: true,
+    },
+    {
+      name: 'description',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the description on the back of the card.`,
+      required: false,
+    },
+    {
+      name: 'onMainSideClick',
+      type: `() => void`,
+      defaultValue: '',
+      description: `This is a callback that is called after the user clicks on the main page.`,
+      required: false,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     TwoSideCard "1" <-- "1" CardWrapper
+     CardWrapper "1" <-- "1" InnedCard
+     InnedCard "1" <-- "1" MainSideWrapper
+     InnedCard "1" <-- "1" DescriptionSideWrapper
+     MainSideWrapper "1" <-- "1" MainSideContent
+     DescriptionSideWrapper "1" <-- "1" DescriptionSideContent
+
+     class TwoSideCard:::green
+     class CardWrapper
+     class InnedCard
+     class MainSideWrapper
+     class MainSideContent:::blue
+     class DescriptionSideWrapper
+     class DescriptionSideContent:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'MainSideContent',
+      description: 'This is the main side of the card.',
+    },
+    {
+      name: 'DescriptionSideContent',
+      description: 'This is the description side of the card.',
+    },
+  ]}
+/>

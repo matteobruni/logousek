@@ -1,4 +1,11 @@
 {
+  "goBackModal": {
+    "wantToLeave": "Chcete odejít?"
+  },
+  "completionModal": {
+    "header": "Konec hry",
+    "complete": "Dokončit"
+  },
   "visual": {
     "title": "Zrak",
     "visualDifferentation": {
@@ -13,5 +20,8 @@
   },
   "oromotorics": {
     "title": "Jazyk"
+  },
+  "buttons": {
+    "skip": "Přeskočit"
   }
 }

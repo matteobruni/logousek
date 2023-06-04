@@ -9,9 +9,10 @@ type PrivateRouteProps = {
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
     const { status } = useSession();
-    console.log("status", status)
     useEffect(() => {
-        if (status === "unauthenticated") Router.replace("/login");
+        if (status === "unauthenticated") {
+            Router.replace("/login");
+        }
     }, [status]);
 
     if (status === "authenticated")

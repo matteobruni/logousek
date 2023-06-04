@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../../styles.ts'
+import PropertiesTable from '../../../../../../Components/properties-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Modal/Backdrop/Particles/Confetti/docs" />
+
+# Confetti
+
+<ComponentInfoTable
+  name={'Confetti'}
+  description="This is a confetti animation."
+  source="components/modal/backdrop/particles/confetti"
+/>
+<PropertiesTable tableRows={[]} />
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+    classDiagram
+    direction RL
+    Confetti "1" <-- "1" Particles
+
+    class Confetti:::green
+    class Particles
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

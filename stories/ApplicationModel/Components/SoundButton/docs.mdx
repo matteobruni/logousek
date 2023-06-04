@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/SoundButton/docs" />
+
+# SoundButton
+
+<ComponentInfoTable
+  name={'SoundButton'}
+  description={`A button that makes a sound when pressed.`}
+  source="components/sound-button"
+/>
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'sound',
+      type: `string`,
+      defaultValue: '',
+      description: `The path to the file to run.`,
+      required: true,
+    },
+    {
+      name: 'fontSize',
+      type: `string`,
+      defaultValue: '',
+      description: `This property affects the Button Icon Size.`,
+      required: true,
+    },
+    {
+      name: 'customSound',
+      type: `HTMLAudioElement`,
+      defaultValue: '',
+      description: `Allows developer to set a custom HTMLAudioElement.`,
+      required: false,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     SoundButtonWrapper "1" <-- "1" ClickableIcon
+
+     class SoundButtonWrapper:::green
+     class ClickableIcon:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+<ReferenceList tableRows={[
+      {
+      name: 'ClickableIcon',
+      description: 'An icon that triggers an action when clicked.',
+    },
+]} />

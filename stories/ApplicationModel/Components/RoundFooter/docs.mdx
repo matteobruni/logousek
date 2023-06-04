@@ -1,0 +1,83 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/RoundFooter/docs" />
+
+# RoundFooter
+
+<ComponentInfoTable
+  name={'RoundFooter'}
+  description={`This is a footer with rounded corners.`}
+  source="components/round-footer"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'footerConf',
+      type: `FooterConf[]`,
+      defaultValue: '',
+      description: `This is a footer configuration.`,
+      required: true,
+    },
+    {
+      name: 'activeItemName',
+      type: `string`,
+      defaultValue: '',
+      description: `This is a technical name of the active menu item.`,
+      required: false,
+    },
+
+        {
+      name: 'selectNewItem',
+      type: `(name: string, index: number) => void`,
+      defaultValue: '',
+      description: `This is a callback that is called after the user clicks on the item.`,
+      required: false,
+    },
+    {
+      name: 'customHeight',
+      type: `string`,
+      defaultValue: '',
+      description: `The value sets the height of the footer.`,
+      required: false,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     RoundFooter "1" <-- "1" FooterWrap
+     FooterWrap "1" <-- "1" AnimatedFooterContent
+     AnimatedFooterContent "1" <-- "1" FooterContainer
+     FooterContainer "1" <-- "n" RoundFooterItem
+
+     class RoundFooter:::green
+     class FooterWrap
+     class AnimatedFooterContent
+     class FooterContainer
+     class RoundFooterItem:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'RoundFooterItem',
+      description: 'This is one item in the list.',
+    },
+  ]}
+/>

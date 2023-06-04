@@ -1,10 +1,10 @@
 import React, { useState, useImperativeHandle, forwardRef } from 'react'
-import { StyledBackdrop } from './styled'
-import Fireworks from '@components/particles/fireworks'
-import Confetti from '@components/particles/confetti'
+import * as S from './styled'
+import Fireworks from '@components/modal/backdrop/particles/fireworks'
+import Confetti from '@components/modal/backdrop/particles/confetti'
 import { getRandomElementFromList } from '@helpers/array-helper'
 
-interface Backdrop { children: any }
+interface Backdrop { children: React.ReactNode }
 
 export type ShowBackdropParam = {
   backgroundType?: string
@@ -44,5 +44,5 @@ export default forwardRef(function Backdrop({ children }: Backdrop, ref) {
     }
   }
 
-  return <StyledBackdrop show={show}>{children}{getBackground()}</StyledBackdrop>
+  return <S.StyledBackdrop show={show}>{children}{getBackground()}</S.StyledBackdrop>
 })

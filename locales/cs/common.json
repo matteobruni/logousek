@@ -1,7 +1,9 @@
 {
   "appName": "Logoušek",
   "buttons": {
-    "play": "Hrát"
+    "play": "Hrát",
+    "create": "Vytvořit",
+    "send": "Odeslat"
   },
   "sideBar": {
     "currentSiteNavigation": {
@@ -11,5 +13,11 @@
       "title": "Navigace aplikace"
     }
   },
-  "loading": "Načítání"
+  "loading": "Načítání",
+  "modal": {
+    "buttons": {
+      "continue": "Pokračovat",
+      "storno": "Storno"
+    }
+  }
 }

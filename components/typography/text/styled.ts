@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Variant } from "./index"
 
-type TStylesType = { type?: "primary" | "ghost" }
+type TStylesType = { type?: "primary" | "ghost", color?: string }
 
 type AlignStylesType = { align?: "left" | "center" | "end" }
 
@@ -10,7 +10,7 @@ type MarginStylesType = { margin?: string }
 export type TextWrapType = { variant: Variant } & TStylesType & AlignStylesType & MarginStylesType
 
 export const ColorStyles = css<TStylesType>`
-  color: ${({ type, theme }) => type === "ghost" ? theme.colors.white : theme.colors.black};
+  color: ${({ type, theme, color }) => color ? color : type === "ghost" ? theme.colors.white : theme.colors.black};
 `
 
 export const AlignStyles = css<AlignStylesType>`
@@ -52,10 +52,10 @@ export const T3Styles = css<TStylesType>`
 `
 
 export const T4Styles = css<TStylesType>`
-  font-size: ${({ theme }) => theme.typography.fontSize.xxl};
+  font-size: ${({ theme }) => theme.typography.fontSize.md};
   font-weight: ${({ theme }) => theme.typography.fontWeight.lg};
-  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.xxl};
-  line-height: ${({ theme }) => theme.typography.lineHeight.xxl};
+  letter-spacing: ${({ theme }) => theme.typography.letterSpacing.md};
+  line-height: ${({ theme }) => theme.typography.lineHeight.md};
   ${AdditionalStyles};
 `
 
@@ -70,7 +70,7 @@ export const T5Styles = css<TStylesType>`
 
 export const T6Styles = css<TStylesType>`
   font-size: ${({ theme }) => theme.typography.fontSize.sm};
-  font-weight: ${({ theme }) => theme.typography.fontWeight.sm};
+  font-weight: ${({ theme }) => theme.typography.fontWeight.md};
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing.sm};
   line-height: ${({ theme }) => theme.typography.lineHeight.sm};
   ${AdditionalStyles};

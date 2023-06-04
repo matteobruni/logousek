@@ -5,7 +5,7 @@ import React, {
     useEffect,
 } from 'react'
 import { ActivityProps } from 'components/pages/activity'
-import ActivitySlider from 'components/activity-slider'
+import ActivitySlider from '@components/activities/audio/memory/activity-slider'
 import { getAudioConfElement, checkAnswer } from '@helpers/sound-helper'
 import SoundButton from 'components/sound-button'
 

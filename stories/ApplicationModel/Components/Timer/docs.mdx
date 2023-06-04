@@ -1,0 +1,60 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Timer/docs" />
+
+# Timer
+
+<ComponentInfoTable
+  name={'Timer'}
+  description={`This is a timer component.`}
+  source="components/timer"
+/>
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'countdownTime',
+      type: `number`,
+      defaultValue: '',
+      description: `This is a countdown time.`,
+      required: true,
+    },
+    {
+      name: 'timerIsDone',
+      type: `() => void`,
+      defaultValue: '',
+      description: `A callback that is called after the timer has finished.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Timer "1" <-- "1" P5
+
+     class Timer:::green
+     class P5:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'P5',
+      description: 'This is a level 5 paragraph component.',
+    },
+  ]}
+/>

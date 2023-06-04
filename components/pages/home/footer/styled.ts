@@ -24,7 +24,6 @@ export const FooterWrapper = styled.footer`
   @media ${devices.laptop} {
     border-top-right-radius: ${({ theme }) => theme.radius.quaternary};
     padding-bottom: 0rem;
-    flex-direction: row;
     gap: 32px;
   }
 `

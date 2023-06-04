@@ -136,7 +136,7 @@
     "helpers/date-helper.tsx",
     "components/activities/audio/audio-differentiation/index.tsx",
     "prisma/user.js",
-    "components/particles/confetti/index.js"
+    "components/modal/backdrop/particles/confetti/index.js"
   ],
   "exclude": [
     "node_modules"

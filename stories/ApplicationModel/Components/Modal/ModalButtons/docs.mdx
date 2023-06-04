@@ -1,0 +1,97 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Modal/ModalButtons/docs" />
+
+# ModalButtons
+
+<ComponentInfoTable
+  name={'ModalButtons'}
+  description="These are modal window buttons."
+  source="components/modal-buttons"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'onStornoText',
+      type: `string | React.ReactNode`,
+      defaultValue: '',
+      description: `The text to be displayed as the text of the storno button.`,
+      required: false,
+    },
+    {
+      name: 'onOkText',
+      type: `string | React.ReactNode`,
+      defaultValue: '',
+      description: `The text to be displayed as the text of the ok button.`,
+      required: false,
+    },
+    {
+      name: 'onStornoClick',
+      type: `() => void`,
+      defaultValue: '',
+      description: `Callback that is triggered when the cancel button is clicked.`,
+      required: false,
+    },
+    {
+      name: 'onOkClick',
+      type: `() => void`,
+      defaultValue: '',
+      description: `Callback that is triggered when the ok button is clicked.`,
+      required: false,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     ModalButtons "1" <-- "1" ButtonRow : props.onOkClick != null || props.onStornoClick != null
+     ButtonRow "1" <-- "1" IconButton : props.onOkClick != null 
+     ButtonRow "1" <-- "1" IconButton2 : props.onStornoClick != null
+     IconButton --|> onOkClick : props.onOkClick
+     IconButton2 --|> onStornoClick : props.onStornoClick
+
+      class ModalButtons:::green
+      class ButtonRow["R - ButtonRow"]
+      class IconButton2["R - IconButton"]:::blue
+      class IconButton["R - IconButton"]:::blue
+      class onOkClick:::oval
+      class onStornoClick:::oval
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    { name: 'CloseIcon', description: 'It is a clickable cross icon.' },
+  ]}
+/>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'ButtonRow',
+      rules: `Rendered only if props.onOkClick or props.onStornoClick are not null`,
+    },
+    {
+      name: 'IconButton',
+      rules: `Rendered only if props.onOkClick is not null`,
+    },
+    {
+      name: 'IconButton',
+      rules: `Rendered only if props.onStornoClick is not null`,
+    },
+  ]}
+/>

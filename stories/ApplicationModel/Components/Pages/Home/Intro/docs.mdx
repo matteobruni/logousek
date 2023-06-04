@@ -45,12 +45,12 @@ import ComponentInfoTable from '../../../../../Components/component-info-table'
 
       IntroContainer "1" <-- "1" Navbar
       IntroContainer "1" <-- "1" DescriptionWrapper
-      Navbar "1" <-- "1" NavbarButton
+      Navbar "1" <-- "1" NavbarIconButton
       DescriptionWrapper "1" <-- "1" Description
       Description "1" <-- "1" PageTitle
       Description "1" <-- "1" P3
       Description "1" <-- "1" ButtonRow
-      ButtonRow "1" <-- "1" ButtonRowButton
+      ButtonRow "1" <-- "1" IconButtonRowButton
 
       LogousekWrapper "1" <-- "1" Logousek
 
@@ -65,13 +65,13 @@ import ComponentInfoTable from '../../../../../Components/component-info-table'
       class IntroContainer
 
       class Navbar
-      class NavbarButton["Button"]:::blue
+      class NavbarIconButton["IconButton"]:::blue
       class DescriptionWrapper
       class Description
       class PageTitle:::blue
       class P3:::blue
       class ButtonRow
-      class ButtonRowButton["Button"]:::blue
+      class IconButtonRowButton["IconButton"]:::blue
 
       class Hill
       class LogousekWrapper
@@ -93,7 +93,7 @@ import ComponentInfoTable from '../../../../../Components/component-info-table'
 <ReferenceList
   tableRows={[
     { name: 'PageTitle', description: 'Section title component' },
-    { name: 'Button', description: 'Button component' },
+    { name: 'IconButton', description: 'Button component with icon.' },
     {
       name: 'ClickableIcon',
       description: 'An icon that triggers an action when clicked.',

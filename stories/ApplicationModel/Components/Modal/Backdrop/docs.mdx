@@ -1,0 +1,72 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Modal/Backdrop/docs" />
+
+# Backdrop
+
+<ComponentInfoTable
+  name={'Backdrop'}
+  description="This is the background of a modal window on which animations can be displayed."
+  source="components/backdrop"
+/>
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `React.ReactNode`,
+      defaultValue: '',
+      description: `Inside the backdrop, there should always be a modal window.`,
+      required: false,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Backdrop "1" <-- "1" StyledBackdrop
+     StyledBackdrop "1" <-- "1" getRandomElementFromList: backdropDetail?.backgroundType === "type" 
+     getRandomElementFromList "1" <-- "1" Confetti
+     getRandomElementFromList "1" <-- "1" Fireworks
+
+      class Backdrop:::green
+      class StyledBackdrop
+      class getRandomElementFromList:::oval{
+        choose one element (Confetti or Fireworks)
+      }
+      class Confetti["R - Confetti"]:::blue
+      class Fireworks["R - Fireworks"]:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    { name: 'Fireworks', description: 'This is a fireworks animation.' },
+    { name: 'Confetti', description: 'This is a confetti animation.' },
+  ]}
+/>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'Fireworks',
+      rules: `Rendered only if getRandomElementFromList returns this component.`,
+    },
+    {
+      name: 'Confetti',
+      rules: `Rendered only if getRandomElementFromList returns this component.`,
+    },
+  ]}
+/>

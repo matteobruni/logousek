@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import Button, { ButtonSizesEnum } from '@components/button'
+import IconButton from '@components/icon-button'
 import ClickableIcon from '@components/clickable-icon'
 import Logousek from '@components/svg/templates/logousek'
 import routes from '@constants/routes'
@@ -36,23 +37,30 @@ const Intro: React.FC<IntroProps> = ({ scrollTarget }) => {
 
   return (
     <S.IntroWrapper id="introduction">
-      <S.IntroContainer
-        ref={IntroElement}
-        id="IntroContainerId"
-      >
+      <S.IntroContainer ref={IntroElement} id="IntroContainerId">
         <S.Navbar>
-          <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu} id="navbarPlayButton">
+          <IconButton
+            size={ButtonSizesEnum.s}
+            onClick={redirectToGameMenu}
+            id="navbarPlayButton"
+            icon={'play_arrow'}
+          >
             {tCommon('buttons.play')}
-          </Button>
+          </IconButton>
         </S.Navbar>
         <S.DescriptionWrapper ref={descriptionWrapperParallax.ref}>
           <S.Description>
             <PageTitle type="ghost">{tCommon('appName')}</PageTitle>
             <P3 type="ghost">{tHome('intro.description')}</P3>
             <S.ButtonRow>
-              <Button size={ButtonSizesEnum.s} onClick={redirectToGameMenu} id="mainPlayButton">
+              <IconButton
+                size={ButtonSizesEnum.s}
+                onClick={redirectToGameMenu}
+                id="mainPlayButton"
+                icon={'play_arrow'}
+              >
                 {tCommon('buttons.play')}
-              </Button>
+              </IconButton>
             </S.ButtonRow>
           </S.Description>
         </S.DescriptionWrapper>
@@ -78,7 +86,11 @@ const Intro: React.FC<IntroProps> = ({ scrollTarget }) => {
         />
       </S.SecondForegroundTreeWrapper>
       <S.IntroPlayButton>
-        <ClickableIcon icon="play_circle_filled" onClick={redirectToGameMenu} id="secondaryPlayButton" />
+        <ClickableIcon
+          icon="play_circle_filled"
+          onClick={redirectToGameMenu}
+          id="secondaryPlayButton"
+        />
       </S.IntroPlayButton>
     </S.IntroWrapper>
   )

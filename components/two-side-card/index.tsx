@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
-import ActivityCard from 'components/activity-card'
-import { P6 } from 'components/typography/paragraph'
-
 import * as S from './styled'
+import MainSideContent from './main-side-content'
+import DescriptionSideContent from './description-side-content'
 
 type GameCardProps = {
   name: string
@@ -22,47 +21,35 @@ const TwoSideCard: React.FC<GameCardProps> = ({
 }) => {
   const [isDiffSiteShown, setIsDiffSiteShown] = useState(false)
 
-  const showSecondSide = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation()
+  const showSecondSide = () => {
     if (!isDiffSiteShown) {
       setIsDiffSiteShown(true)
     }
   }
 
-  const showMainSide = (e: { stopPropagation: () => void }) => {
-    e.stopPropagation()
+  const showMainSide = () => {
     setIsDiffSiteShown(false)
   }
 
   return (
-    <S.CardList>
+    <S.CardWrapper>
       <S.InnedCard isDiffSiteShown={isDiffSiteShown}>
-        <S.MainSide onClick={onMainSideClick}>
-          <ActivityCard fill={true}>
-            <S.MainSideContainer>
-              <S.InformIcon onClick={showSecondSide}>
-                <i className={`material-icons`}>inform</i>
-              </S.InformIcon>
-              <S.Image src={image} alt={`${name}-image`} />
-              <S.Description>{title}</S.Description>
-            </S.MainSideContainer>
-          </ActivityCard>
-        </S.MainSide>
-        <S.DescriptionSide>
-          <ActivityCard fill={true}>
-            <S.Navbar>
-              <S.InformIcon onClick={showMainSide}>
-                <i className={`material-icons`}>reply</i>
-              </S.InformIcon>
-            </S.Navbar>
-            <S.SecondSideContentWrap>
-              <S.Description>{title}</S.Description>
-              <P6 margin="0" align="left">{description}</P6>
-            </S.SecondSideContentWrap>
-          </ActivityCard>
-        </S.DescriptionSide>
+        <S.MainSideWrapper onClick={onMainSideClick}>
+          <MainSideContent
+            name={name}
+            title={title}
+            image={image}
+            showSecondSide={showSecondSide} />
+        </S.MainSideWrapper>
+        <S.DescriptionSideWrapper>
+          <DescriptionSideContent
+            title={title}
+            description={description}
+            showMainSide={showMainSide}
+          />
+        </S.DescriptionSideWrapper>
       </S.InnedCard>
-    </S.CardList>
+    </S.CardWrapper>
   )
 }
 

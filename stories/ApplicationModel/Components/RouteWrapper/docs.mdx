@@ -1,0 +1,145 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/RouteWrapper/docs" />
+
+# RouteWrapper
+
+<ComponentInfoTable
+  name={'RouteWrapper'}
+  description={`The component wraps the contents of the route.`}
+  source="components/route-wrapper"
+/>
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'title',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the text that will appear in the title of the browser tab.`,
+      required: true,
+    },
+    {
+      name: 'children',
+      type: `React.ReactElement | React.ReactElement[]`,
+      defaultValue: '',
+      description: `This is the contents of the route`,
+      required: true,
+    },
+
+    {
+      name: 'colorScheme',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the color that will be used for the background.`,
+      required: true,
+    },
+    {
+      name: 'type',
+      type: `"private" | "onlyPublic" | "all"`,
+      defaultValue: '',
+      description: `This is an auth type.`,
+      required: false,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     RouteWrapper "1" <-- "1" PrivateRoute: props.type === "private"
+     RouteWrapper "1" <-- "1" OnlyPublicRoute: props.type === "onlyPublic"
+     RouteWrapper "1" <-- "1" PublicRoute: props.type !== "private" && props.type !== "onlyPublic"
+     PrivateRoute "1" <-- "1" Head2
+     PrivateRoute "1" <-- "1" Tutorial2
+     PrivateRoute "1" <-- "1" BackgroundWapper2
+     Head2 "1" <-- "1" title2
+     BackgroundWapper2 "1" <-- "1" ContentWrapper2
+     
+     OnlyPublicRoute "1" <-- "1" Head1
+     OnlyPublicRoute "1" <-- "1" Tutorial1
+     OnlyPublicRoute "1" <-- "1" BackgroundWapper1
+     Head1 "1" <-- "1" title1
+     BackgroundWapper1 "1" <-- "1" ContentWrapper1
+     
+     PublicRoute "1" <-- "1" Head3
+     PublicRoute "1" <-- "1" Tutorial3
+     PublicRoute "1" <-- "1" BackgroundWapper3
+     Head3 "1" <-- "1" title3
+     BackgroundWapper3 "1" <-- "1" ContentWrapper3
+
+     class RouteWrapper:::green
+     class PrivateRoute:::blue
+     class OnlyPublicRoute:::blue
+     class PublicRoute:::blue
+
+     class Head1["Head"]
+     class Tutorial1["Tutorial"]
+     class BackgroundWapper1["BackgroundWapper"]
+     class ContentWrapper1["ContentWrapper"]
+     class title1["title"]
+
+
+     class Head2["Head"]
+     class Tutorial2["Tutorial"]
+     class BackgroundWapper2["BackgroundWapper"]
+     class ContentWrapper2["ContentWrapper"]
+     class title2["title"]
+
+
+     class Head3["Head"]
+     class Tutorial3["Tutorial"]
+     class BackgroundWapper3["BackgroundWapper"]
+     class ContentWrapper3["ContentWrapper"]
+     class title3["title"]
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'PrivateRoute',
+      rules: `Rendered only if props.type is "private"`,
+    },
+    {
+      name: 'OnlyPublicRoute',
+      rules: `Rendered only if props.type is "onlyPublic"`,
+    },
+    {
+      name: 'PublicRoute',
+      rules: `Rendered only if props.type is not "onlyPublic or "private"`,
+    },
+  ]}
+/>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'PrivateRoute',
+      description:
+        'The component will render "children" if the user is authenticated. If the status changes to "unauthenticated" or the user is "unauthenticated" during rendering, the component redirects the user to the login page.',
+    },
+    {
+      name: 'OnlyPublicRoute',
+      description:
+        'The component will render "children" if the user is not authenticated. If the status changes to "authenticated" or the user is already "authenticated" during rendering, the component redirects the user to the game menu.',
+    },
+    {
+      name: 'PublicRoute',
+      description:
+        'The component renders children when the user is both authenticated and unauthenticated.',
+    },
+  ]}
+/>

@@ -1,0 +1,68 @@
+import { Canvas, Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/CardList/docs" />
+
+# CardList
+
+<ComponentInfoTable
+  name={'CardList'}
+  description="The component receives the configuration of the cards on input, which it then renders."
+  source="components/CardList"
+/>
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'cards',
+      type: `PictureType[]`,
+      defaultValue: '',
+      description: `This is the configuration of the displayed cards.`,
+      required: false,
+    },
+    {
+      name: 'selected',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the technical name of the card that is selected.`,
+      required: true,
+    },
+    {
+      name: 'onChange',
+      type: `(selectedCardName: string) => void`,
+      defaultValue: '',
+      description: `This is a callback that is called when the card is clicked. Indicates that a card has been selected.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+    classDiagram
+    direction RL
+    CardList "1" <-- "1" CardListWrapper
+    CardListWrapper "1" <-- "n" ActivityCard
+
+    class CardList:::green
+    class CardListWrapper
+    class ActivityCard
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'ActivityCard',
+      description: 'It is a card component.',
+    },
+  ]}
+/>

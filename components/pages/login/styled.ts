@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { P5 } from '@components/typography/paragraph'
 
 export const LoginWrapper = styled.div`
   display: flex;
@@ -6,7 +7,7 @@ export const LoginWrapper = styled.div`
   height: 100vh;
 `
 
-export const Link = styled.span`
+export const Link = styled(P5)`
   cursor: pointer;
   color: ${({ theme }) => theme.colors.red};
 `
@@ -27,8 +28,7 @@ export const Header = styled.header`
   width: 100vw;
   display: flex;
   justify-content: center;
-
-  & > span {
-  padding: 0.5rem 0.3rem;
-}
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
 `

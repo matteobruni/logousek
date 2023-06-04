@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const ContentWrapper = styled.main`
   margin: 90px 0px;
@@ -6,20 +6,20 @@ export const ContentWrapper = styled.main`
   flex: 1;
   justify-content: center;
   align-items: center;
-`;
+`
 
 export const ActivityWrapper = styled.div`
   display: flex;
   flex: 1;
-`;
+`
 
 export const SendButton = styled.div`
   display: flex;
-  justify-content: center;
-  align-content: center;
+  align-items: center;
+
   gap: 8px;
   font-size: 1.1rem;
-`;
+`
 
 export const DoneButtonContent = styled.div`
   display: flex;

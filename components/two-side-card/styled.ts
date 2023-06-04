@@ -4,7 +4,37 @@ interface InnedCardProps {
   isDiffSiteShown: boolean;
 }
 
-export const CardList = styled.article`
+export const Side = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+`;
+
+export const DescriptionSideWrapper = styled(Side)`
+  cursor: default;
+  transform: rotateY(180deg);
+`;
+
+export const MainSideWrapper = styled(Side)` 
+  cursor: pointer;
+`;
+
+export const InnedCard = styled.div<InnedCardProps>`
+  position: relative;
+  width: 100%;
+  height: 15rem;
+  border-radius: ${({ theme }) => theme.radius.primary};
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  transform: ${({ isDiffSiteShown }) =>
+    isDiffSiteShown ? "rotateY(180deg)" : "rotateY(0deg)"};
+  box-shadow: 0px 2px 16px ${({ theme }) => theme.colors.seventy};
+`;
+
+export const CardWrapper = styled.article`
   background-color: ${({ theme }) => theme.colors.transparent};
   width: 12rem;
   height: 15rem;
@@ -25,42 +55,8 @@ export const CardList = styled.article`
   }
 `;
 
-export const InnedCard = styled.div<InnedCardProps>`
-  position: relative;
-  width: 100%;
-  height: 15rem;
-  border-radius: ${({ theme }) => theme.radius.primary};
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  transform: ${({ isDiffSiteShown }) =>
-    isDiffSiteShown ? "rotateY(180deg)" : "rotateY(0deg)"};
-  box-shadow: 0px 2px 16px ${({ theme }) => theme.colors.seventy};
-`;
 
-export const Side = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-`;
-
-export const MainSide = styled(Side)` 
-  cursor: pointer;
-`;
-
-export const DescriptionSide = styled(Side)`
-  cursor: default;
-  transform: rotateY(180deg);
-`;
-
-export const Navbar = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-`;
-
+//common styled components for children
 export const Description = styled.p`
   width: 100%;
   align-items: center;
@@ -95,20 +91,3 @@ export const InformIcon = styled.div`
     width: 24px;
   }
 `;
-
-export const Image = styled.img`
-  flex: 1;
-`
-
-export const MainSideContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-export const SecondSideContentWrap = styled.div`
-  height: calc(100% - 24px);
-  margin: 24px 8px 0;
-  overflow: auto;
-  padding-bottom: 8px;
-
-`

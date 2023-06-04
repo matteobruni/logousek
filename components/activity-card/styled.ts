@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components'
 import { ActivityCardType } from '.'
 
 export const ActivityCardList = styled.div<ActivityCardType>`
-  border-radius: ${({ customRadius }) => customRadius || '1rem'};
+  border-radius: ${({ customRadius }) => customRadius};
   background-color: ${({ color, theme }) => {
     return color || theme.colors.white
   }};
@@ -19,7 +19,7 @@ export const ActivityCardList = styled.div<ActivityCardType>`
           width: 100%;
         `
       : css`
-          aspect-ratio: ${customAspectRatio || '1 / 1'};
+          aspect-ratio: ${customAspectRatio};
           height: fit-content;
           width: 10rem;
         `}

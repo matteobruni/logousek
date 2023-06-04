@@ -1,0 +1,90 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/ActivityHeader/docs" />
+
+# ActivityHeader
+
+<ComponentInfoTable
+  name={'ActivityHeader'}
+  description={`It is a card component. If there is a card, the card is visually checked.`}
+  source="components/activity-card"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'tasksCount',
+      type: `number`,
+      defaultValue: '',
+      description: `This is the number of entries in the game.`,
+      required: true,
+    },
+    {
+      name: 'currentTask',
+      type: `number`,
+      defaultValue: '',
+      description: `This is the index of the current task.`,
+      required: true,
+    },
+    {
+      name: 'title',
+      type: `boolean`,
+      defaultValue: '',
+      description: `Title that will be displayed in the header.`,
+      required: true,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     ActivityHeader "1" <-- "1" HeaderWrapper
+     HeaderWrapper "1" <-- "1" CloseIconWrapper
+     CloseIconWrapper "1" <-- "1" CloseIcon
+     HeaderWrapper "1" <-- "1" TitleWrapper
+     TitleWrapper "1" <-- "1" P3
+     HeaderWrapper "1" <-- "1" Score
+
+     class ActivityHeader:::green
+     class HeaderWrapper:::blue
+     class CloseIconWrapper
+
+     class CloseIcon
+     class TitleWrapper
+     class P3:::blue
+     class Score:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'HeaderWrapper',
+      description:
+        'The component wraps the page header. Adds header styles to it.',
+    },
+    {
+      name: 'P3',
+      description: 'This is a level 3 paragraph.',
+    },
+    {
+      name: 'Score',
+      description:
+        "The task of the component is to display the user's score in the given game.",
+    },
+  ]}
+/>

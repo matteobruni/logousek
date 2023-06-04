@@ -1,0 +1,131 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/RoundFooter/RoundFooterItem/docs" />
+
+# RoundFooterItemItem
+
+<ComponentInfoTable
+  name={'RoundFooterItem'}
+  description={`This is one item in the footer.`}
+  source="components/round-footer/round-footer-item"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'isActive',
+      type: `boolean`,
+      defaultValue: '',
+      description: `Indicates whether the item is active.`,
+      required: true,
+    },
+    {
+      name: 'index',
+      type: `number`,
+      defaultValue: '',
+      description: `This is the index of the item.`,
+      required: true,
+    },
+
+        {
+      name: 'selectNewItem',
+      type: `(name: string, index: number) => void`,
+      defaultValue: '',
+      description: `This is a callback that is called after the user clicks on the item.`,
+      required: false,
+    },
+    {
+      name: 'name',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the technical name of the item.`,
+      required: true,
+    },
+    {
+      name: 'clickable',
+      type: `boolean`,
+      defaultValue: '',
+      description: `Indicates whether the item can be clicked.`,
+      required: true,
+    },
+
+      {
+      name: 'title',
+      type: `React.ReactElement | string`,
+      defaultValue: '',
+      description: `If the shortTitle property is not defined, then the value of this property is displayed as text below the icon.`,
+      required: false,
+    },
+      {
+      name: 'shortTitle',
+      type: `string`,
+      defaultValue: '',
+      description: `The value of this property is displayed as text below the icon.`,
+      required: false,
+    },
+      {
+      name: 'icon',
+      type: `string`,
+      defaultValue: '',
+      description: `An icon displayed above the text.`,
+      required: false,
+    },
+      {
+      name: 'onClick',
+      type: `() => void`,
+      defaultValue: '',
+      description: `A callback that is invoked when the component is clicked.`,
+      required: false,
+      },
+      {
+      name: 'background',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the background color.`,
+      required: false,
+      },
+      {
+        name: 'color',
+        type: `ColorsEnum`,
+        defaultValue: '',
+        description: `This is the text color.`,
+        required: false,
+      },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     RoundFooterItem "1" <-- "1" FooterLink
+     FooterLink "1" <-- "1" Icon
+     FooterLink "1" <-- "1" TextWrap
+
+     class RoundFooterItem:::green
+     class FooterLink
+     class Icon
+     class TextWrap:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'TextWrap',
+      description: 'The text component.',
+    },
+  ]}
+/>

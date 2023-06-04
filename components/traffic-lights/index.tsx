@@ -1,58 +1,26 @@
-import { useEffect, useState } from "react";
-import { Light, TrafficContainer, Lighting, LightWrapper } from "./styled";
+import * as S from './styled'
+import { useTrafficLights } from '@hooks/useTrafficLights'
 
-type TrafficLightsProps = { countdownTime: number; timerIsDone?: () => void };
+type TrafficLightsProps = { countdownTime: number; timerIsDone?: () => void }
 
 const TrafficLights: React.FC<TrafficLightsProps> = ({
   countdownTime,
-  timerIsDone
+  timerIsDone,
 }) => {
-  const startTime = new Date().getTime();
-  const [activeColor, setActiveColor] = useState("red");
-  const [elapsedMilis, setElapsedMilis] = useState(
-    startTime - new Date().getTime()
-  );
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setElapsedMilis(elapsedMilis + (new Date().getTime() - startTime));
-    }, 1000);
-
-    if (countdownTime - elapsedMilis < 4000) {
-      setActiveColor("orange");
-    }
-
-    if (countdownTime - elapsedMilis < 2000) {
-      setActiveColor("green");
-    }
-
-    if (countdownTime && elapsedMilis >= countdownTime) {
-      clearInterval(interval);
-      timerIsDone && timerIsDone();
-    }
-
-    return () => clearInterval(interval);
-  }, [countdownTime, elapsedMilis, startTime, timerIsDone]);
-  const isActiveRed = activeColor === "red";
-  const isActiveOrange = activeColor === "orange";
-  const isActiveGreen = activeColor === "green";
+  const { trafficLights } = useTrafficLights(countdownTime, timerIsDone)
 
   return (
-    <TrafficContainer>
-      <LightWrapper>
-        <Light color="red" isActive={isActiveRed} />
-        {isActiveRed ? <Lighting color="red" /> : null}
-      </LightWrapper>
-      <LightWrapper>
-        <Light color="orange" isActive={isActiveOrange} />
-        {isActiveOrange ? <Lighting color="orange" /> : null}
-      </LightWrapper>
-      <LightWrapper>
-        <Light color="green" isActive={isActiveGreen} />
-        {isActiveGreen ? <Lighting color="green" /> : null}
-      </LightWrapper>
-    </TrafficContainer>
-  );
-};
+    <S.TrafficContainer>
+      {trafficLights?.map((trafficLight) => (
+        <S.LightWrapper key={`traffic_light_${trafficLight.name}`}>
+          <S.Light color={trafficLight.name} isActive={trafficLight.isActive} />
+          {trafficLight.isActive ? (
+            <S.Lighting color={trafficLight.name} />
+          ) : null}
+        </S.LightWrapper>
+      ))}
+    </S.TrafficContainer>
+  )
+}
 
-export default TrafficLights;
+export default TrafficLights

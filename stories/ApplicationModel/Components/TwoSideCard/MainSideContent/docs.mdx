@@ -1,0 +1,80 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/TwoSideCard/MainSideContent/docs" />
+
+# MainSideContent
+
+<ComponentInfoTable
+  name={'MainSideContent'}
+  description={`This is a description side of two side card.`}
+  source="components/two-side-card/main-side-content"
+/>
+
+<PropertiesTable
+  tableRows={[
+
+    {
+      name: 'title',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the label displayed on the card.`,
+      required: true,
+    },
+    {
+      name: 'description',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the description on the card.`,
+      required: false,
+    },
+    {
+      name: 'showMainSide',
+      type: `() => void`,
+      defaultValue: '',
+      description: `This is a callback that is called after the user clicks on the icon.`,
+      required: false,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     MainSideContent "1" <-- "1" ActivityCard
+     ActivityCard "1" <-- "1" Container
+     Container "1" <-- "1" InformIcon
+     InformIcon "1" <-- "1" i
+     ActivityCard "1" <-- "1" Image
+     ActivityCard "1" <-- "1" Description
+
+     class MainSideContent:::green
+     class ActivityCard:::blue
+     class Container
+     class InformIcon
+     class i
+     class Image
+     class Description
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'ActivityCard',
+      description: 'A component that wraps its child into a card.',
+    },
+  ]}
+/>

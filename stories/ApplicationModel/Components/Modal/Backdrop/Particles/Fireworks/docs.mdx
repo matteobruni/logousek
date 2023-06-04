@@ -1,0 +1,35 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../../styles.ts'
+import PropertiesTable from '../../../../../../Components/properties-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+
+<Meta title="ApplicationModel/Components/Modal/Backdrop/Particles/Fireworks/docs" />
+
+# Fireworks
+
+<ComponentInfoTable
+  name={'Fireworks'}
+  description="This is a fireworks animation."
+  source="components/modal/backdrop/particles/fireworks"
+/>
+<PropertiesTable tableRows={[]} />
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+    classDiagram
+    direction RL
+    Fireworks "1" <-- "1" Particles
+
+    class Fireworks:::green
+    class Particles
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

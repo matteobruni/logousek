@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 
 type NavProps = { customHeight?: string }
 
-type NavLinkType = { background?: string }
+type FooterLinkType = { background?: string }
 
-export const NavbarWrapper = styled(motion.div)`
+export const AnimatedFooterContent = styled(motion.div)`
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@ export const NavbarWrapper = styled(motion.div)`
   z-index: 999;
 `;
 
-export const Nav = styled.nav<NavProps>`
+export const FooterContainer = styled.nav<NavProps>`
   display: flex;
   height: 4rem;
   width: ${({ customHeight }) => customHeight || "100%"};
@@ -28,15 +28,15 @@ export const Nav = styled.nav<NavProps>`
 `;
 
 
-export const NavLink = styled.a<NavLinkType>`
+export const FooterLink = styled.a<FooterLinkType>`
   min-width: 60px;
   cursor: pointer;
   display: flex;
+  gap: 8px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 0px 10px;
-  font-size: 11pt;
   flex: 1;
   overflow: hidden;
   white-space: nowrap;
@@ -64,6 +64,9 @@ export const NavLink = styled.a<NavLinkType>`
 `;
 
 
-export const NavIcon = styled.i`
+export const Icon = styled.i`
  font-size: 18px;
 `;
+
+export const FooterWrap = styled.footer`
+`

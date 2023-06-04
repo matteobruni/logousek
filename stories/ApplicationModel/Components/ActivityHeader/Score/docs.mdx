@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/ActivityHeader/Score/docs" />
+
+# Score
+
+<ComponentInfoTable
+  name={'Score'}
+  description={`The task of the component is to display the user's score in the given game..`}
+  source="components/activity-card/score"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'tasksCount',
+      type: `number`,
+      defaultValue: '',
+      description: `This is the number of entries in the game.`,
+      required: true,
+    },
+    {
+      name: 'currentTask',
+      type: `number`,
+      defaultValue: '',
+      description: `This is the index of the current task.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     Score "1" <-- "1" ScoreWrapper
+     ScoreWrapper "1" <-- "1" ScoreText
+     ScoreWrapper "1" <-- "1" ProgressBar
+
+     class Score:::green
+     class ScoreWrapper
+     class ScoreText
+     class ProgressBar:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'ProgressBar',
+      description:
+        "This is a visual component. Displays the user's progress across tasks in the progress bar.",
+    },
+  ]}
+/>

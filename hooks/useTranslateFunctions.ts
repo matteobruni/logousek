@@ -5,7 +5,8 @@ export const useTranslateFunctions = () => {
     const { t: tHome } = useTranslation('home')
     const { t: tCommon } = useTranslation('common')
     const { t: tNotFound } = useTranslation('notFound')
+    const { t: tLogin } = useTranslation('login')
     const { t: tGameMenu } = useTranslation('gameMenu')
     const { t: tActivity } = useTranslation('activity')
-    return { tHome, tCommon, tNotFound, tActivity, tGameMenu }
+    return { tHome, tCommon, tNotFound, tActivity, tGameMenu, tLogin }
 };

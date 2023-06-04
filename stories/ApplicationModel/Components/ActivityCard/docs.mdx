@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ComponentRenderTable from '../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/ActivityCard/docs" />
+
+# ActivityCard
+
+<ComponentInfoTable
+  name={'ActivityCard'}
+  description={`It is a card component. If there is a card, the card is visually checked.`}
+  source="components/activity-card"
+/>{' '}
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `React.ReactNode`,
+      defaultValue: '',
+      description: `This is the child that will appear inside the card.`,
+      required: true,
+    },
+    {
+      name: 'onClick',
+      type: `() => void`,
+      defaultValue: '',
+      description: `Callback that is invoked when the tab is clicked.`,
+      required: false,
+    },
+
+        {
+      name: 'selected',
+      type: `boolean`,
+      defaultValue: '',
+      description: `Indicates whether the tab is selected or not.`,
+      required: true,
+    },
+    {
+      name: 'rotate',
+      type: `number`,
+      defaultValue: '',
+      description: `Indicates how many degrees the card should be rotated.`,
+      required: false,
+    },
+
+    {
+      name: 'color',
+      type: `string`,
+      defaultValue: '',
+      description: `Defines the background of the card.`,
+      required: false,
+    },
+
+     {
+      name: 'customRadius',
+      type: `string`,
+      defaultValue: '1rem',
+      description: `Defines the radius of the card.`,
+      required: false,
+    },
+     {
+      name: 'customAspectRatio',
+      type: `string`,
+      defaultValue: '1 / 1',
+      description: `Defines the acpect ration of the card.`,
+      required: false,
+    },
+     {
+      name: 'fill',
+      type: `boolean`,
+      defaultValue: "",
+      description: `If this property is true, then the component will resize itself to the parent component.`,
+      required: false,
+    },
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     ActivityCard "1" <-- "1" ActivityCardList
+     ActivityCardList "1" <-- "1" i
+
+     class ActivityCard:::green
+     class ActivityCardList
+     class i["R - i"]
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'i',
+      description: 'Render only if props.selected is true.',
+    },
+  ]}
+/>

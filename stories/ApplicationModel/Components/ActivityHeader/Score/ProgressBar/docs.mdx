@@ -1,0 +1,62 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../../styles.ts'
+import PropertiesTable from '../../../../../Components/properties-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/ActivityHeader/Score/ProgressBar/docs" />
+
+# ProgressBar
+
+<ComponentInfoTable
+  name={'ProgressBar'}
+  description={`This is a visual component. Displays the user's progress across tasks in the progress bar.`}
+  source="components/activity-card/score/progressBar"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'tasksCount',
+      type: `number`,
+      defaultValue: '',
+      description: `This is the number of entries in the game.`,
+      required: true,
+    },
+    {
+      name: 'currentTask',
+      type: `number`,
+      defaultValue: '',
+      description: `This is the index of the current task.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     ProgressBar "1" <-- "1" ProgressBarWrap
+     ProgressBarWrap "1" <-- "1" ProgressContainer
+     ProgressContainer "1" <-- "1" ProgressBarInner
+
+     class ProgressBar:::green
+     class ProgressBarWrap
+     class ProgressContainer
+     class ProgressBarInner
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+
+]}
+/>

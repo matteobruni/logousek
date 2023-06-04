@@ -25,8 +25,8 @@ export type FontWeightType = {
 export const fontSize: FontSizeType = {
     xs: "12px",
     sm: "14px",
-    md: "18px",
-    lg: "22px",
+    md: "16px",
+    lg: "20px",
     xl: "24px",
     xxl: "27px",
     pageTitle: { mobile: "48px", desktop: "80px" }
@@ -36,19 +36,19 @@ export const fontSize: FontSizeType = {
 export const lineHeight: LineHeightType = {
     xs: "14px",
     sm: "16px",
-    md: "21px",
-    lg: "25px",
+    md: "18px",
+    lg: "22px",
     xl: "28px",
     xxl: "31px",
     pageTitle: { mobile: "56px", desktop: "88px" }
 }
 
 export const letterSpacing: LetterSpacingType = {
-    xs: "1px",
-    sm: "1px",
-    md: "1.5px",
-    lg: "2px",
-    xl: "2.5px",
+    xs: ".4px",
+    sm: ".4px",
+    md: ".4px",
+    lg: ".4px",
+    xl: "1px",
     xxl: "3px",
     pageTitle: { mobile: "5px", desktop: "5px" }
 }

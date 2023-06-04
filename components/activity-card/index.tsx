@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './styled'
 
 export type ActivityCardType = {
-  children?: any
+  children: React.ReactNode
   onClick?: () => void
   selected?: boolean
   rotate?: number
@@ -18,8 +18,8 @@ const ActivityCard: React.FC<ActivityCardType> = ({
   selected,
   rotate,
   color,
-  customRadius,
-  customAspectRatio,
+  customRadius = '1rem',
+  customAspectRatio = '1 / 1',
   fill
 }) => {
   return (
