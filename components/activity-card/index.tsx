@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './styled'
 
 export type ActivityCardType = {
-  children: React.ReactNode
+  children?: React.ReactNode
   onClick?: () => void
   selected?: boolean
   rotate?: number
