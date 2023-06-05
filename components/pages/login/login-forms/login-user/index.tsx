@@ -1,64 +1,42 @@
-import React, { useContext } from 'react'
-import { ThemeContext } from 'styled-components'
-import { Form, Input } from 'antd'
+import React from 'react'
 
-import Button, { ButtonSizesEnum } from '@components/button/index'
-import ButtonRow from '@components/button-row/button-row'
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
+import { FIELDS } from '@hooks/useLoginFields'
 
-import * as S from './styled'
+import LoginForm from '../login-form'
 
 type LoginUserType = {
-  onFormFilledHandler: ({ nickName, password }: { nickName: string, password: string }) => void
+  onFormFilledHandler: ({
+    nickName,
+    password,
+  }: {
+    nickName: string
+    password: string
+  }) => void
 }
 
-type FormValues = { nickName: string, password: string }
+type FormValues = { nickName: string; password: string }
 
 const LoginUser: React.FC<LoginUserType> = ({ onFormFilledHandler }) => {
-  const themeContextData = useContext(ThemeContext)
   const { tCommon } = useTranslateFunctions()
 
   const handleSubmit = (values: FormValues) => {
-    onFormFilledHandler({ nickName: values.nickName, password: values.password })
+    onFormFilledHandler({
+      nickName: values.nickName,
+      password: values.password,
+    })
   }
 
   return (
-    <S.LoginModalWrapper>
-      <S.StyledForm
-        name="LoginForm"
-        layout="vertical"
-        initialValues={{ remember: true }}
-        onFinish={handleSubmit}
-        autoComplete="off"
-      >
-        <Form.Item
-          label="nickName"
-          name="nickName"
-          rules={[{ required: true, message: 'Zadejte prosím své jméno!' }]}
-        >
-          <Input />
-        </Form.Item>
-
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Zadejte prosím heslo!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
-        <ButtonRow>
-          <Button
-            type="submit"
-            color="#fff"
-            size={ButtonSizesEnum.xs}
-            backgroundColor={themeContextData?.colors?.tertiary}
-          >
-            {tCommon("buttons.send")}
-          </Button>
-        </ButtonRow>
-      </S.StyledForm>
-    </S.LoginModalWrapper>
-  )
+    <LoginForm
+      onFormFilledHandler={handleSubmit}
+      fields={{
+        nickName: FIELDS.nickName,
+        password: FIELDS.password
+      }}
+      name="LoginForm"
+      buttonName={tCommon('buttons.send')}
+    />)
 }
 
 export default LoginUser

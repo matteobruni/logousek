@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Variant } from "./index"
 
-type TStylesType = { type?: "primary" | "ghost", color?: string }
+export type TStylesType = { type?: "primary" | "ghost", color?: string }
 
 type AlignStylesType = { align?: "left" | "center" | "end" }
 

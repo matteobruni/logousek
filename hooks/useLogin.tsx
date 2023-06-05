@@ -1,16 +1,18 @@
 import { useContext } from 'react'
 import { signIn } from 'next-auth/react'
-import axios, { AxiosError } from 'axios'
-import { message } from 'antd'
+import { AxiosError } from 'axios'
 import { MessageInstance } from 'antd/es/message/interface'
 
-
 import ModalContext from '@contexts/modal-context'
+import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
+import Loading from '@components/loading'
+import { registerCall } from 'calls/login-page-calls'
 
 
 
 export const useLogin = (messageApi: MessageInstance) => {
     const modalContext = useContext(ModalContext)
+    const { tLogin } = useTranslateFunctions()
 
     const onLogin = ({
         nickName,
@@ -29,21 +31,21 @@ export const useLogin = (messageApi: MessageInstance) => {
                 if (result?.ok) {
                     messageApi.open({
                         type: 'success',
-                        content: 'Úspěšně přihlášeno',
+                        content: tLogin("messages.success.successfullyLoggedIn"),
                     })
                 } else {
                     messageApi.open({
                         type: 'error',
                         content:
                             result?.error === 'wrong_password'
-                                ? 'Špatné heslo'
-                                : 'Uživatele se nepovedlo přihlásit',
+                                ? tLogin("messages.error.unknown")
+                                : tLogin("messages.error.unknown"),
                     })
                 }
             } catch (error) {
                 messageApi.open({
                     type: 'error',
-                    content: 'Uživatele se nepovedlo přihlásit',
+                    content: tLogin("messages.error.unknown"),
                 })
             }
         }
@@ -65,17 +67,23 @@ export const useLogin = (messageApi: MessageInstance) => {
     }) => {
         const register = async () => {
             try {
-                const res2 = await axios.post('/api/user/register', {
-                    params: { firstName, surName, nickName, password },
-                })
+                const result = await registerCall(firstName, surName, nickName, password)
 
-                if (res2.status === 200) {
+                if (result.status === 200) {
                     messageApi.open({
                         type: 'success',
-                        content: 'Uživatel byl vytvořen. Přihlaste se',
+                        content: tLogin("messages.success.successfullyRegistred"),
                     })
 
-                    modalContext?.closeModal()
+                    modalContext?.showModal({
+                        content: <Loading textType="primary" />,
+                        closeDisabled: true,
+                        onOkClick: undefined,
+                        onStornoClick: undefined,
+                        autoWidth: true
+                    })
+
+                    setTimeout(() => onLogin({ nickName, password }), 2000)
                 }
             } catch (error) {
                 const axiosError = error as AxiosError<{ errorCode: 'string' }>
@@ -83,12 +91,12 @@ export const useLogin = (messageApi: MessageInstance) => {
                 if (errorCode === 'user_exists') {
                     messageApi.open({
                         type: 'error',
-                        content: 'Tohoto uživatele tu už máme',
+                        content: tLogin("messages.error.userAlreadyExists"),
                     })
                 } else {
                     messageApi.open({
                         type: 'error',
-                        content: 'Neznámá chyba při vytváření',
+                        content: tLogin("messages.error.unknown"),
                     })
                 }
             }

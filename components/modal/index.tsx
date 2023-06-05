@@ -1,8 +1,4 @@
-import React, {
-  useState,
-  forwardRef,
-  useImperativeHandle,
-} from 'react'
+import React, { useState, forwardRef, useImperativeHandle } from 'react'
 
 import ModalButtons from './modal-buttons'
 import CloseIcon from '../close-icon'
@@ -51,7 +47,7 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
       content,
       closeDisabled,
       autoWidth,
-      ...remainAttrs
+      ...remainAttrs,
     })
   }
 
@@ -69,10 +65,17 @@ export default forwardRef(function Modal({ closeBackdrop }: ModalProps, ref) {
             <S.CloseIconWrapper>
               <CloseIcon onClick={closeModal} />
             </S.CloseIconWrapper>
-          ) : null}
+          ) : undefined}
         </S.Modalheader>
-        <S.ModalContent>{modalDetail.content}</S.ModalContent>
-        <ModalButtons onOkClick={modalDetail.onOkClick} onStornoClick={modalDetail.onStornoClick} onOkText={modalDetail.onOkText} onStornoText={modalDetail.onStornoText} />
+        {modalDetail.content ? (
+          <S.ModalContent>{modalDetail.content}</S.ModalContent>
+        ) : undefined}
+        <ModalButtons
+          onOkClick={modalDetail.onOkClick}
+          onStornoClick={modalDetail.onStornoClick}
+          onOkText={modalDetail.onOkText}
+          onStornoText={modalDetail.onStornoText}
+        />
       </S.ModalContainer>
     </S.ModalWrapper>
   )

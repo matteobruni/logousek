@@ -8,7 +8,7 @@ import {
   getUserByName,
 } from '../../../prisma/user'
 
-async function register(req: NextApiRequest, res: NextApiResponse) {
+async function registerGuess(req: NextApiRequest, res: NextApiResponse) {
   const { password, ...user } = req.body.params
   // validate
   const usersWithSameNick = await getUserByName({ nickName: user.nickName })
@@ -23,4 +23,4 @@ async function register(req: NextApiRequest, res: NextApiResponse) {
   return res.status(200).json({})
 }
 
-export default register
+export default registerGuess

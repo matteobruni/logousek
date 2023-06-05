@@ -25,6 +25,23 @@
         "insufficientLength": "Zadejte alespoň {{value}} znaků!",
         "moreThenMaxLength": "Zadejte maximálně {{value}} znaků!"
       }
+    },
+    "loginUser": {
+      "title": "Přihlášení uživatele"
+    },
+    "loginGuess": {
+      "title": "Přihlášení hosta"
+    }
+  },
+  "messages": {
+    "success": {
+      "successfullyLoggedIn": "Úspěšně přihlášeno",
+      "successfullyRegistred": "Uživatel byl vytvořen. Probíhá přihlašování."
+    },
+    "error": {
+      "unknown": "Něco se nepovedlo, zkuste to prosím později.",
+      "wrongPassword": "Špatné heslo",
+      "userAlreadyExists": "Tohoto uživatele tu už máme"
     }
   }
 }

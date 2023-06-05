@@ -14,13 +14,6 @@ import LoginUser from './login-forms/login-user'
 import RegisterUser from './login-forms/register-user'
 import * as S from './styled'
 
-export const FIELDS = {
-  firstName: { name: 'firstName', minLength: 5, maxLength: 30 },
-  surName: { name: 'surName', minLength: 5, maxLength: 30 },
-  nickName: { name: 'nickName', minLength: 7, maxLength: 30 },
-  password: { name: 'password', minLength: 10, maxLength: 40 },
-}
-
 const Login: React.FC = () => {
   const modalContext = useContext(ModalContext)
   const [messageApi, contextHolder] = message.useMessage();
@@ -33,7 +26,7 @@ const Login: React.FC = () => {
     modalContext?.showModal({
       autoWidth: true,
       content: <LoginHost onFormFilledHandler={onLoginGuessHandler} />,
-      header: 'Přihlášení hosta',
+      header: tLogin("modals.loginGuess.title"),
     })
   }
 
@@ -41,7 +34,7 @@ const Login: React.FC = () => {
     modalContext?.showModal({
       autoWidth: true,
       content: <LoginUser onFormFilledHandler={onLogin} />,
-      header: 'Přihlášení uživatele',
+      header: tLogin("modals.loginUser.title"),
     })
   }
 
@@ -49,7 +42,7 @@ const Login: React.FC = () => {
     modalContext?.showModal({
       autoWidth: true,
       content: <RegisterUser onFormFilledHandler={onRegister} />,
-      header: 'Registrace uživatele',
+      header: tLogin("modals.registerUser.title"),
     })
   }
 

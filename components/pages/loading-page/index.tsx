@@ -6,7 +6,7 @@ import ClickableIcon from '@components/clickable-icon'
 import routes from "@constants/routes"
 import { fontSize } from 'styles'
 
-import Loading from './loading'
+import Loading from '../../loading'
 import * as S from './styled'
 
 const LoadingPage: React.FC = () => {

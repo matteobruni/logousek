@@ -1,9 +1,10 @@
 import { Mermaid } from 'mdx-mermaid/Mermaid'
 
-import * as S from '../../../../styles.ts'
-import appConf from '../../../../../../constants/app-conf'
-import ComponentInfoTable from '../../../../../Components/component-info-table'
-import ReferenceList from '../../../../../Components/reference-list'
+import * as S from '../../../styles.ts'
+import appConf from '../../../../constants/app-conf'
+import ComponentInfoTable from '../../../Components/component-info-table'
+import ReferenceList from '../../../Components/reference-list'
+import PropertiesTable from '../../../Components/properties-table'
 
 # Loading
 
@@ -11,6 +12,18 @@ import ReferenceList from '../../../../../Components/reference-list'
   name="Loading"
   description="The component renders the loading animation."
   source="components/pages/loading"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'textType',
+      type: `"primary" | "ghost"`,
+      defaultValue: '',
+      description: `This is a props that can set the font color.`,
+      required: false,
+    },
+  ]}
 />
 
 <S.MermaidWrapper>

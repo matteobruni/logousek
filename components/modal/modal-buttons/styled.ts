@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { devices } from '../../constants/screens-conf'
+import { devices } from '@constants/screens-conf'
 import React from 'react'
 
 interface ModalWrapperType { show?: boolean }

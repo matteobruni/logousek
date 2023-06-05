@@ -42,15 +42,15 @@ import ComponentRenderTable from '../../../Components/component-render'
      ModalContainer "1" <-- "1" ModalContent
      ModalContainer "1" <-- "1" ModalButtons
 
-      class Modal:::green
-      class ModalWrapper
-      class ModalContainer
-      class Modalheader
-      class ModalTitle
-      class CloseIconWrapper["R - CloseIconWrapper"]
-      class CloseIcon:::blue
-      class ModalContent
-      class ModalButtons:::blue
+    class Modal:::green
+    class ModalWrapper
+    class ModalContainer
+    class Modalheader
+    class ModalTitle
+    class CloseIconWrapper["R - CloseIconWrapper"]
+    class CloseIcon:::blue
+    class ModalContent
+    class ModalButtons:::blue
 
 `}
 />
@@ -69,6 +69,10 @@ import ComponentRenderTable from '../../../Components/component-render'
     {
       name: 'CloseIconWrapper',
       rules: `Rendered only if modalDetail.closeDisabled is false`,
+    },
+    {
+      name: 'ModalContent',
+      rules: `Rendered only if modalDetail.content has value and is not empty string`,
     },
   ]}
 />
