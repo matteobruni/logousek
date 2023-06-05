@@ -1,26 +1,23 @@
 // import prisma from "@/lib/prisma";
 import { NextApiRequest, NextApiResponse } from 'next'
-import bcrypt from "bcryptjs"
+import bcrypt from 'bcryptjs'
 
+import { createUser } from '../../../prisma/user'
 
-import {
-  createUser,
-  getUserByName,
-} from '../../../prisma/user'
+const DEFAULT_VALUES = {
+  firstName: 'Guess',
+  type: 'HOST',
+}
 
-async function registerGuess(req: NextApiRequest, res: NextApiResponse) {
-  const { password, ...user } = req.body.params
-  // validate
-  const usersWithSameNick = await getUserByName({ nickName: user.nickName })
-  if (usersWithSameNick && usersWithSameNick.length) {
-    return res.status(400).json({ errorCode: "user_exists" })
+async function registerGuess(_: NextApiRequest, res: NextApiResponse) {
+  try {
+    createUser(DEFAULT_VALUES)
+    return res.status(200).json({})
+  } catch (err) {
+    return res.status(500).json({
+      errorCode: 'server_error',
+    })
   }
-
-  // hash password
-  user.password = bcrypt.hashSync(password, 10)
-
-  createUser(user)
-  return res.status(200).json({})
 }
 
 export default registerGuess
