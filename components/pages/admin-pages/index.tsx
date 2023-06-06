@@ -12,7 +12,7 @@ import activityConf, { ActivityType } from '@constants/activity-confs/activity-c
 import RouteWrapper from '@components/route-wrapper';
 
 import UserSearch from './user-search'
-import ScoreListItem from './user-results/score-list-item';
+import ScoreListItem from './score-list-item';
 import Sidebar from '../../side-bar'
 import * as S from "./styled"
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions';
