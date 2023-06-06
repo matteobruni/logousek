@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
-import { FIELDS } from '@hooks/useLoginFields'
+import { FIELDS } from '../login-form'
 
 import LoginForm from '../login-form';
 
-type LoginUserType = {
+type RegisterUserFormProps = {
     onFormFilledHandler: (data: FormValues) => void
 }
 
@@ -16,7 +16,7 @@ export type FormValues = {
     password: string
 }
 
-const RegisterUser: React.FC<LoginUserType> = ({ onFormFilledHandler }) => {
+const RegisterUserForm: React.FC<RegisterUserFormProps> = ({ onFormFilledHandler }) => {
     const { tCommon } = useTranslateFunctions()
     const [, forceUpdate] = useState({});
 
@@ -38,4 +38,4 @@ const RegisterUser: React.FC<LoginUserType> = ({ onFormFilledHandler }) => {
     )
 }
 
-export default RegisterUser
+export default RegisterUserForm

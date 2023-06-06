@@ -1,15 +1,16 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState, useEffect, useMemo } from 'react'
 import { ThemeContext } from 'styled-components'
-import { Form } from 'antd';
+import { Form, Input } from 'antd';
 
 import Button, { ButtonSizesEnum } from '@components/button/index'
 import ButtonRow from '@components/button-row/button-row'
-import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
-import { FIELDS, FieldsType, useLoginFields } from '@hooks/useLoginFields'
+import { useTranslateFunctions } from '@hooks/useTranslateFunctions';
 
 import * as S from './styled'
 
-type LoginUserType = {
+export type FieldsType = { [key: string]: { name: string, minLength: number, maxLength: number } }
+
+type LoginFormProps = {
     onFormFilledHandler: (data: FormValues) => void
     fields: FieldsType
     name: string
@@ -23,10 +24,18 @@ export type FormValues = {
     password: string
 }
 
-const LoginForm: React.FC<LoginUserType> = ({ onFormFilledHandler, fields, name, buttonName }) => {
+export const FIELDS = {
+    firstName: { name: 'firstName', minLength: 3, maxLength: 25 },
+    surName: { name: 'surName', minLength: 4, maxLength: 25 },
+    nickName: { name: 'nickName', minLength: 7, maxLength: 30 },
+    password: { name: 'password', minLength: 10, maxLength: 35 },
+}
+
+
+const LoginForm: React.FC<LoginFormProps> = ({ onFormFilledHandler, fields, name, buttonName }) => {
+    const { tLogin } = useTranslateFunctions()
     const [form] = Form.useForm();
     const themeContextData = useContext(ThemeContext)
-    const loginFields = useLoginFields(fields)
     const [, forceUpdate] = useState({});
 
     useEffect(() => {
@@ -37,8 +46,39 @@ const LoginForm: React.FC<LoginUserType> = ({ onFormFilledHandler, fields, name,
         onFormFilledHandler(values)
     }
 
+    const getFields = useMemo(() => {
+        return Object.values(fields).map((field) => (
+            <Form.Item
+                key={`form_item_${field.name}`}
+                label={tLogin(`modals.registerUser.${field.name}`)}
+                name={field.name}
+                rules={[
+                    {
+                        required: true,
+                        message: tLogin(`modals.registerUser.rules.notEntry.${field.name}`),
+                    },
+                    {
+                        min: field.minLength,
+                        message: tLogin(
+                            `modals.registerUser.rules.insufficientLength`,
+                            { value: field.minLength }
+                        ),
+                    },
+                    {
+                        max: field.maxLength,
+                        message: tLogin(`modals.registerUser.rules.moreThenMaxLength`, {
+                            value: field.maxLength,
+                        }),
+                    },
+                ]}
+            >
+                {field.name === FIELDS.password.name ? <Input.Password /> : <Input />}
+            </Form.Item>
+        ))
+    }, [fields, tLogin])
+
     return (
-        <S.LoginModalWrapper>
+        <S.LoginFormWrapper>
             <S.StyledForm
                 form={form}
                 name={name}
@@ -46,7 +86,7 @@ const LoginForm: React.FC<LoginUserType> = ({ onFormFilledHandler, fields, name,
                 onFinish={handleSubmit}
                 autoComplete="off"
             >
-                {loginFields}
+                {getFields}
                 <ButtonRow>
                     <Form.Item shouldUpdate>
                         {() => (
@@ -65,7 +105,7 @@ const LoginForm: React.FC<LoginUserType> = ({ onFormFilledHandler, fields, name,
                     </Form.Item>
                 </ButtonRow>
             </S.StyledForm>
-        </S.LoginModalWrapper>
+        </S.LoginFormWrapper>
     )
 }
 

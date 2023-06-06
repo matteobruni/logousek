@@ -1,29 +1,34 @@
 import React from 'react'
 
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
-import { FIELDS } from '@hooks/useLoginFields'
+import { FIELDS } from '../login-form'
 
 import LoginForm from '../login-form'
 
-type LoginUserType = {
+type OnFormFilledHandlerType = {
+  nickName: string
+  password: string
+  type: "registredUser"
+}
+
+type LoginUserFormProps = {
   onFormFilledHandler: ({
     nickName,
     password,
-  }: {
-    nickName: string
-    password: string
-  }) => void
+    type
+  }: OnFormFilledHandlerType) => void
 }
 
 type FormValues = { nickName: string; password: string }
 
-const LoginUser: React.FC<LoginUserType> = ({ onFormFilledHandler }) => {
+const LoginUserForm: React.FC<LoginUserFormProps> = ({ onFormFilledHandler }) => {
   const { tCommon } = useTranslateFunctions()
 
   const handleSubmit = (values: FormValues) => {
     onFormFilledHandler({
       nickName: values.nickName,
       password: values.password,
+      type: "registredUser"
     })
   }
 
@@ -39,4 +44,4 @@ const LoginUser: React.FC<LoginUserType> = ({ onFormFilledHandler }) => {
     />)
 }
 
-export default LoginUser
+export default LoginUserForm

@@ -3,7 +3,7 @@ import { Form } from 'antd'
 
 import { FormValues } from '.'
 
-export const LoginModalWrapper = styled.div`
+export const LoginFormWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;

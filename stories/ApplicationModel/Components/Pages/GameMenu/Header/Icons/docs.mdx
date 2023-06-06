@@ -5,6 +5,7 @@ import * as S from '../../../../../styles.ts'
 import appConf from '../../../../../../../constants/app-conf'
 import ComponentInfoTable from '../../../../../../Components/component-info-table'
 import ReferenceList from '../../../../../../Components/reference-list'
+import ComponentRenderTable from '../../../../../../Components/component-render'
 
 <Meta title="ApplicationModel/Components/Pages/GameMenu/Header/Icons/docs" />
 
@@ -23,13 +24,15 @@ import ReferenceList from '../../../../../../Components/reference-list'
       Icons "1" <-- "1" ClickableIconWrapper
       ClickableIconWrapper "1" <-- "1" DarkModeSwitchWrapper
       DarkModeSwitchWrapper "1" <-- "1" DarkModeSwitch
-      ClickableIconWrapper "1" <-- "1" ClickableIcon
+      ClickableIconWrapper "1" <-- "1" ClickableIcon1
+      ClickableIconWrapper "1" <-- "1" ClickableIcon2
 
       class Icons:::green
       class ClickableIconWrapper:::blue
       class DarkModeSwitchWrapper
       class DarkModeSwitch:::blue
-      class ClickableIcon:::blue
+      class ClickableIcon1["ClickableIcon"]:::blue
+      class ClickableIcon2["R - ClickableIcon"]:::blue
 
 `}
 />
@@ -50,6 +53,15 @@ import ReferenceList from '../../../../../../Components/reference-list'
     {
       name: 'ClickableIcon',
       description: 'An icon that triggers an action when clicked.',
+    },
+  ]}
+/>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'ClickableIcon',
+      rules: `Rendered only if user is admin`,
     },
   ]}
 />

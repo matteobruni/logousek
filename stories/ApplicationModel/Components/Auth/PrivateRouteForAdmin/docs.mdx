@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../../../styles.ts'
+import PropertiesTable from '../../../../Components/properties-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Auths/PrivateRouteForAdmin/docs" />
+
+# PrivateRouteForAdmin
+
+<ComponentInfoTable
+  name={'PrivateRouteForAdmin'}
+  description={`The component will render "children" if the user is authenticated and has ADMIN role. If the status changes to "unauthenticated" or the user is already "unauthenticated" during rendering, the component redirects the user to the game menu. If the user is "authenticate" and has not ADMIN role then component show not found page`}
+  source="components/auth/private-route-for-admin"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'children',
+      type: `React.ReactElement`,
+      defaultValue: '',
+      description: `An element that should be displayed if the user is authenticated and has ADMIN role.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+     PrivateRouteForAdmin "1" <-- "1" LoadingPage : status in neither "unauthenticated" nor "authenticated"
+     PrivateRouteForAdmin --|> checkRole : authenticated
+     checkRole "1" <-- "1" children : role === ADMIN
+     checkRole "1" <-- "1" NotFoundPage : role !== ADMIN
+     PrivateRouteForAdmin --|> statusChange
+     PrivateRouteForAdmin  --|>  redirect : unauthenticated
+     statusChange --|> redirect : authenticated
+
+     class PrivateRouteForAdmin:::green
+     class LoadingPage["R - LoadingPage"]:::blue
+
+    class redirect["redirect to HomePage"]:::oval
+    class statusChange["status change"]:::oval
+    class checkRole:::oval
+    class children["R - props.children"]
+    class NotFoundPage:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'LoadingPage',
+      rules: `Rendered only if status is neither "unauthenticated" nor "authenticated"`,
+    },
+    {
+      name: 'NotFoundPage',
+      rules: `Rendered only if status is "authenticated" and the user has not role "ADMIN"`,
+    },
+    {
+      name: 'children',
+      rules: `Rendered only if status is "authenticated" and the user has role "ADMIN"`,
+    },
+  ]}
+/>
+
+<ReferenceList
+  tableRows={[
+    { name: 'LoadingPage', description: 'A loading page component.' },
+    {
+      name: 'NotFoundPage',
+      description:
+        'The component is displayed if the user accesses a non-existent route or has not a required role.',
+    },
+  ]}
+/>

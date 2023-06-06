@@ -6,14 +6,11 @@ import Icons from './icons'
 import User from './user'
 import Cash from './cash'
 
-type GameMenuHeaderType = { points?: string; userName: string }
-
-const GameMenuHeader: React.FC<GameMenuHeaderType> = ({ points, userName }) => {
-
+const GameMenuHeader: React.FC = () => {
   return (
     <HeaderWrapper>
-      <User userName={userName} />
-      <Cash points={points} />
+      <User />
+      <Cash />
       <Icons />
     </HeaderWrapper>
   )

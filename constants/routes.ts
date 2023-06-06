@@ -1,8 +1,9 @@
 const routes = {
-    login: "/login",
-    gameMenu: "/game-menu",
     home: "/",
-    activity: "/activity"
+    gameMenu: "/game-menu",
+    login: "/login",
+    activity: "/activity",
+    adminPages: "/admin-pages"
 }
 
 export default routes

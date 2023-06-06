@@ -12,10 +12,17 @@ const useUserData = () => {
     useEffect(() => {
         setState("loading")
         const getData = async () => {
-            const res = await axios.get('/api/user');
-            console.log("res", res.data)
-            setUsers(res.data)
-            setState("ready")
+            try {
+                const res = await axios.get('/api/user/list');
+                if (res.status === 200) {
+                    setUsers(res.data)
+                    setState("ready")
+                } else {
+                    //vypsat error
+                }
+            } catch (err) {
+                //vypsat error
+            }
         }
         getData()
     }, [])

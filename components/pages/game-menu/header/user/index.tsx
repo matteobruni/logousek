@@ -1,15 +1,16 @@
 import React from 'react'
+import { useSession } from 'next-auth/react'
 
 import * as S from './styled'
 
-type UserProps = { userName: string }
 
-const User: React.FC<UserProps> = ({ userName }) => {
+const User: React.FC = () => {
+  const sessionData = useSession()
 
   return (
     <S.UserWrapper key="game-menu-user">
       <S.UserPhoto />
-      <S.UserName type="primary" variant="T5">{userName}</S.UserName>
+      <S.UserName type="primary" variant="T5">{sessionData?.data?.user?.name || ''}</S.UserName>
     </S.UserWrapper>
   )
 }

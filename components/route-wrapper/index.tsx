@@ -1,19 +1,20 @@
-import React, { useMemo } from "react";
+import React, { useMemo } from 'react'
 import Head from 'next/head'
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router'
 
 import PrivateRoute from '@components/auth/private-route'
 import OnlyPublicRoute from '@components/auth/only-public-route'
 import PublicRoute from '@components/auth/public-route'
-import Tutorial from "@components/tutorial";
-import * as S from "./styled";
+import PrivateRouteForAdmin from '@components/auth/private-route-for-admin'
+import Tutorial from '@components/tutorial'
+import * as S from './styled'
 
 type RouteWrapperProps = {
-  title: string,
-  children: React.ReactElement | React.ReactElement[];
-  colorScheme: string;
-  type?: "private" | "onlyPublic" | "all"
-};
+  title: string
+  children: React.ReactElement | React.ReactElement[]
+  colorScheme: string
+  type?: 'private' | 'onlyPublic' | 'all' | 'privateForAdmin'
+}
 
 const BACKGROUND_VARIANTS = {
   initialState: {
@@ -46,11 +47,26 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
   title,
   children,
   colorScheme,
-  type = "all"
+  type = 'all',
 }) => {
-  const router = useRouter();
+  const router = useRouter()
 
-  const AuthWrapper = useMemo(() => type === "private" ? PrivateRoute : type === "onlyPublic" ? OnlyPublicRoute : PublicRoute, [type])
+  const AuthWrapper = useMemo(
+    () => {
+      switch (type) {
+        case "private":
+          return PrivateRoute
+        case "onlyPublic":
+          return OnlyPublicRoute
+        case "privateForAdmin":
+          return PrivateRouteForAdmin
+        default:
+          return PublicRoute
+      }
+    },
+    [type]
+  )
+
   return (
     <AuthWrapper>
       <Head>
@@ -59,8 +75,8 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
       <S.BackgroundWapper
         style={{
           background: colorScheme,
-          position: "relative",
-          transitionDuration: "0.5s",
+          position: 'relative',
+          transitionDuration: '0.5s',
         }}
         initial="initialState"
         animate="animateState"
@@ -72,9 +88,9 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
       >
         <S.ContentWrapper
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "stretch",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'stretch',
           }}
           key={router.route}
           initial="initialState"
@@ -90,6 +106,6 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
         </S.ContentWrapper>
       </S.BackgroundWapper>
     </AuthWrapper>
-  );
-};
-export default RouteWrapper;
+  )
+}
+export default RouteWrapper

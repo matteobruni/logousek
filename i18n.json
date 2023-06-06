@@ -2,6 +2,14 @@
   "locales": ["cs"],
   "defaultLocale": "cs",
   "pages": {
-    "*": ["common", "home", "login", "notFound", "gameMenu", "activity"]
+    "*": [
+      "common",
+      "home",
+      "login",
+      "notFound",
+      "gameMenu",
+      "activity",
+      "admin"
+    ]
   }
 }

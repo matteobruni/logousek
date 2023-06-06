@@ -6,7 +6,7 @@ import { MessageInstance } from 'antd/es/message/interface'
 import ModalContext from '@contexts/modal-context'
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
 import Loading from '@components/loading'
-import { registerCall } from 'calls/login-page-calls'
+import { registerUserCall, registerGuessCall } from 'calls/login-page-calls'
 
 
 
@@ -17,15 +17,18 @@ export const useLogin = (messageApi: MessageInstance) => {
     const onLogin = ({
         nickName,
         password,
+        type
     }: {
         nickName: string
-        password: string
+        password?: string
+        type: "guess" | "registredUser"
     }) => {
         const callApi = async () => {
             try {
                 const result = await signIn('credentials', {
                     nickName,
                     password,
+                    type,
                     redirect: false,
                 })
                 if (result?.ok) {
@@ -67,7 +70,7 @@ export const useLogin = (messageApi: MessageInstance) => {
     }) => {
         const register = async () => {
             try {
-                const result = await registerCall(firstName, surName, nickName, password)
+                const result = await registerUserCall(firstName, surName, nickName, password)
 
                 if (result.status === 200) {
                     messageApi.open({
@@ -83,7 +86,7 @@ export const useLogin = (messageApi: MessageInstance) => {
                         autoWidth: true
                     })
 
-                    setTimeout(() => onLogin({ nickName, password }), 2000)
+                    setTimeout(() => onLogin({ nickName, password, type: "registredUser" }), 2000)
                 }
             } catch (error) {
                 const axiosError = error as AxiosError<{ errorCode: 'string' }>
@@ -104,6 +107,17 @@ export const useLogin = (messageApi: MessageInstance) => {
         register()
     }
 
-    const onLoginGuessHandler = ({ nickName }: { nickName: string }) => { }
-    return { onLogin, onRegister, onLoginGuessHandler }
+    const onLoginGuess = () => {
+        registerGuessCall().then((result) => {
+            if (result.status === 200) {
+                onLogin({ type: "guess", nickName: result.data.nickName })
+            } else {
+                messageApi.open({
+                    type: 'error',
+                    content: tLogin("messages.error.unknown"),
+                })
+            }
+        });
+    }
+    return { onLogin, onRegister, onLoginGuess }
 };

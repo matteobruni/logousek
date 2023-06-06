@@ -8,5 +8,6 @@ export const useTranslateFunctions = () => {
     const { t: tLogin } = useTranslation('login')
     const { t: tGameMenu } = useTranslation('gameMenu')
     const { t: tActivity } = useTranslation('activity')
-    return { tHome, tCommon, tNotFound, tActivity, tGameMenu, tLogin }
+    const { t: tAdmin } = useTranslation('admin')
+    return { tHome, tCommon, tNotFound, tActivity, tGameMenu, tLogin, tAdmin }
 };

@@ -1,0 +1,92 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../styles.ts'
+import appConf from '../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import PropertiesTable from '../../../../../Components/properties-table'
+
+<Meta title="ApplicationModel/Components/Pages/Login/LoginForm/docs" />
+
+# LoginForm
+
+<ComponentInfoTable
+  name="LoginForm"
+  description="This is a form component intended for the login page."
+  source="components/pages/login/login-form"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'onFormFilledHandler',
+      type: `(data: FormValues) => void`,
+      defaultValue: '',
+      description: `This is a callback that is called after the form is filled and submitted.`,
+      required: true,
+    },
+    {
+      name: 'fields',
+      type: `{ [key: string]: { name: string, minLength: number, maxLength: number } }`,
+      defaultValue: '',
+      description: `This is the configuration of individual form items.`,
+      required: true,
+    },
+    {
+      name: 'name',
+      type: `string`,
+      defaultValue: '',
+      description: `Technical name of the form.`,
+      required: true,
+    },
+    {
+      name: 'buttonName',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the text that will appear as the confirm button text.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      LoginForm "1" <-- "1" LoginFormWrapper
+      LoginFormWrapper "1" <-- "1" StyledForm
+      StyledForm "1" <-- "1" ButtonRow
+      StyledForm "1" <-- "n" FormItem1
+      
+      ButtonRow "1" <-- "1" FormItem2
+      FormItem2 "1" <-- "1" Button
+
+      class LoginForm:::green
+      class LoginFormWrapper
+      class StyledForm
+      class ButtonRow:::blue
+      class Button:::blue
+      class FormItem1["Form.Item"]
+      class FormItem2["Form.Item"]
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Button',
+      description:
+        'A Button component. When pressed, it invokes the onClick callback.',
+    },
+    {
+      name: 'ButtonRow',
+      description:
+        'The component wraps the buttons that should come to it in props.children and positions them.',
+    },
+  ]}
+/>

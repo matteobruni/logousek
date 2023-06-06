@@ -19,7 +19,7 @@ async function registerUser(req: NextApiRequest, res: NextApiResponse) {
   // hash password
   user.password = bcrypt.hashSync(password, 10)
 
-  createUser(user)
+  await createUser(user)
   return res.status(200).json({})
 }
 

@@ -9,9 +9,8 @@ import { P5 } from '@components/typography/paragraph'
 import Button from '../../button'
 import RouteWrapper from '../../route-wrapper'
 import ModalContext from '../../../contexts/modal-context'
-import LoginHost from './login-forms/login-host'
-import LoginUser from './login-forms/login-user'
-import RegisterUser from './login-forms/register-user'
+import LoginUser from './login-forms/login-user-form'
+import RegisterUser from './login-forms/register-user-form'
 import * as S from './styled'
 
 const Login: React.FC = () => {
@@ -20,15 +19,7 @@ const Login: React.FC = () => {
 
   const { tLogin } = useTranslateFunctions()
   const themeContext = useContext(ThemeContext)
-  const { onLogin, onRegister, onLoginGuessHandler } = useLogin(messageApi)
-
-  const loginAsGuess = () => {
-    modalContext?.showModal({
-      autoWidth: true,
-      content: <LoginHost onFormFilledHandler={onLoginGuessHandler} />,
-      header: tLogin("modals.loginGuess.title"),
-    })
-  }
+  const { onLogin, onRegister, onLoginGuess } = useLogin(messageApi)
 
   const loginAsUser = () => {
     modalContext?.showModal({
@@ -36,6 +27,10 @@ const Login: React.FC = () => {
       content: <LoginUser onFormFilledHandler={onLogin} />,
       header: tLogin("modals.loginUser.title"),
     })
+  }
+
+  const loginAsGuess = () => {
+    onLoginGuess()
   }
 
   const register = () => {

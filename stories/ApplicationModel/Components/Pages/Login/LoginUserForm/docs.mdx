@@ -1,0 +1,62 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../styles.ts'
+import appConf from '../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import PropertiesTable from '../../../../../Components/properties-table'
+
+<Meta title="ApplicationModel/Components/Pages/Login/LoginUserForm/docs" />
+
+# LoginUserForm
+
+<ComponentInfoTable
+  name="LoginUserForm"
+  description="This is a user login form."
+  source="components/pages/login/login-user-form"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'onFormFilledHandler',
+      type: ` ({
+            nickName,
+            password,
+            type
+          }: {
+            nickName: string
+            password: string
+            type: "registredUser"
+          }) => void`,
+      defaultValue: '',
+      description: `This is a callback that is called after the form is filled and submitted.`,
+      required: true,
+    },
+  ]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      LoginUserForm "1" <-- "1" LoginForm
+
+      class LoginUserForm:::green
+      class LoginForm:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'LoginForm',
+      description: 'This is a form component intended for the login page.',
+    },
+  ]}
+/>

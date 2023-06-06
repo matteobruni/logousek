@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react'
-import { useSession } from 'next-auth/react'
 import useGameMenu from '@hooks/useGameMenu'
 
-import { usePlayerScore } from '@hooks/usePlayerData'
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
 import activityConf from '@constants/activity-confs/activity-conf'
 import RoundFooter from '@components/round-footer'
@@ -24,8 +22,7 @@ const activityTypes = activityConf.map((activity) => ({
 }))
 
 const GameMenu: React.FC = () => {
-  const [{ score }] = usePlayerScore()
-  const sessionData = useSession()
+
   const { currentSlide, activeActivity, selectNewActivityHandle, activeActivitColor } = useGameMenu()
   const { tGameMenu } = useTranslateFunctions()
 
@@ -40,7 +37,7 @@ const GameMenu: React.FC = () => {
       type="private"
     >
       <S.MenuWrapper>
-        <Header points={score} userName={sessionData?.data?.user?.name || ''} />
+        <Header />
         <SlideList currentSlide={currentSlide} />
         <RoundFooter
           footerConf={activityTypes}

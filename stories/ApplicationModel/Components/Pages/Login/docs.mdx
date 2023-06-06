@@ -1,0 +1,81 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../styles.ts'
+import appConf from '../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ReferenceList from '../../../../Components/reference-list'
+import PropertiesTable from '../../../../Components/properties-table'
+
+<Meta title="ApplicationModel/Components/Pages/Login/docs" />
+
+# Login
+
+<ComponentInfoTable
+  name="Login"
+  description="The login page is the page where the users log in and register. After logging in, you are redirected to the game-menu page. Only non-logged in users can visit this page."
+  source="components/pages/login"
+/>
+
+<PropertiesTable
+  tableRows={[
+
+]}
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+     direction RL
+      Login "1" <-- "1" RouteWrapper
+      RouteWrapper "1" <-- "1" LoginWrapper
+      LoginWrapper "1" <-- "1" Header
+      LoginWrapper "1" <-- "1" LoginButtonsWrapper
+      Header "1" <-- "1" P5
+      Header "1" <-- "1" Link
+      LoginButtonsWrapper "1" <-- "1" Button1
+      LoginButtonsWrapper "1" <-- "1" Button2
+
+     Button1 --|>  loginAsUser : onClick
+     Button2 --|>  loginAsGuess : onClick
+
+      class Login:::green
+      class RouteWrapper:::blue
+      class LoginWrapper
+      class Header
+      class P5:::blue
+      class Link
+      class LoginButtonsWrapper
+      class Button1["Button"]:::blue
+      class Button2["Button"]:::blue
+
+
+      class loginAsUser:::oval
+      class loginAsGuess:::oval
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Button',
+      description:
+        'A Button component. When pressed, it invokes the onClick callback.',
+    },   
+    {
+      name: 'RouteWrapper', 
+      description:
+        'This component is responsible for handling authentication, adding title of document, adding basic page styles and providing a tutorial',
+   
+    },
+    {
+      name: 'P5',
+      description: 'It is a level 3 Paragraph component.',
+    },
+
+]}
+/>

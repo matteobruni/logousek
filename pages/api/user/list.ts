@@ -4,20 +4,19 @@ import authorize from 'backend/middleware/authorize'
 
 
 import {
-  deleteUser,
+  getAllUsers,
 } from '../../../prisma/user'
 
-async function deleteUserMiddleware(req: NextApiRequest, res: NextApiResponse) {
+async function listUsersMiddleware(req: NextApiRequest, res: NextApiResponse) {
   const isAuthorized = await authorize(req, res, "ADMIN")
-
   if (isAuthorized) {
-    const { userId } = req.body.params
     try {
-      await deleteUser({ id: userId })
-      return res.status(200).json({})
+      const users = await getAllUsers()
+      return res.json(users)
     } catch (err) {
-      console.error("error", err)
-      return res.status(500).json({})
+      return res.status(500).json({
+        errorCode: 'server_error',
+      })
     }
   } else {
     return res.status(401).json({
@@ -26,4 +25,4 @@ async function deleteUserMiddleware(req: NextApiRequest, res: NextApiResponse) {
   }
 }
 
-export default deleteUserMiddleware
+export default listUsersMiddleware
