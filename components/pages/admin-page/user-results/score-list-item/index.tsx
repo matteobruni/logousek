@@ -5,8 +5,8 @@ import { games, GameType } from 'constants/activity-confs/activity-conf'
 import { getFormatedDateTime } from '@helpers/date-helper'
 import { useTranslateFunctions } from '@hooks/useTranslateFunctions'
 
-import { ScoreListType } from '..'
-import Paggination from '../paggination'
+import { ScoreListType } from '@hooks/useScore'
+import Paggination from '../../paggination'
 import ScoreDataVisualization from './score-data-visualization'
 
 const { Panel } = Collapse
