@@ -1,0 +1,52 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../../styles.ts'
+import appConf from '../../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/Pages/AdminPage/UserResult/ScoreListItem/docs" />
+
+# ScoreListItem
+
+<ComponentInfoTable
+  name="ScoreListItem"
+  description="The component displays pagination."
+  source="components/pages/admin-pages/user-results/score-list-item"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      ScoreListItem "1" <-- "1" Collapse
+      Collapse "1" <-- "n" Panel
+      Collapse "1" <-- "1" Paggination
+      Panel "1" <-- "1" Table
+      Table "1" <-- "1" ScoreDataVisualization
+
+      class ScoreListItem:::green
+      class Collapse
+      class Panel
+      class Table
+      class ScoreDataVisualization:::blue
+      class Paggination:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Paggination',
+      description: 'The component displays pagination.',
+    },
+    {
+      name: 'ScoreDataVisualization',
+      description: 'The component displays the results of the game.',
+    },
+  ]}
+/>

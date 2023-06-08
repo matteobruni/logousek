@@ -25,12 +25,14 @@ import PropertiesTable from '../../../../../../Components/properties-table'
      classDiagram
       User "1" <-- "1" UserWrapper
       UserWrapper "1" <-- "1" UserPhoto
+      UserPhoto "1" <-- "1" ProfileIcon
       UserWrapper "1" <-- "1" UserName
 
       class User:::green
       class UserWrapper
       class UserPhoto
       class UserName
+      class ProfileIcon
 
 `}
 />

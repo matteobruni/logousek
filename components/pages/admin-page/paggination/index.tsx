@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
-import { Collapse } from 'antd'
+import React from 'react'
 
-import { ScoreListType } from '..'
 import * as S from './styled'
-const { Panel } = Collapse
 
 type PagginationType = {
     maxIndexes: number
@@ -17,15 +14,17 @@ const Paggination: React.FC<PagginationType> = ({
     currentList
 }) => {
     const getLinks = () => {
-        const linkArray = []
-        for (let i = 0; i < maxIndexes; i++) {
-            linkArray.push(
-                <S.Link onClick={() => onLinkClick(i)} isActive={currentList === i} key={i}>
-                    {i}
-                </S.Link>
-            )
+        const linkArray: React.ReactNode[] = []
+        if (maxIndexes > 1) {
+            for (let i = 0; i < maxIndexes; i++) {
+                linkArray.push(
+                    <S.Link onClick={() => onLinkClick(i)} isActive={currentList === i} key={i}>
+                        {i}
+                    </S.Link>
+                )
+            }
+            return linkArray
         }
-
         return linkArray
     }
 

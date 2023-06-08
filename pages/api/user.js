@@ -9,7 +9,7 @@
 import {
   createUser,
   deleteUser,
-  getAllUsers,
+  listUsers,
   getUserById,
   updateUser,
 } from '../../prisma/user'
@@ -29,7 +29,7 @@ export default async function handle(req, res) {
           }
         } else {
           // Otherwise, fetch all users
-          const users = await getAllUsers()
+          const users = await listUsers()
           return res.json(users)
         }
       }

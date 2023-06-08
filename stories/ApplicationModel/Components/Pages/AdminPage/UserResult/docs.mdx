@@ -1,0 +1,78 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../styles.ts'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../Components/reference-list'
+import ComponentRenderTable from '../../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Pages/AdminPage/UserResult/docs" />
+
+# UserResult
+
+<ComponentInfoTable
+  name="UserResult"
+  description="The component aims to display the user's results."
+  source="components/pages/admin-pages/user-results"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      UserResult "1" <-- "1" Row
+      Row "1" <-- "1" Col1
+      Row "1" <-- "1" Col2: Array.isArray(scoreList) && scoreList.length
+      Row "1" <-- "1" Col3: Array.isArray(scoreList) && scoreList.length
+      Row "1" <-- "1" Col4: Array.isArray(scoreList) && scoreList.length
+      Col1 "1" <-- "1" Filter
+      Col2 "1" <-- "1" Chart
+      Col3 "1" <-- "1" ScoreListItem
+      Col4 "1" <-- "1" P4
+
+      class UserResult:::green
+      class Row
+      class Col1["Col"]
+      class Col2["Col"]
+      class Col3["Col"]
+      class Col4["Col"]
+
+      class Filter:::blue
+      class Chart:::blue
+      class ScoreListItem:::blue
+      class P4:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'Col',
+      rules: `Rendered only if scoreList is array and has one or more items.`,
+    },
+  ]}
+/>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Filter',
+      rules: `This is a filter form.`,
+    },
+    {
+      name: 'Chart',
+      rules: `This is a graph showing the user's results for a filtred period and in a filtred activity.`,
+    },
+    {
+      name: 'P4',
+      rules: `It is a level 4 Paragraph component.`,
+    },
+    {
+      name: 'ScoreListItem',
+      rules: `This is a statement of the user's result for the filtred period`,
+    },
+  ]}
+/>

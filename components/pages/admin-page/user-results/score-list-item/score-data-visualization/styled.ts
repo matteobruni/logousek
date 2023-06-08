@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 
-export const ScoreDataVisualization = styled.div`
+export const ScoreDataVisualizationContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -21,4 +21,8 @@ export const ScoreDataItemSpan = styled.span<{ color?: string }>`
     return color || "none"
   }};
   text-align: center;
+`
+
+export const ScoreDataVisualizationWrapper = styled.div`
+  margin-top: 32px;
 `

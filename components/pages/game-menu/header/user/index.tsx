@@ -9,7 +9,9 @@ const User: React.FC = () => {
 
   return (
     <S.UserWrapper key="game-menu-user">
-      <S.UserPhoto />
+      <S.UserPhoto>
+        <S.ProfileIcon className={'material-icons'}>person</S.ProfileIcon>
+      </S.UserPhoto>
       <S.UserName type="primary" variant="T5">{sessionData?.data?.user?.name || ''}</S.UserName>
     </S.UserWrapper>
   )

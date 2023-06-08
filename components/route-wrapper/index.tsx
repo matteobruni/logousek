@@ -14,6 +14,7 @@ type RouteWrapperProps = {
   children: React.ReactElement | React.ReactElement[]
   colorScheme: string
   type?: 'private' | 'onlyPublic' | 'all' | 'privateForAdmin'
+  hideTutorial?: boolean
 }
 
 const BACKGROUND_VARIANTS = {
@@ -48,6 +49,7 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
   children,
   colorScheme,
   type = 'all',
+  hideTutorial = false
 }) => {
   const router = useRouter()
 
@@ -102,7 +104,7 @@ const RouteWrapper: React.FC<RouteWrapperProps> = ({
           variants={CONTENT_VARIANTS}
         >
           {children}
-          <Tutorial />
+          {hideTutorial ? null : <Tutorial />}
         </S.ContentWrapper>
       </S.BackgroundWapper>
     </AuthWrapper>

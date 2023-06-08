@@ -3,7 +3,10 @@
   "buttons": {
     "play": "Hrát",
     "create": "Vytvořit",
-    "send": "Odeslat"
+    "send": "Odeslat",
+    "delete": "Smazat",
+    "filter": "Filtrovat",
+    "reset": "Resetovat"
   },
   "sideBar": {
     "currentSiteNavigation": {

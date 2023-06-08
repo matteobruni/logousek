@@ -1,0 +1,35 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../styles.ts'
+import appConf from '../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/Pages/AdminPage/Paggination/docs" />
+
+# Paggination
+
+<ComponentInfoTable
+  name="Paggination"
+  description="The component displays pagination."
+  source="components/pages/admin-pages/paggination"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      Paggination "1" <-- "1" LinksWrapper
+      LinksWrapper "1" <-- "n" Link
+
+      class Paggination:::green
+      class LinksWrapper
+      class Link
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList tableRows={[]} />

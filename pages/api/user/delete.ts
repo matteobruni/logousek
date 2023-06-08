@@ -10,6 +10,7 @@ import {
 async function deleteUserMiddleware(req: NextApiRequest, res: NextApiResponse) {
   const isAuthorized = await authorize(req, res, "ADMIN")
 
+  console.log("userId", isAuthorized, req.body.params)
   if (isAuthorized) {
     const { userId } = req.body.params
     try {

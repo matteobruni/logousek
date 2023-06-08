@@ -27,7 +27,6 @@ export const authOptions: NextAuthOptions = {
             },
 
             async authorize(credentials) {
-                console.log('credentials', credentials)
                 if (credentials?.type === 'registredUser') {
                     const { nickName, password } = credentials || {}
                     if (nickName && password) {
@@ -49,7 +48,7 @@ export const authOptions: NextAuthOptions = {
                     const user = (await getUserByName({ nickName }))[0]
                     return {
                         id: user.id,
-                        name: `${user.firstName} ${user.surName}`,
+                        name: `${user.firstName}`,
                         role: user.type || 'nic',
                     }
                 }

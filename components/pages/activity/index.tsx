@@ -53,7 +53,7 @@ const Activity = () => {
   const [currentTask, setCurrentTask] = useState(1)
   const [correctTasks, setCorrectTasks] = useState(0)
 
-  const [results, setResults] = useState({})
+  const [results, setResults] = useState<boolean[]>([])
   const [wasChanged, setWasChanged] = useState(false)
   const [gameState, setGameState] = useState('playing')
   const router = useRouter()
@@ -159,14 +159,14 @@ const Activity = () => {
   const fail = () => {
     playWrongAudio()
     setCurrentTask((v) => ++v)
-    setResults((v) => ({ ...v, [currentTask]: false }))
+    setResults((v) => ([...v, false]))
   }
 
   const success = () => {
     playSuccessAudio()
     setCurrentTask((v) => ++v)
     setCorrectTasks((v) => ++v)
-    setResults((v) => ({ ...v, [currentTask]: true }))
+    setResults((v) => ([...v, true]))
   }
 
   const onHandleChanged = () => {

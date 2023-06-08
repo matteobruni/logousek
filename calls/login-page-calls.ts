@@ -1,11 +1,4 @@
-import axios from 'axios'
-
-const callApi = async (endpoint: string, data: any, method: "POST" | "GET") => {
-    const usedFunction = method === "GET" ? axios.get : axios.post
-    return await usedFunction(`/api/${endpoint}`, {
-        params: data,
-    })
-}
+import { callApi } from "./calls"
 
 export const registerUserCall = (firstName: string, surName: string, nickName: string, password: string) => {
 

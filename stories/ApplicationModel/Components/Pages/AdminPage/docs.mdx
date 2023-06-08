@@ -1,0 +1,81 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../styles.ts'
+import appConf from '../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../Components/component-info-table'
+import ReferenceList from '../../../../Components/reference-list'
+import ComponentRenderTable from '../../../../Components/component-render'
+
+<Meta title="ApplicationModel/Components/Pages/AdminPage/docs" />
+
+# AdminPage
+
+<ComponentInfoTable
+  name="AdminPage"
+  description="This is a page intended for administrators. User results can be checked here."
+  source="components/pages/admin-pages"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      AdminPage "1" <-- "1" RouteWrapper
+      RouteWrapper "1" <-- "1" AdminPageWrapper
+      AdminPageWrapper "1" <-- "1" ClickableIconWrapper
+      AdminPageWrapper "1" <-- "1" AdminPageContainer
+      ClickableIconWrapper "1" <-- "1" ClickableIcon
+      AdminPageContainer "1" <-- "1" AdminPageInnerContainer
+      AdminPageInnerContainer "1" <-- "1" Row
+      Row "1" <-- "1" Col1
+      Row "1" <-- "1" Col2: selectedUser has value
+      Col1 "1" <-- "1" UserSearch
+      Col2 "1" <-- "1" UserResult
+
+      class AdminPage:::green
+      class RouteWrapper:::blue
+      class AdminPageWrapper
+      class ClickableIconWrapper
+      class ClickableIcon:::blue
+      class AdminPageContainer
+      class AdminPageInnerContainer
+      class Row
+      class Col1["Col"]
+      class Col2["Col"]
+      class UserSearch:::blue
+      class UserResult:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ComponentRenderTable
+  tableRows={[
+    {
+      name: 'Col',
+      rules: `Rendered only if selectedUser has value`,
+    },
+
+]}
+/>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'RouteWrapper',
+      description:
+        'This component is responsible for handling authentication, adding title of document, adding basic page styles and providing a tutorial',
+    },
+    {
+      name: 'UserSearch',
+      description:
+        'The component is responsible for rendering the search input with users list.',
+    },
+    {
+      name: 'UserResult',
+      description: 'The component displays the results of the given user.',
+    },
+  ]}
+/>

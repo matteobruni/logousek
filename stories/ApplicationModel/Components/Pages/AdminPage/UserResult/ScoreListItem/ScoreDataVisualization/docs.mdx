@@ -1,0 +1,53 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../../../styles.ts'
+import appConf from '../../../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/Pages/AdminPage/UserResult/ScoreDataVisualization/docs" />
+
+# ScoreDataVisualization
+
+<ComponentInfoTable
+  name="ScoreDataVisualization"
+  description="The component displays pagination."
+  source="components/pages/admin-pages/user-results/score-list-item/score-data-visualization"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      ScoreDataVisualization "1" <-- "1" ScoreDataVisualizationWrapper
+      ScoreDataVisualizationWrapper "1" <-- "n" ScoreDataVisualizationContainer
+      ScoreDataVisualizationWrapper "1" <-- "1" P5
+      ScoreDataVisualizationContainer "1" <-- "n" ScoreDataItem
+      ScoreDataItem "1" <-- "1" ScoreDataItemSpan1
+      ScoreDataItem "1" <-- "1" ScoreDataItemSpan2
+      ScoreDataItemSpan2 "1" <-- "1" i
+
+      class ScoreDataVisualization:::green
+      class ScoreDataVisualizationWrapper
+      class P5:::blue
+      class ScoreDataVisualizationContainer
+      class ScoreDataItem
+      class Paggination
+      class ScoreDataItemSpan1["ScoreDataItemSpan"]
+      class ScoreDataItemSpan2["ScoreDataItemSpan"]
+      class i
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'P5',
+      description: 'It is a level 3 Paragraph component.',
+    },
+  ]}
+/>

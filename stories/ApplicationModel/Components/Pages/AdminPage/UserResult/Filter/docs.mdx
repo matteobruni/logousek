@@ -1,0 +1,65 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../../styles.ts'
+import appConf from '../../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/Pages/AdminPage/UserResult/Filter/docs" />
+
+# Filter
+
+<ComponentInfoTable
+  name="Filter"
+  description="This is a filter form."
+  source="components/pages/admin-pages/user-results/filter"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      Filter "1" <-- "1" Form
+      Form "1" <-- "n" Row
+      Row "1" <-- "1" Col1
+      Col1 "1" <-- "1" FormItem1
+      Row "1" <-- "1" Col2
+      Col2 "1" <-- "1" FormItem2
+      Row "1" <-- "1" FilterButtonRow
+      FormItem1 "1" <-- "1" Select
+      FormItem2 "1" <-- "1" StyledRangePicker
+      FilterButtonRow "1" <-- "1" Button1
+      FilterButtonRow "1" <-- "1" Button2
+      Button1 --|> handleFormSubmit
+      Button2 --|> onFilterReset
+
+      class Filter:::green
+      class Form
+      class Row
+      class Col1["Col"]
+      class Col2["Col"]
+      class FormItem1["Form.Item"]
+      class FormItem2["Form.Item"]
+      class Select
+      class StyledRangePicker
+      class FilterButtonRow
+      class Button1["Button"]:::blue
+      class Button2["Button"]:::blue
+      class handleFormSubmit:::oval
+      class onFilterReset:::oval
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'Button',
+      description:
+        'A Button component. When pressed, it invokes the onClick callback.',
+    },
+  ]}
+/>

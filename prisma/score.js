@@ -37,10 +37,9 @@ export const addScore = async (
   score,
   activityType,
   difficulty,
-  resultData
+  data
 ) => {
-  console.log('resultData', resultData)
   return await prisma.score.create({
-    data: { userId, points: score, activityType, difficulty }, //resultData },
+    data: { userId, points: score, activityType, difficulty, data },
   })
 }

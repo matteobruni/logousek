@@ -1,3 +1,37 @@
 {
-  "title": "Logoušek - Stránky pro administrátory"
+  "title": "Logoušek - Stránky pro administrátory",
+  "userType": {
+    "admin": "Administrator",
+    "host": "Host",
+    "registred": "Registrovaný uživatel"
+  },
+  "userList": {
+    "item": {
+      "nicknameParagraph": "Přezdívka uživatele: {{nickName}}",
+      "dateParagraph": "Vytvořen: {{date}}",
+      "notSpecified": "Neuvedeno",
+      "userId": "Id uživatele: {{id}}",
+      "userTypeParagraph": "Typ uživatele: {{type}}"
+    }
+  },
+  "scoreList": {
+    "item": {
+      "tableHeader": {
+        "score": "Skore",
+        "activityTypeTitle": "Typ Aktivity",
+        "activityTypeName": "Technický název Aktivity",
+        "difficulty": "Složitost"
+      },
+      "withoutName": "Bez názvu"
+    }
+  },
+  "errors": {
+    "userListError": "Seznam uživatelů se nepovedlo načíst.",
+    "userDeleteError": "Uživatele se nepovedlo smazat."
+  },
+  "successMessages": {
+    "userDeleteSuccess": "Uživatel byl smazán."
+  },
+  "results": "Výsledky",
+  "noData": "Ve Vámi zvoleném období nebyla nazeleza žádná data"
 }

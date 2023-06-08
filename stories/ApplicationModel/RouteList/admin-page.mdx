@@ -1,0 +1,38 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+
+import * as S from '../styles.ts'
+import appConf from '../../../constants/app-conf'
+import RouterTable from '../../Components/router-table'
+import ReferenceList from '../../Components/reference-list'
+
+# AdminPage
+
+<RouterTable
+  name="AdminPage"
+  description="During the route, the user selects the activity and difficulty level they wish to play. Only logged in users can visit this page"
+  source="components/pages/admin-page"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      AdminPage "1" <-- "1" AdminPageComponent
+
+      class AdminPage:::green
+      class AdminPageComponent["AdminPage"]:::blue
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+    {
+      name: 'AdminPage',
+      description:
+        'This is a page intended for administrators. User results can be checked here.',
+    },
+  ]}
+/>

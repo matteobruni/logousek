@@ -1,0 +1,47 @@
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { Meta } from '@storybook/blocks'
+
+import * as S from '../../../../../styles.ts'
+import appConf from '../../../../../../../constants/app-conf'
+import ComponentInfoTable from '../../../../../../Components/component-info-table'
+import ReferenceList from '../../../../../../Components/reference-list'
+
+<Meta title="ApplicationModel/Components/Pages/AdminPage/UserResult/Chart/docs" />
+
+# Chart
+
+<ComponentInfoTable
+  name="Chart"
+  description="This is a Chart."
+  source="components/pages/admin-pages/user-results/chart"
+/>
+
+<S.MermaidWrapper>
+<Mermaid
+  chart={`
+     classDiagram
+      Chart "1" <-- "1" ResponsiveContainer
+      ResponsiveContainer "1" <-- "n" LineChart
+      LineChart "1" <-- "1" XAxis
+      LineChart "1" <-- "1" Tooltip
+      LineChart "1" <-- "1" CartesianGrid
+      LineChart "1" <-- "1" Line
+      
+      class Chart:::green
+      class ResponsiveContainer
+      class LineChart
+      class XAxis
+      class Tooltip
+      class CartesianGrid
+      class Line
+
+`}
+/>
+
+</S.MermaidWrapper>
+
+<ReferenceList
+  tableRows={[
+
+]}
+/>
