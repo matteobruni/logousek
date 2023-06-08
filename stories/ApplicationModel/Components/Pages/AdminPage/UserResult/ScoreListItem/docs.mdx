@@ -5,6 +5,7 @@ import * as S from '../../../../../styles.ts'
 import appConf from '../../../../../../../constants/app-conf'
 import ComponentInfoTable from '../../../../../../Components/component-info-table'
 import ReferenceList from '../../../../../../Components/reference-list'
+import PropertiesTable from '../../../../../../Components/properties-table'
 
 <Meta title="ApplicationModel/Components/Pages/AdminPage/UserResult/ScoreListItem/docs" />
 
@@ -14,6 +15,26 @@ import ReferenceList from '../../../../../../Components/reference-list'
   name="ScoreListItem"
   description="The component displays pagination."
   source="components/pages/admin-pages/user-results/score-list-item"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'scoreList',
+      type: `{
+          activityType: string
+          createdAt: string
+          difficulty: string
+          id: string
+          points: number
+          userId: string
+          data: boolean[]
+      }[]`,
+      defaultValue: '',
+      description: `This is the data score of the user.`,
+      required: true,
+    },
+  ]}
 />
 
 <S.MermaidWrapper>

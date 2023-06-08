@@ -9,11 +9,11 @@ import ScoreListItem from './score-list-item'
 import Chart from './chart'
 import Filter from './filter'
 
-type UserResultProps = {
+type UserResultsProps = {
   selectedUser?: string
 }
 
-const UserResult: React.FC<UserResultProps> = ({ selectedUser }) => {
+const UserResults: React.FC<UserResultsProps> = ({ selectedUser }) => {
   const { onFilterChange, scoreList } = useScore(selectedUser);
   const { tAdmin } = useTranslateFunctions()
   return (
@@ -39,4 +39,4 @@ const UserResult: React.FC<UserResultProps> = ({ selectedUser }) => {
   )
 }
 
-export default UserResult
+export default UserResults

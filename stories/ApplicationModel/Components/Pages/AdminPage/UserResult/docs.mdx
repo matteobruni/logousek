@@ -5,22 +5,35 @@ import * as S from '../../../../styles.ts'
 import ComponentInfoTable from '../../../../../Components/component-info-table'
 import ReferenceList from '../../../../../Components/reference-list'
 import ComponentRenderTable from '../../../../../Components/component-render'
+import PropertiesTable from '../../../../../Components/properties-table'
 
-<Meta title="ApplicationModel/Components/Pages/AdminPage/UserResult/docs" />
+<Meta title="ApplicationModel/Components/Pages/AdminPage/UserResults/docs" />
 
-# UserResult
+# UserResults
 
 <ComponentInfoTable
-  name="UserResult"
+  name="UserResults"
   description="The component aims to display the user's results."
   source="components/pages/admin-pages/user-results"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'selectedUser',
+      type: `string`,
+      defaultValue: '',
+      description: `This is the user ID of the user.`,
+      required: false,
+    },
+  ]}
 />
 
 <S.MermaidWrapper>
 <Mermaid
   chart={`
      classDiagram
-      UserResult "1" <-- "1" Row
+      UserResults "1" <-- "1" Row
       Row "1" <-- "1" Col1
       Row "1" <-- "1" Col2: Array.isArray(scoreList) && scoreList.length
       Row "1" <-- "1" Col3: Array.isArray(scoreList) && scoreList.length
@@ -30,7 +43,7 @@ import ComponentRenderTable from '../../../../../Components/component-render'
       Col3 "1" <-- "1" ScoreListItem
       Col4 "1" <-- "1" P4
 
-      class UserResult:::green
+      class UserResults:::green
       class Row
       class Col1["Col"]
       class Col2["Col"]

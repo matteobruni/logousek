@@ -5,6 +5,7 @@ import * as S from '../../../../../styles.ts'
 import appConf from '../../../../../../../constants/app-conf'
 import ComponentInfoTable from '../../../../../../Components/component-info-table'
 import ReferenceList from '../../../../../../Components/reference-list'
+import PropertiesTable from '../../../../../../Components/properties-table'
 
 <Meta title="ApplicationModel/Components/Pages/AdminPage/UserResult/Filter/docs" />
 
@@ -14,6 +15,33 @@ import ReferenceList from '../../../../../../Components/reference-list'
   name="Filter"
   description="This is a filter form."
   source="components/pages/admin-pages/user-results/filter"
+/>
+
+<PropertiesTable
+  tableRows={[
+    {
+      name: 'onFilterChange',
+      type: `({
+          from,
+          to,
+          activityTypes,
+        }: {
+          from?: string
+          to?: string
+          activityTypes?: string[]
+        }) => void`,
+      defaultValue: '',
+      description: `A callback that is called after the filter changes.`,
+      required: true,
+    },
+    {
+      name: 'isUserSelected',
+      type: `boolean`,
+      defaultValue: '',
+      description: `This is information about whether a user has been selected.`,
+      required: true,
+    },
+  ]}
 />
 
 <S.MermaidWrapper>

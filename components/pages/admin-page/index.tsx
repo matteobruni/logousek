@@ -13,19 +13,6 @@ import UserResult from './user-results'
 import * as S from './styled'
 import { fontSize } from 'styles'
 
-
-
-export type ScoreListType = {
-  activityType: string
-  createdAt: string
-  difficulty: string
-  id: string
-  points: number
-  userId: string
-  data: boolean[]
-}
-
-
 function AdminPage() {
   const themeContext = useContext(ThemeContext)
   const { tAdmin } = useTranslateFunctions()

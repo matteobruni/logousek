@@ -31,16 +31,6 @@ type FormType = {
   dateRange?: (Moment | undefined)[]
 }
 
-export type ScoreListType = {
-  activityType: string
-  createdAt: string
-  difficulty: string
-  id: string
-  points: number
-  userId: string
-  scoreData: boolean[]
-}
-
 type FilterProps = {
   onFilterChange: ({
     from,

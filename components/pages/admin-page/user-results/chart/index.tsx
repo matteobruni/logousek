@@ -5,15 +5,7 @@ import {
   ResponsiveContainer
 } from 'recharts'
 
-export type ScoreListType = {
-  activityType: string
-  createdAt: string
-  difficulty: string
-  id: string
-  points: number
-  userId: string
-  data: boolean[]
-}
+import { ScoreListType } from '@hooks/useScore';
 
 
 type ChartProps = { scoreList?: ScoreListType[] }
