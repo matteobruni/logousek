@@ -1,6 +1,6 @@
 import bcrypt from 'bcryptjs'
 
-import { getUserByName } from '../../../prisma/user'
+import { getUserByName } from 'backend/dao/user'
 
 import NextAuth, { NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
@@ -30,7 +30,7 @@ export const authOptions: NextAuthOptions = {
                 if (credentials?.type === 'registredUser') {
                     const { nickName, password } = credentials || {}
                     if (nickName && password) {
-                        const user = (await getUserByName({ nickName }))[0]
+                        const user = (await getUserByName(nickName))[0]
                         if (!user || !bcrypt.compareSync(password, user.password)) {
                             throw new Error('wrong_password')
                         }
@@ -45,7 +45,7 @@ export const authOptions: NextAuthOptions = {
                     }
                 } else {
                     const { nickName } = credentials || {}
-                    const user = (await getUserByName({ nickName }))[0]
+                    const user = (await getUserByName(nickName))[0]
                     return {
                         id: user.id,
                         name: `${user.firstName}`,

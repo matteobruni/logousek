@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { JSONTree } from 'react-json-tree'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ApiRoutesInfoTable from '../../../Components/api-routes-info-table'
+import ApiErrors from '../../../Components/api-errors'
+
+<Meta title="ApplicationModel/ApiRoutes/user/register-guess" />
+
+# user/register-guess
+
+<ApiRoutesInfoTable
+  name={'user/register-guess'}
+  description={`The endpoint registers the guess.`}
+  source="pages/api/user/register-guess"
+  httpMethod="POST"
+  roles={[]}
+/>
+
+<JSONTree shouldExpandNodeInitially={() => true} data={{}} />
+
+## Input validation
+
+<JSONTree shouldExpandNodeInitially={() => true} data={{}} />
+
+    ## Output
+
+<JSONTree shouldExpandNodeInitially={() => true} data={{}} />
+
+    ## Output Validation
+
+<JSONTree shouldExpandNodeInitially={() => true} data={{}} />
+
+    ## Scenario
+    ### 1. Check httpMethod
+    #### 1.1. ERROR - If httpMethod is not POST. return endpoint_not_found error
+
+    ### 2. Check dtoIn
+    #### 2.1. WARNING - dtoIn contains keys beyond the scope of dtoInType. get warning unsupportedKeys to dtoOut.
+
+    ### 3. Create a new user
+    ### 3.1. Check if a user with the same name already exists
+    ### 3.1.2. ERROR - Failed to create new user. return server_error error
+
+    ### 4. Returns properly filled dtoOut.
+
+<ApiErrors
+  apiErrorsList={[
+    {
+      type: 'error',
+      code: 'endpoint_not_found',
+      message: 'There was a wrong method in the request.',
+    },
+    {
+      type: 'error',
+      code: 'server_error',
+      message:
+        "Something went wrong on the server side. Probably can't connect to DB.",
+    },
+  ]}
+/>

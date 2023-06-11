@@ -135,10 +135,11 @@
     "components/timer/index.tss",
     "helpers/date-helper.tsx",
     "components/activities/audio/audio-differentiation/index.tsx",
-    "prisma/user.ts",
+    "prisma/user.js",
     "components/modal/backdrop/particles/confetti/index.js",
     "backend/middleware/authorize.ts",
-    "prisma/prisma.js"
+    "prisma/prisma.ts",
+    "prisma/score.js"
   ],
   "exclude": [
     "node_modules"

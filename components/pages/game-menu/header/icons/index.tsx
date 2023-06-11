@@ -21,7 +21,7 @@ const Icons: React.FC = () => {
 
   const onAdminPagesRedirect = () => {
     router.push({
-      pathname: routes.adminPages,
+      pathname: routes.adminPage,
     })
   }
 

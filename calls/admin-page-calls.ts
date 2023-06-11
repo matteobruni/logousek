@@ -7,14 +7,14 @@ export const activityGetScore = (
     activityTypes?: string[]
 ) => {
     return callApi(
-        'activity/get-score',
+        'activity/list-score',
         {
             userId: selectUser,
             from,
             to,
             activityTypes,
         },
-        'GET'
+        'POST'
     )
 }
 
@@ -26,9 +26,11 @@ export const userList = (
     return callApi(
         'user/list',
         {
-            searchUserString: searchUserString,
-            limit,
-            cursor,
+            params: {
+                searchUserString: searchUserString,
+                limit,
+                cursor,
+            }
         },
         'GET'
     )

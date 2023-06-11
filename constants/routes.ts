@@ -3,7 +3,7 @@ const routes = {
     gameMenu: "/game-menu",
     login: "/login",
     activity: "/activity",
-    adminPages: "/admin-pages"
+    adminPage: "/admin-page"
 }
 
 export default routes

@@ -27,11 +27,6 @@ enum TYPE {
   ADMIN
 }
 
-// model Host {
-//   id        String @id @default(auto()) @map("_id") @db.ObjectId
-//   createdAt DateTime @default(now())
-// }
-
 model Score {
   id            String @id @default(auto()) @map("_id") @db.ObjectId
   createdAt     DateTime   @default(now())
@@ -39,27 +34,5 @@ model Score {
   points        Int
   activityType  String
   difficulty    String?
-  // resultData    ResultData
   data          Boolean[]
 }
-
-// type ResultData {
-//   exercise0 Boolean?
-//   exercise1 Boolean?
-//   exercise2 Boolean?
-//   exercise3 Boolean?
-//   exercise4 Boolean?
-//   exercise5 Boolean?
-//   exercise6 Boolean?
-//   exercise7 Boolean?
-//   exercise8 Boolean?
-//   exercise9 Boolean?
-// }
-
-// model ScoreData {
-//   id            String @id @default(auto()) @map("_id") @db.ObjectId
-//   order         Int
-//   isCorrect     Boolean
-//   score         Score @relation(fields: [scoreId], references: [id])
-//   scoreId       String @db.ObjectId
-// }

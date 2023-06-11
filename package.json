@@ -27,6 +27,7 @@
     "bcryptjs": "^2.4.3",
     "eslint-plugin-prettier": "^4.2.1",
     "framer-motion": "^7.2.1",
+    "i": "^0.3.7",
     "i18next": "^22.4.6",
     "immutability-helper": "^3.1.1",
     "jsonwebtoken": "^9.0.0",
@@ -40,6 +41,7 @@
     "next-i18next": "^13.0.3",
     "next-translate": "^2.0.4",
     "nodemailer": "^6.8.0",
+    "npm": "^9.7.1",
     "rdndmb-html5-to-touch": "^7.1.0",
     "react": "^18.2.0",
     "react-animated-cursor": "^2.5.2",
@@ -53,6 +55,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.5",
     "react-i18next": "^12.1.1",
+    "react-json-tree": "^0.18.0",
+    "react-json-view-lite": "^0.9.6",
     "react-router-dom": "6",
     "react-scroll-parallax": "^3.3.2",
     "react-tsparticles": "^2.9.3",
@@ -63,7 +67,8 @@
     "tsparticles-engine": "^2.9.3",
     "tsparticles-preset-confetti": "^2.9.3",
     "tsparticles-preset-fireworks": "^2.9.3",
-    "tsparticles-shape-confetti": "^1.14.2"
+    "tsparticles-shape-confetti": "^1.14.2",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "7.0.12",

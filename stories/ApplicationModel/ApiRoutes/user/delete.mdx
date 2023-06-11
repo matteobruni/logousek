@@ -1,0 +1,109 @@
+import { Meta } from '@storybook/blocks'
+import { Mermaid } from 'mdx-mermaid/Mermaid'
+import { JSONTree } from 'react-json-tree'
+
+import * as S from '../../styles.ts'
+import PropertiesTable from '../../../Components/properties-table'
+import ReferenceList from '../../../Components/reference-list'
+import ApiRoutesInfoTable from '../../../Components/api-routes-info-table'
+import ApiErrors from '../../../Components/api-errors'
+
+<Meta title="ApplicationModel/ApiRoutes/user/delete" />
+
+# user/delete
+
+<ApiRoutesInfoTable
+  name={'user/delete'}
+  description={`This endpoint is used to delete users.`}
+  source="pages/api/user/delete"
+  httpMethod="POST"
+  roles={['ADMIN']}
+/>
+
+<JSONTree
+  shouldExpandNodeInitially={() => true}
+  data={{
+    userId: '647f5a137d42d125c1563973',
+  }}
+/>
+
+## Input validation
+
+<JSONTree
+  shouldExpandNodeInitially={() => true}
+  data={{
+    userId: 'string().required()',
+  }}
+/>
+
+    ## Output
+
+<JSONTree shouldExpandNodeInitially={() => true} data={{}} />
+
+    ## Output Validation
+
+<JSONTree shouldExpandNodeInitially={() => true} data={{}} />
+
+    ## Scenario
+    ### 1. Check httpMethod
+    #### 1.1. ERROR - If httpMethod is not POST. return endpoint_not_found error
+
+    ### 2. Check if the user has rights to call this endpoint
+    #### 2.1. ERROR - user has not right to call this endpoint. return not_authorize error
+
+    ### 3. Check dtoIn
+    #### 3.1. ERROR - dtoIn is not valid. return wrong_dto_in error
+    #### 3.2. WARNING - dtoIn contains keys beyond the scope of dtoInType. get warning unsupportedKeys to dtoOut.
+
+
+    ### 4. Check if the userId from dtoIn exists and can be deleted
+    #### 4.1. ERROR - Failed to get data from the database and an error was thrown. return server_error error
+    #### 4.2. ERROR - UserId from dtoIn does not exists. return user_not_found error
+    #### 4.3. ERROR - User is Admin. return admin_cannot_be_deleted error
+
+    ### 5. List score from the database
+    #### 5.1. ERROR - Failed to get data from the database and an error was thrown. return server_error error
+
+    ### 6. Returns properly filled dtoOut.
+
+<ApiErrors
+  apiErrorsList={[
+    {
+      type: 'error',
+      code: 'endpoint_not_found',
+      message: 'There was a wrong method in the request.',
+    },
+    {
+      type: 'error',
+      code: 'wrong_dto_in',
+      message: 'A bad dtoIn came in the request.',
+    },
+    {
+      type: 'error',
+      code: 'not_authorize',
+      message: 'Insufficient permissions to invoke this endpoint.',
+    },
+    {
+      type: 'warning',
+      code: 'unsupported_keys',
+      message: 'DtoIn contains unsupported keys.',
+    },
+    {
+      type: 'error',
+      code: 'admin_cannot_be_deleted',
+      message: 'Administrator cannot be deleted.',
+    },
+    {
+      type: 'error',
+      code: 'user_not_found',
+      message:
+        'The userId that came in the request does not match any userId that we have in the database.',
+    },
+    {
+      type: 'error',
+      code: 'server_error',
+      message:
+        "Something went wrong on the server side. Probably can't connect to DB.",
+    },
+  ]}
+/>

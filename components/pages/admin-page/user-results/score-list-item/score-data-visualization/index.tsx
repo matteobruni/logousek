@@ -15,7 +15,7 @@ const ScoreDataVisualization: React.FC<ScoreDataVisualizationProps> = ({ data })
     const themeContext = useContext(ThemeContext)
     const { tAdmin } = useTranslateFunctions()
 
-    const getScoreDataVisualization = (scoreData: boolean[]) => {
+    const listScoredataVisualization = (scoreData: boolean[]) => {
         return scoreData.map((scoreDataItem, index) => {
             const color = scoreDataItem
                 ? themeContext?.colors?.success
@@ -40,7 +40,7 @@ const ScoreDataVisualization: React.FC<ScoreDataVisualizationProps> = ({ data })
         <S.ScoreDataVisualizationWrapper>
             <P5 align='center' margin='16px 0'>{tAdmin("results")}</P5>
             <S.ScoreDataVisualizationContainer>
-                {getScoreDataVisualization(data)}
+                {listScoredataVisualization(data)}
             </S.ScoreDataVisualizationContainer>
         </S.ScoreDataVisualizationWrapper>
     )

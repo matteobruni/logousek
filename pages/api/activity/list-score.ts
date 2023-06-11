@@ -1,31 +1,32 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import getScoreCountdtoIn from 'backend/dtoIn/get-score-count'
 import checkUnsupportedKeys from 'backend/dtoIn/check-unsupported-keys'
+import listScoredtoIn from 'backend/dtoIn/list-score'
 
 import {
-    getScoreCountByUserId,
+    getScoreByUserId,
 } from 'backend/dao/score'
 
 import {
     getUserById,
 } from 'backend/dao/user'
 
+
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     // 1. Check httpMethod
-    if (req.method === "GET") {
+    // The method must be post because an array is being sent in dtoIn
+    if (req.method === "POST") {
         //2. Check dtoIn
-        if (typeof req?.query !== "object" || !await getScoreCountdtoIn.isValid(req?.query)) {
+        if (typeof req?.body !== "object" || !await listScoredtoIn.isValid(req?.body)) {
             //2.1. dtoIn is not valid
             return res.status(400).json({
                 errorCode: 'wrong_dto_in',
             })
         }
         //2.2. dtoIn contains keys beyond the scope of dtoInType
-        const warnings = checkUnsupportedKeys(["userId"], req.body)
+        const warnings = checkUnsupportedKeys(["userId", "to", "from", "activityTypes"], req.body)
 
-
-        const { userId } = req.query
+        const { userId, activityTypes, from, to } = req?.body
 
         //3. Check if the userId from dtoIn exists
         let user
@@ -48,19 +49,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             })
         }
 
-        //4. Get score count from the database
+
+        //4. List score from the database
         try {
-            const result = await getScoreCountByUserId(userId);
+            const result = await getScoreByUserId(userId, activityTypes, from, to);
             //5. Returns properly filled dtoOut.
             return res.status(200).json({
-                points: result?.points,
+                data: result,
                 warnings: warnings
             })
         } catch (error) {
             //4.1. Failed to get data from the database and an error was thrown
             return res.status(500).json({
-                errorCode: "server_error",
-                warnings: warnings
+                errorCode: "server_error"
             })
         }
     } else {
@@ -69,4 +70,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             errorCode: 'endpoint_not_found'
         })
     }
+
 }
