@@ -1,7 +1,7 @@
 import { object, string } from 'yup';
 
-const deleteUserDtoIn = object({
+const listScoreDtoIn = object({
     userId: string().required()
 }).strict();
 
-export default deleteUserDtoIn
+export default listScoreDtoIn

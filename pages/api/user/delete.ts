@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import authorize from 'backend/middleware/authorize'
 import checkUnsupportedKeys from 'backend/dtoIn/check-unsupported-keys'
-import deleteUserDtoIn from 'backend/dtoIn/list-score'
+import deleteUserDtoIn from 'backend/dtoIn/delete-user'
 
 import {
   deleteUser,
