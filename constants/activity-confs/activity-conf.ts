@@ -44,7 +44,7 @@ export const games: GamesType = {
       name: "visual_differentiation",
       title: "Rozdíly",
       image: publicImages.activityIcons.differentiation,
-      description: "visual_differentiation description",
+      description: "hra rozvíjí zrakovou diferenciaci, která je důležitým  předpokladem mimo jiné k úspěšnému zvládnutí čtení a psaní. Hra rozvíjí rozlišovací schopnost vnímání detailů a polohy.",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -55,7 +55,7 @@ export const games: GamesType = {
     {
       name: "a_s",
       title: "Skládání tvarů",
-      description: "a_s description",
+      description: "Hra rozvíjí zrakovou analýzu a syntézu, dítě se tak učí vnímat jednotlivé části a tvořit z nich celek.",
       image: publicImages.activityIcons.a_s,
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
@@ -66,7 +66,7 @@ export const games: GamesType = {
     {
       name: "visual_memory",
       title: "Zraková paměť",
-      description: "visual_memory description",
+      description: "Hra rozvíjí schopnost zapamatování si zrakově vnímaných objektů, tato schopnost ovlivňuje učení, umožní správné zapamatování a vybavování si symbolů, písmen a číslic.",
       image: publicImages.activityIcons.memory,
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
@@ -80,7 +80,7 @@ export const games: GamesType = {
     {
       name: "sound_differentiation",
       title: "Zvuky",
-      description: "sound_differentiation description",
+      description: "Hra rozvíjí sluchovou diferenciaci pomocí známých zvuků z okolí.",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -91,7 +91,7 @@ export const games: GamesType = {
     {
       name: "word_differentiation",
       title: "Slova",
-      description: "word_differentiation description",
+      description: "Hra rozvíjí sluchovou diferenciaci u podobně znějících slov. Sluchová diferenciace je schopnost sluchem rozpoznat zvukově podobné hlásky, tvrdé a měkké slabiky a různé délky hlásek.",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 }
       ],
@@ -100,7 +100,7 @@ export const games: GamesType = {
     {
       name: "audio_memory",
       title: "Sluchová paměť",
-      description: "audio_memory description",
+      description: "Hra rozvíjí schopnost zapamatování si sluchově vnímaných objektů, tato schopnost ovlivňuje učení, umožní správné zapamatování a vybavování si slyšených slov. ",
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
         { id: 2, level: 2, points: 20, exercisesCount: 8 },
@@ -112,9 +112,18 @@ export const games: GamesType = {
 
   seriality: [
     {
+      name: "syllables",
+      title: "Slabiky",
+      description: "Hra rozvíjí schopnost vnímání 1. slabiky ve slově, rozvíjí také schopnost rozkladu slova na slabiky.",
+      image: "",
+      difficulty: [
+        { id: 1, level: 1, points: 10, exercisesCount: 5 },
+      ]
+    },
+    {
       name: "3_pictures",
       title: "Příběh",
-      description: "3_pictures description",
+      description: "Hra rozvíjí schopnost chápaní časové posloupnosti, uvědomování si příčiny a následku a současně se také může podílet na rozvoji schopnosti samostatného vyprávění příběhu.",
       image: publicImages.activityIcons.seriality,
       difficulty: [
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
@@ -126,7 +135,7 @@ export const games: GamesType = {
     {
       name: "language_practicing",
       title: "Cvičení s jazykem",
-      description: "language_practicing description",
+      description: "Hra rozvíjí motoriku mluvidel, nezbytnou pro správnou realizaci jednotlivých hlásek.",
       image: publicImages.activityIcons.oromotorics,
       difficulty: [
         { id: 1, level: 1, points: 5, exercisesCount: 10 }
