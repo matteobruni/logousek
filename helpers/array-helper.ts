@@ -22,3 +22,13 @@ export const isEmptyArray = (value: any) => {
 export const getEmptyArray = (length: number) => {
   return new Array(length).fill(undefined)
 }
+
+export const getIncorectItems = (
+  itemName: string,
+  array: { name: string; svg: React.ReactNode }[]
+) => {
+  const filtredArray = array.filter(
+    (item) => item.name !== itemName
+  )
+  return getRandomElementFromList(filtredArray, 2)
+}

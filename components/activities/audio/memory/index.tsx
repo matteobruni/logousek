@@ -16,7 +16,7 @@ export default forwardRef(function AudioMemory(
     const [audioElement] = useState(
         getAudioConfElement(complexity, 'audio_memory')
     )
-    const [audio, setAudio] = useState<HTMLAudioElement | undefined>(undefined);
+    const [audio, setAudio] = useState<HTMLAudioElement | undefined>(undefined)
     const [selectedElements, setSelectedElement] = useState<string[]>([])
 
     useEffect(() => {
@@ -48,12 +48,16 @@ export default forwardRef(function AudioMemory(
         audio && audio.pause()
     }
 
-
-
     return (
         <ActivitySlider
             onTimerIsDoneHandler={onTimerIsDoneHandler}
-            questionPart={<SoundButton fontSize="4rem" sound={audioElement.sound} customSound={audio} />}
+            questionPart={
+                <SoundButton
+                    fontSize="4rem"
+                    sound={audioElement.sound}
+                    customSound={audio}
+                />
+            }
             cardData={audioElement.pictures}
             setSelectedElement={onChange}
             selectedElements={selectedElements}

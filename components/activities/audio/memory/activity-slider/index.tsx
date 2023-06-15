@@ -1,6 +1,4 @@
-import React, {
-    useState,
-} from 'react'
+import React, { useState } from 'react'
 
 import ActivityCard from '@components/activity-card'
 import Timer from '@components/timer/index'
@@ -21,18 +19,29 @@ type ActivitySliderProps = {
     onTimerIsDoneHandler?: () => void
 }
 
-const ActivitySlider: React.FC<ActivitySliderProps> = ({ questionPart, cardData, setSelectedElement, selectedElements, onTimerIsDoneHandler }) => {
+const ActivitySlider: React.FC<ActivitySliderProps> = ({
+    questionPart,
+    cardData,
+    setSelectedElement,
+    selectedElements,
+    onTimerIsDoneHandler,
+}) => {
     const [isQuesionpart, setIsQuesionpart] = useState(false)
-    const { tActivity } = useTranslateFunctions();
+    const { tActivity } = useTranslateFunctions()
 
-    const _onTimerIsDoneHandler = () => {
-        if (typeof onTimerIsDoneHandler === "function") {
+    const onTimerDone = () => {
+        if (typeof onTimerIsDoneHandler === 'function') {
             onTimerIsDoneHandler()
         }
+    }
+
+    const _onTimerIsDoneHandler = () => {
+        onTimerDone()
         setIsQuesionpart(true)
     }
 
     const onSkipHandle = () => {
+        onTimerDone()
         setIsQuesionpart(true)
     }
     const questionPartQuestions = cardData.map((Element) => {
@@ -59,11 +68,13 @@ const ActivitySlider: React.FC<ActivitySliderProps> = ({ questionPart, cardData,
                 </P2>
                 <TrafficLights countdownTime={TIMER_COUNT_DOWN_TIME} />
                 {questionPart}
-                <S.SkipButton onClick={onSkipHandle}>{tActivity("buttons.skip")}</S.SkipButton>
+                <S.SkipButton onClick={onSkipHandle}>
+                    {tActivity('buttons.skip')}
+                </S.SkipButton>
             </S.ShowedPart>
             <S.QuestionPart>{questionPartQuestions}</S.QuestionPart>
-        </S.TemplateWrapper >
+        </S.TemplateWrapper>
     )
-};
+}
 
 export default ActivitySlider
