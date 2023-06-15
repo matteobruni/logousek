@@ -108,9 +108,6 @@ export const games: GamesType = {
       ],
       image: publicImages.activityIcons.memory,
     },
-  ],
-
-  seriality: [
     {
       name: "syllables",
       title: "Slabiky",
@@ -120,6 +117,9 @@ export const games: GamesType = {
         { id: 1, level: 1, points: 10, exercisesCount: 5 },
       ]
     },
+  ],
+
+  seriality: [
     {
       name: "3_pictures",
       title: "Příběh",
