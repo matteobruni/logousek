@@ -10,8 +10,8 @@ export const NamedImage: React.FC<{ src: string, name: string }> = ({ src, name 
 );
 
 const path = "/static"
-const animalPath = `${path}/audio-svgs/animals`
-const normalPath = `${path}/audio-svgs`
+const animalPath = `${path}/audio-pictures/animals`
+const normalPath = `${path}/audio-pictures`
 const serialityPath = `${path}/seriality-svgs`
 
 export const animalsSrcs = {
@@ -89,4 +89,15 @@ export const wordDifferentiationSrcs = {
     scales: `${normalPath}/word-diff/scales.jpg`,
     bowl: `${normalPath}/word-diff/bowl.png`,
     mouse: `${normalPath}/word-diff/mouse.png`,
+}
+
+
+export const syllablesSrcs = {
+    apple: `${normalPath}/syllables/apple.jpg`,
+    cow: `${normalPath}/syllables/cow.jpg`,
+    goat: `${normalPath}/syllables/goat.jpg`,
+    grandmother: `${normalPath}/syllables/grandmother.jpg`,
+    horse: `${normalPath}/syllables/horse.jpg`,
+    rabbit: `${normalPath}/syllables/rabbit.jpg`,
+    roller: `${normalPath}/syllables/roller.jpg`,
 }

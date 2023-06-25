@@ -5,11 +5,11 @@ import React, {
     useEffect,
 } from 'react'
 import { ActivityProps } from 'components/pages/activity'
-import ActivitySlider from '@components/activities/audio/memory/activity-slider'
+import ActivitySlider from '@components/activity-slider'
 import { getAudioConfElement, checkAnswer } from '@helpers/sound-helper'
 import SoundButton from 'components/sound-button'
 
-export default forwardRef(function AudioMemory(
+export default forwardRef(function Memory(
     { complexity, onHandleChanged }: ActivityProps,
     ref
 ) {
@@ -29,7 +29,7 @@ export default forwardRef(function AudioMemory(
                 complexity,
                 audioElement.name,
                 selectedElements[0] || '',
-                selectedElements[0]
+                "audio_memory"
             ),
     }))
 

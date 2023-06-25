@@ -35,7 +35,8 @@ export type ActivityInterface = {
 
 export type ActivityProps = {
   complexity: string
-  onHandleChanged: () => void
+  onHandleChanged: (canBeChecked?: boolean) => void
+  wasChanged: boolean
   tasksElapsed: number
   checkResult: () => void
   currentTask: number
@@ -169,8 +170,16 @@ const Activity = () => {
     setResults((v) => ([...v, true]))
   }
 
-  const onHandleChanged = () => {
-    setWasChanged(true)
+  const onHandleChanged = (canBeChecked?: boolean) => {
+    console.log("canBeChecked", canBeChecked, wasChanged)
+
+    if ((canBeChecked || canBeChecked === undefined) && !wasChanged) {
+      console.log("canBeChecked1")
+      setWasChanged(true)
+    } else if (wasChanged) {
+      console.log("canBeChecked2")
+      setWasChanged(false)
+    }
   }
 
   const _checkResult = () => {
@@ -240,6 +249,7 @@ const Activity = () => {
               key={`activity_${currentTask}`}
               tasksElapsed={currentTask}
               onHandleChanged={onHandleChanged}
+              wasChanged={wasChanged}
               checkResult={_checkResult}
               complexity={activityDifficulty || '1'}
               currentTask={currentTask}

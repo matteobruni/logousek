@@ -29,7 +29,7 @@ export type SerialityContextValueType = {
   correctCards: string[]
 }
 
-export default forwardRef(function AsContextProvider(
+export default forwardRef(function DndContextProvider(
   { children, type, currentTask }: SerialityContextProviderType,
   ref
 ) {

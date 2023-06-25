@@ -4,17 +4,16 @@ import React, {
   useEffect,
   useImperativeHandle,
 } from 'react'
+
+import { ActivityProps } from '@components/pages/activity'
+import ActivitySlider from '@components/activity-slider'
+import { getRandomSvgsWithChangeConfig } from '@helpers/svg-helpers'
+import { SvgListType } from '@helpers/svg-helpers'
+import { shuffle } from '@helpers/array-helper'
+
 import * as S from './styled'
 import ActivityCard from '../../../activity-card'
-import { getRandomSvgsWithChangeConfig } from 'helpers/svg-helpers'
-import Timer from '@components/timer/index'
-import TrafficLights from '@components/traffic-lights'
-import { shuffle } from '@helpers/array-helper'
-import { ActivityProps } from '@components/pages/activity'
-import { SvgListType } from '@helpers/svg-helpers'
-import { P5 } from '@components/typography/paragraph'
 
-const TIMER_COUNT_DOWN_TIME = 6000
 
 export default forwardRef(function VisualMemoryActivity(
   { complexity, onHandleChanged }: ActivityProps,
@@ -38,11 +37,6 @@ export default forwardRef(function VisualMemoryActivity(
     },
   }))
 
-  useEffect(() => {
-    if (correctAnswers.length === selectedElements?.length) {
-      onHandleChanged()
-    }
-  }, [correctAnswers, onHandleChanged, selectedElements])
 
   useEffect(() => {
     const svgs = getRandomSvgsWithChangeConfig(
@@ -57,73 +51,60 @@ export default forwardRef(function VisualMemoryActivity(
     setCorrectAnswers(correctSvgsName)
   }, [complexity])
 
-  const [isQuesionpart, setIsQuesionpart] = useState(false)
-  const onTimerIsDoneHandler = () => {
-    setIsQuesionpart(true)
-  }
-
-  const select = (elementName: string) => {
-    setSelectedElements((v) => {
-      if (v.find((vItem) => vItem === elementName)) {
-        return v.filter((selectedItem) => selectedItem !== elementName)
-      } else {
-        if (v.length < correctAnswers.length) {
-          return [...v, elementName]
-        } else {
-          return v
-        }
+  const getCardData = () => {
+    return generatedSvgs.map((generatedSvg) => {
+      const SvgComponent = generatedSvg.component
+      return {
+        name: generatedSvg.name,
+        svg: <SvgComponent key={`result-element-card-${generatedSvg.name}`} />,
       }
     })
   }
 
-  const questionPartQuestions = generatedSvgs.map((Element) => {
-    const elementName = Element?.name
-    return (
-      <ActivityCard
-        key={`element-card-${elementName}`}
-        onClick={() => select(elementName)}
-        selected={selectedElements?.includes(elementName)}
-      >
-        <Element.component />
-      </ActivityCard>
-    )
-  })
+  const getActivityCards = () => {
+    return generatedSvgs
+      .filter((Svg) =>
+        correctAnswers.find((correctAnswer) => correctAnswer.name === Svg.name)
+      )
+      .map((element) => {
+        const Component = element.component
+        return (
+          <ActivityCard key={`show-element-card-${element.name}`}>
+            <Component />
+          </ActivityCard>
+        )
+      })
+  }
 
+  const canBeChecked = (newSelectedElements: string[]) => {
+    if ((correctAnswers.length === newSelectedElements?.length) && newSelectedElements?.length) {
+      onHandleChanged(true)
+    } else if (newSelectedElements?.length) {
+      onHandleChanged(false)
+    }
+  }
+
+  const onChange = (value: string) => {
+    setSelectedElements((v) => {
+      let newValue = []
+      if (v.includes(value)) {
+        newValue = v.filter((vItem) => vItem !== value)
+      } else {
+        newValue = [...v, value]
+      }
+      canBeChecked(newValue)
+      return newValue
+    })
+  }
 
   return (
-    <S.TemplateWrapper isQuesionpart={isQuesionpart}>
-      <S.ShowedPart onClick={() => setIsQuesionpart(true)}>
-        <h1>
-          <Timer
-            countdownTime={TIMER_COUNT_DOWN_TIME}
-            timerIsDone={onTimerIsDoneHandler}
-          />
-        </h1>
-        <TrafficLights countdownTime={TIMER_COUNT_DOWN_TIME} />
-        <P5 align="center" type="ghost">{correctAnswers.length > 1 ? "Zapamatuj si obrázky" : "Zapamatuj si obrázek"}</P5>
-        <S.ActivityCardList>
-          {generatedSvgs
-            .filter((Svg) =>
-              correctAnswers.find(
-                (correctAnswer) => correctAnswer.name === Svg.name
-              )
-            )
-            .map((element) => {
-              const Component = element.component
-              return (
-                <ActivityCard key={`element-card-${element.name}`}>
-                  <Component />
-                </ActivityCard>
-              )
-            })}
-        </S.ActivityCardList>
-      </S.ShowedPart>
-      <S.QuestionPart>
-        <P5 align="center" type="ghost">Vyberte správnou odpověď</P5>
-        <S.QuestionsWrap>
-          {questionPartQuestions}
-        </S.QuestionsWrap>
-      </S.QuestionPart>
-    </S.TemplateWrapper>
+    <ActivitySlider
+      questionPart={
+        <S.ActivityCardList>{getActivityCards()}</S.ActivityCardList>
+      }
+      cardData={getCardData()}
+      setSelectedElement={onChange}
+      selectedElements={selectedElements}
+    />
   )
 })

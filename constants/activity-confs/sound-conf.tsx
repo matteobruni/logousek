@@ -69,7 +69,7 @@ const thirdLevelImages = [
 ]
 
 console.log("getIncorectItems", getIncorectItems)
-const getSoundDiffConf = (): AudioDiffConfType => ({
+const getSoundConf = (): AudioDiffConfType => ({
     '1': [
         {
             name: 'sheep',
@@ -258,4 +258,4 @@ const getSoundDiffConf = (): AudioDiffConfType => ({
     ],
 })
 
-export default getSoundDiffConf
+export default getSoundConf

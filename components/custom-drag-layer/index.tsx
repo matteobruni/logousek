@@ -13,7 +13,7 @@ const layerStyles: CSSProperties = {
   height: '100%'
 }
 function getItemStyles(initialOffset: XYCoord | null, currentOffset: XYCoord | null) {
-  if ((initialOffset == null) || (currentOffset == null)) {
+  if ((initialOffset === null) || (currentOffset === null)) {
     return {
       display: 'none'
     }
@@ -39,7 +39,7 @@ const CustomDragLayer: React.FC = () => {
     switch (itemType) {
       case 'image':
         return (
-          <DragCard>
+          <DragCard reference={item.reference}>
             {item.img}
           </DragCard>
         )

@@ -1,4 +1,6 @@
 import React from 'react'
+import { Popover } from 'antd'
+
 import * as S from './styled'
 
 export type ActivityCardType = {
@@ -9,7 +11,9 @@ export type ActivityCardType = {
   color?: string
   customRadius?: string
   customAspectRatio?: string
+  cursor?: 'default' | 'pointer'
   fill?: boolean
+  reference?: React.ReactNode
 }
 
 const ActivityCard: React.FC<ActivityCardType> = ({
@@ -20,10 +24,12 @@ const ActivityCard: React.FC<ActivityCardType> = ({
   color,
   customRadius = '1rem',
   customAspectRatio = '1 / 1',
-  fill
+  cursor = 'pointer',
+  fill,
+  reference,
 }) => {
   return (
-    <S.ActivityCardList
+    <S.ActivityCardWrapper
       onClick={onClick}
       selected={selected}
       rotate={rotate}
@@ -31,10 +37,22 @@ const ActivityCard: React.FC<ActivityCardType> = ({
       customRadius={customRadius}
       customAspectRatio={customAspectRatio}
       fill={fill}
+      cursor={cursor}
     >
-      {selected && <i className={'material-icons'}>check</i>}
+      {selected ? (
+        <S.CheckIcon className={'material-icons'}>check</S.CheckIcon>
+      ) : null}
+      {reference ?
+        <S.ReferenceWrapper>
+          <Popover content={<S.ReferenceContent>{reference}</S.ReferenceContent>} trigger="hover">
+            <S.ReferenceIcon className={'material-icons'}>
+              open_in_browser
+            </S.ReferenceIcon>
+          </Popover>
+        </S.ReferenceWrapper>
+        : null}
       {children}
-    </S.ActivityCardList>
+    </S.ActivityCardWrapper>
   )
 }
 

@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import { useMemo } from 'react'
 import { getRandomSvgs } from '@helpers/svg-helpers'
 
 import { shuffle, getEmptyArray } from '@helpers/array-helper'
 
-import { SvgWrapper } from './styled'
+import { SvgWrapper } from '@contexts/seriality-context/seriality-context-provider/styled'
 type ViewBoxSettingType = {
   [settingKey: string]: string
 }
 type ViewBoxConfType = { [key: number]: ViewBoxSettingType }
 type SvgHashType = { [key: number]: string[] }
 
-export type CardType = { img: React.ReactElement, keyImage: string }
+export type CardType = { img: React.ReactNode, keyImage: string, reference?: React.ReactNode }
 
 const VIEWBOX_CONF: ViewBoxConfType = {
   2: {
@@ -40,9 +40,9 @@ export const SVGS_HASH: SvgHashType = {
 }
 
 const useGetCards = (count: number) => {
-  const _getCards = (): CardType[] => {
+  const getCards = (): CardType[] => {
     const [Svg] = getRandomSvgs(1)
-    return shuffle(getEmptyArray(count).map((card, index) => {
+    return shuffle(getEmptyArray(count).map((_, index) => {
       const keyImage = (SVGS_HASH[count])[index]
       return {
         img: (
@@ -55,13 +55,9 @@ const useGetCards = (count: number) => {
     }))
   }
 
-  const [cards, setData] = useState<CardType[]>(_getCards())
+  const cards: CardType[] = useMemo(getCards, [count])
 
-  const resetCards = () => {
-    setData(_getCards())
-  }
-
-  return { cards, setCards: setData, resetCards }
+  return { cards }
 }
 
 export default useGetCards
