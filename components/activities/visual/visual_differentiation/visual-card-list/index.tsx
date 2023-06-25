@@ -32,7 +32,7 @@ const VisualCardList: React.FC<CardListType> = ({
     return {
       name: card.name,
       svg: <Component changeConfig={card.hideConfing} />,
-      rotate: card.rotateDegrees
+      rotateDegrees: card.rotateDegrees
     }
   }
 

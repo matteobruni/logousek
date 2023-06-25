@@ -21,7 +21,7 @@ export type AudioDiffConfType = {
   }[]
 }
 
-type ActivityName = "word_differentiation" | "audio_memory" | "sound_differentiation" | "syllables"
+export type ActivityName = "word_differentiation" | "audio_memory" | "sound_differentiation" | "syllables"
 
 const getAudioConf = (activityName: Omit<"syllables", ActivityName>): AudioDiffConfType => {
   if (activityName === "word_differentiation") {

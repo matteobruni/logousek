@@ -1,6 +1,6 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react'
 import { useRouter } from 'next/router'
-import { getAudioConfElement, checkAnswer } from '@helpers/sound-helper'
+import { getAudioConfElement, checkAnswer, ActivityName } from '@helpers/sound-helper'
 import { ActivityProps } from '@components/pages/activity'
 import CardList from '@components/card-list'
 import { P5 } from '@components/typography/paragraph'
@@ -13,7 +13,7 @@ export default forwardRef(function AudioDifferentiation(
 ) {
 
   const router = useRouter()
-  const activityName = router.query?.activityName as string
+  const activityName = router.query?.activityName as ActivityName
 
   const [audioElement] = useState(getAudioConfElement(complexity, activityName))
   const [selected, setSelected] = useState<string | undefined>()

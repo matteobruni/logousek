@@ -21,7 +21,7 @@ const CardList: React.FC<ActivityCardProps> = ({ cards, selected, onChange }) =>
           key={`activity-card-${card.name}`}
           onClick={onClickHandler}
           selected={isSelected}
-          rotate={card.rotate}
+          rotate={card.rotateDegrees}
         >
           {PictureSvg}
         </ActivityCard>
